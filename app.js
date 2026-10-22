@@ -17,13 +17,13 @@
   const themeToggle = document.getElementById('theme-toggle');
   const html = document.documentElement;
   
-  // Check for saved theme preference or default to 'dark'
-  const savedTheme = localStorage.getItem('theme') || 'dark';
+  // Check for saved theme preference or default to 'light' (Morning Paper)
+  const savedTheme = localStorage.getItem('theme') || 'light';
   html.setAttribute('data-theme', savedTheme);
   
   function toggleTheme() {
     const currentTheme = html.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     html.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
   }
@@ -114,6 +114,20 @@
     // Fallback: reveal everything if IntersectionObserver is unavailable.
     timelineItems.forEach(item => item.classList.add('visible'));
   }
+
+  // Safety net: fast scrolling can move an item past the viewport between
+  // observer callbacks, leaving it hidden forever. Reveal anything that has
+  // reached or passed the viewport so no content can stay invisible.
+  function revealPassedItems() {
+    timelineItems.forEach(item => {
+      if (!item.classList.contains('visible') && item.getBoundingClientRect().top < window.innerHeight) {
+        item.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', revealPassedItems, { passive: true });
+  window.addEventListener('resize', revealPassedItems, { passive: true });
+  revealPassedItems();
 
   // ==========================================================================
   // Mobile Navigation Toggle
