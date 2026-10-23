@@ -38,6 +38,35 @@
   const filterTabs = document.querySelectorAll('.filter-tab');
   const projectCards = document.querySelectorAll('.project-card');
   
+  // ==========================================================================
+  // Project Thumbnail Click-to-Swap Primary Image
+  // ==========================================================================
+  document.addEventListener('click', (e) => {
+    const thumbBtn = e.target.closest('.thumbnail-btn');
+    if (!thumbBtn) return;
+    
+    const card = thumbBtn.closest('.project-card');
+    if (!card) return;
+    
+    const primaryImg = card.querySelector('.project-card-image');
+    const newSrc = thumbBtn.getAttribute('data-primary');
+    const newAlt = thumbBtn.getAttribute('data-alt');
+    
+    if (primaryImg && newSrc && newAlt) {
+      // Swap primary image
+      primaryImg.src = newSrc;
+      primaryImg.alt = newAlt;
+      
+      // Update active state on thumbnails
+      card.querySelectorAll('.thumbnail-btn').forEach(btn => {
+        btn.style.borderColor = 'var(--color-border)';
+        btn.style.transform = 'none';
+      });
+      thumbBtn.style.borderColor = 'var(--color-accent)';
+      thumbBtn.style.transform = 'translateY(-2px)';
+    }
+  });
+  
   filterTabs.forEach(tab => {
     tab.addEventListener('click', () => {
       const filter = tab.getAttribute('data-filter');
