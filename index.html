@@ -32,14 +32,9 @@
     <nav class="nav-container" aria-label="Main navigation">
       <a href="#" class="nav-logo" aria-label="Juwen Lie Portfolio Home">
         <svg class="logo-icon" viewBox="0 0 40 40" aria-hidden="true">
-          <defs>
-            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:var(--color-accent)"/>
-              <stop offset="100%" style="stop-color:var(--color-accent-dark)"/>
-            </linearGradient>
-          </defs>
-          <rect x="2" y="2" width="36" height="36" rx="8" fill="none" stroke="url(#logoGradient)" stroke-width="2.5"/>
-          <path d="M12 28V12l8 8 8-8v16" fill="none" stroke="url(#logoGradient)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="2" y="2" width="36" height="36" rx="8" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M12 28V12l8 8 8-8v16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 28V12l8 8 8-8v16" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 20"/>
         </svg>
         <span class="logo-text">JL</span>
       </a>
@@ -74,10 +69,19 @@
   <main id="main-content" role="main">
     <!-- Hero Section -->
     <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-background" aria-hidden="true"></div>
+      <div class="hero-masthead" aria-hidden="true">
+        <span class="hero-dateline">BATAM, INDONESIA · R&amp;D MECHANICAL ENGINEER · 2026</span>
+      </div>
       <div class="container hero-content">
         <h1 id="hero-title">Juwen Lie</h1>
         <p class="hero-headline">Mechanical · Aerospace · AI · Tech · Systems Engineer</p>
-        <p class="hero-location">📍 Batam, Indonesia</p>
+        <p class="hero-location">
+          <svg class="location-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+          </svg>
+          <span>Batam, Indonesia</span>
+        </p>
         <div class="hero-cta">
           <a href="#projects" class="btn btn-primary">View My Work</a>
           <a href="#contact" class="btn btn-secondary">Get In Touch</a>

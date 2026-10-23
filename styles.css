@@ -444,7 +444,65 @@ a:hover {
   position: relative;
   padding: var(--spacing-xxxl) 0;
   background: var(--color-paper);
-  border-bottom: 1px solid var(--color-border);
+  border-top: 3px double var(--color-ink);
+  border-bottom: 3px double var(--color-ink);
+  overflow: hidden;
+}
+
+/* Hero Background Image Layer (subtle, decorative) */
+.hero-background {
+  position: absolute;
+  inset: 0;
+  background-image: url('./assets/projects/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-theme="dark"] .hero-background {
+  opacity: 0.12;
+}
+
+/* Soft paper overlay gradient for contrast */
+.hero-background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--color-paper) 0%,
+    var(--color-paper) 15%,
+    transparent 40%,
+    transparent 60%,
+    var(--color-paper) 85%,
+    var(--color-paper) 100%
+  );
+  opacity: 0.7;
+}
+
+/* Hero Masthead (dateline row) */
+.hero-masthead {
+  position: absolute;
+  top: var(--spacing-md);
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-dateline {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-muted);
+  padding: 0 var(--spacing-lg);
+  white-space: nowrap;
 }
 
 .hero-content {
@@ -480,10 +538,21 @@ a:hover {
 }
 
 .hero-location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
   color: var(--color-muted);
   font-size: 0.875rem;
   margin-bottom: var(--spacing-lg);
   font-family: var(--font-sans);
+}
+
+.location-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--color-accent);
+  flex-shrink: 0;
 }
 
 .hero-cta {
@@ -834,59 +903,6 @@ html.js .timeline-item.visible {
   object-fit: cover;
   display: block;
   border-radius: 2px;
-}
-
-/* Visual Patterns (CSS-only, editorial style) */
-.visual-pattern {
-  position: absolute;
-  inset: 0;
-  opacity: 0.4;
-}
-
-.visual-pattern-gears {
-  background-image: 
-    repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.08) 10px, rgba(255,255,255,0.08) 20px),
-    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);
-}
-
-.visual-pattern-flow {
-  background-image: 
-    linear-gradient(90deg, transparent 49%, rgba(255,255,255,0.08) 50%, transparent 51%),
-    linear-gradient(transparent 49%, rgba(255,255,255,0.08) 50%, transparent 51%);
-  background-size: 40px 40px;
-}
-
-.visual-pattern-blueprint {
-  background-image: 
-    linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px);
-  background-size: 30px 30px;
-}
-
-.visual-pattern-code {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  color: rgba(255,255,255,0.12);
-  padding: var(--spacing-sm);
-  line-height: 1.8;
-  overflow: hidden;
-}
-
-.visual-pattern-code::before {
-  content: "const project = {\\0a  name: 'Orbis',\\0a  stack: ['Python', 'SQLite'],\\0a  status: 'active'\\0a};";
-  white-space: pre-wrap;
-}
-
-.visual-pattern-network {
-  background-image: 
-    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.15) 0%, transparent 30%),
-    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 25%);
-}
-
-.visual-pattern-data {
-  background-image: 
-    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(255,255,255,0.12) 20px),
-    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(255,255,255,0.12) 20px);
 }
 
 .project-content {
@@ -1278,6 +1294,13 @@ html.js .timeline-item.visible {
   
   .section {
     padding: var(--spacing-xxl) 0;
+  }
+  
+  .hero-dateline {
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+    padding: 0 var(--spacing-md);
+    white-space: normal;
   }
   
   .hero-cta {
