@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Hazel studio: generate a video from a prompt by casting characters, choosing a scene, and setting length and size">
+  <defs>
+    <radialGradient id="glowGreen" cx="18%" cy="12%" r="62%">
+      <stop offset="0" stop-color="#b7d17a" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#b7d17a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowAmber" cx="88%" cy="92%" r="58%">
+      <stop offset="0" stop-color="#e0b25e" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#e0b25e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b7d17a"/>
+      <stop offset="1" stop-color="#e0b25e"/>
+    </linearGradient>
+    <linearGradient id="primary" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b7d17a"/>
+      <stop offset="1" stop-color="#9fbb63"/>
+    </linearGradient>
+    <linearGradient id="phone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#233026"/>
+      <stop offset="0.5" stop-color="#2f3f2b"/>
+      <stop offset="1" stop-color="#3a3524"/>
+    </linearGradient>
+    <linearGradient id="shot1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b3a2c"/><stop offset="1" stop-color="#3b4a2c"/>
+    </linearGradient>
+    <linearGradient id="shot2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3a3524"/><stop offset="1" stop-color="#4a3f26"/>
+    </linearGradient>
+    <linearGradient id="shot3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#26333a"/><stop offset="1" stop-color="#2c4038"/>
+    </linearGradient>
+    <linearGradient id="avatarA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b7d17a"/><stop offset="1" stop-color="#7fa24a"/>
+    </linearGradient>
+    <linearGradient id="avatarB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e0b25e"/><stop offset="1" stop-color="#c08f3c"/>
+    </linearGradient>
+    <linearGradient id="avatarC" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8fb8a6"/><stop offset="1" stop-color="#5f8f7c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="720" fill="#0e1116"/>
+  <rect width="1280" height="720" fill="url(#glowGreen)"/>
+  <rect width="1280" height="720" fill="url(#glowAmber)"/>
+
+  <!-- Brand -->
+  <g transform="translate(64,46)">
+    <g transform="scale(1.5)">
+      <path d="M16 2.5C9.3 7.6 5.5 12.6 5.5 17.8a10.5 10.5 0 0 0 21 0c0-5.2-3.8-10.2-10.5-15.3z" fill="url(#leaf)"/>
+      <path d="M16 5.5V29" stroke="#59682f" stroke-width="1.3" stroke-linecap="round" opacity="0.75" fill="none"/>
+      <path d="M16 11l5.2 4.2M16 11l-5.2 4.2M16 17.5l5.6 4.4M16 17.5l-5.6 4.4" stroke="#59682f" stroke-width="1" stroke-linecap="round" opacity="0.5" fill="none"/>
+    </g>
+    <text x="56" y="24" fill="#e8edf2" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">Hazel</text>
+    <text x="57" y="44" fill="#8b97a5" font-family="Segoe UI, Arial, sans-serif" font-size="13">Film once. Post everywhere. Learn what works.</text>
+  </g>
+  <g transform="translate(1080,52)">
+    <rect width="140" height="36" rx="10" fill="url(#primary)"/>
+    <text x="70" y="23" text-anchor="middle" fill="#14200a" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Generate</text>
+  </g>
+
+  <!-- Left config panel -->
+  <rect x="64" y="118" width="376" height="474" rx="16" fill="#151a21" stroke="#262e38"/>
+  <text x="88" y="150" fill="#8b97a5" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2">CREATE</text>
+
+  <!-- Cast -->
+  <text x="88" y="188" fill="#e8edf2" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">Cast</text>
+  <g transform="translate(88,202)">
+    <circle cx="24" cy="24" r="24" fill="url(#avatarA)"/>
+    <text x="24" y="30" text-anchor="middle" fill="#14200a" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">A</text>
+    <circle cx="82" cy="24" r="24" fill="url(#avatarB)"/>
+    <text x="82" y="30" text-anchor="middle" fill="#14200a" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">K</text>
+    <circle cx="140" cy="24" r="24" fill="url(#avatarC)"/>
+    <text x="140" y="30" text-anchor="middle" fill="#0e1116" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">M</text>
+    <circle cx="198" cy="24" r="24" fill="#1b2129" stroke="#262e38" stroke-dasharray="4 4"/>
+    <text x="198" y="30" text-anchor="middle" fill="#8b97a5" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">+</text>
+  </g>
+
+  <!-- Scene -->
+  <text x="88" y="286" fill="#e8edf2" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">Scene</text>
+  <rect x="88" y="300" width="164" height="40" rx="10" fill="#1b2129" stroke="#b7d17a"/>
+  <text x="170" y="325" text-anchor="middle" fill="#b7d17a" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">Talking to camera</text>
+  <rect x="264" y="300" width="128" height="40" rx="10" fill="#1b2129" stroke="#262e38"/>
+  <text x="328" y="325" text-anchor="middle" fill="#8b97a5" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">Interaction</text>
+  <rect x="88" y="352" width="304" height="52" rx="10" fill="#1b2129" stroke="#262e38"/>
+  <text x="104" y="374" fill="#8b97a5" font-family="Segoe UI, Arial, sans-serif" font-size="11">Scene description</text>
+  <rect x="104" y="382" width="240" height="6" rx="3" fill="#262e38"/>
+  <rect x="104" y="392" width="170" height="6" rx="3" fill="#262e38"/>
+
+  <!-- Length -->
+  <text x="88" y="440" fill="#e8edf2" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">Length</text>
+  <text x="416" y="440" text-anchor="end" fill="#b7d17a" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">30s</text>
+  <rect x="88" y="452" width="304" height="8" rx="4" fill="#262e38"/>
+  <rect x="88" y="452" width="150" height="8" rx="4" fill="url(#primary)"/>
+  <circle cx="238" cy="456" r="11" fill="#e8edf2"/>
+
+  <!-- Size -->
+  <text x="88" y="500" fill="#e8edf2" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600">Size</text>
+  <rect x="88" y="514" width="66" height="34" rx="9" fill="#1b2129" stroke="#b7d17a"/>
+  <text x="121" y="536" text-anchor="middle" fill="#b7d17a" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">9:16</text>
+  <rect x="162" y="514" width="60" height="34" rx="9" fill="#1b2129" stroke="#262e38"/>
+  <text x="192" y="536" text-anchor="middle" fill="#8b97a5" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">1:1</text>
+  <rect x="230" y="514" width="66" height="34" rx="9" fill="#1b2129" stroke="#262e38"/>
+  <text x="263" y="536" text-anchor="middle" fill="#8b97a5" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">16:9</text>
+  <text x="88" y="576" fill="#8b97a5" font-family="Segoe UI, Arial, sans-serif" font-size="12">1080p &#183; offline prototype</text>
+
+  <!-- Preview stage -->
+  <rect x="464" y="118" width="752" height="474" rx="16" fill="#0b0e13" stroke="#262e38"/>
+  <text x="488" y="150" fill="#8b97a5" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2">PREVIEW</text>
+
+  <!-- Prompt box -->
+  <rect x="488" y="168" width="704" height="64" rx="12" fill="#151a21" stroke="#262e38"/>
+  <text x="508" y="194" fill="#8b97a5" font-family="Segoe UI, Arial, sans-serif" font-size="11">Prompt</text>
+  <rect x="508" y="204" width="520" height="8" rx="4" fill="#262e38"/>
+  <rect x="508" y="216" width="360" height="8" rx="4" fill="#262e38"/>
+
+  <!-- Phone 9:16 with glow -->
+  <rect x="792" y="252" width="184" height="250" rx="20" fill="url(#phone)" stroke="#3d4a35"/>
+  <circle cx="884" cy="377" r="34" fill="#0e1116" opacity="0.55"/>
+  <path d="M876 361l24 16-24 16z" fill="#b7d17a"/>
+  <text x="884" y="480" text-anchor="middle" fill="#8b97a5" font-family="Segoe UI, Arial, sans-serif" font-size="11">9:16 &#183; 30s</text>
+
+  <!-- Waveform / shots on left of stage -->
+  <g transform="translate(506,268)">
+    <rect x="0" y="20" width="250" height="92" rx="10" fill="url(#shot1)"/>
+    <text x="14" y="52" fill="#dfe7d2" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">Shot 01 &#183; Hook</text>
+    <text x="14" y="72" fill="#a9b79a" font-family="Segoe UI, Arial, sans-serif" font-size="10">Ava, to camera</text>
+    <rect x="14" y="84" width="60" height="6" rx="3" fill="#b7d17a" opacity="0.7"/>
+
+    <rect x="0" y="124" width="250" height="92" rx="10" fill="url(#shot2)"/>
+    <text x="14" y="156" fill="#efe4cf" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">Shot 02 &#183; Setup</text>
+    <text x="14" y="176" fill="#c3b598" font-family="Segoe UI, Arial, sans-serif" font-size="10">Ava + Kai, dialogue</text>
+    <rect x="14" y="188" width="96" height="6" rx="3" fill="#e0b25e" opacity="0.7"/>
+
+    <rect x="0" y="228" width="250" height="92" rx="10" fill="url(#shot3)"/>
+    <text x="14" y="260" fill="#d6e2da" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">Shot 03 &#183; Payoff</text>
+    <text x="14" y="280" fill="#a9bcb2" font-family="Segoe UI, Arial, sans-serif" font-size="10">Interactions climax</text>
+    <rect x="14" y="292" width="72" height="6" rx="3" fill="#8fb8a6" opacity="0.7"/>
+  </g>
+
+  <!-- Timeline -->
+  <rect x="64" y="612" width="1152" height="84" rx="14" fill="#151a21" stroke="#262e38"/>
+  <text x="88" y="640" fill="#8b97a5" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2">TIMELINE</text>
+  <g transform="translate(88,650)">
+    <rect x="0" y="0" width="196" height="32" rx="6" fill="url(#shot1)"/>
+    <rect x="204" y="0" width="196" height="32" rx="6" fill="url(#shot2)"/>
+    <rect x="408" y="0" width="196" height="32" rx="6" fill="url(#shot3)"/>
+    <rect x="612" y="0" width="196" height="32" rx="6" fill="url(#shot1)"/>
+    <rect x="816" y="0" width="196" height="32" rx="6" fill="url(#shot2)"/>
+  </g>
+  <line x1="348" y1="620" x2="348" y2="690" stroke="#b7d17a" stroke-width="2"/>
+  <circle cx="348" cy="616" r="5" fill="#b7d17a"/>
+</svg>
