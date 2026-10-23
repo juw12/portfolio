@@ -215,9 +215,6 @@
           behavior: 'smooth'
         });
       }
-      
-      // Update URL without triggering scroll
-      history.pushState(null, '', targetId);
     });
   });
 
