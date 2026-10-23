@@ -27,6 +27,18 @@ Then visit http://localhost:8000/. The site works fully offline (`file://`) — 
 | `assets/qr/` | Contact QR codes (LinkedIn, GitHub, email, bio.site) |
 | `.github/workflows/pages.yml` | Deploys to GitHub Pages on push to `main` |
 
+## CV & documents
+
+| File | Purpose |
+|---|---|
+| `assets/cv/Juwen_Lie_CV_2026.pdf` | Résumé, 1 page (apply-ready) |
+| `assets/cv/Juwen_Lie_CV_2026.docx` / `.md` | Editable version |
+| `assets/cv/Juwen_Lie_CV_RnD_Mechanical.pdf` / `.docx` | Targeted: mechanical R&D |
+| `assets/cv/Juwen_Lie_CV_Product_Systems.pdf` / `.docx` | Targeted: product / systems |
+| `assets/cv/Juwen_Lie_CV_2page.pdf` / `.docx` | Expanded, 2 pages |
+| `assets/cv/Juwen_Lie_CV_MorningPaper.pdf` | Themed (newspaper look) |
+| `assets/cv/Cover_Letter_and_Intro_Templates.md` | Cover-letter / outreach templates |
+
 ## Notes
 
 - No frameworks, no build tooling, no external fonts or CDNs.
