@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Virtual Bots Office: a dashboard of AI bots at their desks with live status, activity feed and a command bar">
+  <defs>
+    <radialGradient id="vb1" cx="16%" cy="10%" r="60%">
+      <stop offset="0" stop-color="#3b82f6" stop-opacity="0.22"/><stop offset="1" stop-color="#3b82f6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vb2" cx="86%" cy="88%" r="58%">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity="0.20"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vb3" cx="55%" cy="50%" r="55%">
+      <stop offset="0" stop-color="#10b981" stop-opacity="0.10"/><stop offset="1" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="vbHead" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="vbBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#10b981"/><stop offset="1" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="720" fill="#0a0e14"/>
+  <rect width="1280" height="720" fill="url(#vb1)"/>
+  <rect width="1280" height="720" fill="url(#vb2)"/>
+  <rect width="1280" height="720" fill="url(#vb3)"/>
+
+  <!-- Header -->
+  <g transform="translate(60,44)">
+    <rect x="0" y="0" width="46" height="46" rx="12" fill="url(#vbHead)"/>
+    <circle cx="16" cy="20" r="4" fill="#0a0e14"/>
+    <circle cx="30" cy="20" r="4" fill="#0a0e14"/>
+    <rect x="15" y="29" width="16" height="3.5" rx="1.75" fill="#0a0e14"/>
+    <text x="60" y="24" fill="#e8eef6" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">Virtual Bots</text>
+    <text x="61" y="42" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="13">Your AI office, live - watch and command every bot.</text>
+  </g>
+  <g transform="translate(1010,50)">
+    <circle cx="10" cy="18" r="6" fill="#10b981"/>
+    <text x="26" y="23" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">SIMULATION</text>
+  </g>
+
+  <!-- Office panel -->
+  <rect x="60" y="120" width="720" height="470" rx="16" fill="#111823" stroke="#2d3a4f"/>
+  <text x="84" y="152" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2">THE OFFICE</text>
+
+  <!-- Desk 1 : coder -->
+  <rect x="84" y="172" width="672" height="104" rx="12" fill="#151d2b" stroke="#2d3a4f"/>
+  <circle cx="132" cy="224" r="28" fill="url(#vbHead)"/>
+  <text x="132" y="232" text-anchor="middle" fill="#0a0e14" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">C</text>
+  <circle cx="153" cy="200" r="7" fill="#10b981" stroke="#151d2b" stroke-width="3"/>
+  <text x="180" y="214" fill="#e8eef6" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">coder</text>
+  <text x="180" y="234" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">writing src/scene.js - tool: file_write</text>
+  <rect x="180" y="246" width="540" height="8" rx="4" fill="#1a2332"/>
+  <rect x="180" y="246" width="380" height="8" rx="4" fill="url(#vbBar)"/>
+  <text x="732" y="214" text-anchor="end" fill="#10b981" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">WORKING</text>
+  <text x="732" y="234" text-anchor="end" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="12">70%</text>
+
+  <!-- Desk 2 : planner -->
+  <rect x="84" y="288" width="672" height="104" rx="12" fill="#151d2b" stroke="#2d3a4f"/>
+  <circle cx="132" cy="340" r="28" fill="#f59e0b"/>
+  <text x="132" y="348" text-anchor="middle" fill="#0a0e14" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">P</text>
+  <circle cx="153" cy="316" r="7" fill="#3b82f6" stroke="#151d2b" stroke-width="3"/>
+  <text x="180" y="330" fill="#e8eef6" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">planner</text>
+  <text x="180" y="350" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">todo: 3/7 done - sequencing the build</text>
+  <rect x="180" y="362" width="540" height="8" rx="4" fill="#1a2332"/>
+  <rect x="180" y="362" width="230" height="8" rx="4" fill="url(#vbBar)"/>
+  <text x="732" y="330" text-anchor="end" fill="#3b82f6" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">WORKING</text>
+  <text x="732" y="350" text-anchor="end" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="12">43%</text>
+
+  <!-- Desk 3 : scout -->
+  <rect x="84" y="404" width="672" height="104" rx="12" fill="#151d2b" stroke="#2d3a4f"/>
+  <circle cx="132" cy="456" r="28" fill="#8b5cf6"/>
+  <text x="132" y="464" text-anchor="middle" fill="#0a0e14" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">S</text>
+  <circle cx="153" cy="432" r="7" fill="#64748b" stroke="#151d2b" stroke-width="3"/>
+  <text x="180" y="446" fill="#e8eef6" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">scout</text>
+  <text x="180" y="466" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="12">research ready - waiting for a goal</text>
+  <rect x="180" y="478" width="540" height="8" rx="4" fill="#1a2332"/>
+  <text x="732" y="446" text-anchor="end" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">IDLE</text>
+
+  <!-- Activity panel -->
+  <rect x="800" y="120" width="420" height="470" rx="16" fill="#111823" stroke="#2d3a4f"/>
+  <text x="824" y="152" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2">ACTIVITY</text>
+  <g font-family="SF Mono, Consolas, monospace" font-size="12">
+    <rect x="824" y="168" width="372" height="52" rx="10" fill="#151d2b" stroke="#2d3a4f"/>
+    <text x="840" y="190" fill="#10b981">tool</text>
+    <text x="880" y="190" fill="#e8eef6">coder - file_write</text>
+    <text x="840" y="208" fill="#64748b">writing src/scene.js</text>
+
+    <rect x="824" y="228" width="372" height="52" rx="10" fill="#151d2b" stroke="#2d3a4f"/>
+    <text x="840" y="250" fill="#3b82f6">progress</text>
+    <text x="908" y="250" fill="#e8eef6">planner - 3/7</text>
+    <text x="840" y="268" fill="#64748b">sequencing the build</text>
+
+    <rect x="824" y="288" width="372" height="52" rx="10" fill="#151d2b" stroke="#2d3a4f"/>
+    <text x="840" y="310" fill="#8b5cf6">start</text>
+    <text x="892" y="310" fill="#e8eef6">scout - goal-004</text>
+    <text x="840" y="328" fill="#64748b">queued research task</text>
+
+    <rect x="824" y="348" width="372" height="52" rx="10" fill="#151d2b" stroke="#2d3a4f"/>
+    <text x="840" y="370" fill="#f59e0b">text</text>
+    <text x="884" y="370" fill="#e8eef6">coder - streaming reply</text>
+    <text x="840" y="388" fill="#64748b">building the 3D scene...</text>
+  </g>
+  <text x="824" y="568" fill="#64748b" font-family="SF Mono, Consolas, monospace" font-size="11">SSE /api/events - normalized</text>
+
+  <!-- Command bar -->
+  <rect x="800" y="610" width="420" height="52" rx="12" fill="#151d2b" stroke="#2d3a4f"/>
+  <text x="824" y="641" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="13">Send a goal to coder...</text>
+  <rect x="1150" y="620" width="58" height="32" rx="8" fill="url(#vbHead)"/>
+  <text x="1179" y="641" text-anchor="middle" fill="#0a0e14" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Send</text>
+</svg>
