@@ -1,0 +1,238 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Sweep: from idea to checkable plan — generate a plan with capability matrix, definition of done, and scaffold file tree">
+  <defs>
+    <radialGradient id="paperGlow" cx="22%" cy="15%" r="65%">
+      <stop offset="0" stop-color="#f0ede6" stop-opacity="0.50"/>
+      <stop offset="1" stop-color="#f0ede6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="inkGlow" cx="82%" cy="88%" r="55%">
+      <stop offset="0" stop-color="#d4cfc7" stop-opacity="0.40"/>
+      <stop offset="1" stop-color="#d4cfc7" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8b1a1a"/>
+      <stop offset="1" stop-color="#6b1414"/>
+    </linearGradient>
+    <linearGradient id="panelGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#faf8f3"/>
+      <stop offset="1" stop-color="#f5f1e8"/>
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e8e4dc"/>
+      <stop offset="1" stop-color="#d4cfc7"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1a1a1a" flood-opacity="0.08"/>
+    </filter>
+    <filter id="cardShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#1a1a1a" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="720" fill="#faf8f3"/>
+  <rect width="1280" height="720" fill="url(#paperGlow)"/>
+  <rect width="1280" height="720" fill="url(#inkGlow)"/>
+
+  <!-- Brand masthead -->
+  <g transform="translate(64,46)">
+    <rect x="0" y="0" width="48" height="48" rx="8" fill="#8b1a1a"/>
+    <path d="M14 34V18h6l4 10 4-10h6v16h-5V24l-3 8h-4l-3-8v10z" fill="#faf8f3"/>
+    <text x="64" y="28" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700">SWEEP</text>
+    <text x="65" y="46" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="13">From idea to checkable plan</text>
+  </g>
+  <g transform="translate(1080,52)">
+    <rect width="140" height="36" rx="10" fill="url(#accentGrad)"/>
+    <text x="70" y="23" text-anchor="middle" fill="#faf8f3" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="700">Export Plan</text>
+  </g>
+
+  <!-- Left panel: Idea Brief -->
+  <rect x="64" y="118" width="376" height="474" rx="16" fill="url(#panelGrad)" stroke="#d4cfc7" filter="url(#cardShadow)"/>
+  <text x="88" y="150" fill="#8b1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700" letter-spacing="3">IDEA BRIEF</text>
+  <line x1="88" y1="158" x2="416" y2="158" stroke="#8b1a1a" stroke-width="3" opacity="0.15"/>
+
+  <!-- Title field -->
+  <text x="88" y="188" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="600">Project Title</text>
+  <rect x="88" y="202" width="304" height="42" rx="8" fill="#faf8f3" stroke="#e8e4dc"/>
+  <text x="102" y="227" fill="#4a4a4a" font-family="'Segoe UI', Arial, sans-serif" font-size="14">Sweep — Plan Generator</text>
+
+  <!-- Description field -->
+  <text x="88" y="272" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="600">Description</text>
+  <rect x="88" y="286" width="304" height="86" rx="8" fill="#faf8f3" stroke="#e8e4dc"/>
+  <text x="102" y="308" fill="#4a4a4a" font-family="'Segoe UI', Arial, sans-serif" font-size="12">Validate an idea, generate a capability</text>
+  <text x="102" y="326" fill="#4a4a4a" font-family="'Segoe UI', Arial, sans-serif" font-size="12">matrix, definition of done, and scaffold</text>
+  <text x="102" y="344" fill="#4a4a4a" font-family="'Segoe UI', Arial, sans-serif" font-size="12">structure. Sync to GitHub + Obsidian.</text>
+
+  <!-- Priority selector -->
+  <text x="88" y="402" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="600">Priority</text>
+  <rect x="88" y="416" width="96" height="36" rx="8" fill="#8b1a1a" stroke="#8b1a1a"/>
+  <text x="136" y="440" text-anchor="middle" fill="#faf8f3" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700">High</text>
+  <rect x="192" y="416" width="96" height="36" rx="8" fill="#faf8f3" stroke="#e8e4dc"/>
+  <text x="240" y="440" text-anchor="middle" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="600">Medium</text>
+
+  <!-- Generate button -->
+  <g transform="translate(88,472)">
+    <rect width="304" height="48" rx="10" fill="url(#accentGrad)"/>
+    <text x="152" y="29" text-anchor="middle" fill="#faf8f3" font-family="'Segoe UI', Arial, sans-serif" font-size="15" font-weight="700">Generate Plan</text>
+  </g>
+
+  <!-- Main preview panel: Generated Plan -->
+  <rect x="464" y="118" width="752" height="474" rx="16" fill="#faf8f3" stroke="#d4cfc7" filter="url(#cardShadow)"/>
+  <text x="488" y="150" fill="#8b1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700" letter-spacing="3">GENERATED PLAN</text>
+  <line x1="488" y1="158" x2="1192" y2="158" stroke="#8b1a1a" stroke-width="3" opacity="0.15"/>
+
+  <!-- Capability Matrix -->
+  <text x="512" y="192" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="14" font-weight="700">CAPABILITY MATRIX</text>
+  <line x1="512" y1="198" x2="720" y2="198" stroke="#8b1a1a" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Matrix table -->
+  <g transform="translate(512,210)">
+    <!-- Header row -->
+    <rect x="0" y="0" width="140" height="28" fill="#f5f1e8" stroke="#e8e4dc"/>
+    <text x="70" y="18" text-anchor="middle" fill="#1a1a1a" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700">FEATURE</text>
+    <rect x="140" y="0" width="80" height="28" fill="#f5f1e8" stroke="#e8e4dc"/>
+    <text x="180" y="18" text-anchor="middle" fill="#1a1a1a" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700">MVP</text>
+    <rect x="220" y="0" width="80" height="28" fill="#f5f1e8" stroke="#e8e4dc"/>
+    <text x="260" y="18" text-anchor="middle" fill="#1a1a1a" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700">V2</text>
+    
+    <!-- Row 1 -->
+    <rect x="0" y="28" width="140" height="26" fill="#faf8f3" stroke="#e8e4dc"/>
+    <text x="8" y="46" fill="#4a4a4a" font-family="'Segoe UI', Arial, sans-serif" font-size="11">Idea parsing</text>
+    <rect x="140" y="28" width="80" height="26" fill="#faf8f3" stroke="#e8e4dc"/>
+    <text x="180" y="46" text-anchor="middle" fill="#8b1a1a" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700">✓</text>
+    <rect x="220" y="28" width="80" height="26" fill="#faf8f3" stroke="#e8e4dc"/>
+    
+    <!-- Row 2 -->
+    <rect x="0" y="54" width="140" height="26" fill="#faf8f3" stroke="#e8e4dc"/>
+    <text x="8" y="72" fill="#4a4a4a" font-family="'Segoe UI', Arial, sans-serif" font-size="11">Plan generation</text>
+    <rect x="140" y="54" width="80" height="26" fill="#faf8f3" stroke="#e8e4dc"/>
+    <text x="180" y="72" text-anchor="middle" fill="#8b1a1a" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700">✓</text>
+    <rect x="220" y="54" width="80" height="26" fill="#faf8f3" stroke="#e8e4dc"/>
+    
+    <!-- Row 3 -->
+    <rect x="0" y="80" width="140" height="26" fill="#faf8f3" stroke="#e8e4dc"/>
+    <text x="8" y="98" fill="#4a4a4a" font-family="'Segoe UI', Arial, sans-serif" font-size="11">GitHub sync</text>
+    <rect x="140" y="80" width="80" height="26" fill="#faf8f3" stroke="#e8e4dc"/>
+    <text x="180" y="98" text-anchor="middle" fill="#8b1a1a" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700">✓</text>
+    <rect x="220" y="80" width="80" height="26" fill="#faf8f3" stroke="#e8e4dc"/>
+    <text x="260" y="98" text-anchor="middle" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="11">auto-commit</text>
+    
+    <!-- Row 4 -->
+    <rect x="0" y="106" width="140" height="26" fill="#faf8f3" stroke="#e8e4dc"/>
+    <text x="8" y="124" fill="#4a4a4a" font-family="'Segoe UI', Arial, sans-serif" font-size="11">Obsidian mirror</text>
+    <rect x="140" y="106" width="80" height="26" fill="#faf8f3" stroke="#e8e4dc"/>
+    <text x="180" y="124" text-anchor="middle" fill="#8b1a1a" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700">✓</text>
+    <rect x="220" y="106" width="80" height="26" fill="#faf8f3" stroke="#e8e4dc"/>
+  </g>
+
+  <!-- Definition of Done -->
+  <text x="780" y="192" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="14" font-weight="700">DEFINITION OF DONE</text>
+  <line x1="780" y1="198" x2="960" y2="198" stroke="#8b1a1a" stroke-width="2" opacity="0.3"/>
+  
+  <g transform="translate(780,210)">
+    <!-- Checklist item 1 -->
+    <rect x="0" y="0" width="16" height="16" rx="3" fill="#8b1a1a" stroke="#8b1a1a"/>
+    <path d="M4 8l3 3 5-5" stroke="#faf8f3" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="24" y="13" fill="#4a4a4a" font-family="'Segoe UI', Arial, sans-serif" font-size="11">Idea brief validated</text>
+    
+    <!-- Checklist item 2 -->
+    <rect x="0" y="26" width="16" height="16" rx="3" fill="#8b1a1a" stroke="#8b1a1a"/>
+    <path d="M4 8l3 3 5-5" stroke="#faf8f3" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="24" y="39" fill="#4a4a4a" font-family="'Segoe UI', Arial, sans-serif" font-size="11">Capability matrix complete</text>
+    
+    <!-- Checklist item 3 -->
+    <rect x="0" y="52" width="16" height="16" rx="3" fill="#8b1a1a" stroke="#8b1a1a"/>
+    <path d="M4 8l3 3 5-5" stroke="#faf8f3" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="24" y="65" fill="#4a4a4a" font-family="'Segoe UI', Arial, sans-serif" font-size="11">DoD checklist defined</text>
+    
+    <!-- Checklist item 4 -->
+    <rect x="0" y="78" width="16" height="16" rx="3" fill="#8b1a1a" stroke="#8b1a1a"/>
+    <path d="M4 8l3 3 5-5" stroke="#faf8f3" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="24" y="91" fill="#4a4a4a" font-family="'Segoe UI', Arial, sans-serif" font-size="11">Scaffold structure ready</text>
+    
+    <!-- Checklist item 5 -->
+    <rect x="0" y="104" width="16" height="16" rx="3" fill="#f5f1e8" stroke="#d4cfc7"/>
+    <text x="24" y="117" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="11">GitHub repo created</text>
+  </g>
+
+  <!-- Scaffold File Tree -->
+  <text x="1020" y="192" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="14" font-weight="700">SCAFFOLD</text>
+  <line x1="1020" y1="198" x2="1192" y2="198" stroke="#8b1a1a" stroke-width="2" opacity="0.3"/>
+  
+  <g transform="translate(1020,210)">
+    <!-- web/ -->
+    <text x="0" y="14" fill="#1a1a1a" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="600">web/</text>
+    <text x="16" y="34" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="11">index.html</text>
+    <text x="16" y="52" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="11">styles.css</text>
+    <text x="16" y="70" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="11">app.js</text>
+    
+    <!-- server/ -->
+    <text x="0" y="98" fill="#1a1a1a" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="600">server/</text>
+    <text x="16" y="118" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="11">server.py</text>
+    <text x="16" y="136" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="11">database.py</text>
+    
+    <!-- tests/ -->
+    <text x="0" y="164" fill="#1a1a1a" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="600">tests/</text>
+    <text x="16" y="184" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="11">verify_api.py</text>
+    
+    <!-- docs/ -->
+    <text x="0" y="210" fill="#1a1a1a" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="600">docs/</text>
+    <text x="16" y="230" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="11">spec.md</text>
+    <text x="16" y="248" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="11">README.md</text>
+  </g>
+
+  <!-- Bottom strip: Catalog of project cards -->
+  <rect x="64" y="612" width="1152" height="84" rx="14" fill="url(#panelGrad)" stroke="#d4cfc7" filter="url(#cardShadow)"/>
+  <text x="88" y="640" fill="#8b1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700" letter-spacing="3">PROJECT CATALOG</text>
+  <line x1="88" y1="646" x2="240" y2="646" stroke="#8b1a1a" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Mini card 1 -->
+  <g transform="translate(280,632)">
+    <rect width="120" height="52" rx="8" fill="#faf8f3" stroke="#e8e4dc"/>
+    <text x="10" y="22" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="700">Orbis</text>
+    <text x="10" y="38" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="10">Identity &amp; hiring</text>
+    <rect x="96" y="8" width="16" height="16" rx="4" fill="#8b1a1a"/>
+    <text x="104" y="19" text-anchor="middle" fill="#faf8f3" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="700">✓</text>
+  </g>
+  
+  <!-- Mini card 2 -->
+  <g transform="translate(420,632)">
+    <rect width="120" height="52" rx="8" fill="#faf8f3" stroke="#e8e4dc"/>
+    <text x="10" y="22" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="700">Peers</text>
+    <text x="10" y="38" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="10">Verified reviews</text>
+    <rect x="96" y="8" width="16" height="16" rx="4" fill="#f5f1e8" stroke="#d4cfc7"/>
+  </g>
+  
+  <!-- Mini card 3 -->
+  <g transform="translate(560,632)">
+    <rect width="120" height="52" rx="8" fill="#faf8f3" stroke="#e8e4dc"/>
+    <text x="10" y="22" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="700">Hazel</text>
+    <text x="10" y="38" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="10">Video studio</text>
+    <rect x="96" y="8" width="16" height="16" rx="4" fill="#8b1a1a"/>
+    <text x="104" y="19" text-anchor="middle" fill="#faf8f3" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="700">✓</text>
+  </g>
+  
+  <!-- Mini card 4 - Sweep highlighted -->
+  <g transform="translate(700,632)">
+    <rect width="120" height="52" rx="8" fill="#f5f1e8" stroke="#8b1a1a" stroke-width="2"/>
+    <text x="10" y="22" fill="#8b1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="700">Sweep</text>
+    <text x="10" y="38" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="10">Plan generator</text>
+    <rect x="96" y="8" width="16" height="16" rx="4" fill="#8b1a1a"/>
+    <text x="104" y="19" text-anchor="middle" fill="#faf8f3" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="700">✓</text>
+  </g>
+  
+  <!-- Mini card 5 -->
+  <g transform="translate(840,632)">
+    <rect width="120" height="52" rx="8" fill="#faf8f3" stroke="#e8e4dc"/>
+    <text x="10" y="22" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="700">Lingua</text>
+    <text x="10" y="38" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="10">Live captions</text>
+    <rect x="96" y="8" width="16" height="16" rx="4" fill="#f5f1e8" stroke="#d4cfc7"/>
+  </g>
+  
+  <!-- Mini card 6 -->
+  <g transform="translate(980,632)">
+    <rect width="120" height="52" rx="8" fill="#faf8f3" stroke="#e8e4dc"/>
+    <text x="10" y="22" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="700">Widget</text>
+    <text x="10" y="38" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="10">Pomodoro</text>
+    <rect x="96" y="8" width="16" height="16" rx="4" fill="#f5f1e8" stroke="#d4cfc7"/>
+  </g>
+</svg>
