@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="CHASE Engineering Copilot: a CAD repair workspace showing diagnosis findings, repair plan steps, and Autodesk Fusion + SOLIDWORKS connector status">
+  <defs>
+    <radialGradient id="paperGlow" cx="22%" cy="15%" r="65%">
+      <stop offset="0" stop-color="#f0ede6" stop-opacity="0.50"/>
+      <stop offset="1" stop-color="#f0ede6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="inkGlow" cx="82%" cy="88%" r="55%">
+      <stop offset="0" stop-color="#d4cfc7" stop-opacity="0.40"/>
+      <stop offset="1" stop-color="#d4cfc7" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8b1a1a"/>
+      <stop offset="1" stop-color="#6b1414"/>
+    </linearGradient>
+    <linearGradient id="panelGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#faf8f3"/>
+      <stop offset="1" stop-color="#f5f1e8"/>
+    </linearGradient>
+    <linearGradient id="consoleGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1a1a"/>
+      <stop offset="1" stop-color="#2a2a2a"/>
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e8e4dc"/>
+      <stop offset="1" stop-color="#d4cfc7"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1a1a1a" flood-opacity="0.08"/>
+    </filter>
+    <filter id="cardShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#1a1a1a" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="720" fill="#faf8f3"/>
+  <rect width="1280" height="720" fill="url(#paperGlow)"/>
+  <rect width="1280" height="720" fill="url(#inkGlow)"/>
+
+  <!-- Brand masthead -->
+  <g transform="translate(64,46)">
+    <rect x="0" y="0" width="48" height="48" rx="8" fill="#8b1a1a"/>
+    <path d="M16 14h4v10h8v4h-4V18h-4v10h-4z" fill="#faf8f3"/>
+    <text x="64" y="28" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700">CHASE</text>
+    <text x="65" y="46" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="13">Engineering copilot · Fusion + SOLIDWORKS</text>
+  </g>
+  <g transform="translate(1080,52)">
+    <rect width="140" height="36" rx="10" fill="url(#accentGrad)"/>
+    <text x="70" y="23" text-anchor="middle" fill="#faf8f3" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="700">Apply Repair</text>
+  </g>
+
+  <!-- Left panel: Diagnosis -->
+  <rect x="64" y="118" width="376" height="474" rx="16" fill="url(#panelGrad)" stroke="#d4cfc7" filter="url(#cardShadow)"/>
+  <text x="88" y="150" fill="#8b1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700" letter-spacing="3">DIAGNOSIS</text>
+  <line x1="88" y1="158" x2="200" y2="158" stroke="#8b1a1a" stroke-width="3" opacity="0.15"/>
+
+  <!-- Findings list -->
+  <g transform="translate(88,176)">
+    <!-- Finding 1: FAILED fillet -->
+    <rect x="0" y="0" width="264" height="52" fill="#faf8f3" stroke="#e8e4dc" rx="6"/>
+    <rect x="8" y="12" width="12" height="12" rx="2" fill="#8b1a1a"/>
+    <text x="26" y="12" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700">Fillet R5</text>
+    <text x="26" y="28" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="11">Edge chain broken at vertex</text>
+    <rect x="220" y="8" width="36" height="16" rx="3" fill="#8b1a1a"/>
+    <text x="238" y="19" text-anchor="middle" fill="#faf8f3" font-family="'Segoe UI', Arial, sans-serif" font-size="9" font-weight="700">FAILED</text>
+
+    <!-- Finding 2: BROKEN REFERENCE -->
+    <rect x="0" y="58" width="264" height="52" fill="#faf8f3" stroke="#e8e4dc" rx="6"/>
+    <rect x="8" y="70" width="12" height="12" rx="2" fill="#b8860b"/>
+    <text x="26" y="72" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700">Sketch3</text>
+    <text x="26" y="88" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="11">Reference plane deleted</text>
+    <rect x="195" y="66" width="60" height="16" rx="3" fill="#b8860b"/>
+    <text x="225" y="77" text-anchor="middle" fill="#faf8f3" font-family="'Segoe UI', Arial, sans-serif" font-size="9" font-weight="700">BROKEN</text>
+
+    <!-- Finding 3: DANGLING DEPENDENCY -->
+    <rect x="0" y="116" width="264" height="52" fill="#faf8f3" stroke="#e8e4dc" rx="6"/>
+    <rect x="8" y="128" width="12" height="12" rx="2" fill="#6b6b6b"/>
+    <text x="26" y="130" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700">Pattern1</text>
+    <text x="26" y="146" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="11">Parent feature suppressed</text>
+    <rect x="165" y="124" width="90" height="16" rx="3" fill="#6b6b6b"/>
+    <text x="210" y="135" text-anchor="middle" fill="#faf8f3" font-family="'Segoe UI', Arial, sans-serif" font-size="9" font-weight="700">DANGLING</text>
+  </g>
+
+  <!-- REPAIR PLAN section -->
+  <text x="88" y="320" fill="#8b1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700" letter-spacing="3">REPAIR PLAN</text>
+  <line x1="88" y1="328" x2="190" y2="328" stroke="#8b1a1a" stroke-width="3" opacity="0.15"/>
+
+  <g transform="translate(88,346)" font-family="'Courier New', Courier, monospace" font-size="12">
+    <text x="0" y="0" fill="#1a1a1a">1. fix_fillet(edge_chain, R=5.0)</text>
+    <text x="0" y="24" fill="#1a1a1a">2. fix_pattern(suppressed_parent)</text>
+    <text x="0" y="48" fill="#1a1a1a">3. rebuild_dependencies(Sketch3)</text>
+    <text x="0" y="72" fill="#1a1a1a">4. validate_geometry()</text>
+  </g>
+
+  <!-- Right panel: CAD MODEL console -->
+  <rect x="464" y="118" width="752" height="474" rx="16" fill="#1a1a1a" stroke="#2a2a2a" filter="url(#cardShadow)"/>
+  <text x="488" y="150" fill="#8b1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700" letter-spacing="3">CAD MODEL</text>
+  <line x1="488" y1="158" x2="580" y2="158" stroke="#8b1a1a" stroke-width="3" opacity="0.15"/>
+
+  <!-- Feature tree -->
+  <rect x="488" y="168" width="280" height="404" rx="8" fill="url(#consoleGrad)" stroke="#3a3a3a"/>
+  <g transform="translate(508,196)" font-family="'Courier New', Courier, monospace" font-size="11">
+    <text x="0" y="0" fill="#b8b8b8">▸ Origin</text>
+    <text x="16" y="20" fill="#8a8a8a">  XY Plane</text>
+    <text x="16" y="40" fill="#8a8a8a">  YZ Plane</text>
+    <text x="16" y="60" fill="#8a8a8a">  ZX Plane</text>
+    <text x="0" y="88" fill="#b8b8b8">▸ Bodies</text>
+    <text x="16" y="108" fill="#4ec94a">  ● Bracket_v3</text>
+    <text x="0" y="136" fill="#b8b8b8">▸ Sketches</text>
+    <text x="16" y="156" fill="#b8b8b8">  Sketch1</text>
+    <text x="16" y="176" fill="#b8b8b8">  Sketch2</text>
+    <text x="16" y="196" fill="#8b1a1a">  ⚠ Sketch3</text>
+    <text x="0" y="224" fill="#b8b8b8">▸ Features</text>
+    <text x="16" y="244" fill="#4ec94a">  ● Extrude1</text>
+    <text x="16" y="264" fill="#4ec94a">  ● Fillet1</text>
+    <text x="16" y="284" fill="#b8860b">  ⚠ Fillet2</text>
+    <text x="16" y="304" fill="#8b1a1a">  ✕ Pattern1</text>
+    <text x="16" y="324" fill="#4ec94a">  ● Shell1</text>
+    <text x="0" y="352" fill="#b8b8b8">▸ Assemblies</text>
+    <text x="16" y="372" fill="#8a8a8a">  (empty)</text>
+  </g>
+
+  <!-- 3D bracket illustration -->
+  <g transform="translate(820,240)">
+    <!-- Isometric bracket base -->
+    <path d="M0 60 L80 20 L160 60 L160 140 L80 180 L0 140 Z" fill="#2a2a2a" stroke="#3a3a3a" stroke-width="2"/>
+    <path d="M80 20 L80 100 L160 140 L160 60 Z" fill="#3a3a3a" stroke="#4a4a4a" stroke-width="1"/>
+    <path d="M80 100 L0 140 L80 180 L160 140" fill="none" stroke="#3a3a3a" stroke-width="1"/>
+    
+    <!-- Vertical flange -->
+    <path d="M80 20 L80 -40 L120 -20 L120 40 L80 20 Z" fill="#2a2a2a" stroke="#4a4a4a" stroke-width="2"/>
+    <path d="M80 -40 L120 -20 L120 -60 L80 -40 Z" fill="#3a3a3a" stroke="#4a4a4a" stroke-width="1"/>
+    
+    <!-- Mounting holes (wireframe circles as ellipses) -->
+    <ellipse cx="40" cy="80" rx="12" ry="6" fill="#1a1a1a" stroke="#8b1a1a" stroke-width="2"/>
+    <ellipse cx="120" cy="80" rx="12" ry="6" fill="#1a1a1a" stroke="#8b1a1a" stroke-width="2"/>
+    <ellipse cx="40" cy="140" rx="12" ry="6" fill="#1a1a1a" stroke="#8b1a1a" stroke-width="2"/>
+    <ellipse cx="120" cy="140" rx="12" ry="6" fill="#1a1a1a" stroke="#8b1a1a" stroke-width="2"/>
+    
+    <!-- Failed fillet highlight -->
+    <path d="M70 30 Q80 25 85 35" fill="none" stroke="#8b1a1a" stroke-width="3" stroke-dasharray="4,3"/>
+    <circle cx="80" cy="30" r="6" fill="#8b1a1a" opacity="0.3"/>
+    
+    <!-- Dimension lines -->
+    <line x1="-20" y1="60" x2="-20" y2="140" stroke="#6b6b6b" stroke-width="1"/>
+    <line x1="-25" y1="60" x2="-15" y2="60" stroke="#6b6b6b" stroke-width="1"/>
+    <line x1="-25" y1="140" x2="-15" y2="140" stroke="#6b6b6b" stroke-width="1"/>
+    <text x="-35" y="105" text-anchor="middle" fill="#6b6b6b" font-family="'Courier New', Courier, monospace" font-size="10">80</text>
+  </g>
+
+  <!-- Bottom strip: Connector status -->
+  <rect x="64" y="612" width="1152" height="84" rx="14" fill="url(#panelGrad)" stroke="#d4cfc7" filter="url(#cardShadow)"/>
+  <text x="88" y="640" fill="#8b1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700" letter-spacing="3">CONNECTOR STATUS</text>
+  <line x1="88" y1="646" x2="280" y2="646" stroke="#8b1a1a" stroke-width="2" opacity="0.3"/>
+
+  <!-- Status cards -->
+  <g transform="translate(320,632)">
+    <rect width="180" height="52" rx="8" fill="#faf8f3" stroke="#e8e4dc"/>
+    <circle cx="24" cy="26" r="8" fill="#4ec94a"/>
+    <text x="44" y="22" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="700">Autodesk Fusion</text>
+    <text x="44" y="38" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="10">python-api</text>
+  </g>
+
+  <g transform="translate(520,632)">
+    <rect width="160" height="52" rx="8" fill="#faf8f3" stroke="#e8e4dc"/>
+    <circle cx="24" cy="26" r="8" fill="#4ec94a"/>
+    <text x="44" y="22" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="700">SOLIDWORKS</text>
+    <text x="44" y="38" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="10">com</text>
+  </g>
+
+  <g transform="translate(700,632)">
+    <rect width="140" height="52" rx="8" fill="#faf8f3" stroke="#e8e4dc"/>
+    <circle cx="24" cy="26" r="8" fill="#4ec94a"/>
+    <text x="44" y="22" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="700">Simulation</text>
+    <text x="44" y="38" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="10">ON</text>
+  </g>
+
+  <!-- Dry-run indicator -->
+  <g transform="translate(880,632)">
+    <rect width="180" height="52" rx="8" fill="#faf8f3" stroke="#e8e4dc"/>
+    <text x="20" y="20" fill="#1a1a1a" font-family="Georgia, 'Times New Roman', serif" font-size="11" font-weight="700">Dry-run → Review → Apply</text>
+    <text x="20" y="38" fill="#6b6b6b" font-family="'Segoe UI', Arial, sans-serif" font-size="10">Simulation · nothing is written to CAD</text>
+  </g>
+</svg>
