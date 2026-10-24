@@ -417,17 +417,18 @@
           </article>
           
           <article class="project-card" data-category="Software">
-            <img src="./assets/projects/chase-hero.svg" alt="Chase cockpit showing a diagnosed broken model with a ranked repair plan, a connector status strip and a review-gated apply step" class="project-card-image" loading="lazy" decoding="async">
+            <img src="./assets/projects/chase-hero.svg" alt="Chase cockpit: a dark engineering viewport with a 3D part, a ranked repair plan, a universal adapter strip (Fusion, SOLIDWORKS, FreeCAD, Blender, open formats) and a review-gated apply/export step" class="project-card-image" loading="lazy" decoding="async">
             <div class="project-content">
               <span class="project-category">Software</span>
               <h3 class="project-title">Chase</h3>
-              <p class="project-description">A local, offline, zero-dependency desktop engineering copilot for Autodesk Fusion and SOLIDWORKS. Chase reads a host-agnostic ModelReport (features, components, mates) and produces a typed Diagnosis of what is broken (failed fillets, broken references, dangling or circular dependencies, failed mates), an ordered upstream-first Repair plan, and an Assembly plan (base part + insert/mate steps + structural checks). Every plan passes a dry-run and review gate before anything is applied, and plans are applied to the live CAD model through host connectors (Fusion Python API / SOLIDWORKS COM). With no CAD host attached it runs in a fully usable, deterministic simulation mode and never writes to CAD. It complements cloud AI CAD copilots (like Vector) by staying local, deterministic, auditable and review-gated.</p>
+              <p class="project-description">A local, offline, zero-dependency desktop engineering copilot that works with ANY 3D software. Chase reads a host-agnostic ModelReport and produces a typed Diagnosis of what is broken (failed fillets, broken references, dangling or circular dependencies, failed mates), an ordered upstream-first Repair plan, and an Assembly plan (base part + insert/mate steps + structural checks). It has a universal adapter layer (Fusion, SOLIDWORKS, FreeCAD, Blender, Onshape, Rhino, SketchUp, Inventor, AutoCAD, CATIA, Solid Edge, Creo, Maya + open formats STEP/STL/OBJ/glTF/3MF/DXF), builds geometry from parameters and exports real 3D files (STL ascii+binary, OBJ, glTF 2.0, 3MF, DXF), and runs deterministic simulations (kinematic assembly motion, mass properties, clearance/interference). Every action passes a dry-run and review gate; with no CAD host attached it runs in a fully usable simulation mode and never writes to CAD. It complements cloud AI CAD copilots (like Vector) by staying local, deterministic, auditable and review-gated.</p>
               <div class="project-tags">
-                <span class="tag">CAD copilot</span>
-                <span class="tag">Fusion</span>
-                <span class="tag">SOLIDWORKS</span>
-                <span class="tag">deterministic</span>
+                <span class="tag">3D copilot</span>
+                <span class="tag">any 3D software</span>
+                <span class="tag">3D file export</span>
+                <span class="tag">simulation</span>
                 <span class="tag">offline-first</span>
+                <span class="tag">deterministic</span>
               </div>
               <div class="project-links">
                 <a class="project-link" href="https://juwpegatron.github.io/projects/chase/app.html" target="_blank" rel="noopener noreferrer">App</a>
