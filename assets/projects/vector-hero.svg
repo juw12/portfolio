@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Vector: engineering copilot for real hardware — connected CAD integrations beside a chat panel showing a repair in progress">
+  <defs>
+    <linearGradient id="vecPaper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#faf8f3"/>
+      <stop offset="1" stop-color="#f1ece1"/>
+    </linearGradient>
+    <linearGradient id="vecInk" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8b1a1a"/>
+      <stop offset="1" stop-color="#6b1414"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#vecPaper)"/>
+  <rect x="0" y="0" width="1280" height="8" fill="url(#vecInk)"/>
+  <text x="72" y="118" font-family="Georgia, 'Times New Roman', serif" font-size="72" fill="#1a1a1a">Vector</text>
+  <text x="76" y="158" font-family="'Segoe UI', Arial, sans-serif" font-size="22" letter-spacing="3" fill="#8b1a1a">ENGINEERING COPILOT FOR REAL HARDWARE</text>
+  <text x="76" y="196" font-family="'Segoe UI', Arial, sans-serif" font-size="18" fill="#6b6b6b">Works inside Autodesk Fusion and SOLIDWORKS · review every change</text>
+
+  <g transform="translate(76,250)">
+    <text x="0" y="0" font-family="'Segoe UI', Arial, sans-serif" font-size="15" letter-spacing="2" fill="#6b6b6b">INTEGRATIONS</text>
+    <g>
+      <rect x="0" y="20" width="230" height="88" rx="8" fill="#f4efe4" stroke="#1a1a1a" stroke-width="2.5"/>
+      <circle cx="30" cy="64" r="9" fill="#7dcb9a"/>
+      <text x="52" y="58" font-family="'Segoe UI', Arial, sans-serif" font-size="19" fill="#1a1a1a">Autodesk Fusion</text>
+      <text x="52" y="84" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#6b6b6b">connected · Windows / macOS</text>
+    </g>
+    <g transform="translate(0,108)">
+      <rect x="0" y="20" width="230" height="88" rx="8" fill="#f4efe4" stroke="#1a1a1a" stroke-width="2.5"/>
+      <circle cx="30" cy="64" r="9" fill="#7dcb9a"/>
+      <text x="52" y="58" font-family="'Segoe UI', Arial, sans-serif" font-size="19" fill="#1a1a1a">SOLIDWORKS</text>
+      <text x="52" y="84" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#6b6b6b">add-in installed · Windows</text>
+    </g>
+    <g transform="translate(0,216)">
+      <rect x="0" y="20" width="230" height="88" rx="8" fill="#efe9dc" stroke="#c9c2b4" stroke-width="2" stroke-dasharray="6 5"/>
+      <text x="24" y="58" font-family="'Segoe UI', Arial, sans-serif" font-size="19" fill="#8a8378">Open document</text>
+      <text x="24" y="84" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#8a8378">reads the active design</text>
+    </g>
+  </g>
+
+  <g transform="translate(392,250)">
+    <rect x="0" y="0" width="812" height="380" rx="10" fill="#141414"/>
+    <rect x="0" y="0" width="812" height="40" rx="10" fill="#0f0f0f"/>
+    <text x="22" y="26" font-family="'Segoe UI', Arial, sans-serif" font-size="15" fill="#9a9a9a">Vector · repair</text>
+    <text x="760" y="26" font-family="Consolas, monospace" font-size="13" fill="#7dcb9a">● Fusion</text>
+    <g font-family="'Segoe UI', Arial, sans-serif" font-size="16">
+      <text x="24" y="86" fill="#e8e4dc">Diagnosed 3 findings: failed fillet on Edges6,</text>
+      <text x="24" y="112" fill="#e8e4dc">broken reference on Sketch12, dangling mate.</text>
+      <rect x="24" y="132" width="600" height="64" rx="6" fill="#1c1c1c"/>
+      <text x="40" y="158" font-family="Consolas, monospace" font-size="14" fill="#e0b15e">1. remove F6  →  add fillet 2.0</text>
+      <text x="40" y="182" font-family="Consolas, monospace" font-size="14" fill="#9a9a9a">2. rebind Sketch12  →  reapply extrusion</text>
+      <text x="24" y="232" fill="#7dcb9a">✓ dry-run passed · review before applying</text>
+      <rect x="24" y="256" width="150" height="34" rx="6" fill="#8b1a1a"/>
+      <text x="52" y="278" font-family="'Segoe UI', Arial, sans-serif" font-size="15" fill="#ffffff">Apply to CAD</text>
+      <rect x="188" y="256" width="120" height="34" rx="6" fill="none" stroke="#3a3a3a" stroke-width="2"/>
+      <text x="214" y="278" font-family="'Segoe UI', Arial, sans-serif" font-size="15" fill="#c9c4bb">Review</text>
+      <text x="24" y="336" font-family="Consolas, monospace" font-size="13" fill="#6e6e6e">every change is visible in the feature tree</text>
+    </g>
+  </g>
+
+  <text x="76" y="676" font-family="'Segoe UI', Arial, sans-serif" font-size="17" fill="#8b1a1a">heyvector.co · by Vector Copilot LLC</text>
+</svg>
