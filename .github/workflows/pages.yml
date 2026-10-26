@@ -23,8 +23,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      # The GitHub Pages copy is a mirror for sites (e.g. LinkedIn) that refuse
+      # *.pages.dev previews: point its share/SEO metadata at github.io itself.
+      - name: Build github.io mirror with its own metadata
+        run: |
+          mkdir _site
+          rsync -a --exclude '.git' --exclude '.github' --exclude '_site' ./ _site/
+          sed -i \
+            -e '/og:url\|og:image\|rel="canonical"\|"url": "https:\/\/juwenlie/ s#https://juwenlie\.pages\.dev/#https://juw12.github.io/portfolio/#g' \
+            _site/index.html
+          grep -n 'og:url\|og:image\|rel="canonical"\|"url": "https://juw12' _site/index.html
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
