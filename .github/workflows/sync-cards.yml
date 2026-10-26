@@ -20,7 +20,7 @@ jobs:
       - name: Checkout projects (catalog source)
         uses: actions/checkout@v4
         with:
-          repository: juwpegatron/projects
+          repository: juw12/projects
           path: projects
 
       - name: Set up Python 3.12

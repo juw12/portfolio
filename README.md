@@ -4,7 +4,7 @@ Interactive personal portfolio for **Juwen Lie** — R&D Mechanical Engineer (Me
 
 A single-page, **zero-dependency** static site in a "Morning Paper" editorial theme (paper/ink with a newspaper-red accent, Georgia serif type, and newsprint-halftone imagery).
 
-**Live:** https://juwpegatron.github.io/portfolio/
+**Live:** https://juw12.github.io/portfolio/
 
 ## Local preview
 
@@ -35,3 +35,9 @@ CVs and employer-specific information are shared privately on request.
 
 - No frameworks, no build tooling, no external fonts or CDNs.
 - Deployed with GitHub Pages (Source: **GitHub Actions**).
+
+## Ownership
+
+Maintained by [@juw12](https://github.com/juw12).
+Co-founder and collaborator: [@juwpegatron](https://github.com/juwpegatron).
+Original commit authorship is preserved.
