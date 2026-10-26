@@ -3,200 +3,278 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Juwen Lie — Mechanical, Aerospace, AI & Systems Engineer. R&D Mechanical Engineer in consumer electronics specializing in DVT, NPI, and root-cause analysis for consumer electronics.">
+  <meta name="description" content="Juwen Lie — R&D Mechanical Engineer in consumer electronics. Mechanical DVT, NPI and root-cause analysis, with an aerospace background and software/AI projects on the side.">
   <meta name="author" content="Juwen Lie">
-  <meta name="theme-color" content="#faf8f3">
-  
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b0f17" media="(prefers-color-scheme: dark)">
+
   <!-- Open Graph -->
-  <meta property="og:title" content="Juwen Lie — Mechanical · Aerospace · AI · Tech · Systems Engineer">
-  <meta property="og:description" content="R&D Mechanical Engineer in consumer electronics. Aerospace background. Building software and AI systems on the side.">
+  <meta property="og:title" content="Juwen Lie — R&D Mechanical Engineer">
+  <meta property="og:description" content="Mechanical DVT, NPI and root-cause analysis for consumer electronics. Aerospace background. Software and AI projects on the side.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://juw12.github.io/portfolio/">
   <meta property="og:locale" content="en_US">
-  
-  <title>Juwen Lie — Mechanical · Aerospace · AI · Tech · Systems Engineer</title>
-  
-  <script>document.documentElement.classList.add('js');</script>
+
+  <title>Juwen Lie — R&amp;D Mechanical Engineer</title>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      var theme = 'light';
+      try {
+        theme = localStorage.getItem('theme') ||
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      } catch (error) {
+        theme = 'light';
+      }
+      root.setAttribute('data-theme', theme);
+    })();
+  </script>
   <link rel="stylesheet" href="./styles.css">
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
-  
-  <!-- Scroll Progress -->
+
   <div class="scroll-progress" aria-hidden="true">
     <div class="scroll-progress-bar"></div>
   </div>
-  
+
   <!-- Navigation -->
-  <header class="site-header" role="banner">
-    <nav class="nav-container" aria-label="Main navigation">
-      <a href="#" class="nav-logo" aria-label="Juwen Lie Portfolio Home">
-        <svg class="logo-icon" viewBox="0 0 40 40" aria-hidden="true">
-          <rect x="2" y="2" width="36" height="36" rx="8" fill="none" stroke="currentColor" stroke-width="2.5"/>
-          <path d="M12 28V12l8 8 8-8v16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M12 28V12l8 8 8-8v16" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 20"/>
-        </svg>
-        <span class="logo-text">JL</span>
+  <header class="site-header">
+    <nav class="nav-container container" aria-label="Main navigation">
+      <a href="#top" class="nav-logo" aria-label="Juwen Lie — back to top">
+        <span class="logo-mark" aria-hidden="true">JL</span>
+        <span class="logo-text">Juwen Lie</span>
       </a>
-      
-      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
-        <span class="nav-toggle-icon"></span>
-      </button>
-      
-      <ul id="nav-menu" class="nav-menu" role="menubar">
-        <li role="none"><a href="#about" role="menuitem">About</a></li>
-        <li role="none"><a href="#experience" role="menuitem">Experience</a></li>
-        <li role="none"><a href="#projects" role="menuitem">Projects</a></li>
-        <li role="none"><a href="#skills" role="menuitem">Skills</a></li>
-        <li role="none"><a href="#education" role="menuitem">Education</a></li>
-        <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
-        <li role="none"><a href="#connect" role="menuitem">Connect</a></li>
-        <li role="none">
-          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light theme" role="menuitem">
-            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="5" fill="currentColor"/>
-              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor"/>
-            </svg>
-          </button>
-        </li>
+
+      <ul id="nav-menu" class="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="icon-button" type="button" aria-label="Toggle dark or light theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.5" fill="currentColor"/>
+            <path d="M12 1.5v2.5M12 20v2.5M4.2 4.2l1.8 1.8M18 18l1.8 1.8M1.5 12H4M20 12h2.5M4.2 19.8L6 18M18 6l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor"/>
+          </svg>
+        </button>
+        <button class="icon-button nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">
+          <span class="nav-toggle-icon" aria-hidden="true"></span>
+        </button>
+      </div>
     </nav>
   </header>
-  
-  <main id="main-content" role="main">
-    <!-- Hero Section -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-background" aria-hidden="true"></div>
-      <div class="hero-masthead" aria-hidden="true">
-        <span class="hero-dateline">BATAM, INDONESIA · R&amp;D MECHANICAL ENGINEER · 2026</span>
-      </div>
-      <div class="container hero-content">
-        <h1 id="hero-title">Juwen Lie</h1>
-        <p class="hero-headline">Mechanical · Aerospace · AI · Tech · Systems Engineer</p>
-        <p class="hero-location">
-          <svg class="location-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
-          </svg>
-          <span>Batam, Indonesia</span>
-        </p>
-        <div class="hero-cta">
-          <a href="#projects" class="btn btn-primary">View My Work</a>
-          <a href="mailto:juwen12006@gmail.com?subject=CV%20request" class="btn btn-secondary">Request CV privately</a>
-          <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section id="top" class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <svg class="eyebrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" fill="currentColor"/>
+            </svg>
+            Batam, Indonesia
+          </p>
+          <h1 id="hero-title">Juwen Lie</h1>
+          <p class="hero-role">R&amp;D Mechanical Engineer <span class="hero-role-sep">·</span> Consumer Electronics</p>
+          <p class="hero-lead">
+            I take IP cameras and CCTV from EVT to mass production &mdash; mechanical DVT,
+            root-cause analysis and design &mdash; and build software and AI tools on the side.
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">View projects</a>
+            <a href="#contact" class="btn btn-secondary">Get in touch</a>
+            <a href="mailto:juwen12006@gmail.com?subject=CV%20request" class="btn btn-ghost">Request CV</a>
+          </div>
+          <ul class="hero-social" aria-label="Profiles">
+            <li>
+              <a href="https://linkedin.com/in/juwenlie" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9.75h4V21H3zM9.5 9.75h3.83v1.54h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.91 1.3-1.91 2.63V21h-4z" fill="currentColor"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/juw12" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z" fill="currentColor"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:juwen12006@gmail.com" aria-label="Email">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.4l8 5 8-5V7H4zm16 2.75-7.47 4.67a1 1 0 0 1-1.06 0L4 9.75V17h16z" fill="currentColor"/></svg>
+              </a>
+            </li>
+          </ul>
         </div>
+
+        <aside class="hero-card" aria-label="At a glance">
+          <p class="hero-card-title">At a glance</p>
+          <dl class="stats">
+            <div class="stat">
+              <dt>IPX6/IPX7</dt>
+              <dd>Mechanical DVT lead for IP cameras &amp; CCTV</dd>
+            </div>
+            <div class="stat">
+              <dt>EVT&rarr;MP</dt>
+              <dd>6&ndash;12 month programmes, 2&ndash;3 running in parallel</dd>
+            </div>
+            <div class="stat">
+              <dt><span data-project-count>25</span>+</dt>
+              <dd>Engineering, CAD and software projects</dd>
+            </div>
+            <div class="stat">
+              <dt>3.85<small>/4.0</small></dt>
+              <dd>Aerospace Engineering, Tamkang University</dd>
+            </div>
+          </dl>
+        </aside>
       </div>
     </section>
-    
-    <!-- About Section -->
-    <section id="about" class="section about" aria-labelledby="about-title">
+
+    <!-- About -->
+    <section id="about" class="section" aria-labelledby="about-title">
       <div class="container">
-        <h2 id="about-title" class="section-title">About</h2>
-        <div class="about-content">
-          <p class="about-text">
-            R&amp;D Mechanical Engineer in consumer electronics with an aerospace engineering background. 
-            I lead mechanical DVT and NPI for IP cameras and CCTV — reliability validation, 
-            root-cause analysis, and design — while building software and AI systems on the side. 
-            I care about product quality, systems thinking, and turning ambiguity into shipped, 
-            efficient outcomes.
-          </p>
-          
-          <figure class="about-figure">
-            <img src="./assets/projects/about-workspace.jpg" alt="Engineering workspace flat lay with calipers, micrometre and CAD on a laptop" loading="lazy" decoding="async" class="about-figure-img">
-            <figcaption class="about-figure-caption">Fig. — Reliability engineering, measurement and CAD workflow</figcaption>
+        <header class="section-header reveal">
+          <p class="section-kicker">01 &mdash; About</p>
+          <h2 id="about-title" class="section-title">Hardware engineer who also ships software</h2>
+        </header>
+        <div class="about-grid">
+          <div class="about-copy reveal">
+            <p class="about-text">
+              R&amp;D Mechanical Engineer in consumer electronics with an aerospace engineering background.
+              I lead mechanical DVT and NPI for IP cameras and CCTV &mdash; reliability validation,
+              root-cause analysis and design &mdash; while building software and AI systems on the side.
+            </p>
+            <p class="about-text">
+              I care about product quality, systems thinking, and turning ambiguity into shipped,
+              efficient outcomes.
+            </p>
+            <dl class="facts">
+              <div><dt>Focus</dt><dd>DVT, NPI, failure analysis, tolerance stack-up</dd></div>
+              <div><dt>Tools</dt><dd>SolidWorks, AutoCAD, Python, JavaScript</dd></div>
+              <div><dt>Languages</dt><dd>English (IELTS 7.5), Indonesian, Mandarin</dd></div>
+              <div><dt>More work</dt><dd><a href="https://bio.site/juw" target="_blank" rel="noopener noreferrer">bio.site/juw</a> &mdash; earlier projects &amp; experiments</dd></div>
+            </dl>
+          </div>
+          <figure class="about-figure reveal">
+            <img src="./assets/projects/about-workspace.jpg" alt="Engineering workspace flat lay with calipers, micrometre and CAD on a laptop" loading="lazy" decoding="async">
+            <figcaption>Reliability engineering, measurement and CAD workflow</figcaption>
           </figure>
         </div>
-        
-        <!-- More of My Work Card -->
-        <div style="margin-top: var(--spacing-xxl); text-align: center;">
-          <div class="connect-card featured">
-            <span class="connect-label">More of My Work</span>
-            <p class="connect-hint" style="margin: var(--spacing-sm) 0;">
-              Earlier personal projects and experiments live at
-              <a href="https://bio.site/juw" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent); font-weight: 600;">bio.site/juw</a>
-            </p>
-          </div>
-        </div>
       </div>
     </section>
-    
-    <!-- Experience Section -->
-    <section id="experience" class="section experience" aria-labelledby="experience-title">
+
+    <!-- Experience -->
+    <section id="experience" class="section section-alt" aria-labelledby="experience-title">
       <div class="container">
-        <h2 id="experience-title" class="section-title">Experience</h2>
-        <div class="timeline" role="list">
-          
-          <div class="timeline-item" role="listitem">
+        <header class="section-header reveal">
+          <p class="section-kicker">02 &mdash; Experience</p>
+          <h2 id="experience-title" class="section-title">Where I&rsquo;ve worked</h2>
+        </header>
+
+        <ol class="timeline">
+          <li class="timeline-item reveal">
             <div class="timeline-marker" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <div class="timeline-header">
-                <h3 class="timeline-title">R&amp;D Mechanical Engineer</h3>
-                <span class="timeline-period">Nov 2023 – Present</span>
-              </div>
-              <p class="timeline-company">Electronics manufacturing · Employer details shared privately</p>
+            <article class="timeline-card">
+              <header class="timeline-header">
+                <div>
+                  <h3 class="timeline-title">R&amp;D Mechanical Engineer</h3>
+                  <p class="timeline-company">Electronics manufacturing &middot; Employer details shared privately</p>
+                </div>
+                <span class="timeline-period">Nov 2023 &ndash; Present</span>
+              </header>
               <ul class="timeline-details">
                 <li>Lead mechanical DVT for IPX6/IPX7 IP camera and CCTV programmes: water leakage, focus/SFR, lens-holder, antenna and cable routing, acoustic, and spring/pin mechanisms.</li>
-                <li>Manage 6–12 month EVT-to-MP programmes and 2–3 concurrent Wi-Fi projects (1–3 SKUs each).</li>
-                <li>Lead root-cause analysis of production-impacting issues using measurements, tolerance stack-up, and DOE-style comparison; define short- and long-term fixes.</li>
-                <li>Coordinate PM, ME, EE, RF, quality, factory, and suppliers; lead customer talks and plan rework/redesigns.</li>
-                <li>Develop 3D/2D designs in SolidWorks, build 3D-printed mockups, verify assembly, and write assembly SOPs.</li>
-                <li>Manage plastic/metal parts, shielding, heat spreaders, gaskets, Mylar, die-cut liners and film; run HSF/material approval and second-source activities.</li>
-                <li>Support QSA/QPA and ISO 9001 supplier audits; prepare FA reports and technical recommendations.</li>
-                <li>Lead a team of 2 engineers; mentored 5–7 in NPI, FA, measurement and part approval.</li>
-                <li>International R&amp;D assignment in Suzhou, China.</li>
+                <li>Manage 6&ndash;12 month EVT-to-MP programmes and 2&ndash;3 concurrent Wi-Fi projects (1&ndash;3 SKUs each).</li>
+                <li>Lead root-cause analysis of production-impacting issues using measurements, tolerance stack-up and DOE-style comparison; define short- and long-term fixes.</li>
+                <li>Lead a team of 2 engineers; mentored 5&ndash;7 in NPI, FA, measurement and part approval.</li>
               </ul>
-            </div>
-          </div>
-          
-          <div class="timeline-item" role="listitem">
+              <details class="timeline-more">
+                <summary><span class="more-closed">Show 5 more</span><span class="more-open">Show less</span></summary>
+                <ul class="timeline-details">
+                  <li>Coordinate PM, ME, EE, RF, quality, factory and suppliers; lead customer talks and plan rework/redesigns.</li>
+                  <li>Develop 3D/2D designs in SolidWorks, build 3D-printed mockups, verify assembly and write assembly SOPs.</li>
+                  <li>Manage plastic/metal parts, shielding, heat spreaders, gaskets, Mylar, die-cut liners and film; run HSF/material approval and second-source activities.</li>
+                  <li>Support QSA/QPA and ISO 9001 supplier audits; prepare FA reports and technical recommendations.</li>
+                  <li>International R&amp;D assignment in Suzhou, China.</li>
+                </ul>
+              </details>
+              <ul class="chip-list" aria-label="Key skills">
+                <li>DVT</li><li>NPI</li><li>RCA</li><li>SolidWorks</li><li>Supplier quality</li>
+              </ul>
+            </article>
+          </li>
+
+          <li class="timeline-item reveal">
             <div class="timeline-marker" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <div class="timeline-header">
-                <h3 class="timeline-title">Mechanical &amp; Fabrication Engineer</h3>
-                <span class="timeline-period">Aug 2023 – Oct 2023</span>
-              </div>
-              <p class="timeline-company">PT Anugerah Tirta Indonesia, Indonesia</p>
+            <article class="timeline-card">
+              <header class="timeline-header">
+                <div>
+                  <h3 class="timeline-title">Mechanical &amp; Fabrication Engineer</h3>
+                  <p class="timeline-company">PT Anugerah Tirta Indonesia &middot; Indonesia</p>
+                </div>
+                <span class="timeline-period">Aug 2023 &ndash; Oct 2023</span>
+              </header>
               <ul class="timeline-details">
                 <li>Coordinated water-tank projects, schedules, BOM and stock across Indonesia, plus pipe installation for new housing.</li>
-                <li>Prepared Bill of Quantity cost calculations, drew trash-rack cutting plans, and analysed installation costs.</li>
+                <li>Prepared Bill of Quantity cost calculations, drew trash-rack cutting plans and analysed installation costs.</li>
                 <li>Coordinated Chinese-language communication between China-based vendors and Indonesian project teams.</li>
               </ul>
-            </div>
-          </div>
-          
-        </div>
+              <ul class="chip-list" aria-label="Key skills">
+                <li>BOM / BoQ</li><li>Fabrication</li><li>Cost analysis</li>
+              </ul>
+            </article>
+          </li>
+        </ol>
       </div>
     </section>
-    
-    <!-- Projects Section -->
-    <section id="projects" class="section projects" aria-labelledby="projects-title">
+
+    <!-- Projects -->
+    <section id="projects" class="section" aria-labelledby="projects-title">
       <div class="container">
-        <h2 id="projects-title" class="section-title">Projects</h2>
-        <p class="projects-intro">Grouped by focus. Software projects open as App, Web or Mobile &mdash; try them live.</p>
-        
-        <!-- Filter Tabs -->
-        <div class="project-filters" role="tablist" aria-label="Project category filters">
-          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true" aria-controls="project-grid">All</button>
-          <button class="filter-tab" data-filter="Engineering" role="tab" aria-selected="false" aria-controls="project-grid">Engineering</button>
-          <button class="filter-tab" data-filter="Automation" role="tab" aria-selected="false" aria-controls="project-grid">Automation</button>
-          <button class="filter-tab" data-filter="CAD &amp; 3D" role="tab" aria-selected="false" aria-controls="project-grid">CAD &amp; 3D</button>
-          <button class="filter-tab" data-filter="AI" role="tab" aria-selected="false" aria-controls="project-grid">AI</button>
-          <button class="filter-tab" data-filter="Creator Tools" role="tab" aria-selected="false" aria-controls="project-grid">Creator Tools</button>
-          <button class="filter-tab" data-filter="Apps" role="tab" aria-selected="false" aria-controls="project-grid">Apps</button>
-          <button class="filter-tab" data-filter="Tools I Use" role="tab" aria-selected="false" aria-controls="project-grid">Tools I Use</button>
+        <header class="section-header reveal">
+          <p class="section-kicker">03 &mdash; Projects</p>
+          <h2 id="projects-title" class="section-title">Selected work</h2>
+          <p class="section-intro">Engineering work and the tools I build. Click any card for details; software opens live as App, Web or Mobile.</p>
+        </header>
+
+        <div class="project-toolbar">
+          <div class="project-filters" role="tablist" aria-label="Filter projects by category">
+            <button class="filter-tab active" type="button" data-filter="all" role="tab" aria-selected="true" aria-controls="project-grid">All</button>
+            <button class="filter-tab" type="button" data-filter="Engineering" role="tab" aria-selected="false" aria-controls="project-grid">Engineering</button>
+            <button class="filter-tab" type="button" data-filter="Automation" role="tab" aria-selected="false" aria-controls="project-grid">Automation</button>
+            <button class="filter-tab" type="button" data-filter="CAD &amp; 3D" role="tab" aria-selected="false" aria-controls="project-grid">CAD &amp; 3D</button>
+            <button class="filter-tab" type="button" data-filter="AI" role="tab" aria-selected="false" aria-controls="project-grid">AI</button>
+            <button class="filter-tab" type="button" data-filter="Creator Tools" role="tab" aria-selected="false" aria-controls="project-grid">Creator Tools</button>
+            <button class="filter-tab" type="button" data-filter="Apps" role="tab" aria-selected="false" aria-controls="project-grid">Apps</button>
+            <button class="filter-tab" type="button" data-filter="Tools I Use" role="tab" aria-selected="false" aria-controls="project-grid">Tools I Use</button>
+          </div>
+          <label class="project-search">
+            <span class="visually-hidden">Search projects</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <input id="project-search" type="search" placeholder="Search projects" autocomplete="off">
+          </label>
         </div>
-        
-        <!-- Project Grid -->
-        <div id="project-grid" class="project-grid" role="tabpanel" aria-label="Project showcase">
-          
+        <p class="project-status" aria-live="polite"></p>
+
+        <div id="project-grid" class="project-grid" role="tabpanel" aria-label="Projects">
+
           <article class="project-card" data-category="Engineering">
             <img src="./assets/projects/ip-camera.jpg" alt="Technical illustration of a dome and bullet security camera" class="project-card-image" loading="lazy" decoding="async">
             <div class="project-content">
               <span class="project-category">Engineering</span>
               <h3 class="project-title">IP Camera &amp; CCTV Mechanical DVT</h3>
-              <p class="project-description">Mechanical reliability validation for IP cameras and CCTV &mdash; IPX6/IPX7 waterproofing, focus/SFR, acoustics and spring/pin mechanisms &mdash; from EVT to mass production.</p>
+              <p class="project-description">Mechanical DVT for IP cameras and CCTV &mdash; IPX6/IPX7 sealing, focus/SFR, acoustics and mechanisms, EVT to MP.</p>
+              <div class="project-details" hidden>Mechanical reliability validation for IP cameras and CCTV &mdash; IPX6/IPX7 waterproofing, water-leakage testing, focus/SFR, lens-holder design, antenna and cable routing, acoustics and spring/pin mechanisms &mdash; carried from EVT through to mass production, with root-cause analysis using measurements and tolerance stack-up.</div>
               <div class="project-tags">
                 <span class="tag">DVT</span>
                 <span class="tag">IPX6/IPX7</span>
@@ -204,46 +282,51 @@
                 <span class="tag">tolerance stack-up</span>
                 <span class="tag">SolidWorks</span>
               </div>
+              <div class="project-links"></div>
             </div>
           </article>
-          
+
           <article class="project-card" data-category="Engineering">
             <img src="./assets/projects/npi-device.jpg" alt="Consumer electronic device with Wi-Fi module and enclosure" class="project-card-image" loading="lazy" decoding="async">
             <div class="project-content">
               <span class="project-category">Engineering</span>
               <h3 class="project-title">NPI Program Leadership &amp; Team</h3>
-              <p class="project-description">Led 6&ndash;12 month EVT-to-MP programs across 2&ndash;3 concurrent Wi-Fi projects, aligning cross-functional teams and customers; led 2 engineers and mentored 5&ndash;7.</p>
+              <p class="project-description">Led 6&ndash;12 month EVT-to-MP programmes across 2&ndash;3 concurrent Wi-Fi projects; led 2 engineers and mentored 5&ndash;7.</p>
+              <div class="project-details" hidden>Led 6&ndash;12 month EVT-to-MP programmes across 2&ndash;3 concurrent Wi-Fi projects (1&ndash;3 SKUs each), aligning PM, ME, EE, RF, quality, factory, suppliers and customers. Led a team of 2 engineers and mentored 5&ndash;7 in NPI, failure analysis, measurement and part approval.</div>
               <div class="project-tags">
                 <span class="tag">NPI</span>
                 <span class="tag">EVT→MP</span>
                 <span class="tag">cross-functional</span>
                 <span class="tag">mentoring</span>
               </div>
+              <div class="project-links"></div>
             </div>
           </article>
-          
+
           <article class="project-card" data-category="Engineering">
             <img src="./assets/projects/water-tank.jpg" alt="Industrial water tank fabrication and pipe installation" class="project-card-image" loading="lazy" decoding="async">
             <div class="project-content">
               <span class="project-category">Engineering</span>
               <h3 class="project-title">Industrial Water-Tank Fabrication</h3>
-              <p class="project-description">End-to-end coordination of water-tank fabrication: schedules, BOM, cost models, cutting plans and pipe installation.</p>
+              <p class="project-description">Coordinated water-tank fabrication end to end: schedules, BOM, cost models, cutting plans and pipe installation.</p>
+              <div class="project-details" hidden>End-to-end coordination of water-tank fabrication across Indonesia: schedules, BOM and stock, Bill of Quantity cost models, trash-rack cutting plans, installation cost analysis and pipe installation for new housing &mdash; plus Chinese-language coordination with China-based vendors.</div>
               <div class="project-tags">
                 <span class="tag">BOM</span>
                 <span class="tag">BoQ</span>
                 <span class="tag">fabrication</span>
                 <span class="tag">cost analysis</span>
               </div>
+              <div class="project-links"></div>
             </div>
           </article>
-          
-          
+
           <article class="project-card" data-category="Automation">
             <img src="./assets/projects/outlook-archiver-hero.svg" alt="Outlook Archiver daemon: Inbox and Sent mail flowing into an Archives PST, with a desktop toast and activity log" class="project-card-image" loading="lazy" decoding="async">
             <div class="project-content">
               <span class="project-category">Automation</span>
               <h3 class="project-title">Outlook Archiver</h3>
-              <p class="project-description">Windows background service that keeps Outlook Inbox and Sent clean &mdash; logs each message, shows a toast and moves it to an archive PST.</p>
+              <p class="project-description">Windows background service that logs, notifies and auto-archives Outlook Inbox and Sent mail to a PST.</p>
+              <div class="project-details" hidden>Windows background service that keeps Outlook Inbox and Sent clean &mdash; logs each message, shows a desktop toast and moves it to an archive PST.</div>
               <div class="project-tags">
                 <span class="tag">Python</span>
                 <span class="tag">pywin32</span>
@@ -255,14 +338,15 @@
               </div>
             </div>
           </article>
-          
+
           <!-- PROJECTS:MANAGED:START (auto-generated from apps.json by scripts/publish_portfolio.py — do not edit by hand) -->
           <article class="project-card" data-category="Automation">
             <img src="./assets/projects/airiz-motor-hero.svg" alt="Airiz Motor Test Console dashboard: command library, serial console and macro notepad for AIRIZ device motor testing" class="project-card-image" loading="lazy" decoding="async">
             <div class="project-content">
               <span class="project-category">Automation</span>
               <h3 class="project-title">Airiz Motor</h3>
-              <p class="project-description">Downloadable Windows console with a locally bundled controller, serial port chooser, camera tools, macros and offline demo. Android app and on-device Bluetooth bridge add wireless pan, up/down and LED control. The browser and mobile-web editions remain available.</p>
+              <p class="project-description">Windows, Android and web console for AIRIZ motor testing &mdash; USB or Bluetooth jog, LEDs, camera tools and macros.</p>
+              <div class="project-details" hidden>Downloadable Windows console with a locally bundled controller, serial port chooser, camera tools, macros and offline demo. Android app and on-device Bluetooth bridge add wireless pan, up/down and LED control. The browser and mobile-web editions remain available.</div>
               <div class="project-tags">
                 <span class="tag">Windows app</span>
                 <span class="tag">Web Serial</span>
@@ -285,7 +369,8 @@
             <div class="project-content">
               <span class="project-category">CAD &amp; 3D</span>
               <h3 class="project-title">Vertex</h3>
-              <p class="project-description">Offline parametric CAD builder and engineering copilot: diagnoses broken models, plans repairs, checks clearance and motion, and exports STL, OBJ, glTF, 3MF and DXF.</p>
+              <p class="project-description">Offline parametric CAD and engineering copilot that repairs models, checks clearances and exports STL, 3MF and DXF.</p>
+              <div class="project-details" hidden>Offline parametric CAD builder and engineering copilot: diagnoses broken models, plans repairs, checks clearance and motion, and exports STL, OBJ, glTF, 3MF and DXF.</div>
               <div class="project-tags">
                 <span class="tag">parametric CAD</span>
                 <span class="tag">model repair</span>
@@ -313,7 +398,8 @@
             <div class="project-content">
               <span class="project-category">CAD &amp; 3D</span>
               <h3 class="project-title">3D Models Library</h3>
-              <p class="project-description">41 landmark and character miniatures &mdash; world wonders, skyscrapers, Snoopy, Mobile Suits, Marina Bay Sands and the Eiffel Tower. New: a 100&nbsp;mm Kobo-chan figurine revised for Formlabs Form 3, with strengthened crown hairs, checked STL and colored STEP files, a suggested orientation and print notes. PreForm supports, resin settings and a test print are still required.</p>
+              <p class="project-description">41 landmark and character miniatures as STL/STEP, including a 100&nbsp;mm Kobo-chan figurine revised for Form 3 SLA.</p>
+              <div class="project-details" hidden>41 landmark and character miniatures &mdash; world wonders, skyscrapers, Snoopy, Mobile Suits, Marina Bay Sands and the Eiffel Tower. New: a 100&nbsp;mm Kobo-chan figurine revised for Formlabs Form 3, with strengthened crown hairs, checked STL and colored STEP files, a suggested orientation and print notes. PreForm supports, resin settings and a test print are still required.</div>
               <div class="project-tags">
                 <span class="tag">CadQuery</span>
                 <span class="tag">SOMA</span>
@@ -337,7 +423,8 @@
             <div class="project-content">
               <span class="project-category">AI</span>
               <h3 class="project-title">Glow</h3>
-              <p class="project-description">One home, one free account, three AI apps. <strong>GlowLead</strong>: give one goal and the AI lead plans it, hands each step to GlowChat or the GlowRoom crew, checks the work against clear done-criteria and reports back. <strong>GlowChat</strong>: chat with any model, personas, a Council with a Judge and an Arena. <strong>GlowRoom</strong>: an AI crew that searches the web, runs code and cites sources. Free for guests.</p>
+              <p class="project-description">Three AI apps on one free account &mdash; GlowLead plans goals, GlowChat compares models, GlowRoom researches and codes.</p>
+              <div class="project-details" hidden>One home, one free account, three AI apps. <strong>GlowLead</strong>: give one goal and the AI lead plans it, hands each step to GlowChat or the GlowRoom crew, checks the work against clear done-criteria and reports back. <strong>GlowChat</strong>: chat with any model, personas, a Council with a Judge and an Arena. <strong>GlowRoom</strong>: an AI crew that searches the web, runs code and cites sources. Free for guests.</div>
               <div class="project-tags">
                 <span class="tag">AI ecosystem</span>
                 <span class="tag">GlowLead</span>
@@ -360,7 +447,8 @@
             <div class="project-content">
               <span class="project-category">Apps</span>
               <h3 class="project-title">Fade</h3>
-              <p class="project-description">Barber marketplace with haircut shorts: book barbers who work part-time at several shops, pay, tip and rate, follow trending barbers, shops and creators, and earn 5&ndash;10% commission by tagging them as featured or sponsored.</p>
+              <p class="project-description">Barber marketplace with haircut shorts &mdash; book, pay and tip barbers, and earn commission when your short drives a booking.</p>
+              <div class="project-details" hidden>Barber marketplace with haircut shorts: book barbers who work part-time at several shops, pay, tip and rate, follow trending barbers, shops and creators, and earn 5&ndash;10% commission by tagging them as featured or sponsored.</div>
               <div class="project-tags">
                 <span class="tag">PWA</span>
                 <span class="tag">haircut shorts</span>
@@ -380,7 +468,8 @@
             <div class="project-content">
               <span class="project-category">AI</span>
               <h3 class="project-title">Sweep</h3>
-              <p class="project-description">Turns a rough app idea into a scored spec, a task board and a Build &rarr; Grow &rarr; Earn plan, then hands it to Lovable, v0, Cursor or Claude Code in one click. Its local agent Otto drafts brand, site and posts. Fully offline.</p>
+              <p class="project-description">Turns a rough app idea into a scored spec, task board and launch plan, then hands it to Cursor, v0 or Claude Code.</p>
+              <div class="project-details" hidden>Turns a rough app idea into a scored spec, a task board and a Build &rarr; Grow &rarr; Earn plan, then hands it to Lovable, v0, Cursor or Claude Code in one click. Its local agent Otto drafts brand, site and posts. Fully offline.</div>
               <div class="project-tags">
                 <span class="tag">spec score</span>
                 <span class="tag">task board</span>
@@ -400,7 +489,8 @@
             <div class="project-content">
               <span class="project-category">AI</span>
               <h3 class="project-title">Lingua</h3>
-              <p class="project-description">Offline Windows translator for English, Chinese (Simplified/Traditional) and Bahasa Indonesia, powered by a local Ollama model with tone, glossary and review checks.</p>
+              <p class="project-description">Private, offline Windows translator for English, Chinese and Bahasa Indonesia, running on a local Ollama model.</p>
+              <div class="project-details" hidden>Offline Windows translator for English, Chinese (Simplified/Traditional) and Bahasa Indonesia, powered by a local Ollama model with tone, glossary and review checks.</div>
               <div class="project-tags">
                 <span class="tag">offline translation</span>
                 <span class="tag">Ollama</span>
@@ -419,7 +509,8 @@
             <div class="project-content">
               <span class="project-category">Creator Tools</span>
               <h3 class="project-title">Shortcraft</h3>
-              <p class="project-description">Browser studio for faceless explainer shorts in English and Bahasa Indonesia: write scenes, add voice, export a captioned 1080&times;1920 MP4 and post to YouTube, TikTok and Instagram.</p>
+              <p class="project-description">Browser studio for faceless explainer shorts &mdash; script, voice, captions and 1080&times;1920 MP4 export with auto-posting.</p>
+              <div class="project-details" hidden>Browser studio for faceless explainer shorts in English and Bahasa Indonesia: write scenes, add voice, export a captioned 1080&times;1920 MP4 and post to YouTube, TikTok and Instagram.</div>
               <div class="project-tags">
                 <span class="tag">video</span>
                 <span class="tag">captions</span>
@@ -439,7 +530,8 @@
             <div class="project-content">
               <span class="project-category">Creator Tools</span>
               <h3 class="project-title">Sped</h3>
-              <p class="project-description">Browser shorts studio for your own audio: sped-up, slowed and mashup styles, a CapCut-style 9:16 editor with captions, and 1080&times;1920 MP4 export for TikTok, Reels and Shorts.</p>
+              <p class="project-description">Turns your own songs into sped-up, slowed or mashup 9:16 shorts with captions for TikTok, Reels and Shorts.</p>
+              <div class="project-details" hidden>Browser shorts studio for your own audio: sped-up, slowed and mashup styles, a CapCut-style 9:16 editor with captions, and 1080&times;1920 MP4 export for TikTok, Reels and Shorts.</div>
               <div class="project-tags">
                 <span class="tag">Web Audio</span>
                 <span class="tag">9:16 video export</span>
@@ -459,7 +551,8 @@
             <div class="project-content">
               <span class="project-category">Creator Tools</span>
               <h3 class="project-title">Hazel</h3>
-              <p class="project-description">Desktop creator studio: generate a video from a prompt, refine it in the editor and publish to every platform at once &mdash; plus bulk uploads and automatic media backup.</p>
+              <p class="project-description">Desktop creator studio: generate a video from a prompt, refine it and publish to every platform at once.</p>
+              <div class="project-details" hidden>Desktop creator studio: generate a video from a prompt, refine it in the editor and publish to every platform at once &mdash; plus bulk uploads and automatic media backup.</div>
               <div class="project-tags">
                 <span class="tag">AI video</span>
                 <span class="tag">multi-platform publish</span>
@@ -479,7 +572,8 @@
             <div class="project-content">
               <span class="project-category">Apps</span>
               <h3 class="project-title">Orbis</h3>
-              <p class="project-description">Offline-first personal hub for communication and growth &mdash; manage replies, commitments and summaries on a zero-dependency Python + SQLite backend.</p>
+              <p class="project-description">Offline-first personal hub for replies, commitments and summaries on a zero-dependency Python + SQLite backend.</p>
+              <div class="project-details" hidden>Offline-first personal hub for communication and growth &mdash; manage replies, commitments and summaries on a zero-dependency Python + SQLite backend.</div>
               <div class="project-tags">
                 <span class="tag">Python</span>
                 <span class="tag">SQLite</span>
@@ -507,7 +601,8 @@
             <div class="project-content">
               <span class="project-category">Apps</span>
               <h3 class="project-title">Peers</h3>
-              <p class="project-description">Offline-first review app across 32 categories, from food to AI tools, with a built-in Use it / Wait / Skip scorecard.</p>
+              <p class="project-description">Offline-first review app across 32 categories, from food to AI tools, with a quick Use it / Wait / Skip scorecard.</p>
+              <div class="project-details" hidden>Offline-first review app across 32 categories, from food to AI tools, with a built-in Use it / Wait / Skip scorecard.</div>
               <div class="project-tags">
                 <span class="tag">PWA</span>
                 <span class="tag">reviews</span>
@@ -527,7 +622,8 @@
             <div class="project-content">
               <span class="project-category">Apps</span>
               <h3 class="project-title">Twin</h3>
-              <p class="project-description">Twin is an iPhone-ready investing and trading companion with a clean, professional design (1.5.1: new design system, line icons, dark and light themes) that updates itself the moment a new version ships (1.5.2). New in 1.5: TwinAgent, a free research team of five analysts (trend, SEC-filed fundamentals, risk, relevance-screened headlines, famous investors' 13Fs) that argue a bull and bear case from cited, dated evidence; a portfolio manager rates the stock and a risk gate built from your own limits sizes or blocks the idea. No AI subscription, the same evidence always gives the same report, future data is filtered out, and a walk-forward scorecard tests the price evidence over decades against buy-and-hold. Search stocks by company, ticker or country — Tokyo, Hong Kong, Jakarta, London, Frankfurt, Mumbai, Toronto, São Paulo, Sydney and more — with exchange, currency, market hours, ≈ USD price and US-listing hints on every stock page. World markets shows market clocks, 18 indices, movers and a heatmap; practice trades in a separate $10,000 USD portfolio convert foreign prices at delayed FX rates, and totals can be shown in your home currency (25 currencies). Continue as guest or share a ?guest link; market, limit, stop, stop-limit and trailing orders with brackets, price alerts, scrub charts with SMA/EMA/RSI, portfolio X-ray with country and currency exposure, a bar-by-bar Replay Lab and 12 Twin Academy lessons. The local server searches any Yahoo Finance listing; the web demo uses a dated snapshot of 54 global stocks on 25+ exchanges. Optional real trading through your own Alpaca account (US listings only) on the local server. Not financial advice.</p>
+              <p class="project-description">Investing companion with a five-analyst AI research team, global stock search, paper trading and a replay lab.</p>
+              <div class="project-details" hidden>Twin is an iPhone-ready investing and trading companion with a clean, professional design (1.5.1: new design system, line icons, dark and light themes) that updates itself the moment a new version ships (1.5.2). New in 1.5: TwinAgent, a free research team of five analysts (trend, SEC-filed fundamentals, risk, relevance-screened headlines, famous investors' 13Fs) that argue a bull and bear case from cited, dated evidence; a portfolio manager rates the stock and a risk gate built from your own limits sizes or blocks the idea. No AI subscription, the same evidence always gives the same report, future data is filtered out, and a walk-forward scorecard tests the price evidence over decades against buy-and-hold. Search stocks by company, ticker or country — Tokyo, Hong Kong, Jakarta, London, Frankfurt, Mumbai, Toronto, São Paulo, Sydney and more — with exchange, currency, market hours, ≈ USD price and US-listing hints on every stock page. World markets shows market clocks, 18 indices, movers and a heatmap; practice trades in a separate $10,000 USD portfolio convert foreign prices at delayed FX rates, and totals can be shown in your home currency (25 currencies). Continue as guest or share a ?guest link; market, limit, stop, stop-limit and trailing orders with brackets, price alerts, scrub charts with SMA/EMA/RSI, portfolio X-ray with country and currency exposure, a bar-by-bar Replay Lab and 12 Twin Academy lessons. The local server searches any Yahoo Finance listing; the web demo uses a dated snapshot of 54 global stocks on 25+ exchanges. Optional real trading through your own Alpaca account (US listings only) on the local server. Not financial advice.</div>
               <div class="project-tags">
                 <span class="tag">TwinAgent</span>
                 <span class="tag">multi-agent research</span>
@@ -559,7 +655,8 @@
             <div class="project-content">
               <span class="project-category">Apps</span>
               <h3 class="project-title">Guang Yao Together · 光耀同行</h3>
-              <p class="project-description">An unofficial Traditional Chinese learning app for 發一光耀. Learners sign in with a free Puter account (progress syncs across devices) or continue as a guest; admins publish lessons, quizzes, handouts and events from a dedicated admin console backed by a versioned content repository. Includes an AI study companion that cites lessons and materials, quizzes, plans and makes flashcards, plus interactive lessons, spaced-repetition review, streaks, a usage guide and offline support. Points, giving and chat remain demos; no payments or official certification.</p>
+              <p class="project-description">Unofficial Traditional Chinese learning app for 發一光耀 with lessons, an AI study companion and spaced review.</p>
+              <div class="project-details" hidden>An unofficial Traditional Chinese learning app for 發一光耀. Learners sign in with a free Puter account (progress syncs across devices) or continue as a guest; admins publish lessons, quizzes, handouts and events from a dedicated admin console backed by a versioned content repository. Includes an AI study companion that cites lessons and materials, quizzes, plans and makes flashcards, plus interactive lessons, spaced-repetition review, streaks, a usage guide and offline support. Points, giving and chat remain demos; no payments or official certification.</div>
               <div class="project-tags">
                 <span class="tag">PWA</span>
                 <span class="tag">accounts + guest mode</span>
@@ -586,7 +683,8 @@
             <div class="project-content">
               <span class="project-category">Apps</span>
               <h3 class="project-title">House of Articles</h3>
-              <p class="project-description">Sneaker news meets market data &mdash; links athletes&rsquo; on-court moments to resale price moves. Mobile and desktop prototypes.</p>
+              <p class="project-description">Sneaker news meets market data &mdash; links athletes&rsquo; on-court moments to resale price moves.</p>
+              <div class="project-details" hidden>Sneaker news meets market data &mdash; links athletes&rsquo; on-court moments to resale price moves. Mobile and desktop prototypes.</div>
               <div class="project-tags">
                 <span class="tag">sneakers</span>
                 <span class="tag">market data</span>
@@ -606,7 +704,8 @@
             <div class="project-content">
               <span class="project-category">Apps</span>
               <h3 class="project-title">Sync</h3>
-              <p class="project-description"><strong>Sync</strong> lets friends hear the same song at the same second from anywhere, with no shared Wi-Fi or Bluetooth. Spotify, Apple Music and YouTube listeners share one room, each hearing it on their own service. You can also share your own audio files peer-to-peer, and voice chat lowers the music while friends talk. No account or server: rooms run browser-to-browser over WebRTC.</p>
+              <p class="project-description">Listen to music together in real time across Spotify, Apple Music and YouTube, with voice chat and no account.</p>
+              <div class="project-details" hidden><strong>Sync</strong> lets friends hear the same song at the same second from anywhere, with no shared Wi-Fi or Bluetooth. Spotify, Apple Music and YouTube listeners share one room, each hearing it on their own service. You can also share your own audio files peer-to-peer, and voice chat lowers the music while friends talk. No account or server: rooms run browser-to-browser over WebRTC.</div>
               <div class="project-tags">
                 <span class="tag">WebRTC</span>
                 <span class="tag">real-time sync</span>
@@ -627,7 +726,8 @@
             <div class="project-content">
               <span class="project-category">Tools I Use</span>
               <h3 class="project-title">SOMA</h3>
-              <p class="project-description">Open-source desktop CAD where a coding agent writes CadQuery for you, with checks, FEM and STEP/STL/3MF export. By Kai Jungsth&ouml;fel (GPL-3.0).</p>
+              <p class="project-description">Open-source AI CAD by Kai Jungsth&ouml;fel &mdash; a coding agent writes CadQuery, SOMA builds, checks and exports it.</p>
+              <div class="project-details" hidden>Open-source desktop CAD where a coding agent writes CadQuery for you, with checks, FEM and STEP/STL/3MF export. By Kai Jungsth&ouml;fel (GPL-3.0).</div>
               <div class="project-tags">
                 <span class="tag">AI CAD</span>
                 <span class="tag">CadQuery</span>
@@ -645,7 +745,8 @@
             <div class="project-content">
               <span class="project-category">Tools I Use</span>
               <h3 class="project-title">Vector</h3>
-              <p class="project-description">AI engineering copilot inside Fusion and SOLIDWORKS &mdash; answers design questions, creates and repairs native features, and shows every change for review. By Vector Copilot LLC.</p>
+              <p class="project-description">AI engineering copilot for Fusion and SOLIDWORKS by Vector Copilot LLC that builds and repairs native features.</p>
+              <div class="project-details" hidden>AI engineering copilot inside Fusion and SOLIDWORKS &mdash; answers design questions, creates and repairs native features, and shows every change for review. By Vector Copilot LLC.</div>
               <div class="project-tags">
                 <span class="tag">AI copilot</span>
                 <span class="tag">Fusion</span>
@@ -663,7 +764,8 @@
             <div class="project-content">
               <span class="project-category">Engineering</span>
               <h3 class="project-title">Stackup</h3>
-              <p class="project-description">Offline tolerance stack-up studio for hardware engineers: worst case, RSS and Monte Carlo side by side, Cpk and ppm prediction, a variance Pareto with what-if, loop diagram and one-page PDF report &mdash; plus a free Excel / Google Sheets workbook.</p>
+              <p class="project-description">Offline tolerance stack-up tool &mdash; worst case, RSS and Monte Carlo with Cpk/ppm prediction and a PDF report.</p>
+              <div class="project-details" hidden>Offline tolerance stack-up studio for hardware engineers: worst case, RSS and Monte Carlo side by side, Cpk and ppm prediction, a variance Pareto with what-if, loop diagram and one-page PDF report &mdash; plus a free Excel / Google Sheets workbook.</div>
               <div class="project-tags">
                 <span class="tag">tolerance stack-up</span>
                 <span class="tag">Monte Carlo</span>
@@ -684,7 +786,8 @@
             <div class="project-content">
               <span class="project-category">Creator Tools</span>
               <h3 class="project-title">Sheetmint</h3>
-              <p class="project-description">Prompt-to-template studio and marketplace for Excel / Google Sheets: describe a sheet in English or Bahasa Indonesia, tweak it with words (&ldquo;add column Supplier&rdquo;, &ldquo;theme midnight&rdquo;), export a real .xlsx with live formulas and a dashboard, then publish it with a price and affiliate commission &mdash; with login, seller and affiliate dashboards, auto-generated content kits and creator guides.</p>
+              <p class="project-description">Describe a spreadsheet, tweak it in plain words, export a working .xlsx and sell it on a built-in marketplace.</p>
+              <div class="project-details" hidden>Prompt-to-template studio and marketplace for Excel / Google Sheets: describe a sheet in English or Bahasa Indonesia, tweak it with words (&ldquo;add column Supplier&rdquo;, &ldquo;theme midnight&rdquo;), export a real .xlsx with live formulas and a dashboard, then publish it with a price and affiliate commission &mdash; with login, seller and affiliate dashboards, auto-generated content kits and creator guides.</div>
               <div class="project-tags">
                 <span class="tag">Template marketplace</span>
                 <span class="tag">Excel / Sheets</span>
@@ -705,7 +808,8 @@
             <div class="project-content">
               <span class="project-category">Engineering</span>
               <h3 class="project-title">ME R&D Toolkit</h3>
-              <p class="project-description">Offline-first workspace for hardware/mechanical R&amp;D: NPI task flow, OK/NG/NA review checklists, issue log and one-page project report, 11 calculators (Cpk, x&#772; &minus; 3&sigma;, torque window, stack-up, snap-fit, thermal pad, IEC openings, &Delta;E) and an optional stdlib-only file vault server. Ships with generic demo data; real content loads from a private data pack.</p>
+              <p class="project-description">Offline workspace for mechanical R&amp;D &mdash; NPI task flow, review checklists, issue log and 11 engineering calculators.</p>
+              <div class="project-details" hidden>Offline-first workspace for hardware/mechanical R&amp;D: NPI task flow, OK/NG/NA review checklists, issue log and one-page project report, 11 calculators (Cpk, x&#772; &minus; 3&sigma;, torque window, stack-up, snap-fit, thermal pad, IEC openings, &Delta;E) and an optional stdlib-only file vault server. Ships with generic demo data; real content loads from a private data pack.</div>
               <div class="project-tags">
                 <span class="tag">NPI</span>
                 <span class="tag">checklists</span>
@@ -721,223 +825,171 @@
             </div>
           </article>
           <!-- PROJECTS:MANAGED:END -->
-          
 
-          
         </div>
+        <p class="project-empty" hidden>No projects match that search. <button type="button" class="link-button" data-reset-filters>Clear filters</button></p>
       </div>
     </section>
-    
-    <!-- Skills Section -->
-    <section id="skills" class="section skills" aria-labelledby="skills-title">
+
+    <!-- Skills -->
+    <section id="skills" class="section section-alt" aria-labelledby="skills-title">
       <div class="container">
-        <h2 id="skills-title" class="section-title">Skills</h2>
+        <header class="section-header reveal">
+          <p class="section-kicker">04 &mdash; Skills</p>
+          <h2 id="skills-title" class="section-title">What I work with</h2>
+        </header>
         <div class="skills-grid">
-          
-          <div class="skill-category">
-            <h3 class="skill-category-title">
-              <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" fill="currentColor"/>
-              </svg>
-              Mechanical
-            </h3>
-            <ul class="skill-list">
+          <div class="skill-group reveal">
+            <h3 class="skill-title">Mechanical</h3>
+            <ul class="chip-list">
               <li>SolidWorks (3D/2D)</li>
               <li>AutoCAD</li>
-              <li>Tolerance Stack-up</li>
-              <li>Plastic Injection</li>
+              <li>Tolerance stack-up</li>
+              <li>Plastic injection</li>
               <li>Thermal</li>
             </ul>
           </div>
-          
-          <div class="skill-category">
-            <h3 class="skill-category-title">
-              <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Validation
-            </h3>
-            <ul class="skill-list">
-              <li>Failure Analysis</li>
-              <li>Root-Cause Analysis</li>
-              <li>DOE-style Comparison</li>
-              <li>CMM/OMM Measurement</li>
+          <div class="skill-group reveal">
+            <h3 class="skill-title">Validation</h3>
+            <ul class="chip-list">
+              <li>Failure analysis</li>
+              <li>Root-cause analysis</li>
+              <li>DOE-style comparison</li>
+              <li>CMM/OMM measurement</li>
             </ul>
           </div>
-          
-          <div class="skill-category">
-            <h3 class="skill-category-title">
-              <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
-                <path d="M3 9h18M9 21V9" fill="none" stroke="currentColor" stroke-width="2"/>
-              </svg>
-              Process
-            </h3>
-            <ul class="skill-list">
+          <div class="skill-group reveal">
+            <h3 class="skill-title">Process</h3>
+            <ul class="chip-list">
               <li>BOM</li>
               <li>PLM/SRM/ECN</li>
-              <li>RFQ &amp; Supplier Coordination</li>
-              <li>Part Approval</li>
+              <li>RFQ &amp; suppliers</li>
+              <li>Part approval</li>
               <li>QSA/QPA</li>
               <li>ISO 9001</li>
             </ul>
           </div>
-          
-          <div class="skill-category">
-            <h3 class="skill-category-title">
-              <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <polyline points="16 18 22 12 16 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <polyline points="8 6 2 12 8 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Software &amp; Tech
-            </h3>
-            <ul class="skill-list">
+          <div class="skill-group reveal">
+            <h3 class="skill-title">Software &amp; Tech</h3>
+            <ul class="chip-list">
               <li>Python</li>
               <li>HTML/CSS/JavaScript</li>
               <li>SQLite</li>
-              <li>Systems Design</li>
+              <li>Systems design</li>
             </ul>
           </div>
-          
-          <div class="skill-category">
-            <h3 class="skill-category-title">
-              <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
-                <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" fill="none" stroke="currentColor" stroke-width="2"/>
-              </svg>
-              Languages
-            </h3>
-            <ul class="skill-list">
+          <div class="skill-group reveal">
+            <h3 class="skill-title">Languages</h3>
+            <ul class="chip-list">
               <li>English (IELTS 7.5)</li>
-              <li>Indonesian (Native)</li>
-              <li>Mandarin (Working Proficiency)</li>
+              <li>Indonesian (native)</li>
+              <li>Mandarin (working)</li>
             </ul>
           </div>
-          
         </div>
       </div>
     </section>
-    
-    <!-- Education Section -->
-    <section id="education" class="section education" aria-labelledby="education-title">
+
+    <!-- Education -->
+    <section id="education" class="section" aria-labelledby="education-title">
       <div class="container">
-        <h2 id="education-title" class="section-title">Education</h2>
-        <div class="education-card">
+        <header class="section-header reveal">
+          <p class="section-kicker">05 &mdash; Education</p>
+          <h2 id="education-title" class="section-title">Education</h2>
+        </header>
+        <article class="education-card reveal">
           <div class="education-header">
             <div>
               <h3 class="education-school">Tamkang University, Taiwan</h3>
-              <p class="education-degree">Bachelor's Degree, Aerospace, Aeronautical and Astronautical Engineering</p>
-              <p class="education-period">2018 – 2022</p>
+              <p class="education-degree">B.Eng. Aerospace, Aeronautical and Astronautical Engineering</p>
             </div>
-            <svg class="education-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M6 12v5c3 3 9 3 12 0v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <span class="timeline-period">2018 &ndash; 2022</span>
           </div>
           <ul class="education-details">
-            <li><strong>Academic Honors</strong> — GPA 3.847/4.0; Rank 5 of 76</li>
-            <li><strong>Research</strong> — Preconditioning method for 1D Euler equations on a diverging nozzle (benchmarked vs Roe, Van Leer, Steger-Warming); research proposal on numerical simulation of two-phase flow in geothermal wells.</li>
+            <li><strong>Honours</strong> GPA 3.847/4.0 &middot; ranked 5 of 76</li>
+            <li><strong>Research</strong> Preconditioning method for 1D Euler equations on a diverging nozzle, benchmarked against Roe, Van Leer and Steger-Warming; proposal on numerical simulation of two-phase flow in geothermal wells.</li>
           </ul>
-        </div>
+        </article>
       </div>
     </section>
-    
-    <!-- Contact Section -->
-    <section id="contact" class="section contact" aria-labelledby="contact-title">
+
+    <!-- Contact -->
+    <section id="contact" class="section section-contact" aria-labelledby="contact-title">
       <div class="container">
-        <h2 id="contact-title" class="section-title">Get In Touch</h2>
-        <p class="contact-intro">
-          Interested in collaborating or have a question? Feel free to reach out.
-        </p>
-        <div class="contact-links">
-          <a href="mailto:juwen12006@gmail.com" class="contact-link">
-            <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="2"/>
-              <polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="2"/>
-            </svg>
-            <span>juwen12006@gmail.com</span>
-          </a>
-          <a href="https://linkedin.com/in/juwenlie" target="_blank" rel="noopener noreferrer" class="contact-link">
-            <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" fill="none" stroke="currentColor" stroke-width="2"/>
-              <rect x="2" y="9" width="4" height="12" fill="none" stroke="currentColor" stroke-width="2"/>
-              <circle cx="4" cy="4" r="2" fill="none" stroke="currentColor" stroke-width="2"/>
-            </svg>
-            <span>LinkedIn</span>
-          </a>
-          <a href="https://github.com/juw12" target="_blank" rel="noopener noreferrer" class="contact-link">
-            <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>GitHub</span>
-          </a>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Connect Section - NEW -->
-    <section id="connect" class="section connect" aria-labelledby="connect-title">
-      <div class="container">
-        <h2 id="connect-title" class="section-title">Connect</h2>
-        <div class="connect-grid">
-          
-          <!-- LinkedIn QR -->
-          <div class="connect-card">
-            <a href="https://linkedin.com/in/juwenlie" target="_blank" rel="noopener noreferrer" aria-label="Connect with Juwen Lie on LinkedIn">
-              <img src="./assets/qr/linkedin.svg" alt="QR code linking to Juwen Lie on LinkedIn" class="connect-qr">
+        <div class="contact-panel reveal">
+          <div class="contact-copy">
+            <p class="section-kicker">06 &mdash; Contact</p>
+            <h2 id="contact-title" class="section-title">Let&rsquo;s talk</h2>
+            <p class="section-intro">Open to conversations about hardware R&amp;D, NPI and engineering tools. CV available privately on request.</p>
+            <div class="contact-actions">
+              <a href="mailto:juwen12006@gmail.com" class="btn btn-primary">Email me</a>
+              <button type="button" class="btn btn-secondary" data-copy="juwen12006@gmail.com">
+                <span class="copy-label">Copy email</span>
+              </button>
+              <a href="https://linkedin.com/in/juwenlie" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">LinkedIn</a>
+              <a href="https://github.com/juw12" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub</a>
+            </div>
+            <p class="contact-email">juwen12006@gmail.com</p>
+          </div>
+
+          <div id="connect" class="connect-grid" aria-label="Scan to connect">
+            <a class="connect-card" href="https://linkedin.com/in/juwenlie" target="_blank" rel="noopener noreferrer">
+              <img src="./assets/qr/linkedin.svg" alt="QR code linking to Juwen Lie on LinkedIn" class="connect-qr" loading="lazy">
               <span class="connect-label">LinkedIn</span>
-              <span class="connect-hint">Scan to connect</span>
             </a>
-          </div>
-          
-          <!-- GitHub QR -->
-          <div class="connect-card">
-            <a href="https://github.com/juw12" target="_blank" rel="noopener noreferrer" aria-label="View Juwen Lie's projects on GitHub">
-              <img src="./assets/qr/github.svg" alt="QR code linking to Juwen Lie on GitHub" class="connect-qr">
+            <a class="connect-card" href="https://github.com/juw12" target="_blank" rel="noopener noreferrer">
+              <img src="./assets/qr/github.svg" alt="QR code linking to Juwen Lie on GitHub" class="connect-qr" loading="lazy">
               <span class="connect-label">GitHub</span>
-              <span class="connect-hint">Scan to explore</span>
             </a>
-          </div>
-          
-          <!-- Email QR -->
-          <div class="connect-card">
-            <a href="mailto:juwen12006@gmail.com" aria-label="Send email to Juwen Lie">
-              <img src="./assets/qr/email.svg" alt="QR code for emailing Juwen Lie" class="connect-qr">
+            <a class="connect-card" href="mailto:juwen12006@gmail.com">
+              <img src="./assets/qr/email.svg" alt="QR code for emailing Juwen Lie" class="connect-qr" loading="lazy">
               <span class="connect-label">Email</span>
-              <span class="connect-hint">Scan to compose</span>
+            </a>
+            <a class="connect-card" href="https://bio.site/juw" target="_blank" rel="noopener noreferrer">
+              <img src="./assets/qr/biosite.svg" alt="QR code linking to Juwen Lie's personal works at bio.site/juw" class="connect-qr" loading="lazy">
+              <span class="connect-label">Personal works</span>
+            </a>
+            <a class="connect-card" href="https://juw12.github.io/portfolio/" target="_blank" rel="noopener noreferrer">
+              <img src="./assets/qr/portfolio.svg" alt="QR code linking to this portfolio website" class="connect-qr" loading="lazy">
+              <span class="connect-label">This portfolio</span>
             </a>
           </div>
-          
-          <!-- Personal Works (bio.site/juw) QR -->
-          <div class="connect-card">
-            <a href="https://bio.site/juw" target="_blank" rel="noopener noreferrer" aria-label="View Juwen Lie's personal works at bio.site">
-              <img src="./assets/qr/biosite.svg" alt="QR code linking to Juwen Lie's personal works at bio.site/juw" class="connect-qr">
-              <span class="connect-label">Personal Works</span>
-              <span class="connect-hint">Scan to explore</span>
-            </a>
-          </div>
-          
-          <!-- This Portfolio QR -->
-          <div class="connect-card">
-            <a href="https://juw12.github.io/portfolio/" target="_blank" rel="noopener noreferrer" aria-label="View this portfolio website">
-              <img src="./assets/qr/portfolio.svg" alt="QR code linking to this portfolio website" class="connect-qr">
-              <span class="connect-label">This Portfolio</span>
-              <span class="connect-hint">Scan to share</span>
-            </a>
-          </div>
-          
         </div>
       </div>
     </section>
   </main>
-  
-  <!-- Footer -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <p>&copy; 2026 Juwen Lie. All rights reserved.</p>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span data-year>2026</span> Juwen Lie</p>
+      <a href="#top" class="footer-top">Back to top &uarr;</a>
     </div>
   </footer>
-  
+
+  <!-- Project details dialog (filled from the clicked card) -->
+  <dialog id="project-dialog" class="project-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-inner">
+      <button type="button" class="icon-button dialog-close" aria-label="Close details" data-close-dialog>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="dialog-media">
+        <img class="dialog-image" src="" alt="">
+        <div class="dialog-thumbs"></div>
+      </div>
+      <div class="dialog-body">
+        <span class="project-category dialog-category"></span>
+        <h3 id="dialog-title" class="dialog-title"></h3>
+        <div class="dialog-description"></div>
+        <div class="project-tags dialog-tags"></div>
+        <div class="dialog-links"></div>
+      </div>
+    </div>
+  </dialog>
+
+  <button type="button" class="back-to-top" aria-label="Back to top" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
   <script src="./app.js"></script>
 </body>
 </html>
