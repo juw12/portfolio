@@ -23,6 +23,10 @@
     themeToggle.addEventListener('click', () => {
       const nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', nextTheme);
+      const themeMeta = document.querySelector('meta[name="theme-color"]');
+      if (themeMeta) {
+        themeMeta.setAttribute('content', nextTheme === 'dark' ? '#0b0f17' : '#ffffff');
+      }
       try {
         localStorage.setItem('theme', nextTheme);
       } catch (error) {
@@ -144,6 +148,7 @@
   // Reveal on scroll
   // ==========================================================================
   const revealItems = Array.from(document.querySelectorAll('.reveal'));
+  root.classList.add('reveal-ready');
 
   function revealAll() {
     revealItems.forEach((item) => item.classList.add('visible'));
@@ -187,25 +192,24 @@
   const emptyState = document.querySelector('.project-empty');
   const MAX_CARD_TAGS = 3;
 
+  const ownProjectCount = projectCards.filter(
+    (card) => card.getAttribute('data-category') !== 'Tools I Use'
+  ).length;
   document.querySelectorAll('[data-project-count]').forEach((element) => {
-    element.textContent = String(projectCards.length);
+    element.textContent = String(ownProjectCount);
   });
 
   projectCards.forEach((card) => {
     const title = card.querySelector('.project-title');
     const titleText = title ? title.textContent.trim() : 'project';
 
-    card.setAttribute('tabindex', '0');
-    card.setAttribute('aria-label', `${titleText} — open details`);
-
-    // "+N" chip when a card has more tags than it shows.
-    const tags = card.querySelectorAll('.project-tags .tag');
-    if (tags.length > MAX_CARD_TAGS) {
+    // "+N" chip for tags that don't fit on the card (filled in by fitCardRows).
+    const tagRow = card.querySelector('.project-tags');
+    if (tagRow && tagRow.querySelectorAll('.tag').length > 1) {
       const moreTag = document.createElement('span');
       moreTag.className = 'tag tag-more';
-      moreTag.textContent = `+${tags.length - MAX_CARD_TAGS}`;
       moreTag.setAttribute('aria-hidden', 'true');
-      card.querySelector('.project-tags').appendChild(moreTag);
+      tagRow.appendChild(moreTag);
     }
 
     // Consistent "Details" action on every card.
@@ -227,9 +231,68 @@
   });
 
   // ==========================================================================
+  // Projects: keep tag and link rows to whole items that fit on one line
+  // ==========================================================================
+  const MAX_CARD_LINKS = 3;
+
+  function fitRow(row, items, maxItems, onFit) {
+    items.forEach((item, index) => {
+      item.classList.toggle('is-clipped', index >= maxItems);
+    });
+    let visibleCount = Math.min(items.length, maxItems);
+    if (typeof onFit === 'function') {
+      onFit(visibleCount);
+    }
+    while (visibleCount > 1 && row.scrollWidth > row.clientWidth + 1) {
+      visibleCount -= 1;
+      items[visibleCount].classList.add('is-clipped');
+      if (typeof onFit === 'function') {
+        onFit(visibleCount);
+      }
+    }
+  }
+
+  function fitCardRows(card) {
+    if (card.classList.contains('hidden') || !card.offsetWidth) {
+      return;
+    }
+    const tagRow = card.querySelector('.project-tags');
+    if (tagRow) {
+      const tags = Array.from(tagRow.querySelectorAll('.tag:not(.tag-more)'));
+      const moreTag = tagRow.querySelector('.tag-more');
+      fitRow(tagRow, tags, MAX_CARD_TAGS, (visibleCount) => {
+        if (moreTag) {
+          const hiddenCount = tags.length - visibleCount;
+          moreTag.textContent = `+${hiddenCount}`;
+          moreTag.classList.toggle('is-clipped', hiddenCount === 0);
+        }
+      });
+    }
+    const linkRow = card.querySelector('.project-links');
+    if (linkRow) {
+      fitRow(linkRow, Array.from(linkRow.querySelectorAll('.project-link')), MAX_CARD_LINKS);
+    }
+  }
+
+  function fitVisibleCards() {
+    projectCards.forEach(fitCardRows);
+  }
+
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(fitVisibleCards, 120);
+  });
+  window.addEventListener('load', fitVisibleCards);
+
+  // ==========================================================================
   // Projects: filter + search
   // ==========================================================================
   let activeFilter = 'all';
+  let showAll = false;
+  const INITIAL_VISIBLE = 9;
+  const showAllWrap = document.querySelector('.project-show-all');
+  const showAllButton = document.querySelector('[data-show-all]');
 
   function categoryMatches(card, filter) {
     return filter === 'all' || card.getAttribute('data-category') === filter;
@@ -253,8 +316,16 @@
     const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
     let visibleCount = 0;
 
+    const isDefaultView = activeFilter === 'all' && !query;
+    const limitResults = isDefaultView && !showAll;
+    let matchCount = 0;
+
     projectCards.forEach((card) => {
-      const visible = categoryMatches(card, activeFilter) && (!query || card.dataset.search.includes(query));
+      const matches = categoryMatches(card, activeFilter) && (!query || card.dataset.search.includes(query));
+      if (matches) {
+        matchCount += 1;
+      }
+      const visible = matches && (!limitResults || matchCount <= INITIAL_VISIBLE);
       const wasHidden = card.classList.contains('hidden');
       card.classList.toggle('hidden', !visible);
       if (visible) {
@@ -268,12 +339,22 @@
     });
 
     if (statusText) {
-      const scope = activeFilter === 'all' ? 'all categories' : activeFilter;
-      statusText.textContent = `Showing ${visibleCount} of ${projectCards.length} projects · ${scope}${query ? ` · “${query}”` : ''}`;
+      if (isDefaultView) {
+        statusText.textContent = '';
+      } else {
+        const scope = activeFilter === 'all' ? 'all categories' : activeFilter;
+        statusText.textContent = `${visibleCount} of ${projectCards.length} projects · ${scope}${query ? ` · “${query}”` : ''}`;
+      }
+    }
+    if (showAllWrap && showAllButton) {
+      const hiddenByLimit = limitResults && matchCount > INITIAL_VISIBLE;
+      showAllWrap.hidden = !hiddenByLimit;
+      showAllButton.textContent = `Show all ${matchCount} projects`;
     }
     if (emptyState) {
       emptyState.hidden = visibleCount !== 0;
     }
+    fitVisibleCards();
   }
 
   function selectTab(tab) {
@@ -320,6 +401,20 @@
 
   if (searchInput) {
     searchInput.addEventListener('input', () => applyFilters(false));
+  }
+
+  if (showAllButton) {
+    showAllButton.addEventListener('click', () => {
+      showAll = true;
+      applyFilters(true);
+      const firstNewCard = projectCards[INITIAL_VISIBLE];
+      if (firstNewCard) {
+        const newCardDetails = firstNewCard.querySelector('.project-more');
+        if (newCardDetails) {
+          newCardDetails.focus({ preventScroll: true });
+        }
+      }
+    });
   }
 
   document.querySelectorAll('[data-reset-filters]').forEach((button) => {
@@ -435,12 +530,6 @@
       openProject(card);
     });
 
-    card.addEventListener('keydown', (event) => {
-      if ((event.key === 'Enter' || event.key === ' ') && event.target === card) {
-        event.preventDefault();
-        openProject(card);
-      }
-    });
   });
 
   // Deep link: #models-3d-library etc. opens that card's details.
@@ -451,6 +540,8 @@
     }
     const target = document.getElementById(id);
     if (target && target.classList.contains('project-card')) {
+      showAll = true;
+      applyFilters(false);
       target.scrollIntoView({ block: 'center' });
       openProject(target);
     }

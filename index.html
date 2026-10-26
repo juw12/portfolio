@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Juwen Lie — R&D Mechanical Engineer in consumer electronics. Mechanical DVT, NPI and root-cause analysis, with an aerospace background and software/AI projects on the side.">
   <meta name="author" content="Juwen Lie">
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0b0f17" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Juwen Lie — R&D Mechanical Engineer">
@@ -14,6 +13,37 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://juw12.github.io/portfolio/">
   <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://juw12.github.io/portfolio/assets/projects/about-workspace.jpg">
+  <meta property="og:image:width" content="1100">
+  <meta property="og:image:height" content="628">
+  <meta property="og:image:alt" content="Engineering workspace with calipers, micrometre and CAD on a laptop">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://juw12.github.io/portfolio/">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Juwen Lie",
+      "jobTitle": "R&D Mechanical Engineer",
+      "url": "https://juw12.github.io/portfolio/",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Batam",
+        "addressCountry": "ID"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Tamkang University"
+      },
+      "knowsAbout": ["Mechanical DVT", "NPI", "Root-cause analysis", "Tolerance stack-up", "SolidWorks"],
+      "sameAs": [
+        "https://linkedin.com/in/juwenlie",
+        "https://github.com/juw12",
+        "https://bio.site/juw"
+      ]
+    }
+  </script>
 
   <title>Juwen Lie — R&amp;D Mechanical Engineer</title>
 
@@ -29,6 +59,10 @@
         theme = 'light';
       }
       root.setAttribute('data-theme', theme);
+      var themeMeta = document.querySelector('meta[name="theme-color"]');
+      if (themeMeta) {
+        themeMeta.setAttribute('content', theme === 'dark' ? '#0b0f17' : '#ffffff');
+      }
     })();
   </script>
   <link rel="stylesheet" href="./styles.css">
@@ -128,7 +162,7 @@
               <dd>6&ndash;12 month programmes, 2&ndash;3 running in parallel</dd>
             </div>
             <div class="stat">
-              <dt><span data-project-count>25</span>+</dt>
+              <dt><span data-project-count>23</span>+</dt>
               <dd>Engineering, CAD and software projects</dd>
             </div>
             <div class="stat">
@@ -340,13 +374,57 @@
           </article>
 
           <!-- PROJECTS:MANAGED:START (auto-generated from apps.json by scripts/publish_portfolio.py — do not edit by hand) -->
+          <article class="project-card" data-category="Engineering">
+            <img src="./assets/projects/stackup-hero.jpg" alt="Stackup tolerance stack-up studio: IPX7 gasket compression stack failing at Cpk 1.03 with worst case, RSS, Monte Carlo histogram and variance Pareto" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">Engineering</span>
+              <h3 class="project-title">Stackup</h3>
+              <p class="project-description">Offline tolerance stack-up tool &mdash; worst case, RSS and Monte Carlo with Cpk/ppm prediction and a PDF report.</p>
+              <div class="project-details" hidden>Offline tolerance stack-up studio for hardware engineers: worst case, RSS and Monte Carlo side by side, Cpk and ppm prediction, a variance Pareto with what-if, loop diagram and one-page PDF report &mdash; plus a free Excel / Google Sheets workbook.</div>
+              <div class="project-tags">
+                <span class="tag">tolerance stack-up</span>
+                <span class="tag">Monte Carlo</span>
+                <span class="tag">Cpk</span>
+                <span class="tag">PWA</span>
+                <span class="tag">Excel / Sheets</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://juw12.github.io/projects/stackup/app.html" target="_blank" rel="noopener noreferrer">App</a>
+                <a class="project-link" href="https://juw12.github.io/projects/stackup/web.html" target="_blank" rel="noopener noreferrer">Web</a>
+                <a class="project-link" href="https://juw12.github.io/projects/stackup/mobile.html" target="_blank" rel="noopener noreferrer">Mobile</a>
+              </div>
+            </div>
+          </article>
+          
+          <article class="project-card" data-category="Engineering">
+            <img src="./assets/projects/me-rd-toolkit.png" alt="ME R&D Toolkit dashboard with NPI flow, checklists, calculators and lessons quick-access tiles" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">Engineering</span>
+              <h3 class="project-title">ME R&D Toolkit</h3>
+              <p class="project-description">Offline workspace for mechanical R&amp;D &mdash; NPI task flow, review checklists, issue log and 11 engineering calculators.</p>
+              <div class="project-details" hidden>Offline-first workspace for hardware/mechanical R&amp;D: NPI task flow, OK/NG/NA review checklists, issue log and one-page project report, 11 calculators (Cpk, x&#772; &minus; 3&sigma;, torque window, stack-up, snap-fit, thermal pad, IEC openings, &Delta;E) and an optional stdlib-only file vault server. Ships with generic demo data; real content loads from a private data pack.</div>
+              <div class="project-tags">
+                <span class="tag">NPI</span>
+                <span class="tag">checklists</span>
+                <span class="tag">Cpk</span>
+                <span class="tag">PWA</span>
+                <span class="tag">offline-first</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://juw12.github.io/projects/me-rd-toolkit/index.html" target="_blank" rel="noopener noreferrer">App</a>
+                <a class="project-link" href="https://juw12.github.io/projects/me-rd-toolkit/index.html" target="_blank" rel="noopener noreferrer">Web</a>
+                <a class="project-link" href="https://juw12.github.io/projects/me-rd-toolkit/index.html" target="_blank" rel="noopener noreferrer">Mobile</a>
+              </div>
+            </div>
+          </article>
+          
           <article class="project-card" data-category="Automation">
             <img src="./assets/projects/airiz-motor-hero.svg" alt="Airiz Motor Test Console dashboard: command library, serial console and macro notepad for AIRIZ device motor testing" class="project-card-image" loading="lazy" decoding="async">
             <div class="project-content">
               <span class="project-category">Automation</span>
               <h3 class="project-title">Airiz Motor</h3>
-              <p class="project-description">Windows, Android and web console for AIRIZ motor testing &mdash; USB or Bluetooth jog, LEDs, camera tools and macros.</p>
-              <div class="project-details" hidden>Downloadable Windows console with a locally bundled controller, serial port chooser, camera tools, macros and offline demo. Android app and on-device Bluetooth bridge add wireless pan, up/down and LED control. The browser and mobile-web editions remain available.</div>
+              <p class="project-description">AIRIZ motor-test console for Windows, Android, iPhone and web &mdash; USB or Bluetooth jog, motor stop, LEDs and macros.</p>
+              <div class="project-details" hidden>Downloadable Windows console with a locally bundled controller, serial port chooser, camera tools, macros and offline demo. A PIN-protected on-device Bluetooth remote adds wireless pan, up/down, LED control and a real motor stop from Android or iPhone (Bluefy). The browser and mobile-web editions remain available.</div>
               <div class="project-tags">
                 <span class="tag">Windows app</span>
                 <span class="tag">Web Serial</span>
@@ -355,11 +433,11 @@
                 <span class="tag">offline demo</span>
               </div>
               <div class="project-links">
-                <a class="project-link" href="https://github.com/juw12/projects/releases/download/airiz-desktop-v1.2.1/AIRIZ-Console-Setup-1.2.1-x64.exe" target="_blank" rel="noopener noreferrer">Windows app</a>
+                <a class="project-link" href="https://github.com/juw12/projects/releases/download/airiz-desktop-v1.2.2/AIRIZ-Console-Setup-1.2.2-x64.exe" target="_blank" rel="noopener noreferrer">Windows app</a>
                 <a class="project-link" href="https://juw12.github.io/projects/airiz-motor/" target="_blank" rel="noopener noreferrer">Web</a>
                 <a class="project-link" href="https://juw12.github.io/projects/airiz-motor/" target="_blank" rel="noopener noreferrer">Mobile web</a>
-                <a class="project-link" href="https://github.com/juw12/projects/releases/download/airiz-mobile-v1.0.1/AIRIZ-Mobile-1.0.1-android.apk" target="_blank" rel="noopener noreferrer">Android app</a>
-                <a class="project-link" href="https://github.com/juw12/projects/releases/tag/airiz-mobile-v1.0.1" target="_blank" rel="noopener noreferrer">iPhone build</a>
+                <a class="project-link" href="https://github.com/juw12/projects/releases/download/airiz-mobile-v1.0.2/AIRIZ-Mobile-1.0.2-android.apk" target="_blank" rel="noopener noreferrer">Android app</a>
+                <a class="project-link" href="https://apps.apple.com/app/id1492822055" target="_blank" rel="noopener noreferrer">iPhone (Bluefy)</a>
               </div>
             </div>
           </article>
@@ -721,6 +799,28 @@
             </div>
           </article>
           
+          <article class="project-card" data-category="Creator Tools">
+            <img src="./assets/projects/sheetmint-hero.jpg" alt="Sheetmint home: prompt a spreadsheet template, tweak it, sell it — prompt box with example prompts and the three-step prompt, tweak, sell flow" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">Creator Tools</span>
+              <h3 class="project-title">Sheetmint</h3>
+              <p class="project-description">Describe a spreadsheet, tweak it in plain words, export a working .xlsx and sell it on a built-in marketplace.</p>
+              <div class="project-details" hidden>Prompt-to-template studio and marketplace for Excel / Google Sheets: describe a sheet in English or Bahasa Indonesia, tweak it with words (&ldquo;add column Supplier&rdquo;, &ldquo;theme midnight&rdquo;), export a real .xlsx with live formulas and a dashboard, then publish it with a price and affiliate commission &mdash; with login, seller and affiliate dashboards, auto-generated content kits and creator guides.</div>
+              <div class="project-tags">
+                <span class="tag">Template marketplace</span>
+                <span class="tag">Excel / Sheets</span>
+                <span class="tag">Affiliate program</span>
+                <span class="tag">PWA</span>
+                <span class="tag">Python + SQLite</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://juw12.github.io/projects/sheetmint/app.html" target="_blank" rel="noopener noreferrer">App</a>
+                <a class="project-link" href="https://juw12.github.io/projects/sheetmint/web.html" target="_blank" rel="noopener noreferrer">Web</a>
+                <a class="project-link" href="https://juw12.github.io/projects/sheetmint/mobile.html" target="_blank" rel="noopener noreferrer">Mobile</a>
+              </div>
+            </div>
+          </article>
+          
           <article class="project-card" data-category="Tools I Use">
             <img src="./assets/projects/soma-hero.svg" alt="SOMA: a CadQuery code panel beside a rebuilt parametric part and a build log" class="project-card-image" loading="lazy" decoding="async">
             <div class="project-content">
@@ -758,74 +858,11 @@
               </div>
             </div>
           </article>
-          
-          <article class="project-card" data-category="Engineering">
-            <img src="./assets/projects/stackup-hero.jpg" alt="Stackup tolerance stack-up studio: IPX7 gasket compression stack failing at Cpk 1.03 with worst case, RSS, Monte Carlo histogram and variance Pareto" class="project-card-image" loading="lazy" decoding="async">
-            <div class="project-content">
-              <span class="project-category">Engineering</span>
-              <h3 class="project-title">Stackup</h3>
-              <p class="project-description">Offline tolerance stack-up tool &mdash; worst case, RSS and Monte Carlo with Cpk/ppm prediction and a PDF report.</p>
-              <div class="project-details" hidden>Offline tolerance stack-up studio for hardware engineers: worst case, RSS and Monte Carlo side by side, Cpk and ppm prediction, a variance Pareto with what-if, loop diagram and one-page PDF report &mdash; plus a free Excel / Google Sheets workbook.</div>
-              <div class="project-tags">
-                <span class="tag">tolerance stack-up</span>
-                <span class="tag">Monte Carlo</span>
-                <span class="tag">Cpk</span>
-                <span class="tag">PWA</span>
-                <span class="tag">Excel / Sheets</span>
-              </div>
-              <div class="project-links">
-                <a class="project-link" href="https://juw12.github.io/projects/stackup/app.html" target="_blank" rel="noopener noreferrer">App</a>
-                <a class="project-link" href="https://juw12.github.io/projects/stackup/web.html" target="_blank" rel="noopener noreferrer">Web</a>
-                <a class="project-link" href="https://juw12.github.io/projects/stackup/mobile.html" target="_blank" rel="noopener noreferrer">Mobile</a>
-              </div>
-            </div>
-          </article>
-          
-          <article class="project-card" data-category="Creator Tools">
-            <img src="./assets/projects/sheetmint-hero.jpg" alt="Sheetmint home: prompt a spreadsheet template, tweak it, sell it — prompt box with example prompts and the three-step prompt, tweak, sell flow" class="project-card-image" loading="lazy" decoding="async">
-            <div class="project-content">
-              <span class="project-category">Creator Tools</span>
-              <h3 class="project-title">Sheetmint</h3>
-              <p class="project-description">Describe a spreadsheet, tweak it in plain words, export a working .xlsx and sell it on a built-in marketplace.</p>
-              <div class="project-details" hidden>Prompt-to-template studio and marketplace for Excel / Google Sheets: describe a sheet in English or Bahasa Indonesia, tweak it with words (&ldquo;add column Supplier&rdquo;, &ldquo;theme midnight&rdquo;), export a real .xlsx with live formulas and a dashboard, then publish it with a price and affiliate commission &mdash; with login, seller and affiliate dashboards, auto-generated content kits and creator guides.</div>
-              <div class="project-tags">
-                <span class="tag">Template marketplace</span>
-                <span class="tag">Excel / Sheets</span>
-                <span class="tag">Affiliate program</span>
-                <span class="tag">PWA</span>
-                <span class="tag">Python + SQLite</span>
-              </div>
-              <div class="project-links">
-                <a class="project-link" href="https://juw12.github.io/projects/sheetmint/app.html" target="_blank" rel="noopener noreferrer">App</a>
-                <a class="project-link" href="https://juw12.github.io/projects/sheetmint/web.html" target="_blank" rel="noopener noreferrer">Web</a>
-                <a class="project-link" href="https://juw12.github.io/projects/sheetmint/mobile.html" target="_blank" rel="noopener noreferrer">Mobile</a>
-              </div>
-            </div>
-          </article>
-          
-          <article class="project-card" data-category="Engineering">
-            <img src="./assets/projects/me-rd-toolkit.png" alt="ME R&D Toolkit dashboard with NPI flow, checklists, calculators and lessons quick-access tiles" class="project-card-image" loading="lazy" decoding="async">
-            <div class="project-content">
-              <span class="project-category">Engineering</span>
-              <h3 class="project-title">ME R&D Toolkit</h3>
-              <p class="project-description">Offline workspace for mechanical R&amp;D &mdash; NPI task flow, review checklists, issue log and 11 engineering calculators.</p>
-              <div class="project-details" hidden>Offline-first workspace for hardware/mechanical R&amp;D: NPI task flow, OK/NG/NA review checklists, issue log and one-page project report, 11 calculators (Cpk, x&#772; &minus; 3&sigma;, torque window, stack-up, snap-fit, thermal pad, IEC openings, &Delta;E) and an optional stdlib-only file vault server. Ships with generic demo data; real content loads from a private data pack.</div>
-              <div class="project-tags">
-                <span class="tag">NPI</span>
-                <span class="tag">checklists</span>
-                <span class="tag">Cpk</span>
-                <span class="tag">PWA</span>
-                <span class="tag">offline-first</span>
-              </div>
-              <div class="project-links">
-                <a class="project-link" href="https://juw12.github.io/projects/me-rd-toolkit/index.html" target="_blank" rel="noopener noreferrer">App</a>
-                <a class="project-link" href="https://juw12.github.io/projects/me-rd-toolkit/index.html" target="_blank" rel="noopener noreferrer">Web</a>
-                <a class="project-link" href="https://juw12.github.io/projects/me-rd-toolkit/index.html" target="_blank" rel="noopener noreferrer">Mobile</a>
-              </div>
-            </div>
-          </article>
           <!-- PROJECTS:MANAGED:END -->
 
+        </div>
+        <div class="project-show-all" hidden>
+          <button type="button" class="btn btn-secondary" data-show-all>Show all projects</button>
         </div>
         <p class="project-empty" hidden>No projects match that search. <button type="button" class="link-button" data-reset-filters>Clear filters</button></p>
       </div>

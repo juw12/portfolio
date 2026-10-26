@@ -678,14 +678,15 @@ button {
   font-size: 1.04rem;
 }
 
-/* Reveal on scroll (only when JS is running) */
-html.js .reveal {
+/* Reveal on scroll — only after app.js confirms it is running, so content
+   never stays hidden if the script fails to load. */
+html.reveal-ready .reveal {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
 }
 
-html.js .reveal.visible {
+html.reveal-ready .reveal.visible {
   opacity: 1;
   transform: none;
 }
@@ -1187,12 +1188,15 @@ html.js .reveal.visible {
 }
 
 .project-card .project-tags .tag {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  flex-shrink: 0;
 }
 
 .project-card .project-tags .tag:nth-child(n + 4) {
+  display: none;
+}
+
+.project-card .is-clipped,
+.project-card .project-tags .tag.tag-more.is-clipped {
   display: none;
 }
 
@@ -1218,11 +1222,13 @@ html.js .reveal.visible {
   flex-wrap: nowrap;
 }
 
-.project-card .project-links .project-link {
-  min-width: 0;
+.project-card .project-links {
   overflow: hidden;
+}
+
+.project-card .project-links .project-link {
+  flex-shrink: 0;
   white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .project-card .project-links .project-link:nth-of-type(n + 4) {
@@ -1274,6 +1280,20 @@ html.js .reveal.visible {
 
 .project-card:hover .project-more::after {
   transform: translateX(3px);
+}
+
+.project-show-all {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.project-show-all[hidden] {
+  display: none;
+}
+
+.project-status:empty {
+  margin-bottom: 8px;
 }
 
 .project-empty {
@@ -1757,6 +1777,10 @@ body.dialog-open {
     padding: 20px;
   }
 
+  .dialog-image {
+    max-height: 45vh;
+  }
+
   .back-to-top {
     right: 16px;
     bottom: 16px;
@@ -1775,7 +1799,7 @@ body.dialog-open {
     transition-duration: 0.01ms !important;
   }
 
-  html.js .reveal {
+  html.reveal-ready .reveal {
     opacity: 1;
     transform: none;
   }
@@ -1786,11 +1810,16 @@ body.dialog-open {
   .scroll-progress,
   .back-to-top,
   .project-toolbar,
+  .project-show-all,
   .project-more {
     display: none !important;
   }
 
-  html.js .reveal {
+  .project-card.hidden {
+    display: flex !important;
+  }
+
+  html.reveal-ready .reveal {
     opacity: 1;
     transform: none;
   }
