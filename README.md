@@ -39,5 +39,4 @@ CVs and employer-specific information are shared privately on request.
 ## Ownership
 
 Maintained by [@juw12](https://github.com/juw12).
-Co-founder and collaborator: [@juwpegatron](https://github.com/juwpegatron).
 Original commit authorship is preserved.
