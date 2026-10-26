@@ -786,6 +786,26 @@
 
           <!-- Hand-written cards shown after the featured set -->
           <article class="project-card" data-category="Engineering">
+            <img src="./assets/projects/thesis-nozzle-cfd.jpg" alt="Mach number along a diverging nozzle: analytical solution compared with Roe, preconditioned, Steger-Warming and Van Leer schemes" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">Engineering</span>
+              <h3 class="project-title">Bachelor Thesis: Preconditioned CFD for a Supersonic Nozzle</h3>
+              <p class="project-description">Derived a Weiss&ndash;Smith preconditioner for the 1-D Euler equations and coded a Fortran MUSCL&ndash;Roe nozzle solver.</p>
+              <div class="project-details" hidden>Bachelor research project, Aerospace Engineering, Tamkang University (Jan 2022, advisor Dr. Yang-Yao Niu). Derived the eigenvalues and flux-difference splitting of a time-derivative (Weiss&ndash;Smith) preconditioned system for the quasi-1-D Euler equations, then implemented it in a Fortran finite-volume solver (MUSCL reconstruction with Roe&rsquo;s approximate Riemann solver). Validated on a diverging nozzle with supersonic inflow and both supersonic and subsonic outflow, comparing Mach number, pressure, density, temperature and velocity against the analytical solution and the Roe, Steger&ndash;Warming and Van Leer schemes.</div>
+              <div class="project-tags">
+                <span class="tag">CFD</span>
+                <span class="tag">Fortran</span>
+                <span class="tag">Euler equations</span>
+                <span class="tag">MUSCL / Roe</span>
+                <span class="tag">preconditioning</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="./assets/docs/juwen-lie-bachelor-thesis-nozzle-preconditioning.pdf" target="_blank" rel="noopener">Read thesis (PDF)</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="Engineering">
             <img src="./assets/projects/water-tank.jpg" alt="Industrial water tank fabrication and pipe installation" class="project-card-image" loading="lazy" decoding="async">
             <div class="project-content">
               <span class="project-category">Engineering</span>
