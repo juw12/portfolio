@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="3D Models Library: a row of printable landmark miniatures">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#141922"/>
+      <stop offset="1" stop-color="#0b0e13"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0c778"/>
+      <stop offset="1" stop-color="#c9922f"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#bg)"/>
+
+  <g stroke="#ffffff" stroke-opacity="0.045" stroke-width="1">
+    <path d="M0 700 H1200 M0 620 H1200 M0 540 H1200 M0 460 H1200"/>
+    <path d="M120 420 V700 M300 420 V700 M480 420 V700 M660 420 V700 M840 420 V700 M1020 420 V700"/>
+  </g>
+
+  <g fill="none" stroke="url(#accent)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M90 640 L150 520 L210 640 Z"/>
+    <path d="M250 640 L250 560 H330 V640 M262 560 L262 520 H318 V560"/>
+    <path d="M300 520 L300 470 H280 V520 M300 470 L320 520 M320 470 V520"/>
+    <path d="M380 640 V430 H430 V640"/>
+    <path d="M405 430 V360"/>
+    <path d="M470 640 V420 H520 V640 M470 480 H520 M470 540 H520"/>
+    <path d="M470 420 L495 360 L520 420"/>
+    <path d="M580 640 V560 M580 560 A40 40 0 0 1 660 560 L660 640"/>
+    <path d="M620 540 V500"/>
+    <path d="M710 640 V470 M760 640 V470"/>
+    <path d="M710 470 L735 420 L760 470"/>
+    <path d="M735 470 V410"/>
+    <path d="M800 640 L800 620 L900 620 L900 640 M815 620 L875 520 L935 620"/>
+    <path d="M840 640 V470 H880 V640 M840 500 H880 M840 540 H880 M840 580 H880"/>
+    <path d="M980 640 V500 M1020 640 V500 M980 560 H1020 M980 610 H1020"/>
+    <path d="M1000 500 V440"/>
+    <path d="M1080 640 L1130 470 L1180 640 Z"/>
+  </g>
+
+  <text x="72" y="150" fill="#eef1f5" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="72" font-weight="700">3D Models Library</text>
+  <text x="74" y="200" fill="#9fb0c4" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="30">40 printable landmark miniatures · modelled with code · STL + STEP</text>
+
+  <g stroke="#c9922f" stroke-width="3" stroke-opacity="0.9">
+    <path d="M74 224 H520"/>
+  </g>
+</svg>
