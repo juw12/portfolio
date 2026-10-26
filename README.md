@@ -4,7 +4,7 @@ Interactive personal portfolio for **Juwen Lie** — R&D Mechanical Engineer (Me
 
 A single-page, **zero-dependency** static site with a clean, professional layout: system fonts, light/dark themes (follows the OS setting, remembers your choice), filterable and searchable project cards, and a details dialog per project.
 
-**Live:** https://juw12.github.io/portfolio/
+**Live:** https://juwenlie.pages.dev/ (Cloudflare Pages, auto-deploys from `main`). The old https://juw12.github.io/portfolio/ address forwards there.
 
 ## Local preview
 
@@ -25,7 +25,7 @@ Then visit http://localhost:8000/. The site works fully offline (`file://`) — 
 | `app.js` | Theme toggle, active-section nav, reveal on scroll, project filters + search, project details dialog, copy email |
 | `assets/projects/` | Project imagery (newsprint-halftone) |
 | `assets/qr/` | Contact QR codes (LinkedIn, GitHub, email, bio.site) |
-| `.github/workflows/pages.yml` | Deploys to GitHub Pages on push to `main` |
+| `.github/workflows/pages.yml` | Deploys to GitHub Pages on push to `main` (kept so old links forward to the new address) |
 
 ## Project cards
 
@@ -38,7 +38,7 @@ CVs and employer-specific information are shared privately on request.
 ## Notes
 
 - No frameworks, no build tooling, no external fonts or CDNs.
-- Deployed with GitHub Pages (Source: **GitHub Actions**).
+- Hosted on Cloudflare Pages (no build step, output directory `/`); GitHub Pages kept only as a forwarding address.
 
 ## Ownership
 
