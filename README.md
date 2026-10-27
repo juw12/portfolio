@@ -25,6 +25,7 @@ Then visit http://localhost:8000/. The site works fully offline (`file://`) — 
 | `app.js` | Theme toggle, active-section nav, reveal on scroll, project filters + search, project details dialog, copy email |
 | `assets/projects/` | Project imagery (newsprint-halftone) |
 | `assets/qr/` | Contact QR codes (LinkedIn, GitHub, email, bio.site) |
+| `obsidian/` | Portfolio Obsidian vault: every project note as Markdown plus a one-file zip bundle — see [`obsidian/README.md`](obsidian/README.md) |
 | `.github/workflows/pages.yml` | Deploys to GitHub Pages on push to `main` (kept so old links keep working) |
 
 ## Project cards
