@@ -65,10 +65,13 @@ def main():
     now = dt.datetime.now(dt.timezone.utc).replace(microsecond=0)
 
     apps = load_apps(args.apps)
+    new_ids = []
     for app in apps:
         if app["id"] not in state:
             stamp = SEED_DATE if args.seed else now
             state[app["id"]] = stamp.isoformat()
+            if not args.seed:
+                new_ids.append(app["id"])
 
     dated = sorted(
         apps,
@@ -116,7 +119,20 @@ def main():
 
     (portfolio / "feed.xml").write_text(feed, encoding="utf-8")
     state_path.write_text(json.dumps(dict(sorted(state.items())), indent=2) + "\n", encoding="utf-8")
-    print(f"feed.xml: {len(items)} items, {len(state)} tracked ids")
+    # Hand-off for scripts/send_build_log.py (not committed; regenerated each run).
+    new_items = [
+        {
+            "id": app["id"],
+            "name": app.get("name", app["id"]),
+            "summary": plain_text(app.get("summary") or app.get("description") or app.get("desc")),
+            "url": project_url(app),
+            "image": f"{SITE_URL}/assets/projects/{app['image']}" if app.get("image") else "",
+        }
+        for app in apps
+        if app["id"] in new_ids
+    ]
+    (portfolio / "new-items.json").write_text(json.dumps(new_items, indent=2), encoding="utf-8")
+    print(f"feed.xml: {len(items)} items, {len(state)} tracked ids, {len(new_items)} new this run")
 
 
 if __name__ == "__main__":

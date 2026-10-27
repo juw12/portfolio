@@ -9,6 +9,9 @@
   // Signup provider. FormSubmit forwards each signup to my inbox; swap this URL
   // for a Buttondown/Kit/Substack endpoint later without touching the markup.
   var SIGNUP_ENDPOINT = "https://formsubmit.co/ajax/" + CONTACT_EMAIL;
+  // Kit (free plan) form ID. When set, signups go straight onto the Kit list
+  // (subscriber count, double opt-in, unsubscribe link, auto build-log emails).
+  var KIT_FORM_ID = "";
 
   // ------------------------------------------------------------------
   // Copy. English lives in the HTML; ID and ZH override by key.
@@ -88,6 +91,7 @@
       invalid: "That email doesn't look right.",
       sending: "Sending…",
       ok: "You're in. The next build log comes to you.",
+      okConfirm: "Almost there: check your inbox and tap Confirm.",
       fail: "Couldn't reach the list. <a href=\"mailto:" + CONTACT_EMAIL + "?subject=Add%20me%20to%20the%20build%20log\">Email me instead</a>."
     },
     id: {
@@ -106,6 +110,7 @@
       invalid: "Alamat email sepertinya salah.",
       sending: "Mengirim…",
       ok: "Berhasil. Build log berikutnya akan sampai ke Anda.",
+      okConfirm: "Sedikit lagi: cek inbox Anda dan ketuk Confirm.",
       fail: "Gagal terhubung. <a href=\"mailto:" + CONTACT_EMAIL + "?subject=Add%20me%20to%20the%20build%20log\">Kirim email saja</a>."
     },
     zh: {
@@ -124,6 +129,7 @@
       invalid: "信箱格式好像不對。",
       sending: "傳送中…",
       ok: "訂閱成功，下一封 Build Log 會寄給你。",
+      okConfirm: "快完成了：請到信箱點擊確認（Confirm）。",
       fail: "暫時連不上。<a href=\"mailto:" + CONTACT_EMAIL + "?subject=Add%20me%20to%20the%20build%20log\">改用 Email 聯絡我</a>。"
     }
   };
@@ -337,6 +343,24 @@
       }
       button.disabled = true;
       setNote(t("sending"), null);
+      if (KIT_FORM_ID) {
+        var kitData = new FormData();
+        kitData.append("email_address", email);
+        fetch("https://app.kit.com/forms/" + KIT_FORM_ID + "/subscriptions", {
+          method: "POST",
+          mode: "no-cors",
+          body: kitData
+        })
+          .then(function () {
+            logSection.classList.add("is-done");
+            setNote(t("okConfirm"), "ok");
+          })
+          .catch(function () {
+            button.disabled = false;
+            setNote(t("fail"), "error");
+          });
+        return;
+      }
       fetch(SIGNUP_ENDPOINT, {
         method: "POST",
         headers: {
