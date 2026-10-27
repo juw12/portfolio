@@ -773,3 +773,22 @@ svg {
 .jump:hover .jump-arrow {
   transform: translateY(2px);
 }
+
+
+/* Link to the Substack archive under the signup form */
+.past-issues {
+  margin: 10px 0 0;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.past-issues a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-decoration-color: var(--redline);
+  text-underline-offset: 3px;
+}
+
+.past-issues a:hover {
+  color: var(--redline);
+}

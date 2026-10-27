@@ -1829,3 +1829,32 @@ body.dialog-open {
     -webkit-line-clamp: unset;
   }
 }
+
+
+/* Build log links (projects header + footer) */
+.build-log-note {
+  margin: 10px 0 0;
+  font-size: 0.95rem;
+  color: var(--text-muted, inherit);
+}
+
+.build-log-note a,
+.footer-links a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--accent, currentColor);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.build-log-note a:hover,
+.footer-links a:hover {
+  color: var(--accent, inherit);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  font-size: 0.9rem;
+}
