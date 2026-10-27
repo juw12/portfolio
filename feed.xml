@@ -68,16 +68,6 @@
       <category>spec score</category><category>task board</category><category>1-click handoff</category><category>offline agent</category>
     </item>
     <item>
-      <title>Lingua</title>
-      <link>https://juw12.github.io/projects/lingua/</link>
-      <guid isPermaLink="false">juwenlie-project-lingua</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/lingua.png" alt="Lingua in dark mode: English and Traditional Chinese text, a Light mode toggle, context and a local model selector" width="600"></p><p>Private, offline Windows translator for English, Chinese and Bahasa Indonesia, running on a local Ollama model.</p>]]></description>
-      <jl:summary>Private, offline Windows translator for English, Chinese and Bahasa Indonesia, running on a local Ollama model.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/lingua.png" type="image/png" length="0"/>
-      <category>offline translation</category><category>Ollama</category><category>Windows</category><category>multilingual</category>
-    </item>
-    <item>
       <title>Shortcraft</title>
       <link>https://juw12.github.io/projects/shortcraft/</link>
       <guid isPermaLink="false">juwenlie-project-shortcraft</guid>
