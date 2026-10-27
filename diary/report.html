@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productivity Diary — Formal Report</title>
+  <style>
+    /* === DESIGN TOKENS — Newspaper/Editorial Aesthetic (matches index.html) === */
+    :root {
+      --color-paper: #faf8f3;
+      --color-ink: #1a1a1a;
+      --color-accent: #8b1a1a;
+      --color-muted: #6b6b6b;
+      --color-border: #d4cfc4;
+      --color-success: #2d5016;
+      --color-warning: #8b6b1a;
+      
+      --font-heading: Georgia, 'Times New Roman', serif;
+      --font-body: Georgia, 'Times New Roman', serif;
+      --font-mono: 'Courier New', Courier, monospace;
+      
+      --spacing-xs: 4px;
+      --spacing-sm: 8px;
+      --spacing-md: 16px;
+      --spacing-lg: 24px;
+      --spacing-xl: 32px;
+      --spacing-xxl: 48px;
+      
+      --shadow-card: 0 2px 8px rgba(0,0,0,0.08);
+      --radius-card: 4px;
+    }
+    
+    /* === RESET & BASE === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-paper);
+      color: var(--color-ink);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* === LAYOUT === */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: var(--spacing-lg) var(--spacing-md);
+    }
+    
+    /* === LETTERHEAD === */
+    header {
+      border-bottom: 3px double var(--color-ink);
+      padding-bottom: var(--spacing-lg);
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    .letterhead-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--color-ink);
+      letter-spacing: -0.02em;
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    .letterhead-subtitle {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .letterhead-meta {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      color: var(--color-muted);
+    }
+    
+    .letterhead-meta-line {
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    /* === EXECUTIVE SUMMARY === */
+    .executive-summary {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      padding: var(--spacing-lg);
+      box-shadow: var(--shadow-card);
+      margin-bottom: var(--spacing-xxl);
+    }
+    
+    .executive-summary h2 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-ink);
+      margin-bottom: var(--spacing-md);
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--spacing-sm);
+    }
+    
+    .executive-summary p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--color-ink);
+    }
+    
+    /* === KPI TILES === */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-xxl);
+    }
+    
+    .kpi-tile {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      padding: var(--spacing-lg);
+      box-shadow: var(--shadow-card);
+      text-align: center;
+    }
+    
+    .kpi-label {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    .kpi-value {
+      font-family: var(--font-mono);
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      font-weight: 700;
+      color: var(--color-accent);
+    }
+    
+    /* === SUMMARY TABLE === */
+    .table-section {
+      margin-bottom: var(--spacing-xxl);
+    }
+    
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-ink);
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--spacing-sm);
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      font-size: 0.875rem;
+    }
+    
+    .data-table thead {
+      background: var(--color-paper);
+      border-bottom: 2px solid var(--color-ink);
+    }
+    
+    .data-table th {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      text-align: left;
+      padding: var(--spacing-sm) var(--spacing-md);
+      color: var(--color-ink);
+    }
+    
+    .data-table td {
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-bottom: 1px solid var(--color-border);
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+    }
+    
+    .data-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .data-table tbody tr:hover {
+      background: var(--color-paper);
+    }
+    
+    .stars-cell {
+      color: var(--color-accent);
+      letter-spacing: 2px;
+    }
+    
+    /* === DAY SECTIONS === */
+    .day-section {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      padding: var(--spacing-lg);
+      box-shadow: var(--shadow-card);
+      margin-bottom: var(--spacing-md);
+      break-inside: avoid;
+    }
+    
+    .day-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-md);
+      padding-bottom: var(--spacing-sm);
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    .day-section-title {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-ink);
+    }
+    
+    .day-section-weekday {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--color-muted);
+      font-style: italic;
+    }
+    
+    .day-kpi-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+    }
+    
+    .kpi-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+    }
+    
+    .kpi-item-label {
+      color: var(--color-muted);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+    
+    .kpi-item-value {
+      font-weight: 600;
+      color: var(--color-ink);
+    }
+    
+    .stars-inline {
+      color: var(--color-accent);
+      letter-spacing: 2px;
+    }
+    
+    .day-tokens-line {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--color-muted);
+      margin-bottom: var(--spacing-md);
+      padding: var(--spacing-sm);
+      background: var(--color-paper);
+      border-radius: 3px;
+    }
+    
+    /* === APP BARS === */
+    .top-apps-section {
+      margin-top: var(--spacing-md);
+      padding-top: var(--spacing-md);
+      border-top: 1px dashed var(--color-border);
+    }
+    
+    .top-apps-title {
+      font-family: var(--font-heading);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-muted);
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .app-bar-row {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      margin-bottom: 6px;
+    }
+    
+    .app-name {
+      min-width: 140px;
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--color-ink);
+    }
+    
+    .app-bar-track {
+      flex-grow: 1;
+      max-width: 250px;
+      height: 10px;
+      background: var(--color-border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    
+    .app-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+    }
+    
+    .app-bar-fill.productive { background: var(--color-success); }
+    .app-bar-fill.distracting { background: var(--color-accent); }
+    .app-bar-fill.neutral { background: var(--color-muted); }
+    
+    .app-time {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-muted);
+      min-width: 60px;
+      text-align: right;
+    }
+    
+    /* === COACH SECTION === */
+    .coach-section {
+      margin-top: var(--spacing-md);
+      padding: var(--spacing-md);
+      background: var(--color-paper);
+      border-left: 3px solid var(--color-accent);
+      border-radius: 3px;
+    }
+    
+    .coach-label {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    .coach-text {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--color-ink);
+    }
+    
+    .no-activity {
+      font-style: italic;
+      color: var(--color-muted);
+      font-size: 0.875rem;
+    }
+    
+    /* === PRINT BUTTON === */
+    .print-actions {
+      margin-bottom: var(--spacing-xl);
+      text-align: right;
+    }
+    
+    .print-btn {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      padding: var(--spacing-sm) var(--spacing-lg);
+      background: var(--color-ink);
+      color: white;
+      border: none;
+      border-radius: var(--radius-card);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .print-btn:hover {
+      background: var(--color-accent);
+    }
+    
+    /* === ERROR STATE === */
+    .error-state {
+      text-align: center;
+      padding: var(--spacing-xxl);
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+    }
+    
+    .error-state h2 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      margin-bottom: var(--spacing-md);
+      color: var(--color-ink);
+    }
+    
+    .error-state p {
+      color: var(--color-muted);
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .error-state code {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      background: var(--color-paper);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+    
+    /* === RESPONSIVE === */
+    @media (max-width: 640px) {
+      .container {
+        padding: var(--spacing-md) var(--spacing-sm);
+      }
+      
+      .letterhead-meta-line {
+        font-size: 0.75rem;
+      }
+      
+      .kpi-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .data-table {
+        font-size: 0.75rem;
+      }
+      
+      .data-table th, .data-table td {
+        padding: var(--spacing-xs) var(--spacing-sm);
+      }
+      
+      .day-section-header {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+      }
+      
+      .day-kpi-line {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+      }
+      
+      .app-bar-row {
+        flex-wrap: wrap;
+      }
+      
+      .app-name {
+        min-width: 100%;
+        margin-bottom: 4px;
+      }
+      
+      .app-bar-track {
+        max-width: 100%;
+      }
+      
+      .app-time {
+        text-align: left;
+      }
+    }
+    
+    /* === PRINT STYLES === */
+    @media print {
+      body {
+        background: white;
+      }
+      
+      .container {
+        max-width: 100%;
+        padding: 0;
+      }
+      
+      .print-actions {
+        display: none;
+      }
+      
+      .kpi-tile, .executive-summary, .data-table, .day-section {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+      
+      .day-section {
+        page-break-inside: avoid;
+      }
+      
+      a {
+        text-decoration: none;
+        color: var(--color-ink);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="letterhead-title">Productivity Diary</div>
+      <div class="letterhead-subtitle">Formal Report</div>
+      <div class="letterhead-meta" id="letterheadMeta">
+        <div class="letterhead-meta-line">Loading…</div>
+      </div>
+    </header>
+    
+    <div class="print-actions">
+      <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+    </div>
+    
+    <main id="main">
+      <!-- Content injected by JavaScript -->
+    </main>
+  </div>
+  
+  <script>
+    (function() {
+      'use strict';
+      
+      // === UTILITIES ===
+      
+      function formatNumber(n) {
+        return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      }
+      
+      function formatTokens(n) {
+        if (n >= 1000000) {
+          return (n / 1000000).toFixed(2) + 'M';
+        } else if (n >= 1000) {
+          return (n / 1000).toFixed(1) + 'k';
+        } else {
+          return formatNumber(n);
+        }
+      }
+      
+      function formatSeconds(sec) {
+        if (sec < 60) return sec + 's';
+        const h = Math.floor(sec / 3600);
+        const m = Math.floor((sec % 3600) / 60);
+        if (h > 0 && m > 0) {
+          return h + 'h ' + m + 'm';
+        } else if (h > 0) {
+          return h + 'h';
+        }
+        return m + 'm';
+      }
+      
+      function renderStars(stars) {
+        return '★'.repeat(stars) + '☆'.repeat(5 - stars);
+      }
+      
+      function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+      
+      function parseDate(dateStr) {
+        return new Date(dateStr);
+      }
+      
+      function formatDateRange(days) {
+        if (!days || days.length === 0) return '—';
+        const dates = days.map(d => d.day).sort();
+        return dates[0] + ' – ' + dates[dates.length - 1];
+      }
+      
+      function getCategoryColor(category) {
+        switch (category) {
+          case 'productive': return 'productive';
+          case 'distracting': return 'distracting';
+          default: return 'neutral';
+        }
+      }
+      
+      // === RENDER FUNCTIONS ===
+      
+      function renderError(message) {
+        return `
+          <div class="error-state">
+            <h2>No Data Available</h2>
+            <p>${escapeHtml(message)}</p>
+            <p style="font-family: var(--font-mono); font-size: 0.875rem;">
+              Make sure <code>data.json</code> exists in the same directory as this page.
+            </p>
+          </div>
+        `;
+      }
+      
+      function renderExecutiveSummary(data) {
+        const { totals, days } = data;
+        
+        // Find best day
+        let bestDay = days[0];
+        for (const day of days) {
+          if (day.score > bestDay.score) {
+            bestDay = day;
+          }
+        }
+        
+        const totalDeepWork = days.reduce((sum, d) => sum + d.deep_work_seconds, 0);
+        const avgScore = totals.score_avg;
+        const bestScore = bestDay.score;
+        const bestDate = bestDay.day;
+        const totalTokens = totals.tokens_total;
+        const totalPomodoros = totals.pomodoros_total;
+        const totalDays = totals.days;
+        
+        return `
+          <section class="executive-summary">
+            <h2>Executive Summary</h2>
+            <p>
+              Over the reporting period of ${formatDateRange(days)}, this diary covers 
+              <strong>${totalDays} days</strong> of activity. The average daily score was 
+              <strong>${avgScore.toFixed(1)}</strong>, with the best performance on 
+              <strong>${bestDate}</strong> (score: ${bestScore.toFixed(0)}). Total deep work 
+              accumulated to <strong>${formatSeconds(totalDeepWork)}</strong>, alongside 
+              <strong>${formatTokens(totalTokens)}</strong> AI tokens processed and 
+              <strong>${totalPomodoros}</strong> Pomodoro sessions completed.
+            </p>
+          </section>
+        `;
+      }
+      
+      function renderKPIs(totals, days) {
+        const dateRange = formatDateRange(days);
+        return `
+          <section class="kpi-grid">
+            <div class="kpi-tile">
+              <div class="kpi-label">Average Score</div>
+              <div class="kpi-value">${totals.score_avg.toFixed(1)}</div>
+            </div>
+            <div class="kpi-tile">
+              <div class="kpi-label">Total AI Tokens</div>
+              <div class="kpi-value">${formatTokens(totals.tokens_total)}</div>
+            </div>
+            <div class="kpi-tile">
+              <div class="kpi-label">Total Pomodoros</div>
+              <div class="kpi-value">${totals.pomodoros_total}</div>
+            </div>
+            <div class="kpi-tile">
+              <div class="kpi-label">Days Covered</div>
+              <div class="kpi-value">${totals.days}</div>
+            </div>
+          </section>
+        `;
+      }
+      
+      function renderSummaryTable(days) {
+        const rows = days.map(day => `
+          <tr>
+            <td>${escapeHtml(day.day)}</td>
+            <td>${escapeHtml(day.weekday)}</td>
+            <td>${day.score.toFixed(0)}</td>
+            <td class="stars-cell">${renderStars(day.stars)}</td>
+            <td>${day.pomodoros}</td>
+            <td>${formatSeconds(day.deep_work_seconds)}</td>
+            <td>${formatNumber(day.tokens.total)}</td>
+          </tr>
+        `).join('');
+        
+        return `
+          <section class="table-section">
+            <h2 class="section-title">Daily Summary</h2>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Weekday</th>
+                  <th>Score</th>
+                  <th>Stars</th>
+                  <th>Pomodoros</th>
+                  <th>Deep Work</th>
+                  <th>AI Tokens</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${rows}
+              </tbody>
+            </table>
+          </section>
+        `;
+      }
+      
+      function renderDaySection(day) {
+        const scoreClass = day.score >= 70 ? 'high' : day.score >= 40 ? 'mid' : 'low';
+        const maxAppTime = day.top_apps && day.top_apps.length > 0 
+          ? Math.max(...day.top_apps.map(a => a.seconds)) 
+          : 1;
+        
+        const hasActivity = day.score > 0 || day.pomodoros > 0 || day.deep_work_seconds > 0;
+        
+        let appsHtml = '';
+        if (day.top_apps && day.top_apps.length > 0) {
+          appsHtml = `
+            <div class="top-apps-section">
+              <div class="top-apps-title">Top Applications</div>
+              ${day.top_apps.slice(0, 5).map(app => `
+                <div class="app-bar-row">
+                  <span class="app-name">${escapeHtml(app.app)}</span>
+                  <div class="app-bar-track">
+                    <div class="app-bar-fill ${getCategoryColor(app.category)}" 
+                         style="width: ${(app.seconds / maxAppTime) * 100}%"></div>
+                  </div>
+                  <span class="app-time">${formatSeconds(app.seconds)}</span>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        } else {
+          appsHtml = `
+            <div class="top-apps-section">
+              <div class="top-apps-title">Top Applications</div>
+              <p class="no-activity">No application data recorded.</p>
+            </div>
+          `;
+        }
+        
+        const coachHtml = day.coach 
+          ? `<p class="coach-text">${escapeHtml(day.coach)}</p>`
+          : `<p class="no-activity">No coaching note available.</p>`;
+        
+        if (!hasActivity && (!day.top_apps || day.top_apps.length === 0)) {
+          return `
+            <article class="day-section">
+              <div class="day-section-header">
+                <div>
+                  <div class="day-section-title">${escapeHtml(day.day)}</div>
+                  <div class="day-section-weekday">${escapeHtml(day.weekday)}</div>
+                </div>
+              </div>
+              <p class="no-activity">No activity recorded.</p>
+            </article>
+          `;
+        }
+        
+        return `
+          <article class="day-section">
+            <div class="day-section-header">
+              <div>
+                <div class="day-section-title">${escapeHtml(day.day)}</div>
+                <div class="day-section-weekday">${escapeHtml(day.weekday)}</div>
+              </div>
+            </div>
+            
+            <div class="day-kpi-line">
+              <div class="kpi-item">
+                <span class="kpi-item-label">Score:</span>
+                <span class="kpi-item-value">${day.score.toFixed(0)}</span>
+              </div>
+              <div class="kpi-item">
+                <span class="kpi-item-label">Stars:</span>
+                <span class="stars-inline">${renderStars(day.stars)}</span>
+              </div>
+              <div class="kpi-item">
+                <span class="kpi-item-label">Pomodoros:</span>
+                <span class="kpi-item-value">${day.pomodoros}</span>
+              </div>
+              <div class="kpi-item">
+                <span class="kpi-item-label">Deep Work:</span>
+                <span class="kpi-item-value">${formatSeconds(day.deep_work_seconds)}</span>
+              </div>
+            </div>
+            
+            <div class="day-tokens-line">
+              <strong>AI Tokens:</strong> 
+              Input: ${formatNumber(day.tokens.input)} | 
+              Output: ${formatNumber(day.tokens.output)} | 
+              Total: ${formatNumber(day.tokens.total)} | 
+              Requests: ${formatNumber(day.tokens.requests)}
+            </div>
+            
+            ${appsHtml}
+            
+            <div class="coach-section">
+              <div class="coach-label">Coach</div>
+              ${coachHtml}
+            </div>
+          </article>
+        `;
+      }
+      
+      function renderDaySections(days) {
+        return `
+          <section>
+            <h2 class="section-title">Daily Entries</h2>
+            ${days.map(renderDaySection).join('')}
+          </section>
+        `;
+      }
+      
+      // === MAIN RENDER ===
+      
+      async function loadData() {
+        try {
+          const response = await fetch('./data.json');
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
+          return await response.json();
+        } catch (err) {
+          console.error('Failed to load data.json:', err);
+          return null;
+        }
+      }
+      
+      function render(data) {
+        const main = document.getElementById('main');
+        const letterheadMeta = document.getElementById('letterheadMeta');
+        
+        if (!data) {
+          main.innerHTML = renderError('Could not load data.json. File may be missing or malformed.');
+          letterheadMeta.innerHTML = '<div class="letterhead-meta-line">Reporting Period: —</div><div class="letterhead-meta-line">Generated: —</div>';
+          return;
+        }
+        
+        if (!data.days || data.days.length === 0) {
+          main.innerHTML = renderError('No diary entries yet. Data is empty.');
+          letterheadMeta.innerHTML = `
+            <div class="letterhead-meta-line">Reporting Period: —</div>
+            <div class="letterhead-meta-line">Generated: ${data.generated_at || '—'}</div>
+          `;
+          return;
+        }
+        
+        // Set letterhead metadata
+        const dateRange = formatDateRange(data.days);
+        letterheadMeta.innerHTML = `
+          <div class="letterhead-meta-line">Reporting Period: ${dateRange}</div>
+          <div class="letterhead-meta-line">Generated: ${data.generated_at}</div>
+        `;
+        
+        // Build main content
+        let html = '';
+        html += renderExecutiveSummary(data);
+        html += renderKPIs(data.totals, data.days);
+        html += renderSummaryTable(data.days);
+        html += renderDaySections(data.days);
+        
+        main.innerHTML = html;
+      }
+      
+      // === INIT ===
+      
+      loadData().then(render);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productivity Diary</title>
+  <style>
+    /* === DESIGN TOKENS — Newspaper/Editorial Aesthetic === */
+    :root {
+      --color-paper: #faf8f3;
+      --color-ink: #1a1a1a;
+      --color-accent: #8b1a1a;
+      --color-muted: #6b6b6b;
+      --color-border: #d4cfc4;
+      --color-success: #2d5016;
+      --color-warning: #8b6b1a;
+      
+      --font-heading: Georgia, 'Times New Roman', serif;
+      --font-body: Georgia, 'Times New Roman', serif;
+      --font-mono: 'Courier New', Courier, monospace;
+      
+      --spacing-xs: 4px;
+      --spacing-sm: 8px;
+      --spacing-md: 16px;
+      --spacing-lg: 24px;
+      --spacing-xl: 32px;
+      --spacing-xxl: 48px;
+      
+      --shadow-card: 0 2px 8px rgba(0,0,0,0.08);
+      --radius-card: 4px;
+    }
+    
+    /* === RESET & BASE === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-paper);
+      color: var(--color-ink);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* === LAYOUT === */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--spacing-lg) var(--spacing-md);
+    }
+    
+    /* === HEADER === */
+    header {
+      border-bottom: 3px double var(--color-ink);
+      padding-bottom: var(--spacing-lg);
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: var(--spacing-md);
+    }
+    
+    h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--color-ink);
+      letter-spacing: -0.02em;
+    }
+    
+    .generated-at {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      color: var(--color-muted);
+    }
+    
+    /* === KPI TILES === */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-xxl);
+    }
+    
+    .kpi-tile {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      padding: var(--spacing-lg);
+      box-shadow: var(--shadow-card);
+      text-align: center;
+    }
+    
+    .kpi-label {
+      font-family: var(--font-heading);
+      font-size: 0.875rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    .kpi-value {
+      font-family: var(--font-mono);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--color-accent);
+    }
+    
+    /* === DAY CARDS === */
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 600;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--spacing-sm);
+      margin-bottom: var(--spacing-lg);
+      color: var(--color-ink);
+    }
+    
+    .days-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-xxl);
+    }
+    
+    .day-card {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      padding: var(--spacing-lg);
+      box-shadow: var(--shadow-card);
+    }
+    
+    .day-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-md);
+      padding-bottom: var(--spacing-sm);
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    .day-date {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    
+    .day-weekday {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--color-muted);
+      font-style: italic;
+    }
+    
+    .day-kpi {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+      flex-wrap: wrap;
+    }
+    
+    .stars {
+      color: var(--color-accent);
+      font-size: 1.25rem;
+      letter-spacing: 2px;
+    }
+    
+    .score-badge {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 3px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-border);
+    }
+    
+    .score-badge.high { background: #e8f5e9; border-color: var(--color-success); color: var(--color-success); }
+    .score-badge.mid { background: #fff8e1; border-color: var(--color-warning); color: var(--color-warning); }
+    .score-badge.low { background: #ffebee; border-color: var(--color-accent); color: var(--color-accent); }
+    
+    .day-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--spacing-md);
+    }
+    
+    .day-metric {
+      padding: var(--spacing-sm);
+    }
+    
+    .metric-label {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+    
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-ink);
+    }
+    
+    .top-apps {
+      margin-top: var(--spacing-md);
+      padding-top: var(--spacing-md);
+      border-top: 1px dashed var(--color-border);
+    }
+    
+    .top-apps-title {
+      font-family: var(--font-heading);
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-sm);
+      color: var(--color-muted);
+    }
+    
+    .app-bar {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      margin-bottom: 4px;
+      font-size: 0.875rem;
+    }
+    
+    .app-name {
+      min-width: 120px;
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+    }
+    
+    .app-bar-fill {
+      height: 8px;
+      background: var(--color-accent);
+      border-radius: 2px;
+      flex-grow: 1;
+      max-width: 200px;
+    }
+    
+    .app-bar-empty {
+      height: 8px;
+      background: var(--color-border);
+      border-radius: 2px;
+      flex-grow: 1;
+      max-width: 200px;
+    }
+    
+    .app-time {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-muted);
+      min-width: 60px;
+      text-align: right;
+    }
+    
+    /* === TOKEN TREND CHART === */
+    .chart-container {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      padding: var(--spacing-lg);
+      box-shadow: var(--shadow-card);
+      margin-bottom: var(--spacing-xxl);
+    }
+    
+    .chart-svg {
+      width: 100%;
+      height: 200px;
+      display: block;
+    }
+    
+    .chart-axis {
+      stroke: var(--color-border);
+      stroke-width: 1;
+    }
+    
+    .chart-grid {
+      stroke: var(--color-border);
+      stroke-width: 0.5;
+      stroke-dasharray: 4,4;
+    }
+    
+    .chart-line {
+      fill: none;
+      stroke: var(--color-accent);
+      stroke-width: 2;
+    }
+    
+    .chart-area {
+      fill: var(--color-accent);
+      opacity: 0.1;
+    }
+    
+    .chart-point {
+      fill: white;
+      stroke: var(--color-accent);
+      stroke-width: 2;
+    }
+    
+    .chart-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      fill: var(--color-muted);
+    }
+    
+    /* === ERROR/EMPTY STATE === */
+    .error-state {
+      text-align: center;
+      padding: var(--spacing-xxl);
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+    }
+    
+    .error-state h2 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      margin-bottom: var(--spacing-md);
+      color: var(--color-ink);
+    }
+    
+    .error-state p {
+      color: var(--color-muted);
+      margin-bottom: var(--spacing-md);
+    }
+    
+    /* === RESPONSIVE === */
+    @media (max-width: 640px) {
+      .container {
+        padding: var(--spacing-md) var(--spacing-sm);
+      }
+      
+      .header-content {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+      }
+      
+      .day-header {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+      }
+      
+      .day-kpi {
+        justify-content: flex-start;
+      }
+      
+      .day-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .app-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .app-name {
+        min-width: auto;
+      }
+      
+      .app-time {
+        text-align: left;
+      }
+    }
+    
+    /* === PRINT === */
+    @media print {
+      body {
+        background: white;
+      }
+      
+      .kpi-tile, .day-card, .chart-container {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <h1>Productivity Diary</h1>
+        <div class="generated-at" id="generatedAt">Loading…</div>
+      </div>
+    </header>
+    
+    <main id="main">
+      <!-- Content injected by JavaScript -->
+    </main>
+  </div>
+  
+  <script>
+    (function() {
+      'use strict';
+      
+      // === UTILITIES ===
+      
+      function formatTokens(n) {
+        if (n >= 1000000) {
+          return (n / 1000000).toFixed(2) + 'M';
+        } else if (n >= 1000) {
+          return (n / 1000).toFixed(1) + 'k';
+        } else {
+          return n.toString();
+        }
+      }
+      
+      function formatSeconds(sec) {
+        if (sec < 60) return sec + 's';
+        const h = Math.floor(sec / 3600);
+        const m = Math.floor((sec % 3600) / 60);
+        if (h > 0) {
+          return h + 'h ' + m + 'm';
+        }
+        return m + 'm';
+      }
+      
+      function formatTimeAgo(isoString) {
+        const date = new Date(isoString);
+        const now = new Date();
+        const diff = now - date;
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        if (hours < 24) {
+          return hours + 'h ago';
+        }
+        const days = Math.floor(hours / 24);
+        return days + 'd ago';
+      }
+      
+      function getScoreClass(score) {
+        if (score >= 70) return 'high';
+        if (score >= 40) return 'mid';
+        return 'low';
+      }
+      
+      function renderStars(stars) {
+        return '★'.repeat(stars) + '☆'.repeat(5 - stars);
+      }
+      
+      // === RENDER FUNCTIONS ===
+      
+      function renderError(message) {
+        return `
+          <div class="error-state">
+            <h2>No Data Available</h2>
+            <p>${message}</p>
+            <p style="font-family: var(--font-mono); font-size: 0.875rem;">
+              Make sure <code>data.json</code> exists in the same directory as this page.
+            </p>
+          </div>
+        `;
+      }
+      
+      function renderKPIs(totals) {
+        return `
+          <section class="kpi-grid">
+            <div class="kpi-tile">
+              <div class="kpi-label">Average Score</div>
+              <div class="kpi-value">${totals.score_avg.toFixed(1)}</div>
+            </div>
+            <div class="kpi-tile">
+              <div class="kpi-label">Total AI Tokens</div>
+              <div class="kpi-value">${formatTokens(totals.tokens_total)}</div>
+            </div>
+            <div class="kpi-tile">
+              <div class="kpi-label">Total Pomodoros</div>
+              <div class="kpi-value">${totals.pomodoros_total}</div>
+            </div>
+          </section>
+        `;
+      }
+      
+      function renderDayCard(day) {
+        const scoreClass = getScoreClass(day.score);
+        const maxAppTime = day.top_apps.length > 0 
+          ? Math.max(...day.top_apps.map(a => a.seconds)) 
+          : 1;
+        
+        const topAppsHTML = day.top_apps.length > 0 
+          ? `
+            <div class="top-apps">
+              <div class="top-apps-title">Top Applications</div>
+              ${day.top_apps.slice(0, 5).map(app => `
+                <div class="app-bar">
+                  <span class="app-name">${escapeHtml(app.app)}</span>
+                  <div class="app-bar-fill" style="width: ${(app.seconds / maxAppTime) * 100}%"></div>
+                  <span class="app-time">${formatSeconds(app.seconds)}</span>
+                </div>
+              `).join('')}
+            </div>
+          ` 
+          : '<div class="top-apps"><div class="top-apps-title">Top Applications</div><p style="color: var(--color-muted); font-size: 0.875rem;">No app data recorded</p></div>';
+        
+        return `
+          <article class="day-card">
+            <div class="day-header">
+              <div>
+                <div class="day-date">${day.day}</div>
+                <div class="day-weekday">${day.weekday}</div>
+              </div>
+              <div class="day-kpi">
+                <span class="stars" title="${day.stars} out of 5 stars">${renderStars(day.stars)}</span>
+                <span class="score-badge ${scoreClass}">Score: ${day.score.toFixed(0)}</span>
+              </div>
+            </div>
+            <div class="day-grid">
+              <div class="day-metric">
+                <div class="metric-label">Pomodoros</div>
+                <div class="metric-value">${day.pomodoros}</div>
+              </div>
+              <div class="day-metric">
+                <div class="metric-label">Deep Work</div>
+                <div class="metric-value">${formatSeconds(day.deep_work_seconds)}</div>
+              </div>
+              <div class="day-metric">
+                <div class="metric-label">Productive</div>
+                <div class="metric-value">${formatSeconds(day.productive_seconds)}</div>
+              </div>
+              <div class="day-metric">
+                <div class="metric-label">AI Tokens</div>
+                <div class="metric-value">${formatTokens(day.tokens.total)}</div>
+              </div>
+              <div class="day-metric">
+                <div class="metric-label">AI Requests</div>
+                <div class="metric-value">${day.tokens.requests}</div>
+              </div>
+            </div>
+            ${topAppsHTML}
+          </article>
+        `;
+      }
+      
+      function renderDaysList(days) {
+        return `
+          <section>
+            <h2 class="section-title">Daily Entries</h2>
+            <div class="days-list">
+              ${days.map(renderDayCard).join('')}
+            </div>
+          </section>
+        `;
+      }
+      
+      function renderTokenTrend(days) {
+        const last7Days = days.slice(0, 7).reverse();
+        const tokens = last7Days.map(d => d.tokens.total);
+        const maxToken = Math.max(...tokens, 1);
+        
+        const width = 100;
+        const height = 200;
+        const padding = { top: 20, right: 20, bottom: 40, left: 50 };
+        const chartWidth = width - padding.left - padding.right;
+        const chartHeight = height - padding.top - padding.bottom;
+        
+        const xStep = chartWidth / (last7Days.length - 1 || 1);
+        
+        let pathD = '';
+        let areaD = `M ${padding.left} ${height - padding.bottom} `;
+        const points = [];
+        
+        tokens.forEach((val, i) => {
+          const x = padding.left + (i * xStep);
+          const y = padding.top + chartHeight - (val / maxToken) * chartHeight;
+          points.push({ x, y, label: last7Days[i].day.slice(5), value: val });
+          
+          if (i === 0) {
+            pathD += `M ${x} ${y}`;
+            areaD += `L ${x} ${y}`;
+          } else {
+            pathD += ` L ${x} ${y}`;
+            areaD += ` L ${x} ${y}`;
+          }
+        });
+        
+        areaD += ` L ${padding.left + chartWidth} ${height - padding.bottom} Z`;
+        
+        const gridLines = [0, 0.25, 0.5, 0.75, 1];
+        
+        return `
+          <section>
+            <h2 class="section-title">Token Trend (Last 7 Days)</h2>
+            <div class="chart-container">
+              <svg class="chart-svg" viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMidYMid meet">
+                <!-- Grid lines -->
+                ${gridLines.map(ratio => {
+                  const y = padding.top + chartHeight * (1 - ratio);
+                  return `<line class="chart-grid" x1="${padding.left}" y1="${y}" x2="${padding.left + chartWidth}" y2="${y}" />`;
+                }).join('')}
+                
+                <!-- Y-axis labels -->
+                ${gridLines.map(ratio => {
+                  const y = padding.top + chartHeight * (1 - ratio);
+                  const label = ratio === 0 ? '0' : formatTokens(Math.round(maxToken * ratio));
+                  return `<text class="chart-label" x="${padding.left - 5}" y="${y + 3}" text-anchor="end">${label}</text>`;
+                }).join('')}
+                
+                <!-- Area fill -->
+                <path class="chart-area" d="${areaD}" />
+                
+                <!-- Line -->
+                <path class="chart-line" d="${pathD}" />
+                
+                <!-- Points -->
+                ${points.map(p => `
+                  <circle class="chart-point" cx="${p.x}" cy="${p.y}" r="3" />
+                  <text class="chart-label" x="${p.x}" y="${height - padding.bottom + 15}" text-anchor="middle">${p.label}</text>
+                `).join('')}
+              </svg>
+            </div>
+          </section>
+        `;
+      }
+      
+      function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+      
+      // === MAIN RENDER ===
+      
+      async function loadData() {
+        try {
+          const response = await fetch('./data.json');
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
+          return await response.json();
+        } catch (err) {
+          console.error('Failed to load data.json:', err);
+          return null;
+        }
+      }
+      
+      function render(data) {
+        const main = document.getElementById('main');
+        
+        if (!data) {
+          main.innerHTML = renderError('Could not load data.json. File may be missing or malformed.');
+          document.getElementById('generatedAt').textContent = '—';
+          return;
+        }
+        
+        if (!data.days || data.days.length === 0) {
+          main.innerHTML = renderError('No diary entries yet. Data is empty.');
+          document.getElementById('generatedAt').textContent = data.generated_at || '—';
+          return;
+        }
+        
+        let html = '';
+        html += renderKPIs(data.totals);
+        html += renderTokenTrend(data.days);
+        html += renderDaysList(data.days);
+        
+        main.innerHTML = html;
+        document.getElementById('generatedAt').textContent = 
+          `${data.generated_at} (${formatTimeAgo(data.generated_at)})`;
+      }
+      
+      // === INIT ===
+      
+      loadData().then(render);
+    })();
+  </script>
+</body>
+</html>
