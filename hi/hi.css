@@ -728,3 +728,48 @@ svg {
 .proof a:hover .proof-latest {
   color: var(--redline);
 }
+
+
+/* Proof line + jump-to-signup button share one row */
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  margin-top: 14px;
+}
+
+.cta-row .proof {
+  margin: 0;
+}
+
+.jump {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border: 1px solid var(--button);
+  background: var(--button);
+  color: var(--button-ink);
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.jump:hover,
+.jump:focus-visible {
+  background: var(--redline);
+  border-color: var(--redline);
+  color: #fff;
+}
+
+.jump-arrow {
+  transition: transform 0.2s var(--ease);
+}
+
+.jump:hover .jump-arrow {
+  transform: translateY(2px);
+}

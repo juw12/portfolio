@@ -42,6 +42,7 @@
       note: "Tanpa spam. Berhenti langganan cukup sekali klik.",
     proofShipped: "proyek sudah rilis",
     proofLatest: "terbaru:",
+    jump: "Dapatkan build log",
       fPortfolio: "Portofolio",
       fLog: "Build log",
       fEmail: "Email",
@@ -73,6 +74,7 @@
       note: "不寄垃圾信，一鍵即可取消訂閱。",
     proofShipped: "個專案已上線",
     proofLatest: "最新：",
+    jump: "訂閱 Build Log",
       fPortfolio: "作品集",
       fLog: "作品紀錄",
       fContact: "儲存聯絡人",
@@ -424,6 +426,25 @@
         }
       })
       .catch(function () {});
+  })();
+
+
+  // Jump button: smooth-scroll to the signup and put the cursor in the email box.
+  (function wireJump() {
+    var jump = document.getElementById("jump");
+    var email = document.getElementById("signup-email");
+    if (!jump || !email) {
+      return;
+    }
+    jump.addEventListener("click", function (event) {
+      event.preventDefault();
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var section = email.closest("section") || email;
+      section.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+      window.setTimeout(function () {
+        email.focus({ preventScroll: true });
+      }, reduce ? 0 : 450);
+    });
   })();
 
   // Portrait: only shown once ../assets/juwen.jpg actually exists, so no broken image.
