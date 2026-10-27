@@ -39,7 +39,9 @@
       v3: "Lagu baru sebagai juw",
       emailLabel: "Alamat email",
       subscribe: "Langganan",
-      note: "Tanpa spam. Berhenti cukup dengan satu balasan.",
+      note: "Tanpa spam. Berhenti langganan cukup sekali klik.",
+    proofShipped: "proyek sudah rilis",
+    proofLatest: "terbaru:",
       fPortfolio: "Portofolio",
       fLog: "Build log",
       fEmail: "Email",
@@ -68,7 +70,9 @@
       v3: "juw 的新作品",
       emailLabel: "電子郵件地址",
       subscribe: "訂閱",
-      note: "不寄垃圾信。回覆一句即可取消訂閱。",
+      note: "不寄垃圾信，一鍵即可取消訂閱。",
+    proofShipped: "個專案已上線",
+    proofLatest: "最新：",
       fPortfolio: "作品集",
       fLog: "作品紀錄",
       fContact: "儲存聯絡人",
@@ -390,4 +394,51 @@
   }
 
   applyLanguage(lang, false);
+
+  // Proof line: count shipped projects and name the newest one, straight from the feed
+  // the hourly sync bot rebuilds. The HTML ships sensible defaults if this fails.
+  (function loadProof() {
+    var countEl = document.getElementById("proof-count");
+    var latestEl = document.getElementById("proof-latest");
+    if (!countEl || !latestEl || !window.fetch || !window.DOMParser) {
+      return;
+    }
+    fetch("../feed.xml", { cache: "no-cache" })
+      .then(function (response) {
+        return response.ok ? response.text() : Promise.reject(response.status);
+      })
+      .then(function (text) {
+        var xml = new DOMParser().parseFromString(text, "application/xml");
+        var items = Array.prototype.slice.call(xml.getElementsByTagName("item"));
+        if (!items.length) {
+          return;
+        }
+        var newest = items.reduce(function (best, item) {
+          var date = Date.parse((item.getElementsByTagName("pubDate")[0] || {}).textContent || "") || 0;
+          return date > best.date ? { date: date, item: item } : best;
+        }, { date: -1, item: items[0] });
+        var title = (newest.item.getElementsByTagName("title")[0] || {}).textContent || "";
+        countEl.textContent = String(items.length);
+        if (title) {
+          latestEl.textContent = title.trim();
+        }
+      })
+      .catch(function () {});
+  })();
+
+  // Portrait: only shown once ../assets/juwen.jpg actually exists, so no broken image.
+  (function loadPortrait() {
+    var figure = document.getElementById("portrait");
+    if (!figure) {
+      return;
+    }
+    var img = figure.querySelector("img");
+    var probe = new Image();
+    probe.onload = function () {
+      img.src = probe.src;
+      figure.hidden = false;
+    };
+    probe.src = "../assets/juwen.jpg";
+  })();
+
 })();

@@ -641,3 +641,90 @@ svg {
     transition: none !important;
   }
 }
+
+
+/* Portrait: a "detail view" pinned to the sheet's top-right corner */
+.portrait {
+  float: right;
+  margin: 2px 0 12px 20px;
+  padding: 5px 5px 0;
+  border: 1px solid var(--ink);
+  background: var(--tile-hover);
+}
+
+.portrait[hidden] {
+  display: none;
+}
+
+.portrait img {
+  display: block;
+  width: 132px;
+  height: 132px;
+  object-fit: cover;
+}
+
+.portrait figcaption {
+  padding: 5px 0 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--muted);
+}
+
+@media (max-width: 520px) {
+  .portrait {
+    margin-left: 14px;
+  }
+
+  .portrait img {
+    width: 96px;
+    height: 96px;
+  }
+}
+
+/* Proof line under the bio */
+.proof {
+  margin: 14px 0 0;
+  font-family: var(--mono);
+  font-size: 12.5px;
+}
+
+.proof a {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 6px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.proof-num {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--redline);
+}
+
+.proof-sep {
+  color: var(--faint);
+}
+
+.proof-latest {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--redline);
+  text-underline-offset: 3px;
+}
+
+.proof-arrow {
+  transition: transform 0.2s var(--ease);
+}
+
+.proof a:hover .proof-arrow {
+  transform: translateX(3px);
+}
+
+.proof a:hover .proof-latest {
+  color: var(--redline);
+}
