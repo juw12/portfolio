@@ -6,13 +6,13 @@
   var staticMode = /[?&]static=1/.test(location.search);
   var BATAM_OFFSET_MIN = 7 * 60; // WIB, UTC+7
   var CONTACT_EMAIL = "juwen12006@gmail.com";
-  // Signup provider. FormSubmit forwards each signup to my inbox; swap this URL
-  // for a Buttondown/Kit/Substack endpoint later without touching the markup.
+  // Fallback signup provider (used only if SUBSTACK_URL is empty): FormSubmit
+  // forwards each signup to my inbox.
   var SIGNUP_ENDPOINT = "https://formsubmit.co/ajax/" + CONTACT_EMAIL;
   // Substack publication URL, e.g. "https://juwenlie.substack.com". When set, the
   // form hands the email to Substack (free, unlimited subscribers, subscriber count,
-  // one-click unsubscribe). Empty = keep using FormSubmit.
-  var SUBSTACK_URL = "";
+  // one-click unsubscribe). Empty = fall back to FormSubmit.
+  var SUBSTACK_URL = "https://juwenlie.substack.com";
 
   // ------------------------------------------------------------------
   // Copy. English lives in the HTML; ID and ZH override by key.
@@ -45,7 +45,7 @@
       fEmail: "Email",
       fContact: "Simpan kontak",
       fPrivacy: "Privasi",
-      privacy: "Tanpa cookie, tracker, atau analitik. Jika berlangganan, alamat Anda dikirim ke inbox saya lewat FormSubmit dan hanya dipakai untuk build log. Tidak pernah dijual atau dibagikan."
+      privacy: "Tanpa cookie, tracker, atau analitik. Jika berlangganan, alamat Anda diteruskan ke Substack (juwenlie.substack.com) yang mengirim build log dan menyediakan berhenti langganan sekali klik. Tidak pernah dijual atau dibagikan."
     },
     zh: {
       skip: "跳到內容",
@@ -73,7 +73,7 @@
       fLog: "作品紀錄",
       fContact: "儲存聯絡人",
       fPrivacy: "隱私",
-      privacy: "沒有 Cookie、追蹤器或分析工具。訂閱時，你的信箱會透過 FormSubmit 寄到我的收件匣，只用於 Build Log，絕不出售或分享。"
+      privacy: "沒有 Cookie、追蹤器或分析工具。訂閱時，你的信箱會交給 Substack（juwenlie.substack.com）寄送 Build Log，隨時可一鍵取消訂閱，絕不出售或分享。"
     }
   };
 
