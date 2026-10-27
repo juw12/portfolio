@@ -171,10 +171,10 @@
       <link>https://juw12.github.io/projects/sync/web.html</link>
       <guid isPermaLink="false">juwenlie-project-sync</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/sync-hero-halftone.jpg" alt="Sync listening room with a synced now-playing card, cross-service queue and party voice chat" width="600"></p><p>Listen to music together in real time across Spotify, Apple Music and YouTube, with voice chat and no account.</p>]]></description>
-      <jl:summary>Listen to music together in real time across Spotify, Apple Music and YouTube, with voice chat and no account.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/sync-hero-halftone.jpg" alt="Sync listening room with a synced now-playing card, cross-service queue and party voice chat" width="600"></p><p>Listen together in real time across Spotify, Apple Music and YouTube, with voice chat, on web, Android and iPhone.</p>]]></description>
+      <jl:summary>Listen together in real time across Spotify, Apple Music and YouTube, with voice chat, on web, Android and iPhone.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/sync-hero-halftone.jpg" type="image/jpeg" length="0"/>
-      <category>WebRTC</category><category>real-time sync</category><category>voice chat</category><category>cross-service</category><category>PWA</category>
+      <category>WebRTC</category><category>real-time sync</category><category>voice chat</category><category>cross-service</category><category>PWA</category><category>Android</category><category>iOS</category>
     </item>
     <item>
       <title>SOMA</title>
