@@ -5,8 +5,17 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 01 Oct 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 07:31:10 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Lingua</title>
+      <link>https://juw12.github.io/projects/lingua/web.html</link>
+      <guid isPermaLink="false">juwenlie-project-lingua</guid>
+      <pubDate>Tue, 27 Oct 2026 07:31:10 +0000</pubDate>
+      <description><![CDATA[<p>Universal language helper for Windows, iPhone and Android: text, pictures and live captions, with local AI and offline fallback.</p>]]></description>
+      <jl:summary>Universal language helper for Windows, iPhone and Android: text, pictures and live captions, with local AI and offline fallback.</jl:summary>
+      <category>translation desk</category><category>OCR</category><category>translation</category><category>Windows</category><category>iPhone</category><category>Android</category>
+    </item>
     <item>
       <title>Airiz Motor</title>
       <link>https://juw12.github.io/projects/airiz-motor/</link>
