@@ -19,6 +19,7 @@
       statusFallback: "mungkin di lab",
       pitch: "Saya membuat hardware yang tahan",
       bio: "R&amp;D mechanical engineer untuk kamera IP di Batam. Lulusan teknik dirgantara <a href=\"https://www.youtube.com/watch?v=WyFLAkQsCgY\" target=\"_blank\" rel=\"noopener\">Tamkang, Taiwan</a>. Di luar jam kerja saya membuat <a href=\"../#projects\">tool teknik gratis</a> dan musik progressive house sebagai <a href=\"https://li.sten.to/juwmusic\" target=\"_blank\" rel=\"noopener\">juw</a>.",
+      sayHello: "sapa saya",
       tbDwg: "No. gbr",
       tbRev: "Rev",
       tbMat: "Material",
@@ -42,31 +43,31 @@
       privacy: "Tanpa cookie, tracker, atau analitik. Jika berlangganan, alamat Anda dikirim ke inbox saya lewat FormSubmit dan hanya dipakai untuk build log. Tidak pernah dijual atau dibagikan."
     },
     zh: {
-      skip: "跳到内容",
-      statusFallback: "大概在实验室",
-      pitch: "我做的硬件经得起",
-      bio: "在巴淡岛做网络摄像机的研发机械工程师，毕业于台湾<a href=\"https://www.youtube.com/watch?v=WyFLAkQsCgY\" target=\"_blank\" rel=\"noopener\">淡江大学</a>航空太空工程系。下班后做<a href=\"../#projects\">免费的工程工具</a>，也以 <a href=\"https://li.sten.to/juwmusic\" target=\"_blank\" rel=\"noopener\">juw</a> 之名做 Progressive House。",
-      tbDwg: "图号",
+      skip: "跳到內容",
+      statusFallback: "大概在實驗室",
+      pitch: "我做的硬體經得起",
+      bio: "在印尼巴淡島擔任網路攝影機的研發機械工程師，畢業於台灣<a href=\"https://www.youtube.com/watch?v=WyFLAkQsCgY\" target=\"_blank\" rel=\"noopener\">淡江大學</a>航空太空工程學系。下班後做<a href=\"../#projects\">免費的工程工具</a>，也以 <a href=\"https://li.sten.to/juwmusic\" target=\"_blank\" rel=\"noopener\">juw</a> 之名創作 Progressive House。",
+      sayHello: "打聲招呼",
+      tbDwg: "圖號",
       tbRev: "版次",
       tbMat: "材料",
       tbMatVal: "咖啡",
       tbTol: "公差",
-      logTitle: "订阅 Build Log",
-      logSub: "只在我做出值得一看的东西时发一封信，大约每月一次。",
+      logTitle: "訂閱 Build Log",
+      logSub: "只在我做出值得一看的東西時寄一封信，大約每月一次。",
       k1: "工具",
-      v1: "免费工程应用，上线当天就通知",
-      k2: "笔记",
-      v2: "测试中坏了什么、又是怎么修好的",
-      k3: "音乐",
+      v1: "免費工程應用，上線當天通知你",
+      k2: "筆記",
+      v2: "測試中壞了什麼、又是怎麼修好的",
+      k3: "音樂",
       v3: "juw 的新作品",
-      emailLabel: "电子邮件地址",
-      subscribe: "订阅",
-      note: "不发垃圾信。回复一句即可退订。",
+      emailLabel: "電子郵件地址",
+      subscribe: "訂閱",
+      note: "不寄垃圾信。回覆一句即可取消訂閱。",
       fPortfolio: "作品集",
-      fEmail: "邮件",
-      fContact: "保存联系人",
-      fPrivacy: "隐私",
-      privacy: "没有 Cookie、追踪器或分析工具。订阅时，你的邮箱会通过 FormSubmit 发送到我的收件箱，只用于 Build Log，绝不出售或分享。"
+      fContact: "儲存聯絡人",
+      fPrivacy: "隱私",
+      privacy: "沒有 Cookie、追蹤器或分析工具。訂閱時，你的信箱會透過 FormSubmit 寄到我的收件匣，只用於 Build Log，絕不出售或分享。"
     }
   };
 
@@ -108,22 +109,22 @@
       fail: "Gagal terhubung. <a href=\"mailto:" + CONTACT_EMAIL + "?subject=Add%20me%20to%20the%20build%20log\">Kirim email saja</a>."
     },
     zh: {
-      place: "巴淡岛",
-      cycle: ["风雨。", "摔落。", "高温。", "量产。"],
+      place: "巴淡島",
+      cycle: ["風雨。", "摔落。", "高溫。", "量產。"],
       status: {
-        sleep: "大概在睡觉",
-        morning: "喝咖啡，准备去工厂",
-        lab: "在工厂跑 DVT",
-        lunch: "午餐时间",
-        afternoon: "在测试实验室",
+        sleep: "大概在睡覺",
+        morning: "喝咖啡，準備去工廠",
+        lab: "在工廠跑 DVT",
+        lunch: "午餐時間",
+        afternoon: "在測試實驗室",
         commute: "下班路上",
-        side: "在做业余项目",
-        weekend: "周末，折腾或做音乐"
+        side: "在做業餘專案",
+        weekend: "週末，動手做東西或做音樂"
       },
-      invalid: "邮箱格式好像不对。",
-      sending: "发送中…",
-      ok: "订阅成功，下一封 Build Log 会寄给你。",
-      fail: "暂时连不上。<a href=\"mailto:" + CONTACT_EMAIL + "?subject=Add%20me%20to%20the%20build%20log\">改用邮件联系我</a>。"
+      invalid: "信箱格式好像不對。",
+      sending: "傳送中…",
+      ok: "訂閱成功，下一封 Build Log 會寄給你。",
+      fail: "暫時連不上。<a href=\"mailto:" + CONTACT_EMAIL + "?subject=Add%20me%20to%20the%20build%20log\">改用 Email 聯絡我</a>。"
     }
   };
 
@@ -277,7 +278,7 @@
   // ------------------------------------------------------------------
   function applyLanguage(next, remember) {
     lang = runtime[next] ? next : "en";
-    root.setAttribute("lang", lang === "zh" ? "zh-Hans" : lang);
+    root.setAttribute("lang", lang === "zh" ? "zh-Hant" : lang);
     var copy = dictionary[lang];
     document.querySelectorAll("[data-i18n]").forEach(function (element) {
       var key = element.getAttribute("data-i18n");

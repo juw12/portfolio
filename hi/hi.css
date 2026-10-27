@@ -2,7 +2,7 @@
   --display: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
   --redline: #ff5a1f;
-  --page: 600px;
+  --page: 680px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -66,8 +66,8 @@ body {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-html[lang="zh-Hans"] body {
-  font-family: var(--display), "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
+html[lang="zh-Hant"] body {
+  font-family: var(--display), "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif;
 }
 
 a {
@@ -322,7 +322,7 @@ svg {
 /* ---------- Socials ---------- */
 .socials {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
   margin: 22px 0 0;
   padding: 0;
@@ -332,8 +332,8 @@ svg {
 .social {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
+  gap: 9px;
+  padding: 10px 10px;
   border: 1px solid var(--line);
   background: var(--tile);
   text-decoration: none;
