@@ -1832,13 +1832,155 @@ body.dialog-open {
 
 
 /* Build log links (projects header + footer) */
-.build-log-note {
-  margin: 10px 0 0;
-  font-size: 0.95rem;
-  color: var(--text-muted, inherit);
+/* Build log callout under the Projects intro */
+.build-log-cta {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px 16px;
+  align-items: start;
+  margin-top: 22px;
+  padding: 20px 22px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
+  border-radius: var(--radius);
+  background:
+    radial-gradient(120% 160% at 0% 0%, var(--accent-soft) 0%, transparent 60%),
+    var(--surface);
+  box-shadow: var(--shadow-md);
 }
 
-.build-log-note a,
+.build-log-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--accent);
+}
+
+.build-log-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.build-log-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.build-log-kicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 2px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.build-log-dot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.build-log-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  opacity: 0;
+  animation: build-log-ping 2.4s var(--ease) infinite;
+}
+
+@keyframes build-log-ping {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+.build-log-title {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.build-log-sub {
+  margin: 2px 0 0;
+  color: var(--text-muted);
+  font-size: 0.93rem;
+}
+
+.build-log-actions {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.build-log-actions .btn {
+  min-height: 40px;
+  padding: 0 16px;
+  font-size: 0.9rem;
+}
+
+.build-log-actions .btn-primary span {
+  transition: transform 0.15s ease;
+}
+
+.build-log-actions .btn-primary:hover span {
+  transform: translateX(3px);
+}
+
+@media (max-width: 560px) {
+  .build-log-cta {
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
+
+  .build-log-icon {
+    display: none;
+  }
+
+  .build-log-actions {
+    grid-column: 1;
+  }
+
+  .build-log-actions .btn {
+    flex: 1 1 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .build-log-dot::after {
+    animation: none;
+  }
+}
+
 .footer-links a {
   color: inherit;
   text-decoration: underline;
@@ -1847,7 +1989,6 @@ body.dialog-open {
   text-underline-offset: 3px;
 }
 
-.build-log-note a:hover,
 .footer-links a:hover {
   color: var(--accent, inherit);
 }
