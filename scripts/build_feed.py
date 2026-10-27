@@ -36,52 +36,160 @@ LOG_PAGE = """<!doctype html>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Build log · Juwen Lie</title>
   <meta name="description" content="Everything Juwen Lie ships: engineering tools, CAD models and side projects, newest first.">
+  <meta property="og:title" content="Build log · Juwen Lie">
+  <meta property="og:description" content="@@COUNT@@ projects shipped so far. Latest: @@LATEST_NAME@@.">
+  <meta property="og:image" content="https://juwenlie.pages.dev/assets/og-hi.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://juwenlie.pages.dev/log/">
   <link rel="alternate" type="application/rss+xml" title="Juwen Lie · build log" href="https://juwenlie.pages.dev/feed.xml">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-  <style>
-    :root {{ --ink:#16181d; --muted:rgba(22,24,29,.68); --faint:rgba(22,24,29,.42); --line:rgba(22,24,29,.14); --bg:#f4f1e8; --red:#ff5a1f; }}
-    * {{ box-sizing:border-box; }}
-    body {{ margin:0; color:var(--ink); font-family:"Space Grotesk",system-ui,sans-serif; line-height:1.55;
-           background:linear-gradient(rgba(40,70,120,.07) 1px,transparent 1px) 0 0/24px 24px,
-                      linear-gradient(90deg,rgba(40,70,120,.07) 1px,transparent 1px) 0 0/24px 24px, var(--bg); }}
-    main {{ max-width:720px; margin:0 auto; padding:36px 20px 60px; }}
-    .top {{ display:flex; justify-content:space-between; align-items:center; font-family:"JetBrains Mono",monospace; font-size:12px; }}
-    .top a {{ color:var(--ink); text-decoration:none; }}
-    .mark {{ display:inline-grid; place-items:center; width:34px; height:34px; border:1.5px solid var(--ink); }}
-    h1 {{ font-size:44px; letter-spacing:-.03em; line-height:1; margin:30px 0 8px; }}
-    .sub {{ color:var(--muted); margin:0 0 22px; }}
-    .cta {{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:26px; }}
-    .cta a {{ padding:9px 14px; border:1px solid var(--ink); color:var(--ink); text-decoration:none; font-weight:600; font-size:14px; background:rgba(255,255,255,.6); }}
-    .cta a.primary {{ background:var(--red); border-color:var(--red); color:#fff; }}
-    .item {{ display:grid; grid-template-columns:150px 1fr; gap:16px; padding:16px; margin-bottom:10px;
-            border:1px solid var(--line); background:rgba(255,255,255,.72); text-decoration:none; color:inherit; transition:border-color .2s; }}
-    .item:hover {{ border-color:var(--ink); }}
-    .item img {{ width:150px; height:94px; object-fit:cover; border:1px solid var(--line); background:#fff; }}
-    .date {{ font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--red); text-transform:uppercase; letter-spacing:.06em; }}
-    .item h2 {{ margin:2px 0 4px; font-size:18px; }}
-    .item p {{ margin:0; font-size:14px; color:var(--muted); }}
-    .foot {{ margin-top:26px; font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint); }}
-    .foot a {{ color:inherit; }}
-    @media (max-width:560px) {{ .item {{ grid-template-columns:1fr; }} .item img {{ width:100%; height:auto; aspect-ratio:16/10; }} }}
-  </style>
+  <link rel="stylesheet" href="./log.css">
+  <script>
+    // Same theme rule as /hi/: ?theme= > saved choice > visitor's local time.
+    (function () {
+      var saved = null;
+      try {
+        saved = localStorage.getItem("jl-theme");
+      } catch (error) {
+        saved = null;
+      }
+      var forced = (location.search.match(/[?&]theme=(light|dark)/) || [])[1];
+      var hour = new Date().getHours();
+      var theme = forced || saved || (hour >= 6 && hour < 18 ? "light" : "dark");
+      document.documentElement.setAttribute("data-theme", theme);
+      document.documentElement.classList.add("js");
+    })();
+  </script>
 </head>
 <body>
-  <main>
-    <div class="top"><a class="mark" href="../hi/" aria-label="Back to Juwen Lie">JL</a><a href="../">Portfolio →</a></div>
-    <h1>Build log</h1>
-    <p class="sub">Everything I ship (engineering tools, CAD models and side projects), newest first.</p>
-    <div class="cta">
-      <a class="primary" href="../hi/#log-title">Get new ones by email</a>
-      <a href="../feed.xml">Follow in a feed reader (RSS)</a>
-    </div>
-{items}
-    <p class="foot">Updated automatically · <a href="../hi/">juwenlie.pages.dev/hi</a></p>
+  <header class="bar">
+    <a class="mark" href="../hi/" aria-label="Juwen Lie: links">JL</a>
+    <nav class="bar-links" aria-label="Site">
+      <a href="../">Portfolio</a>
+      <a class="hide-sm" href="https://juwenlie.substack.com/archive">Substack</a>
+      <a class="hide-sm" href="../feed.xml">RSS</a>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle drafting / blueprint theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="sheet hero" aria-labelledby="log-title">
+      <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+      <div class="hero-body">
+        <p class="kicker"><span class="pulse" aria-hidden="true"></span>Last shipped @@LATEST_DATE@@ · @@LATEST_NAME@@</p>
+        <h1 id="log-title">Build log<span class="dot">.</span></h1>
+        <p class="dim">@@COUNT@@ builds · newest first</p>
+        <p class="lede">Engineering tools, CAD models and side projects I&rsquo;ve shipped. <strong>Get one short email when the next one lands.</strong></p>
+        <form class="signup" action="https://juwenlie.substack.com/subscribe" method="get" target="_blank">
+          <label class="visually-hidden" for="log-email">Email address</label>
+          <input id="log-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="fine">No spam · unsubscribe in one click · <a href="https://juwenlie.substack.com/archive">past issues</a> · <a href="../feed.xml">RSS</a></p>
+      </div>
+      <dl class="titleblock">
+        <div><dt>Dwg no.</dt><dd>JL-002</dd></div>
+        <div><dt>Builds</dt><dd class="big">@@COUNT@@</dd></div>
+        <div><dt>Rev</dt><dd>@@REV@@</dd></div>
+        <div><dt>Cadence</dt><dd>When it ships</dd></div>
+      </dl>
+    </section>
+
+    <h2 class="label">Latest build</h2>
+@@FEATURED@@
+
+    <h2 class="label">All builds <span class="count">@@RANGE@@</span></h2>
+    <ol class="rail">
+@@ITEMS@@
+    </ol>
+
+    <section class="sheet closing reveal">
+      <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+      <div>
+        <h2>Next build drops in your inbox.</h2>
+        <p>One email per ship. Nothing else.</p>
+      </div>
+      <a class="button" href="#log-email">Get the build log &uarr;</a>
+    </section>
+
+    <footer class="foot">
+      <span>&copy; 2026 Juwen Lie</span>
+      <a href="../">Portfolio</a>
+      <a href="../hi/">Links</a>
+      <a href="https://juwenlie.substack.com/">Substack</a>
+      <a href="../feed.xml">RSS</a>
+      <span>Updated automatically</span>
+    </footer>
   </main>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.getElementById("theme-toggle");
+      toggle.addEventListener("click", function () {
+        var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        try {
+          localStorage.setItem("jl-theme", next);
+        } catch (error) {}
+      });
+      var closingButton = document.querySelector(".closing .button");
+      closingButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        var field = document.getElementById("log-email");
+        field.scrollIntoView({ behavior: "smooth", block: "center" });
+        setTimeout(function () {
+          field.focus({ preventScroll: true });
+        }, 450);
+      });
+      var items = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        items.forEach(function (item) {
+          item.classList.add("in");
+        });
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: "0px 0px -8% 0px" });
+      items.forEach(function (item) {
+        observer.observe(item);
+      });
+    })();
+  </script>
 </body>
 </html>
 """
+
+
+def initials(name):
+    words = re.findall(r"[A-Za-z0-9]+", name)
+    if len(words) >= 2:
+        return (words[0][0] + words[1][0]).upper()
+    if words:
+        return words[0][:2].upper()
+    return "JL"
+
+
+def media_html(app, eager=False):
+    if app.get("image"):
+        loading = "eager" if eager else "lazy"
+        return (
+            f'<div class="media"><img src="../assets/projects/{html.escape(app["image"])}" '
+            f'alt="" loading="{loading}"></div>'
+        )
+    return f'<div class="media placeholder" aria-hidden="true"><span>{html.escape(initials(app.get("name", app["id"])))}</span><em>Render pending</em></div>'
 
 
 def load_apps(apps_path):
@@ -180,21 +288,49 @@ def main():
     (portfolio / "feed.xml").write_text(feed, encoding="utf-8")
 
     # Human-readable version of the same list.
+    total = len(apps)
     cards = []
-    for app in dated:
+    featured_html = ""
+    for index, app in enumerate(dated):
         published = dt.datetime.fromisoformat(state[app["id"]])
-        summary = plain_text(app.get("summary") or app.get("description") or app.get("desc"))
-        image_html = ""
-        if app.get("image"):
-            image_html = f'<img src="../assets/projects/{html.escape(app["image"])}" alt="" loading="lazy">'
+        summary = html.escape(plain_text(app.get("summary") or app.get("description") or app.get("desc")))
+        name = html.escape(app.get("name", app["id"]))
+        url = html.escape(project_url(app))
+        number = f"#{total - index:02d}"
+        date_text = published.strftime("%d %b %Y")
+        if index == 0:
+            featured_html = (
+                f'    <a class="sheet latest reveal" href="{url}" target="_blank" rel="noopener">\n'
+                '      <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>\n'
+                f"      {media_html(app, eager=True)}\n"
+                f'      <div class="latest-body"><span class="stamp">NEW · {number}</span>'
+                f'<span class="date">{date_text}</span><h2>{name}</h2><p>{summary}</p>'
+                '<span class="open">Open project <span>&rarr;</span></span></div>\n'
+                "    </a>"
+            )
+            continue
         cards.append(
-            f'    <a class="item" href="{html.escape(project_url(app))}" target="_blank" rel="noopener">'
-            f"{image_html}<div><span class=\"date\">{published.strftime('%d %b %Y')}</span>"
-            f"<h2>{html.escape(app.get('name', app['id']))}</h2><p>{html.escape(summary)}</p></div></a>"
+            f'      <li class="entry reveal"><span class="num">{number}</span>'
+            f'<a href="{url}" target="_blank" rel="noopener">'
+            f'<div class="entry-body"><span class="date">{date_text}</span><h3>{name}</h3><p>{summary}</p>'
+            '<span class="open">Open <span>&rarr;</span></span></div>'
+            f"{media_html(app)}</a></li>"
         )
+    latest = dated[0] if dated else {"id": "", "name": "—"}
+    latest_date = dt.datetime.fromisoformat(state[latest["id"]]) if dated else now
+    oldest_number = total - len(dated) + 1
+    page_html = (
+        LOG_PAGE.replace("@@ITEMS@@", "\n".join(cards))
+        .replace("@@FEATURED@@", featured_html)
+        .replace("@@COUNT@@", str(total))
+        .replace("@@LATEST_NAME@@", html.escape(latest.get("name", latest["id"])))
+        .replace("@@LATEST_DATE@@", latest_date.strftime("%d %b %Y"))
+        .replace("@@REV@@", latest_date.strftime("%y.%m.%d"))
+        .replace("@@RANGE@@", f"#{total - 1:02d} &rarr; #{oldest_number:02d}")
+    )
     log_dir = portfolio / "log"
     log_dir.mkdir(exist_ok=True)
-    (log_dir / "index.html").write_text(LOG_PAGE.format(items="\n".join(cards)), encoding="utf-8")
+    (log_dir / "index.html").write_text(page_html, encoding="utf-8")
     state_path.write_text(json.dumps(dict(sorted(state.items())), indent=2) + "\n", encoding="utf-8")
     # Hand-off for scripts/send_build_log.py (not committed; regenerated each run).
     new_items = [

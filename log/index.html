@@ -5,68 +5,160 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Build log · Juwen Lie</title>
   <meta name="description" content="Everything Juwen Lie ships: engineering tools, CAD models and side projects, newest first.">
+  <meta property="og:title" content="Build log · Juwen Lie">
+  <meta property="og:description" content="21 projects shipped so far. Latest: Lingua.">
+  <meta property="og:image" content="https://juwenlie.pages.dev/assets/og-hi.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://juwenlie.pages.dev/log/">
   <link rel="alternate" type="application/rss+xml" title="Juwen Lie · build log" href="https://juwenlie.pages.dev/feed.xml">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-  <style>
-    :root { --ink:#16181d; --muted:rgba(22,24,29,.68); --faint:rgba(22,24,29,.42); --line:rgba(22,24,29,.14); --bg:#f4f1e8; --red:#ff5a1f; }
-    * { box-sizing:border-box; }
-    body { margin:0; color:var(--ink); font-family:"Space Grotesk",system-ui,sans-serif; line-height:1.55;
-           background:linear-gradient(rgba(40,70,120,.07) 1px,transparent 1px) 0 0/24px 24px,
-                      linear-gradient(90deg,rgba(40,70,120,.07) 1px,transparent 1px) 0 0/24px 24px, var(--bg); }
-    main { max-width:720px; margin:0 auto; padding:36px 20px 60px; }
-    .top { display:flex; justify-content:space-between; align-items:center; font-family:"JetBrains Mono",monospace; font-size:12px; }
-    .top a { color:var(--ink); text-decoration:none; }
-    .mark { display:inline-grid; place-items:center; width:34px; height:34px; border:1.5px solid var(--ink); }
-    h1 { font-size:44px; letter-spacing:-.03em; line-height:1; margin:30px 0 8px; }
-    .sub { color:var(--muted); margin:0 0 22px; }
-    .cta { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:26px; }
-    .cta a { padding:9px 14px; border:1px solid var(--ink); color:var(--ink); text-decoration:none; font-weight:600; font-size:14px; background:rgba(255,255,255,.6); }
-    .cta a.primary { background:var(--red); border-color:var(--red); color:#fff; }
-    .item { display:grid; grid-template-columns:150px 1fr; gap:16px; padding:16px; margin-bottom:10px;
-            border:1px solid var(--line); background:rgba(255,255,255,.72); text-decoration:none; color:inherit; transition:border-color .2s; }
-    .item:hover { border-color:var(--ink); }
-    .item img { width:150px; height:94px; object-fit:cover; border:1px solid var(--line); background:#fff; }
-    .date { font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--red); text-transform:uppercase; letter-spacing:.06em; }
-    .item h2 { margin:2px 0 4px; font-size:18px; }
-    .item p { margin:0; font-size:14px; color:var(--muted); }
-    .foot { margin-top:26px; font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint); }
-    .foot a { color:inherit; }
-    @media (max-width:560px) { .item { grid-template-columns:1fr; } .item img { width:100%; height:auto; aspect-ratio:16/10; } }
-  </style>
+  <link rel="stylesheet" href="./log.css">
+  <script>
+    // Same theme rule as /hi/: ?theme= > saved choice > visitor's local time.
+    (function () {
+      var saved = null;
+      try {
+        saved = localStorage.getItem("jl-theme");
+      } catch (error) {
+        saved = null;
+      }
+      var forced = (location.search.match(/[?&]theme=(light|dark)/) || [])[1];
+      var hour = new Date().getHours();
+      var theme = forced || saved || (hour >= 6 && hour < 18 ? "light" : "dark");
+      document.documentElement.setAttribute("data-theme", theme);
+      document.documentElement.classList.add("js");
+    })();
+  </script>
 </head>
 <body>
-  <main>
-    <div class="top"><a class="mark" href="../hi/" aria-label="Back to Juwen Lie">JL</a><a href="../">Portfolio →</a></div>
-    <h1>Build log</h1>
-    <p class="sub">Everything I ship (engineering tools, CAD models and side projects), newest first.</p>
-    <div class="cta">
-      <a class="primary" href="../hi/#log-title">Get new ones by email</a>
-      <a href="../feed.xml">Follow in a feed reader (RSS)</a>
-    </div>
-    <a class="item" href="https://juw12.github.io/projects/lingua/web.html" target="_blank" rel="noopener"><div><span class="date">27 Oct 2026</span><h2>Lingua</h2><p>Universal language helper for Windows, iPhone and Android: text, pictures and live captions, with local AI and offline fallback.</p></div></a>
-    <a class="item" href="https://juw12.github.io/projects/airiz-motor/" target="_blank" rel="noopener"><img src="../assets/projects/airiz-motor-hero.svg" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>Airiz Motor</h2><p>AIRIZ test console for Windows, Android, iPhone and web — USB/Bluetooth jog, motor stop, LEDs, macros, phone camera sharing.</p></div></a>
-    <a class="item" href="https://juw12.github.io/projects/vertex/index.html" target="_blank" rel="noopener"><img src="../assets/projects/vertex-hero.svg" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>Vertex</h2><p>Offline parametric CAD and engineering copilot that repairs models, checks clearances and exports STL, 3MF and DXF.</p></div></a>
-    <a class="item" href="https://github.com/juw12/projects/tree/main/outputs/3d-models" target="_blank" rel="noopener"><img src="../assets/projects/kobochan-form3-hero.png" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>3D Models Library</h2><p>41 landmark and character miniatures as STL/STEP, including a 100 mm Kobo-chan figurine revised for Form 3 SLA.</p></div></a>
-    <a class="item" href="https://juw12.github.io/projects/glow/" target="_blank" rel="noopener"><img src="../assets/projects/glow-hero.png" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>Glow</h2><p>Three AI apps on one free account — GlowLead plans goals, GlowChat compares models, GlowRoom researches and codes.</p></div></a>
-    <a class="item" href="https://juw12.github.io/projects/fade/web.html" target="_blank" rel="noopener"><img src="../assets/projects/fade.png" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>Fade</h2><p>Barber marketplace with haircut shorts — live and free: book barbers, pay them directly at 0% fee, earn from your shorts.</p></div></a>
-    <a class="item" href="https://juw12.github.io/projects/sweep/" target="_blank" rel="noopener"><img src="../assets/projects/sweep-hero.svg" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>Sweep</h2><p>Turns a rough app idea into a scored spec, task board and launch plan, then hands it to Cursor, v0 or Claude Code.</p></div></a>
-    <a class="item" href="https://juw12.github.io/projects/shortcraft/" target="_blank" rel="noopener"><img src="../assets/projects/shortcraft.png" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>Shortcraft</h2><p>Browser studio for faceless explainer shorts — script, voice, captions and 1080×1920 MP4 export with auto-posting.</p></div></a>
-    <a class="item" href="https://juw12.github.io/projects/sped/web.html" target="_blank" rel="noopener"><img src="../assets/projects/sped.png" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>Sped</h2><p>Turns your own songs into sped-up, slowed or mashup 9:16 shorts with captions for TikTok, Reels and Shorts.</p></div></a>
-    <a class="item" href="https://juw12.github.io/projects/hazel/" target="_blank" rel="noopener"><img src="../assets/projects/hazel-hero.svg" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>Hazel</h2><p>Desktop creator studio: generate a video from a prompt, refine it and publish to every platform at once.</p></div></a>
-    <a class="item" href="https://juw12.github.io/projects/orbis/index.html" target="_blank" rel="noopener"><img src="../assets/projects/orbis-abstract.jpg" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>Orbis</h2><p>Offline-first personal hub for replies, commitments and summaries on a zero-dependency Python + SQLite backend.</p></div></a>
-    <a class="item" href="https://juw12.github.io/projects/peers/" target="_blank" rel="noopener"><img src="../assets/projects/peers-feed.jpg" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>Peers</h2><p>Offline-first review app across 32 categories, from food to AI tools, with a quick Use it / Wait / Skip scorecard.</p></div></a>
-    <a class="item" href="https://juw12.github.io/projects/twin/web.html" target="_blank" rel="noopener"><img src="../assets/projects/twin.png" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>Twin</h2><p>Investing companion with a five-analyst AI research team, global stock search, paper trading and a replay lab.</p></div></a>
-    <a class="item" href="https://juw12.github.io/projects/guangyao/" target="_blank" rel="noopener"><img src="../assets/projects/guangyao-desktop.png" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>Guang Yao Together · 光耀同行</h2><p>Unofficial Traditional Chinese learning app for 發一光耀 with lessons, an AI study companion and spaced review.</p></div></a>
-    <a class="item" href="https://juw12.github.io/projects/house-of-articles/desktop.html" target="_blank" rel="noopener"><img src="../assets/projects/hoa-hero.jpg" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>House of Articles</h2><p>Sneaker news meets market data — links athletes’ on-court moments to resale price moves.</p></div></a>
-    <a class="item" href="https://juw12.github.io/projects/sync/web.html" target="_blank" rel="noopener"><img src="../assets/projects/sync-hero.png" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>Sync</h2><p>Listen to music together in real time across Spotify, Apple Music and YouTube, with voice chat and no account.</p></div></a>
-    <a class="item" href="https://juwenlie.pages.dev/#projects" target="_blank" rel="noopener"><img src="../assets/projects/soma-hero.svg" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>SOMA</h2><p>Open-source AI CAD by Kai Jungsthöfel — a coding agent writes CadQuery, SOMA builds, checks and exports it.</p></div></a>
-    <a class="item" href="https://juwenlie.pages.dev/#projects" target="_blank" rel="noopener"><img src="../assets/projects/vector-hero.svg" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>Vector</h2><p>AI engineering copilot for Fusion and SOLIDWORKS by Vector Copilot LLC that builds and repairs native features.</p></div></a>
-    <a class="item" href="https://juw12.github.io/projects/mint/web.html" target="_blank" rel="noopener"><img src="../assets/projects/mint-hero.jpg" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>Mint</h2><p>Describe a spreadsheet, tweak it in plain words, export a working .xlsx and sell it on a built-in marketplace.</p></div></a>
-    <a class="item" href="https://juw12.github.io/projects/me-rd-toolkit/index.html" target="_blank" rel="noopener"><img src="../assets/projects/me-rd-toolkit.png" alt="" loading="lazy"><div><span class="date">01 Oct 2026</span><h2>ME R&amp;D Toolkit</h2><p>Offline workspace for mechanical R&amp;D — NPI task flow, review checklists, issue log and 11 engineering calculators.</p></div></a>
-    <a class="item" href="https://juw12.github.io/projects/gamelib/" target="_blank" rel="noopener"><div><span class="date">01 Oct 2026</span><h2>Game Library</h2><p>A collection of browser games maintained inside Projects.</p></div></a>
-    <p class="foot">Updated automatically · <a href="../hi/">juwenlie.pages.dev/hi</a></p>
+  <header class="bar">
+    <a class="mark" href="../hi/" aria-label="Juwen Lie: links">JL</a>
+    <nav class="bar-links" aria-label="Site">
+      <a href="../">Portfolio</a>
+      <a class="hide-sm" href="https://juwenlie.substack.com/archive">Substack</a>
+      <a class="hide-sm" href="../feed.xml">RSS</a>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle drafting / blueprint theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="sheet hero" aria-labelledby="log-title">
+      <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+      <div class="hero-body">
+        <p class="kicker"><span class="pulse" aria-hidden="true"></span>Last shipped 27 Oct 2026 · Lingua</p>
+        <h1 id="log-title">Build log<span class="dot">.</span></h1>
+        <p class="dim">21 builds · newest first</p>
+        <p class="lede">Engineering tools, CAD models and side projects I&rsquo;ve shipped. <strong>Get one short email when the next one lands.</strong></p>
+        <form class="signup" action="https://juwenlie.substack.com/subscribe" method="get" target="_blank">
+          <label class="visually-hidden" for="log-email">Email address</label>
+          <input id="log-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="fine">No spam · unsubscribe in one click · <a href="https://juwenlie.substack.com/archive">past issues</a> · <a href="../feed.xml">RSS</a></p>
+      </div>
+      <dl class="titleblock">
+        <div><dt>Dwg no.</dt><dd>JL-002</dd></div>
+        <div><dt>Builds</dt><dd class="big">21</dd></div>
+        <div><dt>Rev</dt><dd>26.10.27</dd></div>
+        <div><dt>Cadence</dt><dd>When it ships</dd></div>
+      </dl>
+    </section>
+
+    <h2 class="label">Latest build</h2>
+    <a class="sheet latest reveal" href="https://juw12.github.io/projects/lingua/web.html" target="_blank" rel="noopener">
+      <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+      <div class="media placeholder" aria-hidden="true"><span>LI</span><em>Render pending</em></div>
+      <div class="latest-body"><span class="stamp">NEW · #21</span><span class="date">27 Oct 2026</span><h2>Lingua</h2><p>Universal language helper for Windows, iPhone and Android: text, pictures and live captions, with local AI and offline fallback.</p><span class="open">Open project <span>&rarr;</span></span></div>
+    </a>
+
+    <h2 class="label">All builds <span class="count">#20 &rarr; #01</span></h2>
+    <ol class="rail">
+      <li class="entry reveal"><span class="num">#20</span><a href="https://juw12.github.io/projects/airiz-motor/" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>Airiz Motor</h3><p>AIRIZ test console for Windows, Android, iPhone and web — USB/Bluetooth jog, motor stop, LEDs, macros, phone camera sharing.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/airiz-motor-hero.svg" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#19</span><a href="https://juw12.github.io/projects/vertex/index.html" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>Vertex</h3><p>Offline parametric CAD and engineering copilot that repairs models, checks clearances and exports STL, 3MF and DXF.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/vertex-hero.svg" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#18</span><a href="https://github.com/juw12/projects/tree/main/outputs/3d-models" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>3D Models Library</h3><p>41 landmark and character miniatures as STL/STEP, including a 100 mm Kobo-chan figurine revised for Form 3 SLA.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/kobochan-form3-hero.png" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#17</span><a href="https://juw12.github.io/projects/glow/" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>Glow</h3><p>Three AI apps on one free account — GlowLead plans goals, GlowChat compares models, GlowRoom researches and codes.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/glow-hero.png" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#16</span><a href="https://juw12.github.io/projects/fade/web.html" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>Fade</h3><p>Barber marketplace with haircut shorts — live and free: book barbers, pay them directly at 0% fee, earn from your shorts.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/fade.png" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#15</span><a href="https://juw12.github.io/projects/sweep/" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>Sweep</h3><p>Turns a rough app idea into a scored spec, task board and launch plan, then hands it to Cursor, v0 or Claude Code.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/sweep-hero.svg" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#14</span><a href="https://juw12.github.io/projects/shortcraft/" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>Shortcraft</h3><p>Browser studio for faceless explainer shorts — script, voice, captions and 1080×1920 MP4 export with auto-posting.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/shortcraft.png" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#13</span><a href="https://juw12.github.io/projects/sped/web.html" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>Sped</h3><p>Turns your own songs into sped-up, slowed or mashup 9:16 shorts with captions for TikTok, Reels and Shorts.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/sped.png" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#12</span><a href="https://juw12.github.io/projects/hazel/" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>Hazel</h3><p>Desktop creator studio: generate a video from a prompt, refine it and publish to every platform at once.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/hazel-hero.svg" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#11</span><a href="https://juw12.github.io/projects/orbis/index.html" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>Orbis</h3><p>Offline-first personal hub for replies, commitments and summaries on a zero-dependency Python + SQLite backend.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/orbis-abstract.jpg" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#10</span><a href="https://juw12.github.io/projects/peers/" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>Peers</h3><p>Offline-first review app across 32 categories, from food to AI tools, with a quick Use it / Wait / Skip scorecard.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/peers-feed.jpg" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#09</span><a href="https://juw12.github.io/projects/twin/web.html" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>Twin</h3><p>Investing companion with a five-analyst AI research team, global stock search, paper trading and a replay lab.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/twin.png" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#08</span><a href="https://juw12.github.io/projects/guangyao/" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>Guang Yao Together · 光耀同行</h3><p>Unofficial Traditional Chinese learning app for 發一光耀 with lessons, an AI study companion and spaced review.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/guangyao-desktop.png" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#07</span><a href="https://juw12.github.io/projects/house-of-articles/desktop.html" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>House of Articles</h3><p>Sneaker news meets market data — links athletes’ on-court moments to resale price moves.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/hoa-hero.jpg" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#06</span><a href="https://juw12.github.io/projects/sync/web.html" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>Sync</h3><p>Listen to music together in real time across Spotify, Apple Music and YouTube, with voice chat and no account.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/sync-hero.png" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#05</span><a href="https://juwenlie.pages.dev/#projects" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>SOMA</h3><p>Open-source AI CAD by Kai Jungsthöfel — a coding agent writes CadQuery, SOMA builds, checks and exports it.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/soma-hero.svg" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#04</span><a href="https://juwenlie.pages.dev/#projects" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>Vector</h3><p>AI engineering copilot for Fusion and SOLIDWORKS by Vector Copilot LLC that builds and repairs native features.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/vector-hero.svg" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#03</span><a href="https://juw12.github.io/projects/mint/web.html" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>Mint</h3><p>Describe a spreadsheet, tweak it in plain words, export a working .xlsx and sell it on a built-in marketplace.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/mint-hero.jpg" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#02</span><a href="https://juw12.github.io/projects/me-rd-toolkit/index.html" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>ME R&amp;D Toolkit</h3><p>Offline workspace for mechanical R&amp;D — NPI task flow, review checklists, issue log and 11 engineering calculators.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media"><img src="../assets/projects/me-rd-toolkit.png" alt="" loading="lazy"></div></a></li>
+      <li class="entry reveal"><span class="num">#01</span><a href="https://juw12.github.io/projects/gamelib/" target="_blank" rel="noopener"><div class="entry-body"><span class="date">01 Oct 2026</span><h3>Game Library</h3><p>A collection of browser games maintained inside Projects.</p><span class="open">Open <span>&rarr;</span></span></div><div class="media placeholder" aria-hidden="true"><span>GL</span><em>Render pending</em></div></a></li>
+    </ol>
+
+    <section class="sheet closing reveal">
+      <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+      <div>
+        <h2>Next build drops in your inbox.</h2>
+        <p>One email per ship. Nothing else.</p>
+      </div>
+      <a class="button" href="#log-email">Get the build log &uarr;</a>
+    </section>
+
+    <footer class="foot">
+      <span>&copy; 2026 Juwen Lie</span>
+      <a href="../">Portfolio</a>
+      <a href="../hi/">Links</a>
+      <a href="https://juwenlie.substack.com/">Substack</a>
+      <a href="../feed.xml">RSS</a>
+      <span>Updated automatically</span>
+    </footer>
   </main>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.getElementById("theme-toggle");
+      toggle.addEventListener("click", function () {
+        var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        try {
+          localStorage.setItem("jl-theme", next);
+        } catch (error) {}
+      });
+      var closingButton = document.querySelector(".closing .button");
+      closingButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        var field = document.getElementById("log-email");
+        field.scrollIntoView({ behavior: "smooth", block: "center" });
+        setTimeout(function () {
+          field.focus({ preventScroll: true });
+        }, 450);
+      });
+      var items = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        items.forEach(function (item) {
+          item.classList.add("in");
+        });
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: "0px 0px -8% 0px" });
+      items.forEach(function (item) {
+        observer.observe(item);
+      });
+    })();
+  </script>
 </body>
 </html>
