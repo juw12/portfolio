@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:jl="https://juwenlie.pages.dev/ns/feed">
   <channel>
     <title>Juwen Lie · build log</title>
     <link>https://juwenlie.pages.dev/hi/</link>
@@ -13,6 +13,8 @@
       <guid isPermaLink="false">juwenlie-project-airiz-motor</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/airiz-motor-hero.svg" alt="Airiz Motor Test Console dashboard: command library, serial console and macro notepad for AIRIZ device motor testing" width="600"></p><p>AIRIZ test console for Windows, Android, iPhone and web — USB/Bluetooth jog, motor stop, LEDs, macros, phone camera sharing.</p>]]></description>
+      <jl:summary>AIRIZ test console for Windows, Android, iPhone and web — USB/Bluetooth jog, motor stop, LEDs, macros, phone camera sharing.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/airiz-motor-hero.svg" type="image/svg+xml" length="0"/>
       <category>Windows app</category><category>Web Serial</category><category>Bluetooth control</category><category>camera sharing</category><category>macro runner</category><category>offline demo</category>
     </item>
     <item>
@@ -21,6 +23,8 @@
       <guid isPermaLink="false">juwenlie-project-vertex</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/vertex-hero.svg" alt="Vertex: a dark 3D engineering workspace with a fitted part in a viewport, a ranked repair plan, a universal adapter strip (Fusion, SOLIDWORKS, FreeCAD, Blender, open formats) and review-gated export/apply steps" width="600"></p><p>Offline parametric CAD and engineering copilot that repairs models, checks clearances and exports STL, 3MF and DXF.</p>]]></description>
+      <jl:summary>Offline parametric CAD and engineering copilot that repairs models, checks clearances and exports STL, 3MF and DXF.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/vertex-hero.svg" type="image/svg+xml" length="0"/>
       <category>parametric CAD</category><category>model repair</category><category>simulation</category><category>offline-first</category>
     </item>
     <item>
@@ -29,6 +33,8 @@
       <guid isPermaLink="false">juwenlie-project-3d-models-library</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/kobochan-form3-hero.png" alt="Kobo-chan: a 100 mm solid figurine revised for Form 3, shown from the front and three-quarter view" width="600"></p><p>41 landmark and character miniatures as STL/STEP, including a 100 mm Kobo-chan figurine revised for Form 3 SLA.</p>]]></description>
+      <jl:summary>41 landmark and character miniatures as STL/STEP, including a 100 mm Kobo-chan figurine revised for Form 3 SLA.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/kobochan-form3-hero.png" type="image/png" length="0"/>
       <category>CadQuery</category><category>SOMA</category><category>OpenCASCADE</category><category>Form 3 / SLA</category><category>3D printing</category><category>STL</category><category>STEP</category><category>miniatures</category>
     </item>
     <item>
@@ -37,6 +43,8 @@
       <guid isPermaLink="false">juwenlie-project-glow</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/glow-hero.png" alt="Glow: GlowChat council with a Judge, part of the Glow ecosystem with GlowRoom" width="600"></p><p>Three AI apps on one free account — GlowLead plans goals, GlowChat compares models, GlowRoom researches and codes.</p>]]></description>
+      <jl:summary>Three AI apps on one free account — GlowLead plans goals, GlowChat compares models, GlowRoom researches and codes.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/glow-hero.png" type="image/png" length="0"/>
       <category>AI ecosystem</category><category>GlowLead</category><category>GlowChat</category><category>GlowRoom</category><category>AI agents</category><category>orchestrator</category>
     </item>
     <item>
@@ -45,6 +53,8 @@
       <guid isPermaLink="false">juwenlie-project-fade</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/fade.png" alt="Fade screens: home with trending barbers, a haircut short with a paid-partnership tag, and creator earnings, using fictional demo data" width="600"></p><p>Barber marketplace with haircut shorts — live and free: book barbers, pay them directly at 0% fee, earn from your shorts.</p>]]></description>
+      <jl:summary>Barber marketplace with haircut shorts — live and free: book barbers, pay them directly at 0% fee, earn from your shorts.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/fade.png" type="image/png" length="0"/>
       <category>PWA</category><category>Nostr</category><category>direct payments</category><category>haircut shorts</category><category>creator commissions</category>
     </item>
     <item>
@@ -53,6 +63,8 @@
       <guid isPermaLink="false">juwenlie-project-sweep</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/sweep-hero.svg" alt="Sweep turning a plain-words idea into a Build, Grow and Earn plan — a guided intake, an idea brief, a generated capability matrix, a Definition of Done checklist, a scaffold file tree and a project catalog" width="600"></p><p>Turns a rough app idea into a scored spec, task board and launch plan, then hands it to Cursor, v0 or Claude Code.</p>]]></description>
+      <jl:summary>Turns a rough app idea into a scored spec, task board and launch plan, then hands it to Cursor, v0 or Claude Code.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/sweep-hero.svg" type="image/svg+xml" length="0"/>
       <category>spec score</category><category>task board</category><category>1-click handoff</category><category>offline agent</category>
     </item>
     <item>
@@ -61,6 +73,8 @@
       <guid isPermaLink="false">juwenlie-project-lingua</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/lingua.png" alt="Lingua in dark mode: English and Traditional Chinese text, a Light mode toggle, context and a local model selector" width="600"></p><p>Private, offline Windows translator for English, Chinese and Bahasa Indonesia, running on a local Ollama model.</p>]]></description>
+      <jl:summary>Private, offline Windows translator for English, Chinese and Bahasa Indonesia, running on a local Ollama model.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/lingua.png" type="image/png" length="0"/>
       <category>offline translation</category><category>Ollama</category><category>Windows</category><category>multilingual</category>
     </item>
     <item>
@@ -69,6 +83,8 @@
       <guid isPermaLink="false">juwenlie-project-shortcraft</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/shortcraft.png" alt="Shortcraft: two 9:16 explainer frames, a light editorial step tracker and a dark CCTV teardown, next to the Shortcraft title" width="600"></p><p>Browser studio for faceless explainer shorts — script, voice, captions and 1080×1920 MP4 export with auto-posting.</p>]]></description>
+      <jl:summary>Browser studio for faceless explainer shorts — script, voice, captions and 1080×1920 MP4 export with auto-posting.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/shortcraft.png" type="image/png" length="0"/>
       <category>video</category><category>captions</category><category>auto-post</category><category>Bahasa Indonesia</category>
     </item>
     <item>
@@ -77,6 +93,8 @@
       <guid isPermaLink="false">juwenlie-project-sped</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/sped.png" alt="Sped 1.4 shorts editor with a 9:16 preview, timeline and post panel, using synthetic audio fixtures" width="600"></p><p>Turns your own songs into sped-up, slowed or mashup 9:16 shorts with captions for TikTok, Reels and Shorts.</p>]]></description>
+      <jl:summary>Turns your own songs into sped-up, slowed or mashup 9:16 shorts with captions for TikTok, Reels and Shorts.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/sped.png" type="image/png" length="0"/>
       <category>Web Audio</category><category>9:16 video export</category><category>TikTok / Reels / Shorts</category><category>PWA</category>
     </item>
     <item>
@@ -85,6 +103,8 @@
       <guid isPermaLink="false">juwenlie-project-hazel</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/hazel-hero.svg" alt="Hazel studio generating a video from a prompt, with character casting, scene choice, length and size controls, a storyboard and a timeline" width="600"></p><p>Desktop creator studio: generate a video from a prompt, refine it and publish to every platform at once.</p>]]></description>
+      <jl:summary>Desktop creator studio: generate a video from a prompt, refine it and publish to every platform at once.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/hazel-hero.svg" type="image/svg+xml" length="0"/>
       <category>AI video</category><category>multi-platform publish</category><category>bulk upload</category><category>backup</category>
     </item>
     <item>
@@ -93,6 +113,8 @@
       <guid isPermaLink="false">juwenlie-project-orbis</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/orbis-abstract.jpg" alt="Abstract geometric visualization of communication and identity networks" width="600"></p><p>Offline-first personal hub for replies, commitments and summaries on a zero-dependency Python + SQLite backend.</p>]]></description>
+      <jl:summary>Offline-first personal hub for replies, commitments and summaries on a zero-dependency Python + SQLite backend.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/orbis-abstract.jpg" type="image/jpeg" length="0"/>
       <category>Python</category><category>SQLite</category><category>PWA</category><category>offline-first</category>
     </item>
     <item>
@@ -101,6 +123,8 @@
       <guid isPermaLink="false">juwenlie-project-peers</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/peers-feed.jpg" alt="Peers app feed screen showing verified reviews" width="600"></p><p>Offline-first review app across 32 categories, from food to AI tools, with a quick Use it / Wait / Skip scorecard.</p>]]></description>
+      <jl:summary>Offline-first review app across 32 categories, from food to AI tools, with a quick Use it / Wait / Skip scorecard.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/peers-feed.jpg" type="image/jpeg" length="0"/>
       <category>PWA</category><category>reviews</category><category>32 categories</category><category>offline-first</category>
     </item>
     <item>
@@ -109,6 +133,8 @@
       <guid isPermaLink="false">juwenlie-project-twin</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/twin.png" alt="Twin 1.5: redesigned Home, TwinAgent Buy verdict with evidence score, risk gate with practice-trade plan, and AAPL stock page" width="600"></p><p>Investing companion with a five-analyst AI research team, global stock search, paper trading and a replay lab.</p>]]></description>
+      <jl:summary>Investing companion with a five-analyst AI research team, global stock search, paper trading and a replay lab.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/twin.png" type="image/png" length="0"/>
       <category>TwinAgent</category><category>multi-agent research</category><category>global markets</category><category>exchange calendars</category><category>real-time data</category><category>multi-currency</category><category>paper trading</category><category>Interactive Brokers</category><category>Alpaca API</category><category>PWA</category>
     </item>
     <item>
@@ -117,6 +143,8 @@
       <guid isPermaLink="false">juwenlie-project-guangyao</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/guangyao-desktop.png" alt="Guang Yao Together desktop: today&#x27;s goal, newest official lessons and the study dashboard" width="600"></p><p>Unofficial Traditional Chinese learning app for 發一光耀 with lessons, an AI study companion and spaced review.</p>]]></description>
+      <jl:summary>Unofficial Traditional Chinese learning app for 發一光耀 with lessons, an AI study companion and spaced review.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/guangyao-desktop.png" type="image/png" length="0"/>
       <category>PWA</category><category>accounts + guest mode</category><category>admin console</category><category>AI study companion</category><category>Android app</category><category>iPhone home-screen app</category>
     </item>
     <item>
@@ -125,6 +153,8 @@
       <guid isPermaLink="false">juwenlie-project-house-of-articles</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/hoa-hero.jpg" alt="House of Articles sneaker news and athlete moments feature" width="600"></p><p>Sneaker news meets market data — links athletes’ on-court moments to resale price moves.</p>]]></description>
+      <jl:summary>Sneaker news meets market data — links athletes’ on-court moments to resale price moves.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/hoa-hero.jpg" type="image/jpeg" length="0"/>
       <category>sneakers</category><category>market data</category><category>JSON</category><category>prototypes</category>
     </item>
     <item>
@@ -133,6 +163,8 @@
       <guid isPermaLink="false">juwenlie-project-sync</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/sync-hero.png" alt="Sync listening room with a synced now-playing card, cross-service queue and party voice chat" width="600"></p><p>Listen to music together in real time across Spotify, Apple Music and YouTube, with voice chat and no account.</p>]]></description>
+      <jl:summary>Listen to music together in real time across Spotify, Apple Music and YouTube, with voice chat and no account.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/sync-hero.png" type="image/png" length="0"/>
       <category>WebRTC</category><category>real-time sync</category><category>voice chat</category><category>cross-service</category><category>PWA</category>
     </item>
     <item>
@@ -141,6 +173,8 @@
       <guid isPermaLink="false">juwenlie-project-soma</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/soma-hero.svg" alt="SOMA: a CadQuery code panel beside a rebuilt parametric part and a build log" width="600"></p><p>Open-source AI CAD by Kai Jungsthöfel — a coding agent writes CadQuery, SOMA builds, checks and exports it.</p>]]></description>
+      <jl:summary>Open-source AI CAD by Kai Jungsthöfel — a coding agent writes CadQuery, SOMA builds, checks and exports it.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/soma-hero.svg" type="image/svg+xml" length="0"/>
       <category>AI CAD</category><category>CadQuery</category><category>open source</category><category>3D printing</category>
     </item>
     <item>
@@ -149,6 +183,8 @@
       <guid isPermaLink="false">juwenlie-project-vector</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/vector-hero.svg" alt="Vector: connected Fusion and SOLIDWORKS integrations beside a chat panel showing a ranked repair plan" width="600"></p><p>AI engineering copilot for Fusion and SOLIDWORKS by Vector Copilot LLC that builds and repairs native features.</p>]]></description>
+      <jl:summary>AI engineering copilot for Fusion and SOLIDWORKS by Vector Copilot LLC that builds and repairs native features.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/vector-hero.svg" type="image/svg+xml" length="0"/>
       <category>AI copilot</category><category>Fusion</category><category>SOLIDWORKS</category><category>CAD repair</category>
     </item>
     <item>
@@ -157,6 +193,8 @@
       <guid isPermaLink="false">juwenlie-project-mint</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/mint-hero.jpg" alt="Mint: prompt a spreadsheet template, tweak it, sell it — prompt box with Mint AI and the prompt, tweak, sell flow" width="600"></p><p>Describe a spreadsheet, tweak it in plain words, export a working .xlsx and sell it on a built-in marketplace.</p>]]></description>
+      <jl:summary>Describe a spreadsheet, tweak it in plain words, export a working .xlsx and sell it on a built-in marketplace.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/mint-hero.jpg" type="image/jpeg" length="0"/>
       <category>Template marketplace</category><category>Midtrans / Xendit / Stripe</category><category>Workers AI</category><category>Cloudflare Workers</category><category>Excel / Sheets</category><category>Affiliate program</category>
     </item>
     <item>
@@ -165,6 +203,8 @@
       <guid isPermaLink="false">juwenlie-project-me-rd-toolkit</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/me-rd-toolkit.png" alt="ME R&amp;D Toolkit dashboard with NPI flow, checklists, calculators and lessons quick-access tiles" width="600"></p><p>Offline workspace for mechanical R&amp;D — NPI task flow, review checklists, issue log and 11 engineering calculators.</p>]]></description>
+      <jl:summary>Offline workspace for mechanical R&amp;D — NPI task flow, review checklists, issue log and 11 engineering calculators.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/me-rd-toolkit.png" type="image/png" length="0"/>
       <category>NPI</category><category>checklists</category><category>Cpk</category><category>PWA</category><category>offline-first</category>
     </item>
     <item>
@@ -173,6 +213,7 @@
       <guid isPermaLink="false">juwenlie-project-gamelib</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
       <description><![CDATA[<p>A collection of browser games maintained inside Projects.</p>]]></description>
+      <jl:summary>A collection of browser games maintained inside Projects.</jl:summary>
       <category>browser games</category><category>JavaScript</category>
     </item>
   </channel>

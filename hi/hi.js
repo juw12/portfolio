@@ -9,9 +9,10 @@
   // Signup provider. FormSubmit forwards each signup to my inbox; swap this URL
   // for a Buttondown/Kit/Substack endpoint later without touching the markup.
   var SIGNUP_ENDPOINT = "https://formsubmit.co/ajax/" + CONTACT_EMAIL;
-  // Kit (free plan) form ID. When set, signups go straight onto the Kit list
-  // (subscriber count, double opt-in, unsubscribe link, auto build-log emails).
-  var KIT_FORM_ID = "";
+  // Substack publication URL, e.g. "https://juwenlie.substack.com". When set, the
+  // form hands the email to Substack (free, unlimited subscribers, subscriber count,
+  // one-click unsubscribe). Empty = keep using FormSubmit.
+  var SUBSTACK_URL = "";
 
   // ------------------------------------------------------------------
   // Copy. English lives in the HTML; ID and ZH override by key.
@@ -40,6 +41,7 @@
       subscribe: "Langganan",
       note: "Tanpa spam. Berhenti cukup dengan satu balasan.",
       fPortfolio: "Portofolio",
+      fLog: "Build log",
       fEmail: "Email",
       fContact: "Simpan kontak",
       fPrivacy: "Privasi",
@@ -68,6 +70,7 @@
       subscribe: "訂閱",
       note: "不寄垃圾信。回覆一句即可取消訂閱。",
       fPortfolio: "作品集",
+      fLog: "作品紀錄",
       fContact: "儲存聯絡人",
       fPrivacy: "隱私",
       privacy: "沒有 Cookie、追蹤器或分析工具。訂閱時，你的信箱會透過 FormSubmit 寄到我的收件匣，只用於 Build Log，絕不出售或分享。"
@@ -91,7 +94,7 @@
       invalid: "That email doesn't look right.",
       sending: "Sending…",
       ok: "You're in. The next build log comes to you.",
-      okConfirm: "Almost there: check your inbox and tap Confirm.",
+      okConfirm: "Almost there: finish in the Substack tab, then check your inbox.",
       fail: "Couldn't reach the list. <a href=\"mailto:" + CONTACT_EMAIL + "?subject=Add%20me%20to%20the%20build%20log\">Email me instead</a>."
     },
     id: {
@@ -110,7 +113,7 @@
       invalid: "Alamat email sepertinya salah.",
       sending: "Mengirim…",
       ok: "Berhasil. Build log berikutnya akan sampai ke Anda.",
-      okConfirm: "Sedikit lagi: cek inbox Anda dan ketuk Confirm.",
+      okConfirm: "Sedikit lagi: selesaikan di tab Substack, lalu cek inbox Anda.",
       fail: "Gagal terhubung. <a href=\"mailto:" + CONTACT_EMAIL + "?subject=Add%20me%20to%20the%20build%20log\">Kirim email saja</a>."
     },
     zh: {
@@ -129,7 +132,7 @@
       invalid: "信箱格式好像不對。",
       sending: "傳送中…",
       ok: "訂閱成功，下一封 Build Log 會寄給你。",
-      okConfirm: "快完成了：請到信箱點擊確認（Confirm）。",
+      okConfirm: "快完成了：請在 Substack 分頁完成訂閱，再到信箱確認。",
       fail: "暫時連不上。<a href=\"mailto:" + CONTACT_EMAIL + "?subject=Add%20me%20to%20the%20build%20log\">改用 Email 聯絡我</a>。"
     }
   };
@@ -343,22 +346,10 @@
       }
       button.disabled = true;
       setNote(t("sending"), null);
-      if (KIT_FORM_ID) {
-        var kitData = new FormData();
-        kitData.append("email_address", email);
-        fetch("https://app.kit.com/forms/" + KIT_FORM_ID + "/subscriptions", {
-          method: "POST",
-          mode: "no-cors",
-          body: kitData
-        })
-          .then(function () {
-            logSection.classList.add("is-done");
-            setNote(t("okConfirm"), "ok");
-          })
-          .catch(function () {
-            button.disabled = false;
-            setNote(t("fail"), "error");
-          });
+      if (SUBSTACK_URL) {
+        window.open(SUBSTACK_URL + "/subscribe?email=" + encodeURIComponent(email), "_blank", "noopener");
+        logSection.classList.add("is-done");
+        setNote(t("okConfirm"), "ok");
         return;
       }
       fetch(SIGNUP_ENDPOINT, {

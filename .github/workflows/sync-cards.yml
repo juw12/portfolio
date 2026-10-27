@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   sync:
@@ -34,10 +35,10 @@ jobs:
       - name: Rebuild the RSS feed (feed.xml) for RSS-to-email
         run: python portfolio/scripts/build_feed.py --apps projects/scripts/apps.json --portfolio-dir portfolio
 
-      - name: Email new projects to build-log subscribers (Kit)
+      - name: Open a Substack draft for newly shipped projects
         env:
-          KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
-        run: python portfolio/scripts/send_build_log.py portfolio
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python portfolio/scripts/notify_substack_draft.py portfolio
 
       - name: Commit and push if the catalog changed
         working-directory: portfolio
