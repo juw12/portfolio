@@ -1,4 +1,4 @@
-name: FormSubmit check (one-off)
+﻿name: FormSubmit check (one-off)
 
 # Sends one real AI Daily signup through FormSubmit (as juwpegatron+aidaily@gmail.com,
 # which lands in the owner's own inbox) and fails unless FormSubmit accepts it.
@@ -25,5 +25,5 @@ jobs:
             -H "Referer: https://juwenlie.pages.dev/hi/" \
             -H "Origin: https://juwenlie.pages.dev" \
             --data '{"email":"juwpegatron+aidaily@gmail.com","list":"AI Daily","page":"https://juwenlie.pages.dev/hi/","_subject":"AI Daily: subscribe","_template":"table","_captcha":"false"}')
-          echo "FormSubmit replied: $response"
+          echo "::notice title=FormSubmit reply::$(echo "$response" | head -c 600 | tr '\n' ' ')"
           echo "$response" | grep -q '"success":"true"'
