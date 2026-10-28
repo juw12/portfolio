@@ -106,7 +106,8 @@ def _call_github(messages, model, timeout):
         GITHUB_MODELS_URL,
         headers={
             "Authorization": f"Bearer {token}",
-            "Accept": "application/json",
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
             "Content-Type": "application/json",
         },
         json={
@@ -119,7 +120,14 @@ def _call_github(messages, model, timeout):
     )
     if response.status_code != 200:
         raise RuntimeError(f"GitHub Models HTTP {response.status_code}: {response.text[:200]}")
-    return response.json()["choices"][0]["message"]["content"]
+    try:
+        payload = response.json()
+    except ValueError:
+        raise RuntimeError(
+            f"GitHub Models sent non-JSON ({response.headers.get('Content-Type')}, "
+            f"{len(response.content)} bytes): {response.text[:160]!r}"
+        ) from None
+    return payload["choices"][0]["message"]["content"]
 
 
 def _ollama_session():
