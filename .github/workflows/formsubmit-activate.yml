@@ -1,0 +1,28 @@
+name: FormSubmit activation (one-off)
+
+# Sends FormSubmit's one-time activation request for the AI Daily signup form.
+# FormSubmit then emails an "Activate form" link to the inbox; click it once.
+# Runs when this file is pushed or by hand; safe to delete afterwards.
+
+on:
+  push:
+    paths:
+      - .github/workflows/formsubmit-activate.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Request activation email
+        run: |
+          curl -sS -m 60 -X POST "https://formsubmit.co/ajax/juwpegatron@gmail.com" \
+            -H "Content-Type: application/json" \
+            -H "Accept: application/json" \
+            -H "Referer: https://juwenlie.pages.dev/hi/" \
+            -H "Origin: https://juwenlie.pages.dev" \
+            --data '{"email":"juwpegatron@gmail.com","list":"AI Daily","note":"One-time activation request for the AI Daily signup form on juwenlie.pages.dev","_subject":"AI Daily: form activation","_template":"table","_captcha":"false"}'
+          echo
