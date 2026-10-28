@@ -4,7 +4,7 @@ app: kitty
 type: product-note
 status: live
 date: 2026-10-28
-tags: [budgeting, personal-finance, shared-budget, crdt, e2e-encryption, personality-quiz, investing, pwa]
+tags: [budgeting, personal-finance, shared-budget, crdt, e2e-encryption, personality-quiz, investing, pwa, android, ios, capacitor]
 ---
 
 # Kitty — product note
@@ -14,6 +14,7 @@ Project card: [[Kitty]]. A *kitty* is a shared pot of money.
 - Live app: https://juw12.github.io/projects/kitty/
 - Demo household: https://juw12.github.io/projects/kitty/demo.html
 - Self-test: https://juw12.github.io/projects/kitty/tests.html
+- Install on iPhone / Android / computer (free): https://juw12.github.io/projects/kitty/get.html
 - Code: https://github.com/juw12/projects/tree/main/apps/kitty
 
 ## Why
@@ -43,15 +44,33 @@ the polish and brains of a budgeting app**, and no account.
 4. **Warn** at a configurable threshold (default 80%), when over, and when the current pace projects an overspend. Shown as toasts, the bell and browser notifications.
 5. **Share** with one link. The AES-GCM key sits in the URL fragment, so the relay (ntfy.sh or the self-hosted stdlib relay) only ever sees ciphertext.
 
+## Platforms (v1.1, all free)
+
+| Platform | How | Notes |
+| --- | --- | --- |
+| Web | Open the live app; Chrome/Edge can install it as a desktop window | Full app, offline shell via service worker |
+| iPhone / iPad | Safari → Share → **Add to Home Screen** (guided on `get.html`) | Recommended free path: full-screen app, own icon, shortcuts |
+| iPhone (native) | Unsigned `Kitty-ios-UNSIGNED.ipa` from the `kitty-mobile` release | Sideload with AltStore/Sideloadly; free Apple IDs re-sign every 7 days |
+| Android | Signed `Kitty-android.apk` from the `kitty-mobile` release | Haptics, native share sheet, Back button, invite deep links |
+
+- **Architecture:** a Capacitor 8 shell (`apps/kitty/mobile/`) loads the live HTTPS site instead of bundling it. That keeps the WebView a secure context, so `crypto.subtle` (AES-GCM for E2E sharing) is always available, and web fixes reach the apps immediately. When offline on first launch it shows a reconnecting `offline.html`.
+- **Native hooks in the web app:** `NATIVE` detection, haptics on adds and limit warnings, the native share sheet for invite links, Android Back (closes a sheet → goes home → minimises), and `appUrlOpen` deep links that open the Join card.
+- **Build pipeline:** GitHub Actions workflow (`apps/kitty/mobile/ci/kitty-mobile.yml`): signed release APK plus debug APK, an API 35 emulator run (`scripts/android-e2e.py`: native flag, plugins, secure context + AES-GCM, demo, haptics, Back, live share, intent filter), unsigned IPA plus an iPhone-simulator launch screenshot, then publish to the stable `kitty-mobile` release.
+- **Store listings** are out of scope for "free": the App Store needs an Apple Developer account ($99/year) and Google Play a one-time $25 registration.
+
 ## Verified (2026-10-28)
 
 - Browser self-test 92/92, including live two-client sync through ntfy.sh and the local relay (about 1 s propagation).
 - UI walk-through: quiz → result → build budget on a 390×844 phone; quick-add warning; two-browser share → join → a remote edit triggers "Dining out is at 96%" on the other device in under 1 s.
 - Python: relay tests (publish/poll/SSE, 400/413, restart persistence) and static web checks on Python 3.9 and 3.13. Monorepo `check_site.py` passes.
+- v1.1 mobile: self-test still 87/87 core in the browser; with a simulated Capacitor Android bridge the app detects native mode, fires haptics on add and on a limit crossing, closes the quick-add sheet / goes home / minimises on Back, opens the native share sheet with the invite link and shows the Join card for a deep-linked invite. `get.html` picks the right platform card on desktop, iPhone and Android, and shows "building soon" plus the Add to Home Screen fallback until the release assets exist. New static tests check the Capacitor config (HTTPS `server.url`), icon pixel sizes, version parity and that the workflow publishes the exact files `get.html` links to.
 
 ## Limits and next steps
 
 - The public ntfy.sh relay caches messages for about 12 h and rate-limits; self-host `server/relay.py` for always-on sync.
 - Investment prices are manual (no market-data API yet).
 - Tips are general guidance, not financial advice.
-- Ideas: recurring transactions, split-the-bill settle-up, receipt OCR, price feeds, native wrappers.
+- Native APK/IPA builds start once the workflow is activated in `.github/workflows/` (pushing workflow files needs a GitHub token with the `workflow` scope). Until then iPhone and Android users install the home-screen web app, which has the same features.
+- The native apps need internet on first launch, because they load the live site.
+- Android opens `juw12.github.io` invite links in the app only if the user enables "Open supported links" (no verified App Links on a shared github.io domain).
+- Ideas: recurring transactions, split-the-bill settle-up, receipt OCR, price feeds, push reminders.
