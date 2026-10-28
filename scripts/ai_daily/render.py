@@ -31,7 +31,7 @@ DEFAULT_OPTIONS = {
     "page_url": "",
     "rss_url": "",
     "archive": [],
-    "subscribe_action": "",
+    "subscribe_group": "",
     "subscribe_note": "",
     "og_image": "",
 }
@@ -289,26 +289,28 @@ def _section(section: dict, section_titles: dict) -> str:
 
 
 def _subscribe(opts: dict) -> str:
-    action = safe_url(opts.get("subscribe_action"))
+    group = str(opts.get("subscribe_group") or "").strip()
     rss = esc(opts.get("rss_url"))
-    if action:
+    if group:
+        join = f"{group}+subscribe@googlegroups.com"
+        mailto = f"mailto:{join}?subject=Subscribe%20me%20to%20AI%20Daily&body=Just%20press%20Send."
         form = f"""
-  <form class="subform" action="{esc(action)}" method="post" target="_blank">
-    <label class="vh" for="sub-email">Email address</label>
-    <input id="sub-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
-    <input type="hidden" name="embed" value="1">
-    <button type="submit">Subscribe free</button>
-  </form>"""
+  <div class="subform">
+    <a class="subbtn" href="{esc(mailto)}">Subscribe free by email</a>
+    <a class="subalt" href="https://groups.google.com/g/{esc(group)}" target="_blank" rel="noopener">or join with Google</a>
+  </div>"""
+        steps = f"Press Send in the email that opens, then confirm Google's reply. No email app? Send any email to {esc(join)}."
     else:
         form = f'<p class="soon">Email delivery opens shortly. Until then, follow along via <a href="{rss}">RSS</a>.</p>'
+        steps = ""
     return f"""
 <section class="block subscribe" id="subscribe" aria-labelledby="sub-title">
   <div>
     <h2 id="sub-title">Get {esc(opts["brand"])} in your inbox</h2>
-    <p>{esc(opts.get("subscribe_note") or "One calm email every morning: the AI brief, the stories that matter and why. Free, no spam, unsubscribe in one click.")}</p>
+    <p>{esc(opts.get("subscribe_note") or "One calm email every morning: the AI brief, the stories that matter and why. Free, no spam, unsubscribe anytime.")}</p>
   </div>
   {form}
-  <p class="fine"><a href="{rss}">RSS feed</a>{f' · <a href="{esc(opts["site_url"])}">More from {esc(opts["site_name"])}</a>' if opts.get("site_url") else ''}</p>
+  <p class="fine">{esc(steps)} <a href="{rss}">RSS feed</a>{f' · <a href="{esc(opts["site_url"])}">More from {esc(opts["site_name"])}</a>' if opts.get("site_url") else ''}</p>
 </section>"""
 
 
@@ -593,7 +595,10 @@ tr.up .bar{color:var(--up)}tr.down .bar{color:var(--down)}tr.flat .bar{color:var
 /* subscribe */
 .subscribe{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:10px 28px;align-items:center;padding:26px 28px;border-radius:var(--r);background:var(--ink);color:var(--bg)}
 .subscribe h2{margin:0 0 6px;font:700 24px var(--serif)}.subscribe p{margin:0;opacity:.82;font-size:15px}
-.subform{display:flex;gap:8px}
+.subform{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.subbtn{padding:12px 18px;border-radius:12px;background:var(--accent);color:#fff;font:650 15px var(--sans);white-space:nowrap}
+.subbtn:hover{filter:brightness(1.08)}
+.subalt{font-size:14px;text-decoration:underline;opacity:.85}
 .subform input{flex:1;min-width:0;padding:12px 14px;border-radius:12px;border:1px solid transparent;font:inherit;background:var(--bg);color:var(--ink)}
 .subform button{padding:12px 18px;border:0;border-radius:12px;background:var(--accent);color:#fff;font:650 15px var(--sans);cursor:pointer;white-space:nowrap}
 .subscribe .fine{grid-column:1/-1;font-size:12.5px;opacity:.7}.subscribe .fine a,.subscribe .soon a{text-decoration:underline}

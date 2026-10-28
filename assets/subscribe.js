@@ -1,13 +1,15 @@
 /*
  * Newsletter settings + helper shared by /hi/, /log/ and /news/.
  *
- *   buttondown: your Buttondown username. Empty = AI Daily email signups stay
- *               closed (the checkbox shows "opening soon" and links to /news/).
- *               scripts/ai_daily/build_ai_daily.py reads this same value.
- *   substack:   the build-log publication.
+ *   googleGroup: name of the Google Group that delivers AI Daily, e.g.
+ *                "juwenlie-ai-daily" (the part before @googlegroups.com).
+ *                Empty = AI Daily signups stay closed ("soon" badge, links to /news/).
+ *                scripts/ai_daily/build_ai_daily.py reads this same value and
+ *                emails each edition to the group, which delivers it to every member.
+ *   substack:    the build-log publication.
  */
 window.JL_NEWSLETTER = {
-  buttondown: "",
+  googleGroup: "",
   substack: "https://juwenlie.substack.com"
 };
 
@@ -16,24 +18,31 @@ window.JLNewsletter = (function () {
   var cfg = window.JL_NEWSLETTER;
 
   function aiDailyOpen() {
-    return Boolean(cfg.buttondown);
+    return Boolean(cfg.googleGroup);
   }
 
-  // Buttondown's embed endpoint takes a normal form POST and emails a
-  // confirmation link (double opt-in), so a no-cors fire-and-forget is enough.
-  function joinAiDaily(email) {
+  function groupAddress() {
+    return cfg.googleGroup + "@googlegroups.com";
+  }
+
+  function joinAddress() {
+    return cfg.googleGroup + "+subscribe@googlegroups.com";
+  }
+
+  function webJoinUrl() {
+    return "https://groups.google.com/g/" + encodeURIComponent(cfg.googleGroup);
+  }
+
+  // Google Groups joins by email: the visitor sends one (empty) email to
+  // group+subscribe@ and clicks the confirmation Google sends back.
+  function joinAiDaily() {
     if (!aiDailyOpen()) {
       return;
     }
-    var body = new FormData();
-    body.append("email", email);
-    body.append("embed", "1");
-    body.append("referrer_url", location.href);
-    fetch("https://buttondown.com/api/emails/embed-subscribe/" + encodeURIComponent(cfg.buttondown), {
-      method: "POST",
-      body: body,
-      mode: "no-cors"
-    }).catch(function () {});
+    var mail = "mailto:" + joinAddress() +
+      "?subject=" + encodeURIComponent("Subscribe me to AI Daily") +
+      "&body=" + encodeURIComponent("Just press Send. Google will email you a link to confirm.");
+    window.location.href = mail;
   }
 
   // Must run inside the submit handler (user gesture) so the tab isn't blocked.
@@ -77,8 +86,17 @@ window.JLNewsletter = (function () {
       joinBuildLog(email);
     }
     if (picks.aidaily) {
-      joinAiDaily(email);
+      joinAiDaily();
     }
+  }
+
+  // Fallback links shown after signup, for people whose email app didn't open.
+  function aiDailyHelpHtml() {
+    if (!aiDailyOpen()) {
+      return "";
+    }
+    return 'No email app? Send any email to <a href="mailto:' + joinAddress() + '">' + joinAddress() +
+      '</a> or <a href="' + webJoinUrl() + '" target="_blank" rel="noopener">join with a Google account</a>.';
   }
 
   // Plain forms (e.g. /log/) opt in with data-newsletter-form.
@@ -90,11 +108,11 @@ window.JLNewsletter = (function () {
         event.preventDefault();
         var input = form.querySelector("input[type=email]");
         var email = (input.value || "").trim();
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        var picks = selected(form);
+        if (picks.buildlog && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
           input.focus();
           return;
         }
-        var picks = selected(form);
         if (!picks.buildlog && !picks.aidaily) {
           if (status) {
             status.textContent = "Pick at least one newsletter.";
@@ -105,14 +123,16 @@ window.JLNewsletter = (function () {
         if (status) {
           var parts = [];
           if (picks.aidaily) {
-            parts.push("check your inbox to confirm AI Daily");
+            parts.push("press Send in the email that just opened, then confirm Google's reply for AI Daily");
           }
           if (picks.buildlog) {
             parts.push("finish the build-log signup in the Substack tab");
           }
-          status.textContent = "Almost there: " + parts.join(", and ") + ".";
+          status.innerHTML = "Almost there: " + parts.join(", and ") + "." +
+            (picks.aidaily ? " " + aiDailyHelpHtml() : "");
         }
         form.reset();
+        prepare(form);
       });
     });
   }
@@ -125,6 +145,10 @@ window.JLNewsletter = (function () {
 
   return {
     aiDailyOpen: aiDailyOpen,
+    aiDailyHelpHtml: aiDailyHelpHtml,
+    groupAddress: groupAddress,
+    joinAddress: joinAddress,
+    webJoinUrl: webJoinUrl,
     prepare: prepare,
     selected: selected,
     subscribe: subscribe

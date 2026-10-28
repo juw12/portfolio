@@ -234,6 +234,8 @@ def render_email(data: dict, options: dict | None = None) -> str:
             f'<a href="{esc(opts["site_url"])}" style="color:{INK2};">{esc(opts["site_name"] or opts["site_url"])}</a>. '
             "Curated automatically every morning from public reporting; every story links to its publisher."
         )
+        if opts.get("unsubscribe_hint"):
+            footer += f"<br>{esc(opts['unsubscribe_hint'])}"
     else:
         footer = f'Generated {esc(data.get("generated_at"))} on your PC.'
     rows.append(

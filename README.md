@@ -34,11 +34,12 @@ A public daily AI briefing, built every morning at 06:00 WIB by `.github/workflo
 `scripts/ai_daily/build_ai_daily.py build` collects AI feeds, clusters duplicate stories across
 outlets, writes "The Brief" with GitHub Models (workflow token, `models: read`), and publishes
 `news/index.html`, `news/YYYY-MM-DD.html`, `news/archive.json` and `news/feed.xml`.
-`... send` then emails the edition to Buttondown subscribers (once per day, `news/sent.json`).
+`... send` then emails the edition from Gmail to the AI Daily Google Group, which delivers it to every member (once per day, `news/sent.json`).
 
 - Feeds, sections and topic filter: `scripts/ai_daily/config_ai_daily.json`.
-- Email delivery needs two things: the Buttondown username in `assets/subscribe.js` (also turns on
-  the AI Daily checkbox in the /hi/ and /log/ signup forms) and the `BUTTONDOWN_API_KEY` repository secret.
+- Email delivery needs two things: the Google Group name in `assets/subscribe.js` (also turns on
+  the AI Daily checkbox in the /hi/ and /log/ signup forms) and the `GMAIL_APP_PASSWORD` repository secret
+  (optional `GMAIL_ADDRESS`, default juwen12006@gmail.com). Group settings: anyone can join, only owners post.
 - Run it by hand: Actions → AI Daily → Run workflow (tick "send" to email).
 
 ## Project cards

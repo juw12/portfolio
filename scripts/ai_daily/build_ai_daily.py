@@ -8,11 +8,13 @@ Usage (from the repository root):
 build  collects the AI feeds, writes the AI brief (GitHub Models in Actions),
        and writes news/index.html, news/YYYY-MM-DD.html, news/archive.json,
        news/feed.xml and the email body news/email/YYYY-MM-DD.html.
-send   emails today's edition to every Buttondown subscriber, once per day
-       (state in news/sent.json). Needs the BUTTONDOWN_API_KEY secret;
-       without it the step is skipped, so the web edition still publishes.
+send   emails today's edition from your Gmail to the AI Daily Google Group,
+       which delivers it to every member (free, no member cap, Google handles
+       unsubscribes). Once per day (state in news/sent.json). Needs the
+       GMAIL_APP_PASSWORD secret (and optionally GMAIL_ADDRESS); without it the
+       step is skipped, so the web edition still publishes.
 
-The Buttondown username is read from assets/subscribe.js (single source of
+The Google Group name is read from assets/subscribe.js (single source of
 truth shared with the subscribe forms on the site).
 """
 from __future__ import annotations
@@ -51,12 +53,15 @@ def repo_root() -> Path:
     return HERE.parent.parent
 
 
-def buttondown_username(root: Path) -> str:
+DEFAULT_SENDER = "juwen12006@gmail.com"
+
+
+def google_group(root: Path) -> str:
     try:
         source = (root / "assets" / "subscribe.js").read_text(encoding="utf-8")
     except OSError:
         return ""
-    match = re.search(r'buttondown\s*:\s*"([^"]*)"', source)
+    match = re.search(r'googleGroup\s*:\s*"([^"]*)"', source)
     return match.group(1).strip() if match else ""
 
 
@@ -98,8 +103,7 @@ def build(args) -> int:
     })
     archive = archive[:400]
 
-    username = buttondown_username(root)
-    subscribe_action = f"https://buttondown.com/api/emails/embed-subscribe/{username}" if username else ""
+    group = google_group(root)
     base_options = {
         "brand": BRAND,
         "tagline": "The AI news that matters, explained in five minutes.",
@@ -112,7 +116,7 @@ def build(args) -> int:
         "site_url": f"{SITE_URL}/",
         "site_name": "Juwen Lie",
         "rss_url": f"{NEWS_URL}feed.xml",
-        "subscribe_action": subscribe_action,
+        "subscribe_group": group,
         "og_image": f"{SITE_URL}/assets/og-hi.png",
     }
     past = [entry for entry in archive if entry["date"] != date_iso]
@@ -131,7 +135,10 @@ def build(args) -> int:
         "site_url": f"{SITE_URL}/news/",
         "site_name": "juwenlie.pages.dev",
         "markets_title": "AI market pulse",
-        "fragment": True,
+        "unsubscribe_hint": (
+            f"Unsubscribe anytime: send any email to {group}+unsubscribe@googlegroups.com "
+            "or use the Google Groups link below."
+        ) if group else "",
     })
     (news_dir / "email" / edition_file).write_text(email_html, encoding="utf-8")
     meta = {
@@ -143,7 +150,7 @@ def build(args) -> int:
     (news_dir / "email" / f"{date_iso}.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
 
     write_feed(news_dir, archive)
-    log(f"built {edition_file}: {meta['stories']} stories, brief={meta['brief_provider']}, subscribe={'on' if username else 'off'}")
+    log(f"built {edition_file}: {meta['stories']} stories, brief={meta['brief_provider']}, group={group or 'not set'}")
     return 0
 
 
@@ -180,11 +187,15 @@ def write_feed(news_dir: Path, archive: list) -> None:
 
 
 def send(args) -> int:
-    import requests
+    import smtplib
+    from email.message import EmailMessage
+    from email.utils import make_msgid
 
     root = repo_root()
     news_dir = root / "news"
-    api_key = os.environ.get("BUTTONDOWN_API_KEY", "").strip()
+    password = os.environ.get("GMAIL_APP_PASSWORD", "").replace(" ", "").strip()
+    sender = os.environ.get("GMAIL_ADDRESS", "").strip() or DEFAULT_SENDER
+    group = google_group(root)
     archive = load_archive(news_dir)
     if not archive:
         log("send: no edition built yet")
@@ -196,8 +207,11 @@ def send(args) -> int:
     except Exception:
         sent = {}
 
-    if not api_key:
-        log("send: skipped - add the BUTTONDOWN_API_KEY repository secret to email subscribers")
+    if not group:
+        log("send: skipped - set googleGroup in assets/subscribe.js")
+        return 0
+    if not password:
+        log("send: skipped - add the GMAIL_APP_PASSWORD repository secret")
         return 0
     if date_iso in sent and not args.force:
         log(f"send: {date_iso} already sent ({sent[date_iso]})")
@@ -206,29 +220,31 @@ def send(args) -> int:
     if int(meta.get("stories", 0)) < MIN_STORIES_TO_SEND:
         log(f"send: only {meta.get('stories')} stories - feeds look broken, not emailing a thin edition")
         return 1
-    body = (news_dir / "email" / f"{date_iso}.html").read_text(encoding="utf-8")
-
-    response = requests.post(
-        "https://api.buttondown.com/v1/emails",
-        headers={
-            "Authorization": f"Token {api_key}",
-            "Content-Type": "application/json",
-            "X-Buttondown-Live-Dangerously": "true",
-        },
-        json={
-            "subject": meta["subject"],
-            "body": "<!-- buttondown-editor-mode: plaintext -->\n" + body,
-            "status": "about_to_send",
-        },
-        timeout=60,
+    html_body = (news_dir / "email" / f"{date_iso}.html").read_text(encoding="utf-8")
+    plain_body = (
+        f"{meta['subject']}\n\nRead today's edition: {NEWS_URL}{date_iso}.html\n\n"
+        f"Unsubscribe: send any email to {group}+unsubscribe@googlegroups.com\n"
     )
-    if response.status_code not in (200, 201):
-        log(f"send: Buttondown HTTP {response.status_code}: {response.text[:400]}")
+
+    message = EmailMessage()
+    message["Subject"] = meta["subject"]
+    message["From"] = f"{BRAND} <{sender}>"
+    message["To"] = f"{group}@googlegroups.com"
+    message["Message-ID"] = make_msgid(domain="juwenlie.pages.dev")
+    message.set_content(plain_body)
+    message.add_alternative(html_body, subtype="html")
+
+    try:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=60) as smtp:
+            smtp.login(sender, password)
+            smtp.send_message(message)
+    except Exception as exc:  # noqa: BLE001
+        log(f"send: Gmail SMTP failed: {exc}")
         return 1
-    email_id = response.json().get("id", "sent")
-    sent[date_iso] = email_id
+
+    sent[date_iso] = message["Message-ID"]
     sent_path.write_text(json.dumps(sent, indent=1), encoding="utf-8")
-    log(f"send: {date_iso} queued for every subscriber (Buttondown id {email_id})")
+    log(f"send: {date_iso} sent to {group}@googlegroups.com from {sender}")
     return 0
 
 

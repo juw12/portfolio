@@ -1,9 +1,10 @@
 name: AI Daily
 
 # Builds the public AI Daily edition at /news/ every morning and emails it to
-# Buttondown subscribers. The brief is written by GitHub Models (free, uses the
-# workflow token). Email needs the BUTTONDOWN_API_KEY repository secret; until
-# it exists the web edition still publishes and the send step is skipped.
+# the AI Daily Google Group (free, no member cap). The brief is written by GitHub
+# Models (free, uses the workflow token). Email needs the GMAIL_APP_PASSWORD
+# repository secret; until it exists the web edition still publishes and the
+# send step is skipped.
 
 on:
   schedule:
@@ -65,7 +66,8 @@ jobs:
       - name: Email subscribers
         if: github.event_name == 'schedule' || inputs.send
         env:
-          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
         run: |
           python scripts/ai_daily/build_ai_daily.py send
           git add news/sent.json 2>/dev/null || true
