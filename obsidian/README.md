@@ -8,7 +8,7 @@ Project notes for every app and model in the portfolio, as a ready-to-open [Obsi
 - **Whole repo:** green *Code* button → *Download ZIP* (vault is in `obsidian/vault/`).
 - **Single notes:** browse [`vault/`](vault/) — every note is plain Markdown and reads fine on GitHub.
 
-Updated 2026-10-28 · 28 project notes · 10 update-log entries.
+Updated 2026-10-28 · 29 project notes · 11 update-log entries.
 
 ## Project notes
 
@@ -40,6 +40,7 @@ Updated 2026-10-28 · 28 project notes · 10 update-log entries.
 - [Twin](vault/Portfolio/Projects/Twin.md)
 - [Vector](vault/Portfolio/Projects/Vector.md)
 - [Vertex](vault/Portfolio/Projects/Vertex.md)
+- [Vitals](vault/Portfolio/Projects/Vitals.md)
 
 ## Update log
 
