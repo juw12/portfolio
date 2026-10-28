@@ -55,7 +55,7 @@
       fEmail: "Email",
       fContact: "Simpan kontak",
       fPrivacy: "Privasi",
-      privacy: "Tanpa cookie, tracker, atau analitik. Jika berlangganan, alamat Anda diteruskan ke Substack (juwenlie.substack.com) yang mengirim build log dan menyediakan berhenti langganan sekali klik. AI Daily dikirim lewat Google Groups; berhenti langganan kapan saja lewat tautan di setiap email. Tidak pernah dijual atau dibagikan."
+      privacy: "Tanpa cookie, tracker, atau analitik. Jika berlangganan, alamat Anda diteruskan ke Substack (juwenlie.substack.com) yang mengirim build log dan menyediakan berhenti langganan sekali klik. Pendaftaran AI Daily diteruskan FormSubmit ke inbox saya dan dikirim dari Gmail saya; setiap email punya tautan berhenti langganan. Tidak pernah dijual atau dibagikan."
     },
     zh: {
       skip: "跳到內容",
@@ -93,7 +93,7 @@
       fLog: "作品紀錄",
       fContact: "儲存聯絡人",
       fPrivacy: "隱私",
-      privacy: "沒有 Cookie、追蹤器或分析工具。訂閱時，你的信箱會交給 Substack（juwenlie.substack.com）寄送 Build Log，隨時可一鍵取消訂閱，絕不出售或分享。AI Daily 透過 Google Groups 寄送，每封信都有取消訂閱連結。"
+      privacy: "沒有 Cookie、追蹤器或分析工具。訂閱時，你的信箱會交給 Substack（juwenlie.substack.com）寄送 Build Log，隨時可一鍵取消訂閱，絕不出售或分享。AI Daily 的訂閱由 FormSubmit 轉寄到我的信箱，並從我的 Gmail 寄出；每封信都有取消訂閱連結。"
     }
   };
 
@@ -115,8 +115,8 @@
       sending: "Sending…",
       ok: "You're in. The next build log comes to you.",
       okConfirm: "Almost there: finish in the Substack tab, then check your inbox.",
-      okAi: "Almost there: press Send in the email that just opened, then confirm Google's reply.",
-      okBoth: "Almost there: press Send in the email that just opened (AI Daily), and finish the build log in the Substack tab.",
+      okAi: "You're in. Your first AI Daily arrives tomorrow at 6:00 WIB.",
+      okBoth: "You're in for AI Daily (first issue tomorrow, 6:00 WIB). Finish the build log in the Substack tab.",
       pickOne: "Pick at least one list.",
       fail: "Couldn't reach the list. <a href=\"mailto:" + CONTACT_EMAIL + "?subject=Add%20me%20to%20the%20build%20log\">Email me instead</a>."
     },
@@ -137,8 +137,8 @@
       sending: "Mengirim…",
       ok: "Berhasil. Build log berikutnya akan sampai ke Anda.",
       okConfirm: "Sedikit lagi: selesaikan di tab Substack, lalu cek inbox Anda.",
-      okAi: "Sedikit lagi: tekan Kirim di email yang baru terbuka, lalu konfirmasi balasan dari Google.",
-      okBoth: "Sedikit lagi: tekan Kirim di email yang baru terbuka (AI Daily), lalu selesaikan build log di tab Substack.",
+      okAi: "Berhasil. AI Daily pertama Anda tiba besok pukul 06.00 WIB.",
+      okBoth: "Berhasil untuk AI Daily (edisi pertama besok 06.00 WIB). Selesaikan build log di tab Substack.",
       pickOne: "Pilih minimal satu.",
       fail: "Gagal terhubung. <a href=\"mailto:" + CONTACT_EMAIL + "?subject=Add%20me%20to%20the%20build%20log\">Kirim email saja</a>."
     },
@@ -159,8 +159,8 @@
       sending: "傳送中…",
       ok: "訂閱成功，下一封 Build Log 會寄給你。",
       okConfirm: "快完成了：請在 Substack 分頁完成訂閱，再到信箱確認。",
-      okAi: "快完成了：在剛開啟的郵件按下傳送，再確認 Google 寄來的信。",
-      okBoth: "快完成了：在剛開啟的郵件按下傳送（AI Daily），並在 Substack 分頁完成 Build Log 訂閱。",
+      okAi: "訂閱成功！第一封 AI Daily 明天早上 6:00（WIB）寄到。",
+      okBoth: "AI Daily 訂閱成功（明早 6:00 第一封）。請在 Substack 分頁完成 Build Log 訂閱。",
       pickOne: "請至少選一項。",
       fail: "暫時連不上。<a href=\"mailto:" + CONTACT_EMAIL + "?subject=Add%20me%20to%20the%20build%20log\">改用 Email 聯絡我</a>。"
     }
@@ -386,10 +386,15 @@
           setNote(t("pickOne"), "error");
           return;
         }
-        window.JLNewsletter.subscribe(email, picks);
-        logSection.classList.add("is-done");
-        var help = picks.aidaily ? " " + window.JLNewsletter.aiDailyHelpHtml() : "";
-        setNote(t(picks.aidaily && picks.buildlog ? "okBoth" : picks.aidaily ? "okAi" : "okConfirm") + help, "ok");
+        window.JLNewsletter.subscribe(email, picks)
+          .then(function () {
+            logSection.classList.add("is-done");
+            setNote(t(picks.aidaily && picks.buildlog ? "okBoth" : picks.aidaily ? "okAi" : "okConfirm"), "ok");
+          })
+          .catch(function () {
+            button.disabled = false;
+            setNote(t("fail"), "error");
+          });
         return;
       }
       if (SUBSTACK_URL) {

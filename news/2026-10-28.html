@@ -156,12 +156,11 @@ tr.up .bar{color:var(--up)}tr.down .bar{color:var(--down)}tr.flat .bar{color:var
 /* subscribe */
 .subscribe{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:10px 28px;align-items:center;padding:26px 28px;border-radius:var(--r);background:var(--ink);color:var(--bg)}
 .subscribe h2{margin:0 0 6px;font:700 24px var(--serif)}.subscribe p{margin:0;opacity:.82;font-size:15px}
-.subform{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.subbtn{padding:12px 18px;border-radius:12px;background:var(--accent);color:#fff;font:650 15px var(--sans);white-space:nowrap}
-.subbtn:hover{filter:brightness(1.08)}
-.subalt{font-size:14px;text-decoration:underline;opacity:.85}
+.subform{display:flex;gap:8px}
 .subform input{flex:1;min-width:0;padding:12px 14px;border-radius:12px;border:1px solid transparent;font:inherit;background:var(--bg);color:var(--ink)}
 .subform button{padding:12px 18px;border:0;border-radius:12px;background:var(--accent);color:#fff;font:650 15px var(--sans);cursor:pointer;white-space:nowrap}
+.subform button[disabled]{opacity:.6}
+.substatus{margin:8px 0 0}
 .subscribe .fine{grid-column:1/-1;font-size:12.5px;opacity:.7}.subscribe .fine a,.subscribe .soon a{text-decoration:underline}
 /* archive */
 .arch{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
@@ -295,8 +294,8 @@ tr.up .bar{color:var(--up)}tr.down .bar{color:var(--down)}tr.flat .bar{color:var
     <h2 id="sub-title">Get AI Daily in your inbox</h2>
     <p>One calm email every morning: the AI brief, the stories that matter and why. Free, no spam, unsubscribe anytime.</p>
   </div>
-  <p class="soon">Email delivery opens shortly. Until then, follow along via <a href="https://juwenlie.pages.dev/news/feed.xml">RSS</a>.</p>
-  <p class="fine"> <a href="https://juwenlie.pages.dev/news/feed.xml">RSS feed</a> · <a href="https://juwenlie.pages.dev/">More from Juwen Lie</a></p>
+  <div><p class="soon">Email delivery opens shortly. Until then, follow along via <a href="https://juwenlie.pages.dev/news/feed.xml">RSS</a>.</p></div>
+  <p class="fine"><a href="https://juwenlie.pages.dev/news/feed.xml">RSS feed</a> · <a href="https://juwenlie.pages.dev/">More from Juwen Lie</a></p>
 </section>
   
 <section class="block markets" id="markets" aria-labelledby="markets-title">
@@ -313,7 +312,7 @@ tr.up .bar{color:var(--up)}tr.down .bar{color:var(--down)}tr.flat .bar{color:var
   <svg class="spark up" viewBox="0 0 96 28" preserveAspectRatio="none" aria-hidden="true"><polyline points="0.0,3.0 24.0,25.0 48.0,23.6 72.0,15.0 96.0,3.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>
 </div></div>
   <div class="mnotes"><p>Nasdaq +0.20%.</p></div>
-  <div class="watchgrid"><div class="watch"><h3>AI stocks · last close (not investment advice)</h3><table>
+  <div class="watchgrid"><div class="watch"><h3>AI stocks Â· last close (not investment advice)</h3><table>
 <tr class="up">
   <td><b>AMD</b><span>AMD</span></td>
   <td class="num">560.26</td>
@@ -597,7 +596,7 @@ tr.up .bar{color:var(--up)}tr.down .bar{color:var(--down)}tr.flat .bar{color:var
   </div>
 </footer>
 
-<script>window.MP={"refresh": 0};
+<script src="../assets/subscribe.js" defer></script><script>window.MP={"refresh": 0};
 (function(){
 var d=document,root=d.documentElement;
 var tb=d.getElementById("theme");

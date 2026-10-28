@@ -8,14 +8,17 @@ Usage (from the repository root):
 build  collects the AI feeds, writes the AI brief (GitHub Models in Actions),
        and writes news/index.html, news/YYYY-MM-DD.html, news/archive.json,
        news/feed.xml and the email body news/email/YYYY-MM-DD.html.
-send   emails today's edition from your Gmail to the AI Daily Google Group,
-       which delivers it to every member (free, no member cap, Google handles
-       unsubscribes). Once per day (state in news/sent.json). Needs the
-       GMAIL_APP_PASSWORD secret (and optionally GMAIL_ADDRESS); without it the
-       step is skipped, so the web edition still publishes.
+send   emails today's edition to every subscriber, one personal copy each
+       (own unsubscribe link, welcome banner on a reader's first issue).
+       Subscribers live in the Gmail inbox itself: the site's forms send each
+       signup/unsubscribe through FormSubmit to that inbox, and replies or
+       Gmail's unsubscribe button land there too. Nothing personal is stored
+       in this public repo or printed to the Actions log. Once per day
+       (state in news/sent.json). Needs the GMAIL_APP_PASSWORD secret
+       (optional GMAIL_ADDRESS, default juwpegatron@gmail.com).
 
-The Google Group name is read from assets/subscribe.js (single source of
-truth shared with the subscribe forms on the site).
+The inbox address is read from assets/subscribe.js (single source of truth
+shared with the subscribe forms on the site).
 """
 from __future__ import annotations
 
@@ -56,12 +59,12 @@ def repo_root() -> Path:
 DEFAULT_SENDER = "juwpegatron@gmail.com"
 
 
-def google_group(root: Path) -> str:
+def signup_inbox(root: Path) -> str:
     try:
         source = (root / "assets" / "subscribe.js").read_text(encoding="utf-8")
     except OSError:
         return ""
-    match = re.search(r'googleGroup\s*:\s*"([^"]*)"', source)
+    match = re.search(r'inbox\s*:\s*"([^"]*)"', source)
     return match.group(1).strip() if match else ""
 
 
@@ -103,7 +106,7 @@ def build(args) -> int:
     })
     archive = archive[:400]
 
-    group = google_group(root)
+    inbox = signup_inbox(root)
     base_options = {
         "brand": BRAND,
         "tagline": "The AI news that matters, explained in five minutes.",
@@ -116,7 +119,8 @@ def build(args) -> int:
         "site_url": f"{SITE_URL}/",
         "site_name": "Juwen Lie",
         "rss_url": f"{NEWS_URL}feed.xml",
-        "subscribe_group": group,
+        "subscribe_form": bool(inbox),
+        "scripts": ["../assets/subscribe.js"],
         "og_image": f"{SITE_URL}/assets/og-hi.png",
     }
     past = [entry for entry in archive if entry["date"] != date_iso]
@@ -135,10 +139,7 @@ def build(args) -> int:
         "site_url": f"{SITE_URL}/news/",
         "site_name": "juwenlie.pages.dev",
         "markets_title": "AI market pulse",
-        "unsubscribe_hint": (
-            f"Unsubscribe anytime: send any email to {group}+unsubscribe@googlegroups.com "
-            "or use the Google Groups link below."
-        ) if group else "",
+        "personalize": True,
     })
     (news_dir / "email" / edition_file).write_text(email_html, encoding="utf-8")
     meta = {
@@ -150,7 +151,7 @@ def build(args) -> int:
     (news_dir / "email" / f"{date_iso}.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
 
     write_feed(news_dir, archive)
-    log(f"built {edition_file}: {meta['stories']} stories, brief={meta['brief_provider']}, group={group or 'not set'}")
+    log(f"built {edition_file}: {meta['stories']} stories, brief={meta['brief_provider']}, signups={'open' if inbox else 'closed'}")
     return 0
 
 
@@ -186,16 +187,115 @@ def write_feed(news_dir: Path, archive: list) -> None:
     (news_dir / "feed.xml").write_text(feed, encoding="utf-8")
 
 
+MAX_SENDS_PER_DAY = 450  # free Gmail allows ~500 recipients/day
+WELCOMED_LABEL = "AI Daily/welcomed"
+EMAIL_RE = re.compile(r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}")
+WELCOME_BANNER = (
+    '<tr><td style="padding:18px 28px 0;"><div style="background:#eef1ff;border-radius:12px;padding:14px 16px;'
+    "font:14px/1.5 -apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#15171a;\">"
+    "<b>Welcome to AI Daily!</b> One email every morning at 6:00 WIB: the AI brief, the stories that matter "
+    "and why. Reply anytime, I read everything. Juwen</div></td></tr>"
+)
+
+
+def _decode_header(value):
+    from email.header import decode_header, make_header
+
+    try:
+        return str(make_header(decode_header(value or "")))
+    except Exception:
+        return value or ""
+
+
+def _all_mail_folder(imap):
+    status, folders = imap.list()
+    for raw in folders or []:
+        line = raw.decode("utf-8", "ignore")
+        if "\\All" in line:
+            return line.rsplit(' "/" ', 1)[-1].strip()
+    return "INBOX"
+
+
+def _message_text(message):
+    parts = []
+    for part in message.walk():
+        if part.get_content_maintype() == "text":
+            try:
+                parts.append(part.get_payload(decode=True).decode(part.get_content_charset() or "utf-8", "ignore"))
+            except Exception:
+                continue
+    return re.sub(r"<[^>]+>", " ", " ".join(parts))
+
+
+def collect_subscribers(imap, own_address):
+    """Replay subscribe/unsubscribe events from the inbox, oldest first."""
+    import email
+    from email.utils import parseaddr, parsedate_to_datetime
+
+    imap.select(_all_mail_folder(imap), readonly=False)
+    queries = [
+        'X-GM-RAW "from:formsubmit.co subject:(AI Daily)"',
+        'X-GM-RAW "subject:unsubscribe -from:formsubmit.co"',
+    ]
+    events = []
+    seen_ids = set()
+    for query in queries:
+        status, data = imap.uid("SEARCH", None, query)
+        for uid in (data[0].split() if data and data[0] else []):
+            if uid in seen_ids:
+                continue
+            seen_ids.add(uid)
+            status, fetched = imap.uid("FETCH", uid, "(BODY.PEEK[] X-GM-LABELS)")
+            raw = next((item[1] for item in fetched if isinstance(item, tuple)), None)
+            if not raw:
+                continue
+            labels = " ".join(item[0].decode("utf-8", "ignore") for item in fetched if isinstance(item, tuple))
+            message = email.message_from_bytes(raw)
+            subject = _decode_header(message.get("Subject")).lower()
+            sender = parseaddr(message.get("From", ""))[1].lower()
+            try:
+                when = parsedate_to_datetime(message.get("Date")).timestamp()
+            except Exception:
+                when = 0.0
+            if "formsubmit" in sender:
+                addresses = [
+                    a.lower() for a in EMAIL_RE.findall(_message_text(message))
+                    if "formsubmit" not in a.lower() and a.lower() != own_address.lower()
+                ]
+                if not addresses:
+                    continue
+                action = "unsubscribe" if "unsubscribe" in subject else "subscribe"
+                events.append((when, action, addresses[0], uid, WELCOMED_LABEL in labels))
+            elif "unsubscribe" in subject and sender and sender != own_address.lower():
+                events.append((when, "unsubscribe", sender, uid, False))
+
+    events.sort(key=lambda event: event[0])
+    subscribers = {}
+    for when, action, address, uid, welcomed in events:
+        if action == "subscribe":
+            previous = subscribers.get(address)
+            subscribers[address] = {
+                "uid": uid,
+                "welcomed": welcomed or bool(previous and previous["welcomed"]),
+            }
+        else:
+            subscribers.pop(address, None)
+    return subscribers
+
+
 def send(args) -> int:
+    import imaplib
     import smtplib
+    import time
     from email.message import EmailMessage
     from email.utils import make_msgid
+    from urllib.parse import quote
 
     root = repo_root()
     news_dir = root / "news"
     password = os.environ.get("GMAIL_APP_PASSWORD", "").replace(" ", "").strip()
     sender = os.environ.get("GMAIL_ADDRESS", "").strip() or DEFAULT_SENDER
-    group = google_group(root)
+    inbox = signup_inbox(root)
     archive = load_archive(news_dir)
     if not archive:
         log("send: no edition built yet")
@@ -207,45 +307,82 @@ def send(args) -> int:
     except Exception:
         sent = {}
 
-    if not group:
-        log("send: skipped - set googleGroup in assets/subscribe.js")
+    if not inbox:
+        log("send: skipped - signups are closed (set inbox in assets/subscribe.js)")
         return 0
     if not password:
         log("send: skipped - add the GMAIL_APP_PASSWORD repository secret")
         return 0
-    if date_iso in sent and not args.force:
-        log(f"send: {date_iso} already sent ({sent[date_iso]})")
+    if date_iso in sent and not args.force and not args.test_to:
+        log(f"send: {date_iso} already sent")
         return 0
     meta = json.loads((news_dir / "email" / f"{date_iso}.json").read_text(encoding="utf-8"))
     if int(meta.get("stories", 0)) < MIN_STORIES_TO_SEND:
         log(f"send: only {meta.get('stories')} stories - feeds look broken, not emailing a thin edition")
         return 1
-    html_body = (news_dir / "email" / f"{date_iso}.html").read_text(encoding="utf-8")
-    plain_body = (
-        f"{meta['subject']}\n\nRead today's edition: {NEWS_URL}{date_iso}.html\n\n"
-        f"Unsubscribe: send any email to {group}+unsubscribe@googlegroups.com\n"
-    )
-
-    message = EmailMessage()
-    message["Subject"] = meta["subject"]
-    message["From"] = f"{BRAND} <{sender}>"
-    message["To"] = f"{group}@googlegroups.com"
-    message["Message-ID"] = make_msgid(domain="juwenlie.pages.dev")
-    message.set_content(plain_body)
-    message.add_alternative(html_body, subtype="html")
+    template = (news_dir / "email" / f"{date_iso}.html").read_text(encoding="utf-8")
 
     try:
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=60) as smtp:
-            smtp.login(sender, password)
-            smtp.send_message(message)
+        imap = imaplib.IMAP4_SSL("imap.gmail.com", 993)
+        imap.login(sender, password)
+        subscribers = collect_subscribers(imap, sender)
     except Exception as exc:  # noqa: BLE001
-        log(f"send: Gmail SMTP failed: {exc}")
+        log(f"send: could not read signups from Gmail: {type(exc).__name__}")
         return 1
 
-    sent[date_iso] = message["Message-ID"]
-    sent_path.write_text(json.dumps(sent, indent=1), encoding="utf-8")
-    log(f"send: {date_iso} sent to {group}@googlegroups.com from {sender}")
-    return 0
+    recipients = sorted(subscribers)
+    if args.test_to:
+        recipients = [args.test_to.lower()]
+        subscribers.setdefault(recipients[0], {"uid": None, "welcomed": False})
+    if len(recipients) > MAX_SENDS_PER_DAY:
+        log(f"send: {len(recipients)} subscribers exceeds the Gmail daily cap; sending to the first {MAX_SENDS_PER_DAY}")
+        recipients = recipients[:MAX_SENDS_PER_DAY]
+    log(f"send: {len(subscribers)} active subscriber(s); sending {len(recipients)}")
+    if not recipients:
+        imap.logout()
+        return 0
+
+    delivered = 0
+    welcomed_uids = []
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=60) as smtp:
+        smtp.login(sender, password)
+        for address in recipients:
+            info = subscribers[address]
+            unsubscribe_url = f"{NEWS_URL}unsubscribe.html?e={quote(address)}"
+            welcome = WELCOME_BANNER if not info["welcomed"] else ""
+            html_body = template.replace("%%WELCOME%%", welcome).replace("%%UNSUBSCRIBE_URL%%", unsubscribe_url)
+            message = EmailMessage()
+            message["Subject"] = meta["subject"]
+            message["From"] = f"{BRAND} <{sender}>"
+            message["To"] = address
+            message["Message-ID"] = make_msgid(domain="juwenlie.pages.dev")
+            message["List-Unsubscribe"] = f"<mailto:{sender}?subject=unsubscribe>, <{unsubscribe_url}>"
+            message.set_content(
+                f"{meta['subject']}\n\nRead today's edition: {NEWS_URL}{date_iso}.html\n\n"
+                f"Unsubscribe: {unsubscribe_url}\n"
+            )
+            message.add_alternative(html_body, subtype="html")
+            try:
+                smtp.send_message(message)
+                delivered += 1
+                if welcome and info.get("uid"):
+                    welcomed_uids.append(info["uid"])
+            except Exception as exc:  # noqa: BLE001
+                log(f"send: one delivery failed ({type(exc).__name__})")
+            time.sleep(0.4)
+
+    for uid in welcomed_uids:
+        try:
+            imap.uid("STORE", uid, "+X-GM-LABELS", f'("{WELCOMED_LABEL}")')
+        except Exception:
+            pass
+    imap.logout()
+
+    if not args.test_to:
+        sent[date_iso] = f"{delivered} delivered"
+        sent_path.write_text(json.dumps(sent, indent=1), encoding="utf-8")
+    log(f"send: {date_iso} delivered to {delivered} of {len(recipients)}")
+    return 0 if delivered or not recipients else 1
 
 
 def main() -> int:
@@ -255,6 +392,7 @@ def main() -> int:
     build_parser.add_argument("--data", help="use a cached newsdata JSON instead of fetching")
     send_parser = sub.add_parser("send")
     send_parser.add_argument("--force", action="store_true", help="send even if today's edition was already sent")
+    send_parser.add_argument("--test-to", help="send only to this address (does not mark the day as sent)")
     args = parser.parse_args()
     return build(args) if args.command == "build" else send(args)
 

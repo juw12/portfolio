@@ -101,6 +101,10 @@ def render_email(data: dict, options: dict | None = None) -> str:
         f"</tr></table></td></tr>"
     )
 
+    # Per-reader welcome banner (filled in by the sender for first-time readers)
+    if opts.get("personalize"):
+        rows.append("%%WELCOME%%")
+
     # The Brief
     bullets = brief.get("bullets") or []
     if bullets:
@@ -234,7 +238,12 @@ def render_email(data: dict, options: dict | None = None) -> str:
             f'<a href="{esc(opts["site_url"])}" style="color:{INK2};">{esc(opts["site_name"] or opts["site_url"])}</a>. '
             "Curated automatically every morning from public reporting; every story links to its publisher."
         )
-        if opts.get("unsubscribe_hint"):
+        if opts.get("personalize"):
+            footer += (
+                f'<br><a href="%%UNSUBSCRIBE_URL%%" style="color:{INK2};">Unsubscribe</a> · '
+                "or reply with the word unsubscribe."
+            )
+        elif opts.get("unsubscribe_hint"):
             footer += f"<br>{esc(opts['unsubscribe_hint'])}"
     else:
         footer = f'Generated {esc(data.get("generated_at"))} on your PC.'

@@ -1,10 +1,10 @@
 name: AI Daily
 
 # Builds the public AI Daily edition at /news/ every morning and emails it to
-# the AI Daily Google Group (free, no member cap). The brief is written by GitHub
-# Models (free, uses the workflow token). Email needs the GMAIL_APP_PASSWORD
-# repository secret; until it exists the web edition still publishes and the
-# send step is skipped.
+# every subscriber from Gmail (signups arrive in that inbox via FormSubmit;
+# free, ~500 emails/day). The brief is written by GitHub Models (free, uses the
+# workflow token). Email needs the GMAIL_APP_PASSWORD repository secret; until
+# it exists the web edition still publishes and the send step is skipped.
 
 on:
   schedule:

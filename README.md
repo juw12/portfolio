@@ -34,12 +34,13 @@ A public daily AI briefing, built every morning at 06:00 WIB by `.github/workflo
 `scripts/ai_daily/build_ai_daily.py build` collects AI feeds, clusters duplicate stories across
 outlets, writes "The Brief" with GitHub Models (workflow token, `models: read`), and publishes
 `news/index.html`, `news/YYYY-MM-DD.html`, `news/archive.json` and `news/feed.xml`.
-`... send` then emails the edition from Gmail to the AI Daily Google Group, which delivers it to every member (once per day, `news/sent.json`).
+`... send` then emails each subscriber a personal copy from Gmail (own unsubscribe link, welcome banner on the first issue; once per day, `news/sent.json`). Signups and unsubscribes from the site go through FormSubmit to that Gmail inbox, which is the subscriber list; nothing personal is stored in this repo or printed in logs.
 
 - Feeds, sections and topic filter: `scripts/ai_daily/config_ai_daily.json`.
-- Email delivery needs two things: the Google Group name in `assets/subscribe.js` (also turns on
-  the AI Daily checkbox in the /hi/ and /log/ signup forms) and the `GMAIL_APP_PASSWORD` repository secret
-  (optional `GMAIL_ADDRESS`, default juwpegatron@gmail.com, which must own the group). Group settings: anyone can join, only owners post.
+- Email delivery needs two things: the signup inbox in `assets/subscribe.js` (`inbox`, also turns on the AI Daily
+  checkbox in the /hi/ and /log/ forms and the form on /news/) and the `GMAIL_APP_PASSWORD` repository secret
+  (optional `GMAIL_ADDRESS`, default juwpegatron@gmail.com). Free Gmail sends ~500 emails/day; the sender caps at 450.
+- Unsubscribe: `news/unsubscribe.html` (linked in every email), Gmail's unsubscribe button, or replying "unsubscribe".
 - Run it by hand: Actions â†’ AI Daily â†’ Run workflow (tick "send" to email).
 
 ## Project cards
