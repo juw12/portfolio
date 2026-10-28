@@ -5,16 +5,26 @@ name: AI Daily
 # free, ~500 emails/day). The brief is written by GitHub Models (free, uses the
 # workflow token). Email needs the GMAIL_APP_PASSWORD repository secret; until
 # it exists the web edition still publishes and the send step is skipped.
+#
+# Manual runs (Actions tab > AI Daily > Run workflow):
+#   test          build today's edition WITHOUT publishing and email it only
+#                 to the sender's own inbox - safe to run any time
+#   publish       rebuild and publish today's edition, no email
+#   publish+send  rebuild, publish and email every subscriber (once per day)
 
 on:
   schedule:
     - cron: "0 23 * * *"   # 06:00 WIB (UTC+7), every day
   workflow_dispatch:
     inputs:
-      send:
-        description: "Email today's edition to subscribers"
-        type: boolean
-        default: false
+      mode:
+        description: "What to run"
+        type: choice
+        options:
+          - test
+          - publish
+          - publish+send
+        default: test
 
 permissions:
   contents: write
@@ -44,6 +54,7 @@ jobs:
         run: python scripts/ai_daily/build_ai_daily.py build
 
       - name: Publish to the site
+        if: github.event_name == 'schedule' || inputs.mode != 'test'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -60,11 +71,11 @@ jobs:
           exit 1
 
       - name: Wait for the web edition to go live
-        if: github.event_name == 'schedule' || inputs.send
+        if: github.event_name == 'schedule' || inputs.mode == 'publish+send'
         run: sleep 90
 
       - name: Email subscribers
-        if: github.event_name == 'schedule' || inputs.send
+        if: github.event_name == 'schedule' || inputs.mode == 'publish+send'
         env:
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
@@ -75,3 +86,10 @@ jobs:
             git commit -m "AI Daily: mark $(date -u -d '+7 hours' +%Y-%m-%d) as sent"
             git pull --rebase --quiet && git push
           fi
+
+      - name: Email a test copy to the sender only
+        if: inputs.mode == 'test'
+        env:
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+        run: python scripts/ai_daily/build_ai_daily.py send --test-to self

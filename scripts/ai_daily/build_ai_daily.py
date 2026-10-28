@@ -1,9 +1,9 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """AI Daily - the public edition of the Morning Paper, published at /news/.
 
 Usage (from the repository root):
     python scripts/ai_daily/build_ai_daily.py build [--data cached.json]
-    python scripts/ai_daily/build_ai_daily.py send  [--force]
+    python scripts/ai_daily/build_ai_daily.py send  [--force] [--test-to self|ADDRESS]
 
 build  collects the AI feeds, writes the AI brief (GitHub Models in Actions),
        and writes news/index.html, news/YYYY-MM-DD.html, news/archive.json,
@@ -115,7 +115,7 @@ def build(args) -> int:
         "public": True,
         "auto_refresh_minutes": 0,
         "markets_title": "AI market pulse",
-        "watchlist_titles": {"watchlist_us": "AI stocks Â· last close (not investment advice)"},
+        "watchlist_titles": {"watchlist_us": "AI stocks · last close (not investment advice)"},
         "site_url": f"{SITE_URL}/",
         "site_name": "Juwen Lie",
         "rss_url": f"{NEWS_URL}feed.xml",
@@ -158,8 +158,8 @@ def build(args) -> int:
 def subject_line(data: dict) -> str:
     lead = (data.get("front_page") or [{}])[0].get("title", "Today in AI")
     day = data.get("date_display", "").split(",")[1].strip() if "," in data.get("date_display", "") else ""
-    subject = f"{BRAND} Â· {day}: {lead}" if day else f"{BRAND}: {lead}"
-    return subject if len(subject) <= 110 else subject[:107].rsplit(" ", 1)[0] + "â€¦"
+    subject = f"{BRAND} · {day}: {lead}" if day else f"{BRAND}: {lead}"
+    return subject if len(subject) <= 110 else subject[:107].rsplit(" ", 1)[0] + "…"
 
 
 def write_feed(news_dir: Path, archive: list) -> None:
@@ -172,14 +172,14 @@ def write_feed(news_dir: Path, archive: list) -> None:
         link = f"{NEWS_URL}{entry['date']}.html"
         description = escape(entry.get("lede") or entry.get("headline") or "")
         items.append(
-            f"<item><title>{escape(BRAND)} Â· {escape(entry.get('label', ''))}: {escape(entry.get('headline', ''))}</title>"
+            f"<item><title>{escape(BRAND)} · {escape(entry.get('label', ''))}: {escape(entry.get('headline', ''))}</title>"
             f"<link>{link}</link><guid isPermaLink=\"true\">{link}</guid>"
             f"<pubDate>{format_datetime(published)}</pubDate><description>{description}</description></item>"
         )
     feed = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>'
-        f"<title>{BRAND} Â· Juwen Lie</title><link>{NEWS_URL}</link>"
+        f"<title>{BRAND} · Juwen Lie</title><link>{NEWS_URL}</link>"
         f'<atom:link href="{NEWS_URL}feed.xml" rel="self" type="application/rss+xml"/>'
         "<description>The AI news that matters, explained in five minutes. Every morning.</description>"
         f"<language>en</language>{''.join(items)}</channel></rss>\n"
@@ -227,8 +227,12 @@ def _message_text(message):
     return re.sub(r"<[^>]+>", " ", " ".join(parts))
 
 
-def collect_subscribers(imap, own_address):
-    """Replay subscribe/unsubscribe events from the inbox, oldest first."""
+def collect_subscribers(imap, own_address, stats=None):
+    """Replay subscribe/unsubscribe events from the inbox, oldest first.
+
+    If a dict is passed as ``stats`` it receives counts only (no addresses):
+    subscribe / unsubscribe events and FormSubmit activation emails seen.
+    """
     import email
     from email.utils import parseaddr, parsedate_to_datetime
 
@@ -269,6 +273,12 @@ def collect_subscribers(imap, own_address):
             elif "unsubscribe" in subject and sender and sender != own_address.lower():
                 events.append((when, "unsubscribe", sender, uid, False))
 
+    if stats is not None:
+        stats["subscribe_events"] = sum(1 for event in events if event[1] == "subscribe")
+        stats["unsubscribe_events"] = sum(1 for event in events if event[1] == "unsubscribe")
+        status, data = imap.uid("SEARCH", None, 'X-GM-RAW "from:formsubmit.co activate"')
+        stats["activation_emails"] = len(data[0].split()) if data and data[0] else 0
+
     events.sort(key=lambda event: event[0])
     subscribers = {}
     for when, action, address, uid, welcomed in events:
@@ -295,6 +305,8 @@ def send(args) -> int:
     news_dir = root / "news"
     password = os.environ.get("GMAIL_APP_PASSWORD", "").replace(" ", "").strip()
     sender = os.environ.get("GMAIL_ADDRESS", "").strip() or DEFAULT_SENDER
+    if args.test_to and args.test_to.strip().lower() == "self":
+        args.test_to = sender
     inbox = signup_inbox(root)
     archive = load_archive(news_dir)
     if not archive:
@@ -325,19 +337,31 @@ def send(args) -> int:
     try:
         imap = imaplib.IMAP4_SSL("imap.gmail.com", 993)
         imap.login(sender, password)
-        subscribers = collect_subscribers(imap, sender)
+        inbox_stats = {}
+        subscribers = collect_subscribers(imap, sender, inbox_stats)
+    except imaplib.IMAP4.error as exc:
+        log(f"send: Gmail refused the login ({exc}). GMAIL_APP_PASSWORD must be a 16-letter app password.")
+        return 1
     except Exception as exc:  # noqa: BLE001
         log(f"send: could not read signups from Gmail: {type(exc).__name__}")
         return 1
+    log(
+        f"send: inbox has {inbox_stats.get('subscribe_events', 0)} signup(s), "
+        f"{inbox_stats.get('unsubscribe_events', 0)} unsubscribe(s)"
+    )
+    if not inbox_stats.get("subscribe_events") and inbox_stats.get("activation_emails"):
+        log("send: no signups yet but a FormSubmit activation email is in the inbox - open it and click Activate Form")
 
     recipients = sorted(subscribers)
+    active_count = len(subscribers)
     if args.test_to:
+        log("send: test run - one copy to a single address, not marked as sent")
         recipients = [args.test_to.lower()]
         subscribers.setdefault(recipients[0], {"uid": None, "welcomed": False})
     if len(recipients) > MAX_SENDS_PER_DAY:
         log(f"send: {len(recipients)} subscribers exceeds the Gmail daily cap; sending to the first {MAX_SENDS_PER_DAY}")
         recipients = recipients[:MAX_SENDS_PER_DAY]
-    log(f"send: {len(subscribers)} active subscriber(s); sending {len(recipients)}")
+    log(f"send: {active_count} active subscriber(s); sending {len(recipients)}")
     if not recipients:
         imap.logout()
         return 0
@@ -392,7 +416,10 @@ def main() -> int:
     build_parser.add_argument("--data", help="use a cached newsdata JSON instead of fetching")
     send_parser = sub.add_parser("send")
     send_parser.add_argument("--force", action="store_true", help="send even if today's edition was already sent")
-    send_parser.add_argument("--test-to", help="send only to this address (does not mark the day as sent)")
+    send_parser.add_argument(
+        "--test-to",
+        help="send only to this address, or 'self' for the sender's own inbox (does not mark the day as sent)",
+    )
     args = parser.parse_args()
     return build(args) if args.command == "build" else send(args)
 
