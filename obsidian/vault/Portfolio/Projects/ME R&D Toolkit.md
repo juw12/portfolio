@@ -3,7 +3,7 @@ id: me-rd-toolkit
 app: me-rd-toolkit
 type: project
 status: shipped
-date: 2026-10-26
+date: 2026-10-28
 tags: [npi, design-review, checklists, cpk, pwa, offline-first, file-vault]
 links: ["https://juw12.github.io/projects/me-rd-toolkit/index.html", "https://juw12.github.io/projects/me-rd-toolkit/index.html", "https://juw12.github.io/projects/me-rd-toolkit/index.html", "apps/me-rd-toolkit/"]
 ---

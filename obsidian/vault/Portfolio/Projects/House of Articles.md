@@ -3,7 +3,7 @@ id: house-of-articles
 app: house-of-articles
 type: project
 status: shipped
-date: 2026-10-26
+date: 2026-10-28
 tags: [sneakers, market data, JSON, prototypes]
 links: ["https://juw12.github.io/projects/house-of-articles/app.html", "https://juw12.github.io/projects/house-of-articles/desktop.html", "https://juw12.github.io/projects/house-of-articles/", "apps/house-of-articles/"]
 ---

@@ -3,7 +3,7 @@ id: shortcraft
 app: shortcraft
 type: project
 status: shipped
-date: 2026-10-26
+date: 2026-10-28
 tags: [video, captions, auto-post, Bahasa Indonesia]
 links: ["https://juw12.github.io/projects/shortcraft/app.html", "https://juw12.github.io/projects/shortcraft/", "https://juw12.github.io/projects/shortcraft/mobile.html", "apps/shortcraft/"]
 ---

@@ -3,7 +3,7 @@ id: vertex
 app: vertex
 type: project
 status: shipped
-date: 2026-10-26
+date: 2026-10-28
 tags: [parametric CAD, model repair, simulation, offline-first]
 links: ["https://juw12.github.io/projects/vertex/app.html", "https://juw12.github.io/projects/vertex/index.html", "https://juw12.github.io/projects/vertex/mobile.html", "apps/vertex/"]
 ---

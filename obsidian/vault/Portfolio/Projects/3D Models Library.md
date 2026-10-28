@@ -2,7 +2,7 @@
 id: 3d-models-library
 type: work
 status: modeled
-date: 2026-10-26
+date: 2026-10-28
 tags: [CadQuery, SOMA, OpenCASCADE, Form 3 / SLA, 3D printing, STL, STEP, miniatures]
 links: ["https://github.com/juw12/projects/tree/main/outputs/3d-models"]
 ---

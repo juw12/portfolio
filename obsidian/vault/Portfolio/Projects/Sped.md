@@ -3,7 +3,7 @@ id: sped
 app: sped
 type: project
 status: shipped
-date: 2026-10-26
+date: 2026-10-28
 tags: [Web Audio, 9:16 video export, TikTok / Reels / Shorts, PWA]
 links: ["https://juw12.github.io/projects/sped/", "https://juw12.github.io/projects/sped/web.html", "https://juw12.github.io/projects/sped/mobile.html", "apps/sped/"]
 ---

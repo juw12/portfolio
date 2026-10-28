@@ -8,7 +8,7 @@ Project notes for every app and model in the portfolio, as a ready-to-open [Obsi
 - **Whole repo:** green *Code* button → *Download ZIP* (vault is in `obsidian/vault/`).
 - **Single notes:** browse [`vault/`](vault/) — every note is plain Markdown and reads fine on GitHub.
 
-Updated 2026-10-28 · 25 project notes · 8 update-log entries.
+Updated 2026-10-28 · 28 project notes · 10 update-log entries.
 
 ## Project notes
 
@@ -20,17 +20,20 @@ Updated 2026-10-28 · 25 project notes · 8 update-log entries.
 - [Guang Yao Together · 光耀同行](vault/Portfolio/Projects/Guang%20Yao%20Together%20%C2%B7%20%E5%85%89%E8%80%80%E5%90%8C%E8%A1%8C.md)
 - [Hazel](vault/Portfolio/Projects/Hazel.md)
 - [House of Articles](vault/Portfolio/Projects/House%20of%20Articles.md)
+- [Kitty](vault/Portfolio/Projects/Kitty.md)
+- [Kitty — product note](vault/Portfolio/Projects/Kitty%20%E2%80%94%20product%20note.md)
 - [Lingua](vault/Portfolio/Projects/Lingua.md)
 - [Loka](vault/Portfolio/Projects/Loka.md)
-- [ME R&D Toolkit](vault/Portfolio/Projects/ME%20R%26D%20Toolkit.md)
 - [Marina Bay Sands Miniature](vault/Portfolio/Projects/Marina%20Bay%20Sands%20Miniature.md)
-- [Mint — product note](vault/Portfolio/Projects/Mint%20%E2%80%94%20product%20note.md)
+- [ME R&D Toolkit](vault/Portfolio/Projects/ME%20R%26D%20Toolkit.md)
 - [Mint](vault/Portfolio/Projects/Mint.md)
+- [Mint — product note](vault/Portfolio/Projects/Mint%20%E2%80%94%20product%20note.md)
 - [Orbis](vault/Portfolio/Projects/Orbis.md)
 - [Peers](vault/Portfolio/Projects/Peers.md)
 - [Pips](vault/Portfolio/Projects/Pips.md)
-- [SOMA](vault/Portfolio/Projects/SOMA.md)
+- [PLM AML Approval Assistant](vault/Portfolio/Projects/PLM%20AML%20Approval%20Assistant.md)
 - [Shortcraft](vault/Portfolio/Projects/Shortcraft.md)
+- [SOMA](vault/Portfolio/Projects/SOMA.md)
 - [Sped](vault/Portfolio/Projects/Sped.md)
 - [Sweep](vault/Portfolio/Projects/Sweep.md)
 - [Sync](vault/Portfolio/Projects/Sync.md)
@@ -46,5 +49,9 @@ Updated 2026-10-28 · 25 project notes · 8 update-log entries.
 - [2026-10-26 2229 portfolio](vault/Update%20Log/2026-10-26%202229%20portfolio.md)
 - [2026-10-26 2322 portfolio](vault/Update%20Log/2026-10-26%202322%20portfolio.md)
 - [2026-10-28 0920 lingua](vault/Update%20Log/2026-10-28%200920%20lingua.md)
+- [2026-10-28 1009 pips](vault/Update%20Log/2026-10-28%201009%20pips.md)
+- [2026-10-28 1749 orbis-peers](vault/Update%20Log/2026-10-28%201749%20orbis-peers.md)
+- [2026-10-28 2259 portfolio](vault/Update%20Log/2026-10-28%202259%20portfolio.md)
+- [2026-10-28 2300 kitty](vault/Update%20Log/2026-10-28%202300%20kitty.md)
 
 Notes are generated from the app catalog (`scripts/apps.json` in [juw12/projects](https://github.com/juw12/projects)) by `scripts/publish_portfolio.py`, plus hand-written product notes. Local machine paths and private storage locations are removed from this public copy.

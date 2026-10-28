@@ -2,7 +2,7 @@
 id: vector
 type: shared
 status: shared
-date: 2026-10-26
+date: 2026-10-28
 tags: [AI copilot, Fusion, SOLIDWORKS, CAD repair]
 links: ["https://heyvector.co/"]
 ---

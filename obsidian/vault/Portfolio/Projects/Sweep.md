@@ -3,7 +3,7 @@ id: sweep
 app: sweep
 type: project
 status: shipped
-date: 2026-10-26
+date: 2026-10-28
 tags: [spec score, task board, 1-click handoff, offline agent]
 links: ["https://juw12.github.io/projects/sweep/app.html", "https://juw12.github.io/projects/sweep/", "https://juw12.github.io/projects/sweep/mobile.html", "apps/sweep/"]
 ---

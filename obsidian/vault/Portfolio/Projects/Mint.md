@@ -3,7 +3,7 @@ id: mint
 app: mint
 type: project
 status: shipped
-date: 2026-10-26
+date: 2026-10-28
 tags: [template-marketplace, excel, google-sheets, affiliate, creator-economy, cloudflare-workers, workers-ai, pwa, android, capacitor, payments, web-push]
 links: ["https://juw12.github.io/projects/mint/app.html", "https://juw12.github.io/projects/mint/web.html", "https://juw12.github.io/projects/mint/mobile.html", "apps/mint/"]
 ---

@@ -17,15 +17,3 @@ Offline-first personal hub for communication and growth — manage replies, comm
 - **Mobile** — https://juw12.github.io/projects/orbis/app-mobile.html
 
 Monorepo: https://github.com/juw12/projects (`apps/orbis/`)
-
-## Latest update — 2026-10-28 · Orbis Plus
-
-A UX layer (`web/orbis-plus.css` + `web/orbis-plus.js`) on top of the desktop app, no data-model changes:
-
-- **Command palette** — `Ctrl/⌘ K` fuzzy search across views, actions, today items, commitments, drafts and summaries.
-- **Keyboard first** — `G` + letter to jump, `J`/`K` move, `E` confirm, `S` snooze, `X` dismiss, `R` reply, `?` shortcut sheet.
-- **Undo everywhere** — confirm, snooze, dismiss, status changes, deletes, bulk edits and draft discards.
-- **Commitments** — filters with counts, sortable columns, bulk select, drag-and-drop Kanban board, quick-add.
-- **Appearance** — light / dark / system theme, 7 accents, density, reduce motion; 25-min focus timer.
-
-Commit `7bef593` in juw12/projects.

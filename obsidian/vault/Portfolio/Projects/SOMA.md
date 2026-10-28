@@ -2,7 +2,7 @@
 id: soma
 type: shared
 status: shared
-date: 2026-10-26
+date: 2026-10-28
 tags: [AI CAD, CadQuery, open source, 3D printing]
 links: ["https://somacad.app/"]
 ---
