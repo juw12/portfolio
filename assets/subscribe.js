@@ -9,7 +9,7 @@
  *   substack: the build-log publication.
  */
 window.JL_NEWSLETTER = {
-  inbox: "",
+  inbox: "juwpegatron@gmail.com",
   substack: "https://juwenlie.substack.com"
 };
 

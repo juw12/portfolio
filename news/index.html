@@ -294,7 +294,13 @@ tr.up .bar{color:var(--up)}tr.down .bar{color:var(--down)}tr.flat .bar{color:var
     <h2 id="sub-title">Get AI Daily in your inbox</h2>
     <p>One calm email every morning: the AI brief, the stories that matter and why. Free, no spam, unsubscribe anytime.</p>
   </div>
-  <div><p class="soon">Email delivery opens shortly. Until then, follow along via <a href="https://juwenlie.pages.dev/news/feed.xml">RSS</a>.</p></div>
+  <div>
+  <form class="subform" data-newsletter-form>
+    <span data-newsletter-lists hidden><input type="checkbox" name="list" value="aidaily" checked></span>
+    <label class="vh" for="sub-email">Email address</label>
+    <input id="sub-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+    <button type="submit">Subscribe free</button>
+  </form><p class="fine substatus" data-newsletter-status role="status" aria-live="polite"></p></div>
   <p class="fine"><a href="https://juwenlie.pages.dev/news/feed.xml">RSS feed</a> · <a href="https://juwenlie.pages.dev/">More from Juwen Lie</a></p>
 </section>
   
