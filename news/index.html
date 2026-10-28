@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Daily · Wednesday, October 28, 2026</title>
+<meta name="description" content="AI models and tools continue to shape industries, with new releases and legal challenges dominating headlines.">
+<meta property="og:title" content="AI Daily · Wednesday, October 28, 2026">
+<meta property="og:description" content="AI models and tools continue to shape industries, with new releases and legal challenges dominating headlines.">
+<meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0f11" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://juwenlie.pages.dev/news/"><meta property="og:url" content="https://juwenlie.pages.dev/news/"><link rel="alternate" type="application/rss+xml" title="AI Daily" href="https://juwenlie.pages.dev/news/feed.xml"><meta property="og:image" content="https://juwenlie.pages.dev/assets/og-hi.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233346c4'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EAD%3C/text%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem("mp-theme");if(!t){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<style>
+:root{--bg:#f7f6f2;--surface:#fff;--ink:#14161a;--ink2:#474c55;--ink3:#80858e;--line:#e7e4dd;--line2:#d9d5cc;
+--accent:#3346c4;--up:#0b7a46;--down:#c32a1f;--flat:#7b818a;--chip:#f0eee8;--r:16px;
+--serif:"Charter","Bitstream Charter","Sitka Text","Iowan Old Style",Cambria,Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI Variable Text","Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"Cascadia Mono","SF Mono",Consolas,monospace;color-scheme:light}
+[data-theme=dark]{--bg:#0e0f11;--surface:#16181b;--ink:#ecebe7;--ink2:#b9b7b1;--ink3:#878580;--line:#24272b;--line2:#30343a;
+--accent:#8fa0ff;--up:#3ccf8e;--down:#ff6b5e;--chip:#1d2024;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;z-index:99;background:var(--surface);padding:8px 12px;border-radius:8px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+/* bar */
+.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
+.bar-in{max-width:1240px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:18px}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.mark{width:34px;height:34px;border-radius:10px;background:var(--accent);color:#fff;display:grid;place-items:center;font:700 15px var(--serif);letter-spacing:.02em}
+.wordmark{font:700 22px/1 var(--serif);letter-spacing:-.015em}
+.dateline{display:flex;flex-direction:column;line-height:1.2;font-size:12.5px;color:var(--ink3);padding-left:16px;border-left:1px solid var(--line2)}
+.dateline b{color:var(--ink2);font-weight:600}
+.search{margin-left:auto;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 12px;min-width:260px;transition:border-color .15s}
+.search:focus-within{border-color:var(--accent)}
+.search svg{width:16px;height:16px;fill:none;stroke:var(--ink3);stroke-width:2}
+.search input{border:0;background:none;color:var(--ink);font:inherit;font-size:14px;outline:none;width:100%}
+.search kbd{font:11px var(--mono);color:var(--ink3);border:1px solid var(--line2);border-radius:5px;padding:1px 6px}
+.icon{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink2);display:grid;place-items:center;cursor:pointer}
+.icon svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8}
+.sun{display:none}[data-theme=dark] .sun{display:block}[data-theme=dark] .moon{display:none}
+.tabs{border-top:1px solid var(--line)}
+.tabs-in{max-width:1240px;margin:0 auto;padding:0 24px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.tabs-in::-webkit-scrollbar{display:none}
+.tabs a{flex-shrink:0;font-size:13.5px;font-weight:550;color:var(--ink3);padding:10px 12px;border-bottom:2px solid transparent;transition:color .15s}
+.tabs a:hover{color:var(--ink)}.tabs a.on{color:var(--ink);border-bottom-color:var(--accent)}
+.tabs a.tab-cta{color:var(--accent)}
+/* layout */
+.wrap{max-width:1240px;margin:0 auto;padding:22px 24px 40px}
+.hello{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.tagline{margin:0;font:italic 17px var(--serif);color:var(--ink2)}
+.byline{font:600 13px var(--sans);font-style:normal;color:var(--accent);margin-left:6px}
+.stats{margin:0;font-size:12.5px;color:var(--ink3)}.stats b{color:var(--ink2);font-weight:600}
+.noresults{padding:40px;text-align:center;color:var(--ink3);background:var(--surface);border:1px dashed var(--line2);border-radius:var(--r)}
+.front-grid{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(300px,1fr);gap:22px;align-items:start}
+/* story bits */
+.kicker{margin:0 0 6px;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:12.5px;color:var(--ink3)}
+.meta .src{font-weight:650;color:var(--ink2)}.meta .dot{opacity:.6}
+.cov{display:inline-flex;align-items:center;gap:5px;font-weight:650;color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent);padding:2px 8px;border-radius:999px;font-size:11.5px}
+.cov::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.dek{margin:0 0 12px;color:var(--ink2)}
+.clamp2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.why{margin:0 0 14px;padding:12px 14px;border-radius:12px;background:var(--chip);color:var(--ink);font-size:15px}
+.why span{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.why.small{font-size:14px;padding:10px 12px}
+.story h2 a,.story h3 a,.story h4 a{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .25s}
+.story h2 a:hover,.story h3 a:hover,.story h4 a:hover{background-size:100% 1px}
+.story.is-read h2,.story.is-read h3,.story.is-read h4{color:var(--ink3)}
+.story.is-read .meta::after{content:"Read";margin-left:4px;font-size:11px;padding:1px 7px;border:1px solid var(--line2);border-radius:999px}
+.related{margin-top:12px;font-size:13.5px}
+.related summary{cursor:pointer;color:var(--ink2);font-weight:600;list-style:none}
+.related summary::-webkit-details-marker{display:none}
+.related summary::before{content:"+ ";color:var(--accent)}.related[open] summary::before{content:"– "}
+.related ul{margin:8px 0 0;padding:0;list-style:none;border-left:2px solid var(--line2)}
+.related li a{display:block;padding:5px 12px;color:var(--ink2)}.related li a:hover{color:var(--ink)}
+.related b{color:var(--ink);font-weight:650;margin-right:4px}
+/* lead */
+.lead{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.lead-media{aspect-ratio:16/8.4;background:var(--chip);overflow:hidden}
+.lead-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.lead:hover .lead-media img{transform:scale(1.02)}
+.placeholder{display:grid;place-items:center;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 18%,var(--chip)),var(--chip))}
+.placeholder span{font:700 56px var(--serif);color:color-mix(in srgb,var(--accent) 55%,transparent)}
+.noimg{display:none}
+.lead-body{padding:22px 26px 24px}
+.lead h2{margin:0 0 10px;font:700 clamp(26px,3vw,36px)/1.14 var(--serif);letter-spacing:-.018em}
+.lead .dek{font-size:17px}
+/* brief */
+.brief{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px 22px 18px;position:sticky;top:122px}
+.brief-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.brief h2{margin:0;font:700 24px var(--serif);letter-spacing:-.01em}
+.ai-badge{font-size:11.5px;font-weight:700;color:var(--accent);background:color-mix(in srgb,var(--accent) 11%,transparent);padding:4px 10px;border-radius:999px;white-space:nowrap}
+.ai-badge.plain{color:var(--ink2);background:var(--chip)}
+.brief-lede{margin:0 0 14px;font:500 16.5px/1.45 var(--serif);color:var(--ink)}
+.brief-list{margin:0;padding:0;list-style:none;counter-reset:b}
+.brief-list li{counter-increment:b;display:grid;grid-template-columns:28px 1fr;gap:6px;padding:11px 0;border-top:1px solid var(--line)}
+.brief-list li::before{content:counter(b);font:700 15px var(--serif);color:var(--accent)}
+.brief-list p{margin:0;font-size:14.5px;line-height:1.5;color:var(--ink2)}
+.brief-src{font-size:12px;font-weight:650;color:var(--ink3);white-space:nowrap}.brief-src:hover{color:var(--accent)}
+.brief-note{margin:10px 0 0;font-size:11.5px;color:var(--ink3);line-height:1.45}
+/* cards */
+.cards3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:22px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:0 0 18px;overflow:hidden;display:flex;flex-direction:column}
+.card>.kicker,.card>h3,.card>.dek,.card>.why,.card>.meta{margin-left:18px;margin-right:18px}
+.card>.kicker{margin-top:16px}
+.card-media{aspect-ratio:16/9;background:var(--chip);overflow:hidden}
+.card-media img{width:100%;height:100%;object-fit:cover}
+.card h3{margin:0 18px 8px;font:700 19px/1.25 var(--serif);letter-spacing:-.01em}
+.card>.kicker:first-child{margin-top:18px}
+.card .dek{font-size:14.5px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card .meta{margin-top:auto}
+.more-top{margin-top:26px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 22px}
+.eyebrow{margin:14px 0 2px;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+/* rows */
+.row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:start;padding:14px 0;border-top:1px solid var(--line)}
+.more-top .row:first-of-type{border-top:0}
+.row .num{font:700 15px var(--serif);color:var(--accent);padding-top:2px}
+.row h4{margin:0 0 4px;font:650 16.5px/1.3 var(--serif)}
+.row .dek{font-size:14px;margin-bottom:6px}
+.row-media{width:112px;aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:var(--chip)}
+.row-media img{width:100%;height:100%;object-fit:cover}
+/* blocks */
+.block{margin-top:44px}
+.block-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding-bottom:12px;margin-bottom:18px;border-bottom:2px solid var(--ink)}
+.block-head h2{margin:0;font:700 26px var(--serif);letter-spacing:-.015em}
+.block-head p{margin:0;font-size:13.5px;color:var(--ink3)}
+.sgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:26px;align-items:start}
+.slist .row:first-child{border-top:0;padding-top:0}
+/* markets */
+.qgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px 10px}
+.qtop{display:flex;justify-content:space-between;gap:8px;font-size:12.5px}
+.qname{font-weight:650;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qpct{font:600 12px var(--mono);white-space:nowrap}
+.qprice{font:650 21px var(--mono);letter-spacing:-.02em;margin:4px 0 2px}
+.spark{width:100%;height:28px;display:block}
+.up .qpct,.up .spark,tr.up .chg{color:var(--up)}.down .qpct,.down .spark,tr.down .chg{color:var(--down)}.flat .qpct,.flat .spark{color:var(--flat)}
+.mnotes{margin:14px 0 0;font-size:14px;color:var(--ink2)}.mnotes p{margin:4px 0}
+.watchgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px;margin-top:18px}
+.watch{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 18px}
+.watch h3{margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+.watch table{width:100%;border-collapse:collapse;font-size:14px}
+.watch td{padding:7px 0;border-top:1px solid var(--line);vertical-align:middle}
+.watch tr:first-child td{border-top:0}
+.watch td b{font:650 13px var(--mono);margin-right:8px}.watch td span{color:var(--ink3);font-size:12.5px}
+.watch .num{text-align:right;font:13px var(--mono);white-space:nowrap;padding-left:10px}
+.watch .chg{font-weight:650;width:72px}
+.watch .bar{width:22%;padding:0 4px 0 14px}
+.watch .bar i{display:block;height:5px;border-radius:3px;background:currentColor;opacity:.75;min-width:2px}
+tr.up .bar{color:var(--up)}tr.down .bar{color:var(--down)}tr.flat .bar{color:var(--flat)}
+.private{font-size:13px;color:var(--ink3);margin:12px 0 0}
+/* subscribe */
+.subscribe{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:10px 28px;align-items:center;padding:26px 28px;border-radius:var(--r);background:var(--ink);color:var(--bg)}
+.subscribe h2{margin:0 0 6px;font:700 24px var(--serif)}.subscribe p{margin:0;opacity:.82;font-size:15px}
+.subform{display:flex;gap:8px}
+.subform input{flex:1;min-width:0;padding:12px 14px;border-radius:12px;border:1px solid transparent;font:inherit;background:var(--bg);color:var(--ink)}
+.subform button{padding:12px 18px;border:0;border-radius:12px;background:var(--accent);color:#fff;font:650 15px var(--sans);cursor:pointer;white-space:nowrap}
+.subscribe .fine{grid-column:1/-1;font-size:12.5px;opacity:.7}.subscribe .fine a,.subscribe .soon a{text-decoration:underline}
+/* archive */
+.arch{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.arch a{display:flex;flex-direction:column;gap:2px;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.arch time{font-size:12px;font-weight:700;color:var(--accent)}.arch span{font:600 14.5px/1.35 var(--serif)}
+/* footer */
+.foot{border-top:1px solid var(--line);margin-top:40px}
+.foot-in{max-width:1240px;margin:0 auto;padding:22px 24px 40px;font-size:12.5px;color:var(--ink3)}
+.foot p{margin:4px 0}.foot b{color:var(--ink2)}
+/* search state */
+.story.hit-hide{display:none}.block.hit-hide{display:none}
+/* responsive */
+@media (max-width:1020px){.front-grid{grid-template-columns:1fr}.brief{position:static}.cards3{grid-template-columns:1fr 1fr}.cards3 .card:nth-child(3){display:none}.sgrid{grid-template-columns:1fr}.dateline{display:none}.subscribe{grid-template-columns:1fr}}
+@media (max-width:640px){.bar-in{padding:10px 16px;gap:10px}.search{min-width:0;flex:1}.search kbd{display:none}.wordmark{font-size:18px}.wrap{padding:16px 16px 32px}.tabs-in{padding:0 12px}
+.cards3{grid-template-columns:1fr}.cards3 .card:nth-child(3){display:flex}.lead-body{padding:18px}.row-media{width:84px}.hello{display:block}.stats{margin-top:4px}.subform{flex-direction:column}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media print{.bar,.subscribe,.related,.foot{display:none}body{background:#fff}.lead,.card,.brief,.more-top,.watch,.qcard{border-color:#ccc}}
+</style>
+</head>
+<body>
+<a class="skip" href="#top">Skip to stories</a>
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true">AD</span><span class="wordmark">AI Daily</span></a>
+    <div class="dateline"><b>Wednesday, October 28, 2026</b><span>Ai Daily · Updated 16:37</span></div>
+    <label class="search"><span class="vh">Search stories</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Search today's stories" autocomplete="off"><kbd>/</kbd>
+    </label>
+    <button class="icon" id="theme" type="button" aria-label="Toggle dark mode">
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </div>
+  <nav class="tabs" aria-label="Sections"><div class="tabs-in"><a href="#top">Top</a><a href="#brief">Brief</a><a href="#markets">AI market pulse</a><a href="#s-models">Models &amp; Labs</a><a href="#s-chips">Chips &amp; Compute</a><a href="#s-products">AI in Products</a><a href="#s-research">Research &amp; Science</a><a href="#s-robotics">Robotics</a><a href="#s-business">Money &amp; Policy</a><a href="#subscribe" class="tab-cta">Subscribe</a></div></nav>
+</header>
+
+<main class="wrap" id="top">
+  <div class="hello">
+    <p class="tagline">The AI news that matters, explained in five minutes. <a class="byline" href="https://juwenlie.pages.dev/">by Juwen Lie</a></p>
+    <p class="stats"><b>20</b> stories · <b>11</b> outlets · <b>73</b> headlines scanned · <b>6</b> multi-source</p>
+  </div>
+  <p class="noresults" id="noresults" hidden>No stories match your search.</p>
+
+  <section class="front" aria-label="Top stories">
+    <div class="front-grid">
+      
+<article class="story lead" data-text="deepmind unveils genie 4 world model promising more realistic physics and humans genie 4 will roll out to developers and google ai ultra subscribers soon. ars technica google deepmind model">
+  <a class="story-link" href="https://arstechnica.com/google/2026/10/deepminds-genie-4-world-model-adds-audio-and-more-realistic-people-to-simulations/" target="_blank" rel="noopener"><div class="lead-media"><img src="https://cdn.arstechnica.net/wp-content/uploads/2026/10/vlcsnap-2026-10-27-10h06m52s461-1152x648.png" alt="" loading="eager" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg');this.remove()"></div></a>
+  <div class="lead-body">
+    <p class="kicker">Models &amp; Labs · Google</p>
+    <h2><a class="story-link" href="https://arstechnica.com/google/2026/10/deepminds-genie-4-world-model-adds-audio-and-more-realistic-people-to-simulations/" target="_blank" rel="noopener">DeepMind unveils Genie 4 world model promising more realistic physics and humans</a></h2>
+    <p class="dek">Genie 4 will roll out to developers and Google AI Ultra subscribers soon.</p>
+    <p class="why"><span>Why it matters</span>Genie 4&#x27;s realistic physics and human interaction could advance AI development and applications for developers.</p>
+    <div class="meta"><span class="src">Ars Technica</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T16:00:22+00:00">17h ago</time><span class="dot" aria-hidden="true">·</span><span class="cov" title="Reported by 4 outlets">4 sources</span></div>
+    <details class="related"><summary>Also reported by 3 more</summary><ul><li><a href="https://www.marktechpost.com/2026/10/28/google-deepmind-genie-4-world-model/" target="_blank" rel="noopener"><b>MarkTechPost</b> Meet Google DeepMind’s Genie 4: Real-Time World Model With Native Audio</a></li><li><a href="https://www.theverge.com/tech/1019076/google-genie-4-ai-model" target="_blank" rel="noopener"><b>The Verge</b> Google’s next Genie AI model generates more realistic experiences</a></li><li><a href="https://techcrunch.com/2026/10/27/googles-genie-4-world-model-adds-audio-more-realistic-worlds-and-real-time-steering/" target="_blank" rel="noopener"><b>TechCrunch</b> Google’s Genie 4 world model adds audio, more realistic worlds, and real-time steering</a></li></ul></details>
+  </div>
+</article>
+      
+<aside class="brief" id="brief" aria-labelledby="brief-title">
+  <div class="brief-head"><h2 id="brief-title">The Brief</h2><span class="ai-badge" title="Written by AI from the stories below">✦ AI summary</span></div>
+  <p class="brief-lede">AI models and tools continue to shape industries, with new releases and legal challenges dominating headlines.</p>
+  <ol class="brief-list"><li><p>DeepMind released Genie 4, a world model with realistic physics and human interaction for developers and subscribers. <a href="https://arstechnica.com/google/2026/10/deepminds-genie-4-world-model-adds-audio-and-more-realistic-people-to-simulations/" target="_blank" rel="noopener" class="brief-src">Ars Technica ↗</a></p></li><li><p>Nvidia and AMD are investing $4 billion in Meta to strengthen their AI collaboration and infrastructure support. <a href="https://www.cnbc.com/2026/10/27/nvidia-invest-meta.html" target="_blank" rel="noopener" class="brief-src">CNBC ↗</a></p></li><li><p>Apple is integrating an AI chatbot into its productivity apps, including Pages, Keynote, and Numbers. <a href="https://www.theverge.com/tech/1019373/apple-pages-keynote-numbers-ai-chatbot-update" target="_blank" rel="noopener" class="brief-src">The Verge ↗</a></p></li><li><p>Meta launched Waddle World, an AI pet app that functions as a daily journal disguised as a virtual pet. <a href="https://www.engadget.com/2299227/meta-tamagotchi-like-ai-digital-pet-app-waddle-world/" target="_blank" rel="noopener" class="brief-src">Engadget ↗</a></p></li><li><p>Anthropic is balancing its IPO plans with efforts to maintain control over its AI development and business strategy. <a href="https://www.theverge.com/ai-artificial-intelligence/1019470/anthropic-ipo-resist-investor-pressure-cut-corners-safety" target="_blank" rel="noopener" class="brief-src">The Verge ↗</a></p></li></ol>
+  <p class="brief-note">Summarised by AI from 10 stories across 7 outlets. Facts come from the linked reporting; tap through before you quote.</p>
+</aside>
+    </div>
+    <div class="cards3">
+<article class="story card" data-text="google deepmind&#x27;s genie 4 puts a modern spin on agent designs that predate llms google deepmind has introduced genie 4, a real-time world model that simulates interactive 3d worlds with sound and talking characters. gemini models help plan in the background to keep the simulation consistent. genie 4 is still an early... the decoder google deepmind gemini">
+  <a class="story-link" href="https://the-decoder.com/google-deepminds-genie-4-puts-a-modern-spin-on-agent-designs-that-predate-llms/" target="_blank" rel="noopener"><div class="card-media"><img src="https://the-decoder.com/wp-content/uploads/2026/10/Genie-4-Google-title.png" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg');this.remove()"></div></a>
+  <p class="kicker">Models &amp; Labs · Google</p>
+  <h3><a class="story-link" href="https://the-decoder.com/google-deepminds-genie-4-puts-a-modern-spin-on-agent-designs-that-predate-llms/" target="_blank" rel="noopener">Google Deepmind&#x27;s Genie 4 puts a modern spin on agent designs that predate LLMs</a></h3>
+  <p class="why small"><span>Why it matters</span>Genie 4&#x27;s design reflects a shift in AI agent development, potentially influencing future interactive systems.</p>
+  <div class="meta"><span class="src">The Decoder</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T17:25:09+00:00">16h ago</time></div>
+</article>
+<article class="story card" data-text="i tested every major ai agent for a day. here’s the best one i ranked six ai agents—from meta’s muse to anthropic’s claude duet—on how well they completed basic tasks. wired anthropic claude meta">
+  <a class="story-link" href="https://www.wired.com/story/i-tested-every-major-ai-agent-for-a-day-heres-the-best-one/" target="_blank" rel="noopener"><div class="card-media"><img src="https://media.wired.com/photos/6adbdf82eed013bcc79da54f/master/pass/gear-ai-agent-best.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg');this.remove()"></div></a>
+  <p class="kicker">Models &amp; Labs · Anthropic</p>
+  <h3><a class="story-link" href="https://www.wired.com/story/i-tested-every-major-ai-agent-for-a-day-heres-the-best-one/" target="_blank" rel="noopener">I Tested Every Major AI Agent for a Day. Here’s the Best One</a></h3>
+  <p class="why small"><span>Why it matters</span>The AI agent rankings provide insight into current capabilities and help users choose the best tools for tasks.</p>
+  <div class="meta"><span class="src">Wired</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T09:30:00+00:00">1d ago</time></div>
+</article>
+<article class="story card" data-text="parents sue openai, alleging gpt-4o coached their daughter off seizure medication a family is suing openai, saying chatgpt coached their daughter to quietly taper off her seizure medication and keep it from her doctors before she died in february. techcrunch openai gpt chatgpt">
+  <a class="story-link" href="https://techcrunch.com/2026/10/27/parents-sue-openai-alleging-gpt-4o-coached-their-daughter-off-seizure-medication/" target="_blank" rel="noopener"></a>
+  <p class="kicker">Models &amp; Labs · OpenAI</p>
+  <h3><a class="story-link" href="https://techcrunch.com/2026/10/27/parents-sue-openai-alleging-gpt-4o-coached-their-daughter-off-seizure-medication/" target="_blank" rel="noopener">Parents sue OpenAI, alleging GPT-4o coached their daughter off seizure medication</a></h3>
+  <p class="why small"><span>Why it matters</span>The lawsuit highlights potential risks of AI in healthcare, raising concerns about ethical use and legal accountability.</p>
+  <div class="meta"><span class="src">TechCrunch</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T23:34:27+00:00">10h ago</time></div>
+</article></div>
+    <div class="more-top"><h3 class="eyebrow">Also on the front page</h3>
+<article class="story row" data-text="anthropic’s elaborate plan to keep wall street at bay anthropic wants to have it both ways. with its impending ipo, it wants to tap the vast riches of the public markets and insists it doesn&#x27;t want to compromise its core mission of developing ai safely and for the benefit of humanity. but... the verge anthropic ai">
+  <span class="num">05</span>
+  <div class="row-body">
+    <h4><a class="story-link" href="https://www.theverge.com/ai-artificial-intelligence/1019470/anthropic-ipo-resist-investor-pressure-cut-corners-safety" target="_blank" rel="noopener">Anthropic’s elaborate plan to keep Wall Street at bay</a></h4>
+    <p class="dek clamp2">Anthropic wants to have it both ways. With its impending IPO, it wants to tap the vast riches of the public markets and insists it doesn&#x27;t want to compromise its core mission of developing AI safely and for the benefit of humanity. But...</p>
+    <div class="meta"><span class="src">The Verge</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T17:04:30+00:00">16h ago</time><span class="dot" aria-hidden="true">·</span><span class="cov" title="Reported by 2 outlets">2 sources</span></div>
+  </div>
+  
+</article>
+<article class="story row" data-text="meta&#x27;s waddle world is a tamagotchi-like ai pet app meta describes waddle world as a &#x27;daily journal disguised as a pet.&#x27; engadget meta ai app">
+  <span class="num">06</span>
+  <div class="row-body">
+    <h4><a class="story-link" href="https://www.engadget.com/2299227/meta-tamagotchi-like-ai-digital-pet-app-waddle-world/" target="_blank" rel="noopener">Meta&#x27;s Waddle World is a Tamagotchi-like AI pet app</a></h4>
+    <p class="dek clamp2">Meta describes Waddle World as a &#x27;daily journal disguised as a pet.&#x27;</p>
+    <div class="meta"><span class="src">Engadget</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-28T08:40:19+00:00">57m ago</time></div>
+  </div>
+  
+</article>
+<article class="story row" data-text="apple is adding an ai chatbot to pages, keynote, and numbers apple is bringing an ai assistant to its suite of productivity apps, including keynote, pages, and numbers. the assistant, which is built on ai models from apple and openai, can understand a document&#x27;s context to perform tasks like... the verge openai apple assistant">
+  <span class="num">07</span>
+  <div class="row-body">
+    <h4><a class="story-link" href="https://www.theverge.com/tech/1019373/apple-pages-keynote-numbers-ai-chatbot-update" target="_blank" rel="noopener">Apple is adding an AI chatbot to Pages, Keynote, and Numbers</a></h4>
+    <p class="dek clamp2">Apple is bringing an AI assistant to its suite of productivity apps, including Keynote, Pages, and Numbers. The assistant, which is built on AI models from Apple and OpenAI, can understand a document&#x27;s context to perform tasks like...</p>
+    <div class="meta"><span class="src">The Verge</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T13:50:51+00:00">19h ago</time></div>
+  </div>
+  
+</article>
+<article class="story row" data-text="anthropic&#x27;s ipo is risky business anthropic&#x27;s much-anticipated ipo is giving potential investors some perspective on the risky business of artificial intelligence. cnbc anthropic ipo">
+  <span class="num">08</span>
+  <div class="row-body">
+    <h4><a class="story-link" href="https://www.cnbc.com/2026/10/27/anthropic-five-surprising-risks-s1.html" target="_blank" rel="noopener">Anthropic&#x27;s IPO is risky business</a></h4>
+    <p class="dek clamp2">Anthropic&#x27;s much-anticipated IPO is giving potential investors some perspective on the risky business of artificial intelligence.</p>
+    <div class="meta"><span class="src">CNBC</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-28T00:43:59+00:00">8h ago</time></div>
+  </div>
+  
+</article></div>
+  </section>
+
+  
+<section class="block subscribe" id="subscribe" aria-labelledby="sub-title">
+  <div>
+    <h2 id="sub-title">Get AI Daily in your inbox</h2>
+    <p>One calm email every morning: the AI brief, the stories that matter and why. Free, no spam, unsubscribe in one click.</p>
+  </div>
+  <p class="soon">Email delivery opens shortly. Until then, follow along via <a href="https://juwenlie.pages.dev/news/feed.xml">RSS</a>.</p>
+  <p class="fine"><a href="https://juwenlie.pages.dev/news/feed.xml">RSS feed</a> · <a href="https://juwenlie.pages.dev/">More from Juwen Lie</a></p>
+</section>
+  
+<section class="block markets" id="markets" aria-labelledby="markets-title">
+  <header class="block-head"><h2 id="markets-title">AI market pulse</h2><p>Last close · 5-day trend</p></header>
+  <div class="qgrid">
+<div class="qcard up">
+  <div class="qtop"><span class="qname">Nasdaq</span><span class="qpct">▲ +0.20%</span></div>
+  <div class="qprice">26,477.81</div>
+  <svg class="spark up" viewBox="0 0 96 28" preserveAspectRatio="none" aria-hidden="true"><polyline points="0.0,3.0 24.0,23.4 48.0,25.0 72.0,18.7 96.0,9.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>
+</div>
+<div class="qcard up">
+  <div class="qtop"><span class="qname">Semiconductors (SOX)</span><span class="qpct">▲ +1.76%</span></div>
+  <div class="qprice">11,482.50</div>
+  <svg class="spark up" viewBox="0 0 96 28" preserveAspectRatio="none" aria-hidden="true"><polyline points="0.0,3.0 24.0,25.0 48.0,23.6 72.0,15.0 96.0,3.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>
+</div></div>
+  <div class="mnotes"><p>Nasdaq +0.20%.</p></div>
+  <div class="watchgrid"><div class="watch"><h3>AI stocks · last close (not investment advice)</h3><table>
+<tr class="up">
+  <td><b>AMD</b><span>AMD</span></td>
+  <td class="num">560.26</td>
+  <td class="bar"><i style="width:45%"></i></td>
+  <td class="num chg">+4.77%</td>
+</tr>
+<tr class="up">
+  <td><b>MU</b><span>Micron</span></td>
+  <td class="num">928.76</td>
+  <td class="bar"><i style="width:34%"></i></td>
+  <td class="num chg">+3.65%</td>
+</tr>
+<tr class="up">
+  <td><b>TSM</b><span>TSMC</span></td>
+  <td class="num">436.87</td>
+  <td class="bar"><i style="width:26%"></i></td>
+  <td class="num chg">+2.77%</td>
+</tr>
+<tr class="up">
+  <td><b>AVGO</b><span>Broadcom</span></td>
+  <td class="num">342.33</td>
+  <td class="bar"><i style="width:22%"></i></td>
+  <td class="num chg">+2.38%</td>
+</tr>
+<tr class="up">
+  <td><b>NVDA</b><span>Nvidia</span></td>
+  <td class="num">217.94</td>
+  <td class="bar"><i style="width:6%"></i></td>
+  <td class="num chg">+0.68%</td>
+</tr>
+<tr class="down">
+  <td><b>MSFT</b><span>Microsoft</span></td>
+  <td class="num">531.33</td>
+  <td class="bar"><i style="width:1%"></i></td>
+  <td class="num chg">-0.10%</td>
+</tr>
+<tr class="down">
+  <td><b>ORCL</b><span>Oracle</span></td>
+  <td class="num">130.53</td>
+  <td class="bar"><i style="width:4%"></i></td>
+  <td class="num chg">-0.47%</td>
+</tr>
+<tr class="down">
+  <td><b>AMZN</b><span>Amazon</span></td>
+  <td class="num">253.10</td>
+  <td class="bar"><i style="width:34%"></i></td>
+  <td class="num chg">-3.63%</td>
+</tr>
+<tr class="down">
+  <td><b>GOOGL</b><span>Alphabet</span></td>
+  <td class="num">320.58</td>
+  <td class="bar"><i style="width:54%"></i></td>
+  <td class="num chg">-5.79%</td>
+</tr>
+<tr class="down">
+  <td><b>META</b><span>Meta</span></td>
+  <td class="num">620.19</td>
+  <td class="bar"><i style="width:100%"></i></td>
+  <td class="num chg">-10.67%</td>
+</tr></table></div></div>
+  
+</section>
+  
+<section class="block section" id="s-models" aria-labelledby="t-models">
+  <header class="block-head"><h2 id="t-models">Models &amp; Labs</h2><p>OpenAI, Anthropic, Google DeepMind, Meta and the frontier labs</p></header>
+  <div class="sgrid">
+    
+<article class="story card" data-text="deepmind unveils genie 4 world model promising more realistic physics and humans genie 4 will roll out to developers and google ai ultra subscribers soon. ars technica google deepmind model">
+  <a class="story-link" href="https://arstechnica.com/google/2026/10/deepminds-genie-4-world-model-adds-audio-and-more-realistic-people-to-simulations/" target="_blank" rel="noopener"><div class="card-media"><img src="https://cdn.arstechnica.net/wp-content/uploads/2026/10/vlcsnap-2026-10-27-10h06m52s461-1152x648.png" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg');this.remove()"></div></a>
+  <p class="kicker">Models &amp; Labs · Google</p>
+  <h3><a class="story-link" href="https://arstechnica.com/google/2026/10/deepminds-genie-4-world-model-adds-audio-and-more-realistic-people-to-simulations/" target="_blank" rel="noopener">DeepMind unveils Genie 4 world model promising more realistic physics and humans</a></h3>
+  <p class="dek">Genie 4 will roll out to developers and Google AI Ultra subscribers soon.</p>
+  <div class="meta"><span class="src">Ars Technica</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T16:00:22+00:00">17h ago</time><span class="dot" aria-hidden="true">·</span><span class="cov" title="Reported by 4 outlets">4 sources</span></div>
+</article>
+    <div class="slist">
+<article class="story row" data-text="google deepmind&#x27;s genie 4 puts a modern spin on agent designs that predate llms google deepmind has introduced genie 4, a real-time world model that simulates interactive 3d worlds with sound and talking characters. gemini models help plan in the background to keep the simulation consistent. genie 4 is still an early... the decoder google deepmind gemini">
+  
+  <div class="row-body">
+    <h4><a class="story-link" href="https://the-decoder.com/google-deepminds-genie-4-puts-a-modern-spin-on-agent-designs-that-predate-llms/" target="_blank" rel="noopener">Google Deepmind&#x27;s Genie 4 puts a modern spin on agent designs that predate LLMs</a></h4>
+    <p class="dek clamp2">Google Deepmind has introduced Genie 4, a real-time world model that simulates interactive 3D worlds with sound and talking characters. Gemini models help plan in the background to keep the simulation consistent. Genie 4 is still an early...</p>
+    <div class="meta"><span class="src">The Decoder</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T17:25:09+00:00">16h ago</time></div>
+  </div>
+  <a class="story-link" href="https://the-decoder.com/google-deepminds-genie-4-puts-a-modern-spin-on-agent-designs-that-predate-llms/" target="_blank" rel="noopener" tabindex="-1"><div class="row-media"><img src="https://the-decoder.com/wp-content/uploads/2026/10/Genie-4-Google-title.png" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg');this.remove()"></div></a>
+</article>
+<article class="story row" data-text="i tested every major ai agent for a day. here’s the best one i ranked six ai agents—from meta’s muse to anthropic’s claude duet—on how well they completed basic tasks. wired anthropic claude meta">
+  
+  <div class="row-body">
+    <h4><a class="story-link" href="https://www.wired.com/story/i-tested-every-major-ai-agent-for-a-day-heres-the-best-one/" target="_blank" rel="noopener">I Tested Every Major AI Agent for a Day. Here’s the Best One</a></h4>
+    <p class="dek clamp2">I ranked six AI agents—from Meta’s Muse to Anthropic’s Claude Duet—on how well they completed basic tasks.</p>
+    <div class="meta"><span class="src">Wired</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T09:30:00+00:00">1d ago</time></div>
+  </div>
+  <a class="story-link" href="https://www.wired.com/story/i-tested-every-major-ai-agent-for-a-day-heres-the-best-one/" target="_blank" rel="noopener" tabindex="-1"><div class="row-media"><img src="https://media.wired.com/photos/6adbdf82eed013bcc79da54f/master/pass/gear-ai-agent-best.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg');this.remove()"></div></a>
+</article>
+<article class="story row" data-text="parents sue openai, alleging gpt-4o coached their daughter off seizure medication a family is suing openai, saying chatgpt coached their daughter to quietly taper off her seizure medication and keep it from her doctors before she died in february. techcrunch openai gpt chatgpt">
+  
+  <div class="row-body">
+    <h4><a class="story-link" href="https://techcrunch.com/2026/10/27/parents-sue-openai-alleging-gpt-4o-coached-their-daughter-off-seizure-medication/" target="_blank" rel="noopener">Parents sue OpenAI, alleging GPT-4o coached their daughter off seizure medication</a></h4>
+    <p class="dek clamp2">A family is suing OpenAI, saying ChatGPT coached their daughter to quietly taper off her seizure medication and keep it from her doctors before she died in February.</p>
+    <div class="meta"><span class="src">TechCrunch</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T23:34:27+00:00">10h ago</time></div>
+  </div>
+  
+</article>
+<article class="story row" data-text="anthropic’s elaborate plan to keep wall street at bay anthropic wants to have it both ways. with its impending ipo, it wants to tap the vast riches of the public markets and insists it doesn&#x27;t want to compromise its core mission of developing ai safely and for the benefit of humanity. but... the verge anthropic ai">
+  
+  <div class="row-body">
+    <h4><a class="story-link" href="https://www.theverge.com/ai-artificial-intelligence/1019470/anthropic-ipo-resist-investor-pressure-cut-corners-safety" target="_blank" rel="noopener">Anthropic’s elaborate plan to keep Wall Street at bay</a></h4>
+    <p class="dek clamp2">Anthropic wants to have it both ways. With its impending IPO, it wants to tap the vast riches of the public markets and insists it doesn&#x27;t want to compromise its core mission of developing AI safely and for the benefit of humanity. But...</p>
+    <div class="meta"><span class="src">The Verge</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T17:04:30+00:00">16h ago</time><span class="dot" aria-hidden="true">·</span><span class="cov" title="Reported by 2 outlets">2 sources</span></div>
+  </div>
+  
+</article></div>
+  </div>
+</section>
+<section class="block section" id="s-chips" aria-labelledby="t-chips">
+  <header class="block-head"><h2 id="t-chips">Chips &amp; Compute</h2><p>GPUs, semiconductors, data centers and the power behind AI</p></header>
+  <div class="sgrid">
+    
+<article class="story card" data-text="tsmc reportedly weighs 20% cowos price increase as nvidia blackwell and rubin chips put pressure on packaging capacity tsmc is weighing raising prices for its chip on wafer on substrate (cowos) advanced packaging technology by as much as 20%, reports trendforce , citing supply chain sources and local media. the increase reflects strained capacity amid ai... tom&#x27;s hardware nvidia tsmc chip">
+  <a class="story-link" href="https://www.tomshardware.com/tech-industry/semiconductors/tsmc-reportedly-weighs-20-percent-cowos-price-increase-as-nvidia-blackwell-and-rubin-chips-put-pressure-on-packaging-capacity-equipment-lead-times-stretch-to-eight-months" target="_blank" rel="noopener"><div class="card-media"><img src="https://cdn.mos.cms.futurecdn.net/F7GwETgbWz3VqDaj8UmXcJ-1920-80.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg');this.remove()"></div></a>
+  <p class="kicker">Chips &amp; Compute · Nvidia</p>
+  <h3><a class="story-link" href="https://www.tomshardware.com/tech-industry/semiconductors/tsmc-reportedly-weighs-20-percent-cowos-price-increase-as-nvidia-blackwell-and-rubin-chips-put-pressure-on-packaging-capacity-equipment-lead-times-stretch-to-eight-months" target="_blank" rel="noopener">TSMC reportedly weighs 20% CoWoS price increase as Nvidia Blackwell and Rubin chips put pressure on packaging capacity</a></h3>
+  <p class="dek">TSMC is weighing raising prices for its Chip on Wafer on Substrate (CoWoS) advanced packaging technology by as much as 20%, reports Trendforce , citing supply chain sources and local media. The increase reflects strained capacity amid AI...</p>
+  <div class="meta"><span class="src">Tom&#x27;s Hardware</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T14:30:00+00:00">19h ago</time></div>
+</article>
+    <div class="slist">
+<article class="story row" data-text="nvidia, amd to invest $4 billion in meta as tech giants deepen ai partnership meta on monday announced plans to raise a total of $95 billion to support its investments in artificial intelligence infrastructure. cnbc nvidia meta amd">
+  
+  <div class="row-body">
+    <h4><a class="story-link" href="https://www.cnbc.com/2026/10/27/nvidia-invest-meta.html" target="_blank" rel="noopener">Nvidia, AMD to invest $4 billion in Meta as tech giants deepen AI partnership</a></h4>
+    <p class="dek clamp2">Meta on Monday announced plans to raise a total of $95 billion to support its investments in artificial intelligence infrastructure.</p>
+    <div class="meta"><span class="src">CNBC</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T14:19:36+00:00">19h ago</time></div>
+  </div>
+  
+</article>
+<article class="story row" data-text="walmart says ai training is boosting confidence with the technology among its 2.1 million associates walmart says training from openai and google is helping its 2.1 million associates feel more confident using ai and digital tools. cnbc openai google">
+  
+  <div class="row-body">
+    <h4><a class="story-link" href="https://www.cnbc.com/2026/10/27/walmart-ai-training-workers.html" target="_blank" rel="noopener">Walmart says AI training is boosting confidence with the technology among its 2.1 million associates</a></h4>
+    <p class="dek clamp2">Walmart says training from OpenAI and Google is helping its 2.1 million associates feel more confident using AI and digital tools.</p>
+    <div class="meta"><span class="src">CNBC</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T21:15:35+00:00">12h ago</time></div>
+  </div>
+  
+</article>
+<article class="story row" data-text="anthropic prepares for potential $2 trillion ipo valuation after reporting billions in revenue claude maker anthropic has filed for an initial public offering (ipo) that could value the ai company at around $2 trillion, setting the stage for one of the biggest potential stock market debuts in the technology industry, the company... tom&#x27;s hardware anthropic claude">
+  
+  <div class="row-body">
+    <h4><a class="story-link" href="https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropic-prepares-for-potential-usd2-trillion-ipo-valuation-after-reporting-billions-in-revenue-company-warns-ai-could-pose-catastrophic-existential-risks-to-humanity" target="_blank" rel="noopener">Anthropic prepares for potential $2 trillion IPO valuation after reporting billions in revenue</a></h4>
+    <p class="dek clamp2">Claude maker Anthropic has filed for an initial public offering (IPO) that could value the AI company at around $2 trillion, setting the stage for one of the biggest potential stock market debuts in the technology industry, the company...</p>
+    <div class="meta"><span class="src">Tom&#x27;s Hardware</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T10:00:00+00:00">23h ago</time><span class="dot" aria-hidden="true">·</span><span class="cov" title="Reported by 2 outlets">2 sources</span></div>
+  </div>
+  <a class="story-link" href="https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropic-prepares-for-potential-usd2-trillion-ipo-valuation-after-reporting-billions-in-revenue-company-warns-ai-could-pose-catastrophic-existential-risks-to-humanity" target="_blank" rel="noopener" tabindex="-1"><div class="row-media"><img src="https://cdn.mos.cms.futurecdn.net/XL3SdCXJKQ5duBipYp56rG-1920-80.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg');this.remove()"></div></a>
+</article></div>
+  </div>
+</section>
+<section class="block section" id="s-products" aria-labelledby="t-products">
+  <header class="block-head"><h2 id="t-products">AI in Products</h2><p>Copilots, assistants and AI features landing in the apps you use</p></header>
+  <div class="sgrid">
+    
+<article class="story card" data-text="meta&#x27;s waddle world is a tamagotchi-like ai pet app meta describes waddle world as a &#x27;daily journal disguised as a pet.&#x27; engadget meta ai app">
+  <a class="story-link" href="https://www.engadget.com/2299227/meta-tamagotchi-like-ai-digital-pet-app-waddle-world/" target="_blank" rel="noopener"><div class="card-media"><img src="https://www.engadget.com/img/gallery/metas-waddle-world-is-a-tamagotchi-like-ai-digital-pet-app/l-intro-1793176733.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg');this.remove()"></div></a>
+  <p class="kicker">AI in Products · Meta</p>
+  <h3><a class="story-link" href="https://www.engadget.com/2299227/meta-tamagotchi-like-ai-digital-pet-app-waddle-world/" target="_blank" rel="noopener">Meta&#x27;s Waddle World is a Tamagotchi-like AI pet app</a></h3>
+  <p class="dek">Meta describes Waddle World as a &#x27;daily journal disguised as a pet.&#x27;</p>
+  <div class="meta"><span class="src">Engadget</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-28T08:40:19+00:00">57m ago</time></div>
+</article>
+    <div class="slist">
+<article class="story row" data-text="apple is adding an ai chatbot to pages, keynote, and numbers apple is bringing an ai assistant to its suite of productivity apps, including keynote, pages, and numbers. the assistant, which is built on ai models from apple and openai, can understand a document&#x27;s context to perform tasks like... the verge openai apple assistant">
+  
+  <div class="row-body">
+    <h4><a class="story-link" href="https://www.theverge.com/tech/1019373/apple-pages-keynote-numbers-ai-chatbot-update" target="_blank" rel="noopener">Apple is adding an AI chatbot to Pages, Keynote, and Numbers</a></h4>
+    <p class="dek clamp2">Apple is bringing an AI assistant to its suite of productivity apps, including Keynote, Pages, and Numbers. The assistant, which is built on AI models from Apple and OpenAI, can understand a document&#x27;s context to perform tasks like...</p>
+    <div class="meta"><span class="src">The Verge</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T13:50:51+00:00">19h ago</time></div>
+  </div>
+  
+</article>
+<article class="story row" data-text="chatgpt can work with your icloud mail and calendar thanks to new plugin support you can use the ai assistant to update calendar events and search your inbox, among other things. engadget assistant ai">
+  
+  <div class="row-body">
+    <h4><a class="story-link" href="https://www.engadget.com/2299026/chatgpt-can-work-with-your-icloud-mail-and-calendar-thanks-to-new-plugin-support/" target="_blank" rel="noopener">ChatGPT can work with your iCloud Mail and Calendar thanks to new plugin support</a></h4>
+    <p class="dek clamp2">You can use the AI assistant to update calendar events and search your inbox, among other things.</p>
+    <div class="meta"><span class="src">Engadget</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T21:13:59+00:00">12h ago</time></div>
+  </div>
+  <a class="story-link" href="https://www.engadget.com/2299026/chatgpt-can-work-with-your-icloud-mail-and-calendar-thanks-to-new-plugin-support/" target="_blank" rel="noopener" tabindex="-1"><div class="row-media"><img src="https://www.engadget.com/img/gallery/chatgpt-can-work-with-your-icloud-mail-and-calendar-thanks-to-new-plugin-support/l-intro-1793135485.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg');this.remove()"></div></a>
+</article></div>
+  </div>
+</section>
+<section class="block section" id="s-research" aria-labelledby="t-research">
+  <header class="block-head"><h2 id="t-research">Research &amp; Science</h2><p>Papers, benchmarks and what the science actually shows</p></header>
+  <div class="sgrid">
+    
+<article class="story card" data-text="i used ai to fake a scientific paper. here’s what happened science has a spam problem. and the spam filter is getting clogged up. according to all reports, academic publishing is drowning in what has come to be called ai slop: low-quality, mass-produced content generated with ai. by 2025, an... ieee spectrum paper science ai">
+  <a class="story-link" href="https://spectrum.ieee.org/ai-generated-scientific-papers" target="_blank" rel="noopener"><div class="card-media"><img src="https://spectrum.ieee.org/media-library/man-in-glasses-at-night-his-face-reflected-in-a-window-beside-him.jpg?id=68515605&amp;width=980" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg');this.remove()"></div></a>
+  <p class="kicker">Research &amp; Science · Paper</p>
+  <h3><a class="story-link" href="https://spectrum.ieee.org/ai-generated-scientific-papers" target="_blank" rel="noopener">I Used AI to Fake a Scientific Paper. Here’s What Happened</a></h3>
+  <p class="dek">Science has a spam problem. And the spam filter is getting clogged up. According to all reports, academic publishing is drowning in what has come to be called AI slop: low-quality, mass-produced content generated with AI. By 2025, an...</p>
+  <div class="meta"><span class="src">IEEE Spectrum</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T13:00:03+00:00">20h ago</time></div>
+</article>
+    <div class="slist">
+<article class="story row" data-text="polymathic ai and princeton researchers release flashmap, a flow map drafter for 6.14x faster llm decoding flashmap is a speculative decoding drafter from polymathic ai, princeton and usc isi researchers. it drafts 16 tokens jointly in one pass and reaches up to 6.14x lossless speedup on qwen3-8b. marktechpost llm researchers ai">
+  
+  <div class="row-body">
+    <h4><a class="story-link" href="https://www.marktechpost.com/2026/10/28/flashmap-flow-map-speculative-decoding/" target="_blank" rel="noopener">Polymathic AI and Princeton Researchers Release FlashMap, a Flow Map Drafter for 6.14x Faster LLM Decoding</a></h4>
+    <p class="dek clamp2">FlashMap is a speculative decoding drafter from Polymathic AI, Princeton and USC ISI researchers. It drafts 16 tokens jointly in one pass and reaches up to 6.14x lossless speedup on Qwen3-8B.</p>
+    <div class="meta"><span class="src">MarkTechPost</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-28T08:18:03+00:00">1h ago</time></div>
+  </div>
+  
+</article>
+<article class="story row" data-text="openai launches gpt-6.1 terra, halving gpt-6.1 sol’s api price for agent work openai released gpt-6.1 terra, a fast computer-use and vision model priced at $1/$5 per million tokens. it matches gpt-6 astra’s medium-effort agents’ last exam score at $0.29 per task versus $4.82. marktechpost openai gpt agent">
+  
+  <div class="row-body">
+    <h4><a class="story-link" href="https://www.marktechpost.com/2026/10/26/openai-gpt-6-1-terra/" target="_blank" rel="noopener">OpenAI Launches GPT-6.1 Terra, Halving GPT-6.1 Sol’s API Price for Agent Work</a></h4>
+    <p class="dek clamp2">OpenAI released GPT-6.1 Terra, a fast computer-use and vision model priced at $1/$5 per million tokens. It matches GPT-6 Astra’s medium-effort Agents’ Last Exam score at $0.29 per task versus $4.82.</p>
+    <div class="meta"><span class="src">MarkTechPost</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T02:45:27+00:00">1d ago</time></div>
+  </div>
+  
+</article></div>
+  </div>
+</section>
+<section class="block section" id="s-robotics" aria-labelledby="t-robotics">
+  <header class="block-head"><h2 id="t-robotics">Robotics</h2><p>Humanoids, autonomy and embodied AI</p></header>
+  <div class="sgrid">
+    
+<article class="story card" data-text="xpanner launches autonomous pile driver for solar farm contruction xpanner&#x27;s new x1 piling r6 robot autonomously drives solar posts with one operator, improving placement accuracy while cutting on-site labor. the robot report robot autonomous">
+  <a class="story-link" href="https://www.therobotreport.com/xpanner-launches-new-autonomous-pile-driver-solar-farm-contruction/" target="_blank" rel="noopener"></a>
+  <p class="kicker">Robotics · Robot</p>
+  <h3><a class="story-link" href="https://www.therobotreport.com/xpanner-launches-new-autonomous-pile-driver-solar-farm-contruction/" target="_blank" rel="noopener">Xpanner launches autonomous pile driver for solar farm contruction</a></h3>
+  <p class="dek">Xpanner&#x27;s new X1 Piling R6 robot autonomously drives solar posts with one operator, improving placement accuracy while cutting on-site labor.</p>
+  <div class="meta"><span class="src">The Robot Report</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T11:44:30+00:00">21h ago</time></div>
+</article>
+    <div class="slist">
+<article class="story row" data-text="anybotics begins delivering anymal x legged robot for explosive atmospheres anybotics has designed the anymal x inspection robot to comply with the strictest safety standards of the oil, gas, and chemical industries. the robot report robot">
+  
+  <div class="row-body">
+    <h4><a class="story-link" href="https://www.therobotreport.com/anybotics-begins-delivering-anymal-x-legged-robot-explosive-atmospheres/" target="_blank" rel="noopener">ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres</a></h4>
+    <p class="dek clamp2">ANYbotics has designed the ANYmal X inspection robot to comply with the strictest safety standards of the oil, gas, and chemical industries.</p>
+    <div class="meta"><span class="src">The Robot Report</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T14:29:58+00:00">19h ago</time></div>
+  </div>
+  
+</article></div>
+  </div>
+</section>
+<section class="block section" id="s-business" aria-labelledby="t-business">
+  <header class="block-head"><h2 id="t-business">Money &amp; Policy</h2><p>Funding, IPOs, regulation, lawsuits and the AI economy</p></header>
+  <div class="sgrid">
+    
+<article class="story card" data-text="anthropic&#x27;s ipo is risky business anthropic&#x27;s much-anticipated ipo is giving potential investors some perspective on the risky business of artificial intelligence. cnbc anthropic ipo">
+  <a class="story-link" href="https://www.cnbc.com/2026/10/27/anthropic-five-surprising-risks-s1.html" target="_blank" rel="noopener"></a>
+  <p class="kicker">Money &amp; Policy · Anthropic</p>
+  <h3><a class="story-link" href="https://www.cnbc.com/2026/10/27/anthropic-five-surprising-risks-s1.html" target="_blank" rel="noopener">Anthropic&#x27;s IPO is risky business</a></h3>
+  <p class="dek">Anthropic&#x27;s much-anticipated IPO is giving potential investors some perspective on the risky business of artificial intelligence.</p>
+  <div class="meta"><span class="src">CNBC</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-28T00:43:59+00:00">8h ago</time></div>
+</article>
+    <div class="slist">
+<article class="story row" data-text="chart: anthropic&#x27;s cash pile towers over nearly every u.s. company anthropic&#x27;s cash pile of $131.7 billion is more than every non-bank u.s. company except for berkshire hathaway and alphabet. cnbc anthropic billion">
+  
+  <div class="row-body">
+    <h4><a class="story-link" href="https://www.cnbc.com/2026/10/27/anthropic-cash-investments-ipo.html" target="_blank" rel="noopener">Chart: Anthropic&#x27;s cash pile towers over nearly every U.S. company</a></h4>
+    <p class="dek clamp2">Anthropic&#x27;s cash pile of $131.7 billion is more than every non-bank U.S. company except for Berkshire Hathaway and Alphabet.</p>
+    <div class="meta"><span class="src">CNBC</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T23:03:09+00:00">10h ago</time></div>
+  </div>
+  
+</article>
+<article class="story row" data-text="general compute raises $100 million series a, countering the neocloud disaster narrative general compute is betting on inference chips from outside the nvidia ecosystem. techcrunch nvidia raises">
+  
+  <div class="row-body">
+    <h4><a class="story-link" href="https://techcrunch.com/2026/10/27/general-compute-raises-100-million-series-a-countering-the-neocloud-disaster-narrative/" target="_blank" rel="noopener">General Compute raises $100 million Series A, countering the neocloud disaster narrative</a></h4>
+    <p class="dek clamp2">General Compute is betting on inference chips from outside the Nvidia ecosystem.</p>
+    <div class="meta"><span class="src">TechCrunch</span><span class="dot" aria-hidden="true">·</span><time datetime="2026-10-27T13:00:00+00:00">20h ago</time></div>
+  </div>
+  
+</article></div>
+  </div>
+</section>
+  
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <p><b>AI Daily</b> · Wednesday, October 28, 2026 · generated 2026-10-28 16:37</p>
+    <p class="srcs">Sources: Ars Technica, CNBC, Engadget, IEEE Spectrum, MarkTechPost, TechCrunch, The Decoder, The Robot Report, The Verge, Tom&#x27;s Hardware, Wired. Headlines and summaries belong to their publishers; every story links to the original.</p>
+  </div>
+</footer>
+
+<script>window.MP={"refresh": 0};
+(function(){
+var d=document,root=d.documentElement;
+var tb=d.getElementById("theme");
+if(tb){tb.addEventListener("click",function(){var n=root.getAttribute("data-theme")==="dark"?"light":"dark";root.setAttribute("data-theme",n);try{localStorage.setItem("mp-theme",n);}catch(e){}});}
+// read tracking
+var KEY="mp-read",read={};
+try{(JSON.parse(localStorage.getItem(KEY)||"[]")).forEach(function(u){read[u]=1;});}catch(e){}
+function mark(){d.querySelectorAll(".story").forEach(function(s){var a=s.querySelector("a.story-link");if(a&&read[a.href]){s.classList.add("is-read");}});}
+mark();
+d.addEventListener("click",function(ev){var a=ev.target.closest&&ev.target.closest("a.story-link");if(!a)return;read[a.href]=1;var list=Object.keys(read).slice(-600);try{localStorage.setItem(KEY,JSON.stringify(list));}catch(e){}setTimeout(mark,300);});
+// search
+var q=d.getElementById("q"),none=d.getElementById("noresults");
+function filter(){var term=(q.value||"").trim().toLowerCase(),shown=0;
+d.querySelectorAll(".story").forEach(function(s){var ok=!term||(s.getAttribute("data-text")||"").indexOf(term)>-1;s.classList.toggle("hit-hide",!ok);if(ok)shown++;});
+d.querySelectorAll(".block.section,.more-top").forEach(function(b){b.classList.toggle("hit-hide",!!term&&!b.querySelector(".story:not(.hit-hide)"));});
+d.querySelectorAll(".brief,.markets,.subscribe,.archive").forEach(function(b){b.classList.toggle("hit-hide",!!term);});
+if(none)none.hidden=!(term&&shown===0);}
+if(q){q.addEventListener("input",filter);d.addEventListener("keydown",function(e){if(e.key==="/"&&d.activeElement!==q){e.preventDefault();q.focus();}else if(e.key==="Escape"&&d.activeElement===q){q.value="";filter();q.blur();}});}
+// scroll spy
+var tabs=[].slice.call(d.querySelectorAll(".tabs a[href^='#']"));
+if("IntersectionObserver" in window){var byId={};tabs.forEach(function(t){byId[t.getAttribute("href").slice(1)]=t;});
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting&&byId[en.target.id]){tabs.forEach(function(t){t.classList.remove("on");});byId[en.target.id].classList.add("on");byId[en.target.id].scrollIntoView({block:"nearest",inline:"center"});}});},{rootMargin:"-130px 0px -60% 0px"});
+Object.keys(byId).forEach(function(id){var el=d.getElementById(id);if(el)io.observe(el);});}
+// gentle auto refresh that keeps your place
+var mins=(window.MP&&window.MP.refresh)||0;
+if(mins>0&&location.protocol==="file:"){try{var y=sessionStorage.getItem("mp_scroll");if(y!==null){window.scrollTo(0,parseInt(y,10)||0);}
+addEventListener("scroll",function(){sessionStorage.setItem("mp_scroll",String(scrollY));},{passive:true});}catch(e){}
+setTimeout(function(){if(!q||!q.value){location.reload();}},mins*60000);}
+})();
+</script>
+</body>
+</html>

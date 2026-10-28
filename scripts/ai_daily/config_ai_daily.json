@@ -1,0 +1,332 @@
+{
+  "settings": {
+    "timezone": "Asia/Jakarta",
+    "edition_name": "AI DAILY",
+    "request_timeout": 20,
+    "user_agent": "Mozilla/5.0 (compatible; AIDaily/1.0; +https://juwenlie.pages.dev/news/)",
+    "max_articles_per_section": 5,
+    "max_front_page": 8,
+    "max_per_source_per_section": 2,
+    "max_age_hours": 36,
+    "coverage_boost": 4.0,
+    "require_any": [
+      "ai",
+      "a.i.",
+      "artificial intelligence",
+      "machine learning",
+      "openai",
+      "anthropic",
+      "deepmind",
+      "gemini",
+      "claude",
+      "chatgpt",
+      "gpt",
+      "llm",
+      "llms",
+      "chatbot",
+      "chatbots",
+      "copilot",
+      "agent",
+      "agents",
+      "agentic",
+      "neural",
+      "model",
+      "models",
+      "nvidia",
+      "gpu",
+      "gpus",
+      "tpu",
+      "data center",
+      "data centers",
+      "robot",
+      "robots",
+      "robotics",
+      "humanoid",
+      "autonomous",
+      "self-driving",
+      "xai",
+      "grok",
+      "llama",
+      "mistral",
+      "deepseek",
+      "hugging face",
+      "inference",
+      "training",
+      "semiconductor",
+      "chip",
+      "chips"
+    ]
+  },
+  "briefing": {
+    "provider": "auto",
+    "github_model": "openai/gpt-4.1-mini",
+    "ollama_model": "qwen3:8b",
+    "timeout": 120,
+    "why_count": 4
+  },
+  "markets": {
+    "indices": [
+      {
+        "name": "Nasdaq",
+        "symbol": "^IXIC"
+      },
+      {
+        "name": "Semiconductors (SOX)",
+        "symbol": "^SOX"
+      }
+    ],
+    "commodities": [],
+    "watchlist_us": [
+      {
+        "name": "Nvidia",
+        "symbol": "NVDA"
+      },
+      {
+        "name": "TSMC",
+        "symbol": "TSM"
+      },
+      {
+        "name": "AMD",
+        "symbol": "AMD"
+      },
+      {
+        "name": "Broadcom",
+        "symbol": "AVGO"
+      },
+      {
+        "name": "Microsoft",
+        "symbol": "MSFT"
+      },
+      {
+        "name": "Alphabet",
+        "symbol": "GOOGL"
+      },
+      {
+        "name": "Meta",
+        "symbol": "META"
+      },
+      {
+        "name": "Amazon",
+        "symbol": "AMZN"
+      },
+      {
+        "name": "Oracle",
+        "symbol": "ORCL"
+      },
+      {
+        "name": "Micron",
+        "symbol": "MU"
+      }
+    ],
+    "watchlist_id": [],
+    "private_watch": []
+  },
+  "sections": [
+    {
+      "id": "models",
+      "title": "Models & Labs",
+      "subtitle": "OpenAI, Anthropic, Google DeepMind, Meta and the frontier labs",
+      "require_keywords": true,
+      "keywords": [
+        "openai",
+        "anthropic",
+        "deepmind",
+        "gemini",
+        "claude",
+        "chatgpt",
+        "gpt",
+        "llama",
+        "grok",
+        "xai",
+        "mistral",
+        "deepseek",
+        "qwen",
+        "model",
+        "llm",
+        "agent",
+        "agents",
+        "reasoning",
+        "frontier",
+        "ai"
+      ],
+      "feeds": [
+        "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+        "https://techcrunch.com/category/artificial-intelligence/feed/",
+        "https://arstechnica.com/ai/feed/",
+        "https://the-decoder.com/feed/",
+        "https://www.wired.com/feed/tag/ai/latest/rss"
+      ]
+    },
+    {
+      "id": "chips",
+      "title": "Chips & Compute",
+      "subtitle": "GPUs, semiconductors, data centers and the power behind AI",
+      "require_keywords": true,
+      "keywords": [
+        "nvidia",
+        "amd",
+        "tsmc",
+        "intel",
+        "micron",
+        "broadcom",
+        "gpu",
+        "chip",
+        "chips",
+        "semiconductor",
+        "data center",
+        "datacenter",
+        "compute",
+        "hbm",
+        "blackwell",
+        "rubin",
+        "tpu",
+        "accelerator"
+      ],
+      "feeds": [
+        "https://blogs.nvidia.com/feed/",
+        "https://www.tomshardware.com/feeds/all",
+        "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=19854910"
+      ]
+    },
+    {
+      "id": "products",
+      "title": "AI in Products",
+      "subtitle": "Copilots, assistants and AI features landing in the apps you use",
+      "require_keywords": true,
+      "keywords": [
+        "copilot",
+        "siri",
+        "gemini",
+        "assistant",
+        "chatbot",
+        "ai feature",
+        "apple intelligence",
+        "alexa",
+        "ai",
+        "app",
+        "agent"
+      ],
+      "feeds": [
+        "https://www.engadget.com/rss.xml",
+        "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+        "https://blog.google/technology/ai/rss/"
+      ]
+    },
+    {
+      "id": "research",
+      "title": "Research & Science",
+      "subtitle": "Papers, benchmarks and what the science actually shows",
+      "require_keywords": true,
+      "keywords": [
+        "research",
+        "researchers",
+        "study",
+        "paper",
+        "benchmark",
+        "dataset",
+        "science",
+        "scientists",
+        "breakthrough",
+        "open-source",
+        "open source",
+        "training",
+        "ai",
+        "model"
+      ],
+      "feeds": [
+        "https://www.technologyreview.com/topic/artificial-intelligence/feed",
+        "https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss",
+        "https://www.marktechpost.com/feed/"
+      ]
+    },
+    {
+      "id": "robotics",
+      "title": "Robotics",
+      "subtitle": "Humanoids, autonomy and embodied AI",
+      "require_keywords": true,
+      "keywords": [
+        "robot",
+        "robots",
+        "robotics",
+        "humanoid",
+        "autonomous",
+        "self-driving",
+        "robotaxi",
+        "waymo",
+        "optimus",
+        "figure",
+        "drone",
+        "embodied"
+      ],
+      "feeds": [
+        "https://spectrum.ieee.org/feeds/topic/robotics.rss",
+        "https://www.therobotreport.com/feed/"
+      ]
+    },
+    {
+      "id": "business",
+      "title": "Money & Policy",
+      "subtitle": "Funding, IPOs, regulation, lawsuits and the AI economy",
+      "require_keywords": true,
+      "keywords": [
+        "funding",
+        "raises",
+        "valuation",
+        "ipo",
+        "acquisition",
+        "acquire",
+        "deal",
+        "regulation",
+        "law",
+        "lawsuit",
+        "copyright",
+        "antitrust",
+        "policy",
+        "eu",
+        "ban",
+        "investment",
+        "billion"
+      ],
+      "feeds": [
+        "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=19854910",
+        "https://techcrunch.com/category/artificial-intelligence/feed/",
+        "https://www.wired.com/feed/tag/ai/latest/rss"
+      ]
+    }
+  ],
+  "source_weights": {
+    "The Verge": 1.05,
+    "TechCrunch": 1.0,
+    "Ars Technica": 1.1,
+    "Wired": 1.0,
+    "MIT Technology Review": 1.15,
+    "IEEE Spectrum": 1.05,
+    "CNBC": 1.1,
+    "The Decoder": 0.95,
+    "NVIDIA Blog": 0.85,
+    "Google Blog": 0.85,
+    "Tom's Hardware": 0.95,
+    "MarkTechPost": 0.8,
+    "Engadget": 0.9,
+    "The Robot Report": 0.95
+  },
+  "priority_keywords": [
+    "openai",
+    "anthropic",
+    "google",
+    "deepmind",
+    "gemini",
+    "claude",
+    "gpt",
+    "nvidia",
+    "meta",
+    "microsoft",
+    "agent",
+    "agents",
+    "llm",
+    "ai model",
+    "xai",
+    "deepseek",
+    "apple"
+  ]
+}

@@ -154,6 +154,11 @@
         <li><span class="log-key" data-i18n="k2">Notes</span><span data-i18n="v2">What broke in testing and how it got fixed</span></li>
         <li><span class="log-key" data-i18n="k3">Tracks</span><span data-i18n="v3">New music as juw</span></li>
       </ol>
+      <fieldset class="lists" data-newsletter-lists>
+        <legend class="visually-hidden" data-i18n="listsLegend">Choose your emails</legend>
+        <label class="list-opt"><input type="checkbox" name="list" value="buildlog" checked><span class="list-box" aria-hidden="true"></span><span class="list-text"><b data-i18n="listBuild">Build log</b><small data-i18n="listBuildSub">When I ship something · roughly monthly</small></span></label>
+        <label class="list-opt"><input type="checkbox" name="list" value="aidaily" checked><span class="list-box" aria-hidden="true"></span><span class="list-text"><b><span data-i18n="listAi">AI Daily</span> <em class="list-new">New</em></b><small><span data-i18n="listAiSub">The AI news that matters, every morning at 6:00 WIB</span> · <a href="../news/" data-i18n="listAiRead">read today's</a></small></span></label>
+      </fieldset>
       <form class="signup" id="signup" novalidate>
         <label class="visually-hidden" for="signup-email" data-i18n="emailLabel">Email address</label>
         <input id="signup-email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com">
@@ -172,10 +177,11 @@
     <a href="../log/" data-i18n="fLog">Build log</a>
     <details class="privacy">
       <summary data-i18n="fPrivacy">Privacy</summary>
-      <p data-i18n="privacy">No cookies, no trackers, no analytics. If you subscribe, your address is handed to Substack (juwenlie.substack.com), which sends the build log and gives you one-click unsubscribe. Never sold or shared.</p>
+      <p data-i18n="privacy">No cookies, no trackers, no analytics. If you subscribe, your address is handed to Substack (juwenlie.substack.com), which sends the build log and gives you one-click unsubscribe. Never sold or shared. AI Daily is delivered by Buttondown (buttondown.com), also with one-click unsubscribe.</p>
     </details>
   </footer>
 
+  <script src="../assets/subscribe.js" defer></script>
   <script src="./hi.js" defer></script>
 </body>
 </html>

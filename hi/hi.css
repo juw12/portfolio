@@ -531,6 +531,111 @@ svg {
   display: none;
 }
 
+/* ---------- Newsletter picker ---------- */
+.lists {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 12px;
+  padding: 0;
+  border: 0;
+}
+
+.list-opt {
+  position: relative;
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  background: var(--tile);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.list-opt:hover {
+  border-color: var(--ink);
+}
+
+.list-opt input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.list-box {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  border: 1.5px solid var(--faint);
+  display: grid;
+  place-items: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.list-opt input:checked + .list-box {
+  background: var(--redline);
+  border-color: var(--redline);
+}
+
+.list-opt input:checked + .list-box::after {
+  content: "";
+  width: 9px;
+  height: 5px;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-right: 0;
+  transform: translateY(-1px) rotate(-45deg);
+}
+
+.list-opt input:focus-visible + .list-box {
+  outline: 2px solid var(--redline);
+  outline-offset: 2px;
+}
+
+.list-text b {
+  display: block;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.list-text small {
+  display: block;
+  margin-top: 1px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.list-text a {
+  color: var(--redline);
+}
+
+.list-new {
+  margin-left: 6px;
+  padding: 1px 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-style: normal;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--redline);
+  vertical-align: 2px;
+}
+
+.list-opt.is-soon {
+  cursor: default;
+  opacity: 0.75;
+}
+
+.list-opt.is-soon .list-new::after {
+  content: " · soon";
+}
+
+.log.is-done .lists {
+  display: none;
+}
+
 /* ---------- Footer ---------- */
 .foot {
   display: flex;

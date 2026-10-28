@@ -28,6 +28,19 @@ Then visit http://localhost:8000/. The site works fully offline (`file://`) — 
 | `obsidian/` | Portfolio Obsidian vault: every project note as Markdown plus a one-file zip bundle — see [`obsidian/README.md`](obsidian/README.md) |
 | `.github/workflows/pages.yml` | Deploys to GitHub Pages on push to `main` (kept so old links keep working) |
 
+## AI Daily (`/news/`)
+
+A public daily AI briefing, built every morning at 06:00 WIB by `.github/workflows/ai-daily.yml`:
+`scripts/ai_daily/build_ai_daily.py build` collects AI feeds, clusters duplicate stories across
+outlets, writes "The Brief" with GitHub Models (workflow token, `models: read`), and publishes
+`news/index.html`, `news/YYYY-MM-DD.html`, `news/archive.json` and `news/feed.xml`.
+`... send` then emails the edition to Buttondown subscribers (once per day, `news/sent.json`).
+
+- Feeds, sections and topic filter: `scripts/ai_daily/config_ai_daily.json`.
+- Email delivery needs two things: the Buttondown username in `assets/subscribe.js` (also turns on
+  the AI Daily checkbox in the /hi/ and /log/ signup forms) and the `BUTTONDOWN_API_KEY` repository secret.
+- Run it by hand: Actions → AI Daily → Run workflow (tick "send" to email).
+
 ## Project cards
 
 Most cards are generated from `scripts/apps.json` in [juw12/projects](https://github.com/juw12/projects) by `scripts/publish_portfolio.py` (hourly via `.github/workflows/sync-cards.yml`). Each app has a one-line `summary` (the card text, kept under ~120 characters so every card is the same size) and a full `description` (shown when the card is clicked). Edit the catalog, not the generated block in `index.html`.

@@ -39,6 +39,7 @@
     <nav class="bar-links" aria-label="Site">
       <a href="../">Portfolio</a>
       <a class="hide-sm" href="https://juwenlie.substack.com/archive">Substack</a>
+      <a class="hide-sm" href="../news/">AI Daily</a>
       <a class="hide-sm" href="../feed.xml">RSS</a>
       <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle drafting / blueprint theme">
         <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg>
@@ -55,12 +56,18 @@
         <h1 id="log-title">Build log<span class="dot">.</span></h1>
         <p class="dim">22 builds · newest first</p>
         <p class="lede">Engineering tools, CAD models and side projects I&rsquo;ve shipped. <strong>Get one short email when the next one lands.</strong></p>
-        <form class="signup" action="https://juwenlie.substack.com/subscribe" method="get" target="_blank">
+        <form class="signup" action="https://juwenlie.substack.com/subscribe" method="get" target="_blank" data-newsletter-form>
+          <fieldset class="lists" data-newsletter-lists>
+            <legend class="visually-hidden">Choose your emails</legend>
+            <label class="list-opt"><input type="checkbox" name="list" value="buildlog" checked><span class="list-box" aria-hidden="true"></span><span class="list-text"><b>Build log</b><small>One email when something ships</small></span></label>
+            <label class="list-opt"><input type="checkbox" name="list" value="aidaily" checked><span class="list-box" aria-hidden="true"></span><span class="list-text"><b>AI Daily <em class="list-new">New</em></b><small>The AI news that matters, every morning · <a href="../news/">read today&rsquo;s</a></small></span></label>
+          </fieldset>
           <label class="visually-hidden" for="log-email">Email address</label>
           <input id="log-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
           <button type="submit">Subscribe</button>
         </form>
-        <p class="fine">No spam · unsubscribe in one click · <a href="https://juwenlie.substack.com/archive">past issues</a> · <a href="../feed.xml">RSS</a></p>
+        <p class="fine" data-newsletter-status role="status" aria-live="polite"></p>
+        <p class="fine">No spam · unsubscribe in one click · <a href="../news/">AI Daily</a> · <a href="https://juwenlie.substack.com/archive">past issues</a> · <a href="../feed.xml">RSS</a></p>
       </div>
       <dl class="titleblock">
         <div><dt>Dwg no.</dt><dd>JL-002</dd></div>
@@ -161,5 +168,6 @@
       });
     })();
   </script>
+  <script src="../assets/subscribe.js" defer></script>
 </body>
 </html>

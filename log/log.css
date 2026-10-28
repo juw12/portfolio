@@ -788,3 +788,21 @@ h1 .dot {
     display: none;
   }
 }
+
+/* ---------- Newsletter picker ---------- */
+.signup[data-newsletter-form] { flex-wrap: wrap; }
+.signup .lists { flex: 1 0 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0 0 4px; padding: 0; border: 0; }
+.list-opt { position: relative; display: grid; grid-template-columns: 20px 1fr; gap: 10px; align-items: start; padding: 10px 12px; border: 1px solid var(--line); background: var(--tile); cursor: pointer; text-align: left; }
+.list-opt:hover { border-color: var(--ink); }
+.list-opt input { position: absolute; opacity: 0; pointer-events: none; }
+.list-box { width: 18px; height: 18px; margin-top: 2px; border: 1.5px solid var(--faint); display: grid; place-items: center; }
+.list-opt input:checked + .list-box { background: var(--redline); border-color: var(--redline); }
+.list-opt input:checked + .list-box::after { content: ""; width: 9px; height: 5px; border: 2px solid #fff; border-top: 0; border-right: 0; transform: translateY(-1px) rotate(-45deg); }
+.list-opt input:focus-visible + .list-box { outline: 2px solid var(--redline); outline-offset: 2px; }
+.list-text b { display: block; font-size: 14.5px; font-weight: 600; }
+.list-text small { display: block; color: var(--muted); font-size: 12.5px; }
+.list-text a { color: var(--redline); }
+.list-new { margin-left: 4px; padding: 1px 5px; font: 500 10px var(--mono); font-style: normal; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: var(--redline); vertical-align: 2px; }
+.list-opt.is-soon { cursor: default; opacity: .75; }
+.list-opt.is-soon .list-new::after { content: " · soon"; }
+@media (max-width: 560px) { .signup .lists { grid-template-columns: 1fr; } }

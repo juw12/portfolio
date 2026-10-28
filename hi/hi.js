@@ -40,6 +40,12 @@
       emailLabel: "Alamat email",
       subscribe: "Langganan",
       note: "Tanpa spam. Berhenti langganan cukup sekali klik.",
+      listsLegend: "Pilih email Anda",
+      listBuild: "Build log",
+      listBuildSub: "Saat saya merilis sesuatu · kira-kira sebulan sekali",
+      listAi: "AI Daily",
+      listAiSub: "Berita AI yang penting, setiap pagi pukul 06.00 WIB",
+      listAiRead: "baca edisi hari ini",
     proofShipped: "proyek sudah rilis",
     proofLatest: "terbaru:",
     jump: "Dapatkan build log",
@@ -49,7 +55,7 @@
       fEmail: "Email",
       fContact: "Simpan kontak",
       fPrivacy: "Privasi",
-      privacy: "Tanpa cookie, tracker, atau analitik. Jika berlangganan, alamat Anda diteruskan ke Substack (juwenlie.substack.com) yang mengirim build log dan menyediakan berhenti langganan sekali klik. Tidak pernah dijual atau dibagikan."
+      privacy: "Tanpa cookie, tracker, atau analitik. Jika berlangganan, alamat Anda diteruskan ke Substack (juwenlie.substack.com) yang mengirim build log dan menyediakan berhenti langganan sekali klik. AI Daily dikirim lewat Buttondown (buttondown.com), juga dengan berhenti langganan sekali klik. Tidak pernah dijual atau dibagikan."
     },
     zh: {
       skip: "跳到內容",
@@ -73,6 +79,12 @@
       emailLabel: "電子郵件地址",
       subscribe: "訂閱",
       note: "不寄垃圾信，一鍵即可取消訂閱。",
+      listsLegend: "選擇你要的信",
+      listBuild: "Build Log",
+      listBuildSub: "有新作品上線時寄出 · 約每月一次",
+      listAi: "AI Daily",
+      listAiSub: "每天早上 6:00（WIB）整理真正重要的 AI 新聞",
+      listAiRead: "看今天這期",
     proofShipped: "個專案已上線",
     proofLatest: "最新：",
     jump: "訂閱 Build Log",
@@ -81,7 +93,7 @@
       fLog: "作品紀錄",
       fContact: "儲存聯絡人",
       fPrivacy: "隱私",
-      privacy: "沒有 Cookie、追蹤器或分析工具。訂閱時，你的信箱會交給 Substack（juwenlie.substack.com）寄送 Build Log，隨時可一鍵取消訂閱，絕不出售或分享。"
+      privacy: "沒有 Cookie、追蹤器或分析工具。訂閱時，你的信箱會交給 Substack（juwenlie.substack.com）寄送 Build Log，隨時可一鍵取消訂閱，絕不出售或分享。AI Daily 則透過 Buttondown（buttondown.com）寄送，同樣可一鍵取消。"
     }
   };
 
@@ -103,6 +115,9 @@
       sending: "Sending…",
       ok: "You're in. The next build log comes to you.",
       okConfirm: "Almost there: finish in the Substack tab, then check your inbox.",
+      okAi: "Almost there: check your inbox and confirm AI Daily.",
+      okBoth: "Almost there: confirm AI Daily in your inbox, and finish the build log in the Substack tab.",
+      pickOne: "Pick at least one list.",
       fail: "Couldn't reach the list. <a href=\"mailto:" + CONTACT_EMAIL + "?subject=Add%20me%20to%20the%20build%20log\">Email me instead</a>."
     },
     id: {
@@ -122,6 +137,9 @@
       sending: "Mengirim…",
       ok: "Berhasil. Build log berikutnya akan sampai ke Anda.",
       okConfirm: "Sedikit lagi: selesaikan di tab Substack, lalu cek inbox Anda.",
+      okAi: "Sedikit lagi: cek inbox Anda dan konfirmasi AI Daily.",
+      okBoth: "Sedikit lagi: konfirmasi AI Daily di inbox, lalu selesaikan build log di tab Substack.",
+      pickOne: "Pilih minimal satu.",
       fail: "Gagal terhubung. <a href=\"mailto:" + CONTACT_EMAIL + "?subject=Add%20me%20to%20the%20build%20log\">Kirim email saja</a>."
     },
     zh: {
@@ -141,6 +159,9 @@
       sending: "傳送中…",
       ok: "訂閱成功，下一封 Build Log 會寄給你。",
       okConfirm: "快完成了：請在 Substack 分頁完成訂閱，再到信箱確認。",
+      okAi: "快完成了：請到信箱確認訂閱 AI Daily。",
+      okBoth: "快完成了：請到信箱確認 AI Daily，並在 Substack 分頁完成 Build Log 訂閱。",
+      pickOne: "請至少選一項。",
       fail: "暫時連不上。<a href=\"mailto:" + CONTACT_EMAIL + "?subject=Add%20me%20to%20the%20build%20log\">改用 Email 聯絡我</a>。"
     }
   };
@@ -335,6 +356,10 @@
     note.classList.toggle("is-error", state === "error");
   }
 
+  if (window.JLNewsletter && logSection) {
+    window.JLNewsletter.prepare(logSection);
+  }
+
   if (form && emailInput) {
     form.addEventListener("submit", function (event) {
       event.preventDefault();
@@ -354,6 +379,18 @@
       }
       button.disabled = true;
       setNote(t("sending"), null);
+      if (window.JLNewsletter) {
+        var picks = window.JLNewsletter.selected(logSection);
+        if (!picks.buildlog && !picks.aidaily) {
+          button.disabled = false;
+          setNote(t("pickOne"), "error");
+          return;
+        }
+        window.JLNewsletter.subscribe(email, picks);
+        logSection.classList.add("is-done");
+        setNote(t(picks.aidaily && picks.buildlog ? "okBoth" : picks.aidaily ? "okAi" : "okConfirm"), "ok");
+        return;
+      }
       if (SUBSTACK_URL) {
         window.open(SUBSTACK_URL + "/subscribe?email=" + encodeURIComponent(email), "_blank", "noopener");
         logSection.classList.add("is-done");
