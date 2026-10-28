@@ -1,7 +1,7 @@
-name: FormSubmit activation (one-off)
+name: FormSubmit check (one-off)
 
-# Sends FormSubmit's one-time activation request for the AI Daily signup form.
-# FormSubmit then emails an "Activate form" link to the inbox; click it once.
+# Sends one real AI Daily signup through FormSubmit (as juwpegatron+aidaily@gmail.com,
+# which lands in the owner's own inbox) and fails unless FormSubmit accepts it.
 # Runs when this file is pushed or by hand; safe to delete afterwards.
 
 on:
@@ -14,15 +14,16 @@ permissions:
   contents: read
 
 jobs:
-  activate:
+  check:
     runs-on: ubuntu-latest
     steps:
-      - name: Request activation email
+      - name: Submit a test signup
         run: |
-          curl -sS -m 60 -X POST "https://formsubmit.co/ajax/juwpegatron@gmail.com" \
+          response=$(curl -sS -m 60 -X POST "https://formsubmit.co/ajax/juwpegatron@gmail.com" \
             -H "Content-Type: application/json" \
             -H "Accept: application/json" \
             -H "Referer: https://juwenlie.pages.dev/hi/" \
             -H "Origin: https://juwenlie.pages.dev" \
-            --data '{"email":"juwpegatron@gmail.com","list":"AI Daily","note":"One-time activation request for the AI Daily signup form on juwenlie.pages.dev","_subject":"AI Daily: form activation","_template":"table","_captcha":"false"}'
-          echo
+            --data '{"email":"juwpegatron+aidaily@gmail.com","list":"AI Daily","page":"https://juwenlie.pages.dev/hi/","_subject":"AI Daily: subscribe","_template":"table","_captcha":"false"}')
+          echo "FormSubmit replied: $response"
+          echo "$response" | grep -q '"success":"true"'
