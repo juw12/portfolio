@@ -8,7 +8,7 @@ Project notes for every app and model in the portfolio, as a ready-to-open [Obsi
 - **Whole repo:** green *Code* button → *Download ZIP* (vault is in `obsidian/vault/`).
 - **Single notes:** browse [`vault/`](vault/) — every note is plain Markdown and reads fine on GitHub.
 
-Updated 2026-10-27 · 23 project notes · 5 update-log entries.
+Updated 2026-10-28 · 24 project notes · 6 update-log entries.
 
 ## Project notes
 
@@ -20,6 +20,7 @@ Updated 2026-10-27 · 23 project notes · 5 update-log entries.
 - [Guang Yao Together · 光耀同行](vault/Portfolio/Projects/Guang%20Yao%20Together%20%C2%B7%20%E5%85%89%E8%80%80%E5%90%8C%E8%A1%8C.md)
 - [Hazel](vault/Portfolio/Projects/Hazel.md)
 - [House of Articles](vault/Portfolio/Projects/House%20of%20Articles.md)
+- [Lingua](vault/Portfolio/Projects/Lingua.md)
 - [Loka](vault/Portfolio/Projects/Loka.md)
 - [ME R&D Toolkit](vault/Portfolio/Projects/ME%20R%26D%20Toolkit.md)
 - [Marina Bay Sands Miniature](vault/Portfolio/Projects/Marina%20Bay%20Sands%20Miniature.md)
@@ -43,5 +44,6 @@ Updated 2026-10-27 · 23 project notes · 5 update-log entries.
 - [2026-10-26 2129 portfolio](vault/Update%20Log/2026-10-26%202129%20portfolio.md)
 - [2026-10-26 2229 portfolio](vault/Update%20Log/2026-10-26%202229%20portfolio.md)
 - [2026-10-26 2322 portfolio](vault/Update%20Log/2026-10-26%202322%20portfolio.md)
+- [2026-10-28 0920 lingua](vault/Update%20Log/2026-10-28%200920%20lingua.md)
 
 Notes are generated from the app catalog (`scripts/apps.json` in [juw12/projects](https://github.com/juw12/projects)) by `scripts/publish_portfolio.py`, plus hand-written product notes. Local machine paths and private storage locations are removed from this public copy.
