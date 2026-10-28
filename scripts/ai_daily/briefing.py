@@ -7,16 +7,19 @@ Adds to ``data``:
     data["brief"] = {
         "lede": "One sentence on the day's biggest theme",
         "bullets": [{"text": "...", "url": "...", "source": "...", "title": "..."}],  # up to 5
-        "provider": "github-models" | "ollama" | "extractive",
-        "model": "openai/gpt-4.1-mini" | "qwen3:8b" | "",
-        "story_count": 14,
+        "provider": "ollama" | "extractive",
+        "model": "qwen3:8b" | "",
+        "story_count": 10,
     }
 and an optional ``"why"`` string on the lead front-page articles.
 
 Providers, tried in order when ``briefing.provider`` is "auto":
-    1. GitHub Models  - when GITHUB_TOKEN / GH_MODELS_TOKEN is set (GitHub Actions, free).
-    2. Ollama         - when a local Ollama server answers on localhost:11434.
-    3. Extractive     - no AI: the top headlines with their first sentence.
+    1. Ollama      - an open model (default Qwen3 8B) on a local Ollama server
+                     (OLLAMA_URL, default http://localhost:11434): on your PC for
+                     the Morning Paper, inside the free GitHub Actions runner for
+                     AI Daily. No API key, no account, no quota.
+    2. Extractive  - no AI: the top headlines with their first sentence.
+(GitHub Models was used here until GitHub retired it on 2026-07-30.)
 
 The model only sees headlines + feed summaries and is instructed to use those
 facts alone. Every output is validated; anything malformed falls back per item.
@@ -32,8 +35,7 @@ from pathlib import Path
 
 import requests
 
-GITHUB_MODELS_URL = "https://models.github.ai/inference/chat/completions"
-OLLAMA_URL = "http://localhost:11434"
+OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434").rstrip("/")
 
 SYSTEM_PROMPT = (
     "You are the editor of a calm, precise morning news briefing read by engineers. "
@@ -96,38 +98,6 @@ def _parse_json(text):
     if start == -1 or end == -1:
         raise ValueError("no JSON object in model output")
     return json.loads(text[start:end + 1])
-
-
-def _call_github(messages, model, timeout):
-    token = os.environ.get("GH_MODELS_TOKEN") or os.environ.get("GITHUB_TOKEN")
-    if not token:
-        raise RuntimeError("no GITHUB_TOKEN")
-    response = requests.post(
-        GITHUB_MODELS_URL,
-        headers={
-            "Authorization": f"Bearer {token}",
-            "Accept": "application/vnd.github+json",
-            "X-GitHub-Api-Version": "2022-11-28",
-            "Content-Type": "application/json",
-        },
-        json={
-            "model": model,
-            "messages": messages,
-            "temperature": 0.2,
-            "response_format": {"type": "json_object"},
-        },
-        timeout=timeout,
-    )
-    if response.status_code != 200:
-        raise RuntimeError(f"GitHub Models HTTP {response.status_code}: {response.text[:200]}")
-    try:
-        payload = response.json()
-    except ValueError:
-        raise RuntimeError(
-            f"GitHub Models sent non-JSON ({response.headers.get('Content-Type')}, "
-            f"{len(response.content)} bytes): {response.text[:160]!r}"
-        ) from None
-    return payload["choices"][0]["message"]["content"]
 
 
 def _ollama_session():
@@ -209,18 +179,14 @@ def _save_cache(path, brief, why_by_url):
 def add_brief(data: dict, config: dict, log=print) -> None:
     settings = config.get("briefing", {}) or {}
     provider = str(settings.get("provider", "auto")).lower()
-    github_model = settings.get("github_model", "openai/gpt-4.1-mini")
     ollama_model = settings.get("ollama_model", "qwen3:8b")
     timeout = int(settings.get("timeout", 300))
     why_count = int(settings.get("why_count", 4))
 
     cache_path = settings.get("cache_path", "")
     reuse_hours = float(settings.get("reuse_hours", 0))
-    local_only = provider == "ollama" or (
-        provider == "auto" and not (os.environ.get("GH_MODELS_TOKEN") or os.environ.get("GITHUB_TOKEN"))
-    )
-    max_stories = int(settings.get("ollama_max_stories", 10)) if local_only else 14
-    summary_cap = 170 if local_only else 300
+    max_stories = int(settings.get("ollama_max_stories", 10))
+    summary_cap = int(settings.get("summary_cap", 170))
 
     stories = _candidates(data, limit=max_stories)
     if stories and cache_path and reuse_hours > 0:
@@ -254,10 +220,11 @@ def add_brief(data: dict, config: dict, log=print) -> None:
     ]
 
     attempts = []
-    if provider in ("auto", "github") and (os.environ.get("GH_MODELS_TOKEN") or os.environ.get("GITHUB_TOKEN")):
-        attempts.append(("github-models", github_model, _call_github))
-    if provider in ("auto", "ollama") and _ollama_available(ollama_model):
-        attempts.append(("ollama", ollama_model, _call_ollama))
+    if provider in ("auto", "ollama"):
+        if _ollama_available(ollama_model):
+            attempts.append(("ollama", ollama_model, _call_ollama))
+        else:
+            log(f"brief: Ollama with {ollama_model} not reachable at {OLLAMA_URL}")
 
     result, used, used_model = None, "extractive", ""
     for name, model, call in attempts:
@@ -320,7 +287,7 @@ def add_brief(data: dict, config: dict, log=print) -> None:
         "story_count": len(stories),
         "source_count": len(sources),
     }
-    if cache_path and used in ("github-models", "ollama"):
+    if cache_path and used == "ollama":
         why_by_url = {s.get("url"): s["why"] for s in stories if s.get("why")}
         _save_cache(cache_path, data["brief"], why_by_url)
     log(f"brief: {used} {used_model} - {len(bullets)} bullets")

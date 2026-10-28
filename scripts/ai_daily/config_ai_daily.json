@@ -59,9 +59,9 @@
   },
   "briefing": {
     "provider": "auto",
-    "github_model": "openai/gpt-4.1-mini",
     "ollama_model": "qwen3:8b",
-    "timeout": 120,
+    "timeout": 900,
+    "ollama_max_stories": 10,
     "why_count": 4
   },
   "markets": {

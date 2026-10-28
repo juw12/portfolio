@@ -5,7 +5,8 @@ Usage (from the repository root):
     python scripts/ai_daily/build_ai_daily.py build [--data cached.json]
     python scripts/ai_daily/build_ai_daily.py send  [--force] [--test-to self|ADDRESS]
 
-build  collects the AI feeds, writes the AI brief (GitHub Models in Actions),
+build  collects the AI feeds, writes the AI brief (Qwen3 8B via Ollama, run
+       inside the free GitHub Actions runner - no API key),
        and writes news/index.html, news/YYYY-MM-DD.html, news/archive.json,
        news/feed.xml and the email body news/email/YYYY-MM-DD.html.
 send   emails today's edition to every subscriber, one personal copy each

@@ -2,9 +2,10 @@ name: AI Daily
 
 # Builds the public AI Daily edition at /news/ every morning and emails it to
 # every subscriber from Gmail (signups arrive in that inbox via FormSubmit;
-# free, ~500 emails/day). The brief is written by GitHub Models (free, uses the
-# workflow token). Email needs the GMAIL_APP_PASSWORD repository secret; until
-# it exists the web edition still publishes and the send step is skipped.
+# free, ~500 emails/day). The brief is written by an open model (Qwen3 8B)
+# running in Ollama inside this free runner - no API key, no quota. Email needs
+# the GMAIL_APP_PASSWORD repository secret; until it exists the web edition
+# still publishes and the send step is skipped.
 #
 # Manual runs (Actions tab > AI Daily > Run workflow):
 #   test          build today's edition WITHOUT publishing and email it only
@@ -28,7 +29,6 @@ on:
 
 permissions:
   contents: write
-  models: read
 
 concurrency:
   group: ai-daily
@@ -37,7 +37,9 @@ concurrency:
 jobs:
   edition:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
+    env:
+      BRIEF_MODEL: qwen3:8b
     steps:
       - uses: actions/checkout@v4
 
@@ -48,9 +50,26 @@ jobs:
       - name: Install dependencies
         run: pip install --quiet requests beautifulsoup4
 
+      - name: Cache the brief model
+        uses: actions/cache@v4
+        with:
+          path: ~/.ollama/models
+          key: ollama-qwen3-8b-v1
+
+      - name: Start the brief model (Ollama, local to this runner)
+        continue-on-error: true   # without it the brief falls back to top headlines
+        run: |
+          curl -fsSL https://ollama.com/install.sh | sh
+          sudo systemctl stop ollama 2>/dev/null || true
+          OLLAMA_MODELS="$HOME/.ollama/models" nohup ollama serve > "$RUNNER_TEMP/ollama.log" 2>&1 &
+          for attempt in $(seq 1 60); do
+            curl -sf http://127.0.0.1:11434/api/tags > /dev/null && break
+            sleep 1
+          done
+          ollama pull "$BRIEF_MODEL"
+          ollama list
+
       - name: Build today's edition
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/ai_daily/build_ai_daily.py build
 
       - name: Publish to the site

@@ -32,7 +32,7 @@ Then visit http://localhost:8000/. The site works fully offline (`file://`) — 
 
 A public daily AI briefing, built every morning at 06:00 WIB by `.github/workflows/ai-daily.yml`:
 `scripts/ai_daily/build_ai_daily.py build` collects AI feeds, clusters duplicate stories across
-outlets, writes "The Brief" with GitHub Models (workflow token, `models: read`), and publishes
+outlets, writes "The Brief" with Qwen3 8B running in Ollama inside the free Actions runner (no API key; GitHub Models was retired in July 2026), and publishes
 `news/index.html`, `news/YYYY-MM-DD.html`, `news/archive.json` and `news/feed.xml`.
 `... send` then emails each subscriber a personal copy from Gmail (own unsubscribe link, welcome banner on the first issue; once per day, `news/sent.json`). Signups and unsubscribes from the site go through FormSubmit to that Gmail inbox, which is the subscriber list; nothing personal is stored in this repo or printed in logs.
 
