@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """AI Daily - the public edition of the Morning Paper, published at /news/.
 
 Usage (from the repository root):
@@ -53,7 +53,7 @@ def repo_root() -> Path:
     return HERE.parent.parent
 
 
-DEFAULT_SENDER = "juwen12006@gmail.com"
+DEFAULT_SENDER = "juwpegatron@gmail.com"
 
 
 def google_group(root: Path) -> str:
@@ -112,7 +112,7 @@ def build(args) -> int:
         "public": True,
         "auto_refresh_minutes": 0,
         "markets_title": "AI market pulse",
-        "watchlist_titles": {"watchlist_us": "AI stocks · last close (not investment advice)"},
+        "watchlist_titles": {"watchlist_us": "AI stocks Â· last close (not investment advice)"},
         "site_url": f"{SITE_URL}/",
         "site_name": "Juwen Lie",
         "rss_url": f"{NEWS_URL}feed.xml",
@@ -157,8 +157,8 @@ def build(args) -> int:
 def subject_line(data: dict) -> str:
     lead = (data.get("front_page") or [{}])[0].get("title", "Today in AI")
     day = data.get("date_display", "").split(",")[1].strip() if "," in data.get("date_display", "") else ""
-    subject = f"{BRAND} · {day}: {lead}" if day else f"{BRAND}: {lead}"
-    return subject if len(subject) <= 110 else subject[:107].rsplit(" ", 1)[0] + "…"
+    subject = f"{BRAND} Â· {day}: {lead}" if day else f"{BRAND}: {lead}"
+    return subject if len(subject) <= 110 else subject[:107].rsplit(" ", 1)[0] + "â€¦"
 
 
 def write_feed(news_dir: Path, archive: list) -> None:
@@ -171,14 +171,14 @@ def write_feed(news_dir: Path, archive: list) -> None:
         link = f"{NEWS_URL}{entry['date']}.html"
         description = escape(entry.get("lede") or entry.get("headline") or "")
         items.append(
-            f"<item><title>{escape(BRAND)} · {escape(entry.get('label', ''))}: {escape(entry.get('headline', ''))}</title>"
+            f"<item><title>{escape(BRAND)} Â· {escape(entry.get('label', ''))}: {escape(entry.get('headline', ''))}</title>"
             f"<link>{link}</link><guid isPermaLink=\"true\">{link}</guid>"
             f"<pubDate>{format_datetime(published)}</pubDate><description>{description}</description></item>"
         )
     feed = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>'
-        f"<title>{BRAND} · Juwen Lie</title><link>{NEWS_URL}</link>"
+        f"<title>{BRAND} Â· Juwen Lie</title><link>{NEWS_URL}</link>"
         f'<atom:link href="{NEWS_URL}feed.xml" rel="self" type="application/rss+xml"/>'
         "<description>The AI news that matters, explained in five minutes. Every morning.</description>"
         f"<language>en</language>{''.join(items)}</channel></rss>\n"

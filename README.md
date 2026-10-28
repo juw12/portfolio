@@ -1,6 +1,6 @@
-# Juwen Lie — Portfolio
+﻿# Juwen Lie â€” Portfolio
 
-Interactive personal portfolio for **Juwen Lie** — R&D Mechanical Engineer (Mechanical · Aerospace · AI · Tech · Systems).
+Interactive personal portfolio for **Juwen Lie** â€” R&D Mechanical Engineer (Mechanical Â· Aerospace Â· AI Â· Tech Â· Systems).
 
 A single-page, **zero-dependency** static site with a clean, professional layout: system fonts, light/dark themes (follows the OS setting, remembers your choice), filterable and searchable project cards, and a details dialog per project.
 
@@ -14,7 +14,7 @@ Open `index.html` directly in a browser, or serve the folder:
 python -m http.server 8000
 ```
 
-Then visit http://localhost:8000/. The site works fully offline (`file://`) — no build step and no external requests.
+Then visit http://localhost:8000/. The site works fully offline (`file://`) â€” no build step and no external requests.
 
 ## Structure
 
@@ -25,7 +25,7 @@ Then visit http://localhost:8000/. The site works fully offline (`file://`) — 
 | `app.js` | Theme toggle, active-section nav, reveal on scroll, project filters + search, project details dialog, copy email |
 | `assets/projects/` | Project imagery (newsprint-halftone) |
 | `assets/qr/` | Contact QR codes (LinkedIn, GitHub, email, bio.site) |
-| `obsidian/` | Portfolio Obsidian vault: every project note as Markdown plus a one-file zip bundle — see [`obsidian/README.md`](obsidian/README.md) |
+| `obsidian/` | Portfolio Obsidian vault: every project note as Markdown plus a one-file zip bundle â€” see [`obsidian/README.md`](obsidian/README.md) |
 | `.github/workflows/pages.yml` | Deploys to GitHub Pages on push to `main` (kept so old links keep working) |
 
 ## AI Daily (`/news/`)
@@ -39,8 +39,8 @@ outlets, writes "The Brief" with GitHub Models (workflow token, `models: read`),
 - Feeds, sections and topic filter: `scripts/ai_daily/config_ai_daily.json`.
 - Email delivery needs two things: the Google Group name in `assets/subscribe.js` (also turns on
   the AI Daily checkbox in the /hi/ and /log/ signup forms) and the `GMAIL_APP_PASSWORD` repository secret
-  (optional `GMAIL_ADDRESS`, default juwen12006@gmail.com). Group settings: anyone can join, only owners post.
-- Run it by hand: Actions → AI Daily → Run workflow (tick "send" to email).
+  (optional `GMAIL_ADDRESS`, default juwpegatron@gmail.com, which must own the group). Group settings: anyone can join, only owners post.
+- Run it by hand: Actions â†’ AI Daily â†’ Run workflow (tick "send" to email).
 
 ## Project cards
 
