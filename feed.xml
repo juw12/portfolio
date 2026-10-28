@@ -22,10 +22,10 @@
       <link>https://juw12.github.io/projects/kitty/web.html</link>
       <guid isPermaLink="false">juwenlie-project-kitty</guid>
       <pubDate>Wed, 28 Oct 2026 16:39:28 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/kitty-card.jpg" alt="Kitty shared budget: overview with left-to-spend ring and pace chart on desktop, plus the sheet and overview on two phones" width="600"></p><p>Shared budgeting you edit together live — money-personality quiz, income plan, limit warnings and portfolio.</p>]]></description>
-      <jl:summary>Shared budgeting you edit together live — money-personality quiz, income plan, limit warnings and portfolio.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/kitty-card.jpg" alt="Kitty shared budget: overview with left-to-spend ring and pace chart on desktop, plus the sheet and overview on two phones" width="600"></p><p>Shared budgets you edit live together — money quiz, income plan, limit warnings, portfolio. Free on web, iPhone and Android.</p>]]></description>
+      <jl:summary>Shared budgets you edit live together — money quiz, income plan, limit warnings, portfolio. Free on web, iPhone and Android.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/kitty-card.jpg" type="image/jpeg" length="0"/>
-      <category>budgeting</category><category>real-time sync</category><category>E2E encrypted</category><category>personality quiz</category><category>portfolio</category><category>PWA</category>
+      <category>budgeting</category><category>real-time sync</category><category>E2E encrypted</category><category>personality quiz</category><category>portfolio</category><category>PWA</category><category>Android</category><category>iPhone</category>
     </item>
     <item>
       <title>Vitals</title>
