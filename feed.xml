@@ -18,22 +18,12 @@
       <category>Windows app</category><category>desktop pet</category><category>Pomodoro</category><category>Python</category><category>tkinter</category><category>4 languages</category>
     </item>
     <item>
-      <title>Kitty</title>
-      <link>https://juw12.github.io/projects/kitty/web.html</link>
-      <guid isPermaLink="false">juwenlie-project-kitty</guid>
-      <pubDate>Wed, 28 Oct 2026 16:39:28 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/kitty-card.jpg" alt="Kitty shared budget: overview with left-to-spend ring and pace chart on desktop, plus the sheet and overview on two phones" width="600"></p><p>Shared budgets you edit live together — 30-second setup, limit warnings, portfolio. 4 languages, free on web, iPhone and Android.</p>]]></description>
-      <jl:summary>Shared budgets you edit live together — 30-second setup, limit warnings, portfolio. 4 languages, free on web, iPhone and Android.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/kitty-card.jpg" type="image/jpeg" length="0"/>
-      <category>budgeting</category><category>real-time sync</category><category>E2E encrypted</category><category>personality quiz</category><category>portfolio</category><category>PWA</category><category>Android</category><category>iPhone</category><category>multilingual</category>
-    </item>
-    <item>
       <title>Vitals</title>
       <link>https://juw12.github.io/projects/vitals/index.html</link>
       <guid isPermaLink="false">juwenlie-project-vitals</guid>
       <pubDate>Wed, 28 Oct 2026 16:39:28 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/vitals-card.jpg" alt="Vitals overview: health score orb with an itemized why-this-score list, live vitals and ranked one-click fixes" width="600"></p><p>One-step install device health copilot: undoable cleaning, battery forecast, drain detective, QR phone pairing, fix-it chat.</p>]]></description>
-      <jl:summary>One-step install device health copilot: undoable cleaning, battery forecast, drain detective, QR phone pairing, fix-it chat.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/vitals-card.jpg" alt="Vitals overview: health score orb with an itemized why-this-score list, live vitals and ranked one-click fixes" width="600"></p><p>Device health copilot for Windows, Mac, Linux, Android and iPhone: undoable cleaning, battery forecast, drain detective, QR phone pairing, fix-it chat.</p>]]></description>
+      <jl:summary>Device health copilot for Windows, Mac, Linux, Android and iPhone: undoable cleaning, battery forecast, drain detective, QR phone pairing, fix-it chat.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/vitals-card.jpg" type="image/jpeg" length="0"/>
       <category>Python</category><category>PWA</category><category>undo vault</category><category>battery</category><category>local-only</category>
     </item>
@@ -172,8 +162,8 @@
       <link>https://juw12.github.io/projects/twin/web.html</link>
       <guid isPermaLink="false">juwenlie-project-twin</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/twin-card.jpg" alt="Twin 1.5: redesigned Home, TwinAgent Buy verdict with evidence score, risk gate with practice-trade plan, and AAPL stock page" width="600"></p><p>Investing companion with a five-analyst AI research team, global stock search, paper trading, a replay lab and a rupiah side for IDX stocks, crypto and gold.</p>]]></description>
-      <jl:summary>Investing companion with a five-analyst AI research team, global stock search, paper trading, a replay lab and a rupiah side for IDX stocks, crypto and gold.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/twin-card.jpg" alt="Twin 1.5: redesigned Home, TwinAgent Buy verdict with evidence score, risk gate with practice-trade plan, and AAPL stock page" width="600"></p><p>Investing companion with an AI research team, global stocks, paper trading, a replay lab, and IDX, crypto and gold in rupiah.</p>]]></description>
+      <jl:summary>Investing companion with an AI research team, global stocks, paper trading, a replay lab, and IDX, crypto and gold in rupiah.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/twin-card.jpg" type="image/jpeg" length="0"/>
       <category>TwinAgent</category><category>multi-agent research</category><category>global markets</category><category>exchange calendars</category><category>real-time data</category><category>multi-currency</category><category>paper trading</category><category>Interactive Brokers</category><category>Alpaca API</category><category>Indonesia (IDX)</category><category>crypto &amp; gold</category><category>PWA</category>
     </item>
@@ -222,10 +212,10 @@
       <link>https://juw12.github.io/projects/mint/web.html</link>
       <guid isPermaLink="false">juwenlie-project-mint</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/mint-card.jpg" alt="Mint: prompt a spreadsheet template, tweak it, sell it — prompt box with Mint AI and the prompt, tweak, sell flow" width="600"></p><p>Describe a spreadsheet, tweak it in plain words, export a working .xlsx and sell it on a built-in marketplace.</p>]]></description>
-      <jl:summary>Describe a spreadsheet, tweak it in plain words, export a working .xlsx and sell it on a built-in marketplace.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/mint-card.jpg" alt="Mint: the shared budget overview with the left-to-spend ring and pace chart, and Templates one tap away in the sidebar" width="600"></p><p>Shared budgets you edit live together, plus an AI spreadsheet-template studio and marketplace. One app on web, iPhone and Android.</p>]]></description>
+      <jl:summary>Shared budgets you edit live together, plus an AI spreadsheet-template studio and marketplace. One app on web, iPhone and Android.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/mint-card.jpg" type="image/jpeg" length="0"/>
-      <category>Template marketplace</category><category>Midtrans / Xendit / Stripe</category><category>Workers AI</category><category>Cloudflare Workers</category><category>Excel / Sheets</category><category>Affiliate program</category>
+      <category>Shared budgeting</category><category>E2E encrypted</category><category>Template marketplace</category><category>Workers AI</category><category>Midtrans / Xendit / Stripe</category><category>Excel / Sheets</category><category>PWA</category><category>Android</category><category>Multilingual</category>
     </item>
     <item>
       <title>ME R&amp;D Toolkit</title>
