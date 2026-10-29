@@ -5,12 +5,12 @@ type: product-note
 status: live
 date: 2026-10-29
 tags: [mint, budgeting, personal-finance, shared-budget, crdt, e2e-encryption, personality-quiz, investing, template-marketplace, excel, google-sheets, affiliate, creator-economy, cloudflare-workers, workers-ai, pwa, android, capacitor, i18n]
-aliases: [Sheetmint, Kitty — product note]
+aliases: [Sheetmint]
 ---
 
 # Mint — product note
 
-Project card: [[Mint]]. Mint is one app with two halves: **Budget**, the home screen (Kitty until 2026-10-29), and **Templates**, the spreadsheet-template studio and marketplace (renamed from Sheetmint). Stackup was retired on 2026-10-26.
+Project card: [[Mint]]. Mint is one app with two halves: **Budget**, the home screen, and **Templates**, the spreadsheet-template studio and marketplace (renamed from Sheetmint). Stackup was retired on 2026-10-26.
 
 - Live app: https://juw12.github.io/projects/mint/
 - Budget: https://juw12.github.io/projects/mint/budget/ · demo household: https://juw12.github.io/projects/mint/budget/demo.html · self-test: https://juw12.github.io/projects/mint/budget/tests.html
@@ -18,19 +18,28 @@ Project card: [[Mint]]. Mint is one app with two halves: **Budget**, the home sc
 - Install on iPhone / Android / computer (free): https://juw12.github.io/projects/mint/budget/get.html
 - Code: https://github.com/juw12/projects/tree/main/apps/mint
 
+## Mint 3.1: language & region first, apps for every device (2026-10-29)
+
+- **Why.** "Download" only meant Android, and only an older build that opened on Templates; Windows and Mac users had no app at all. People also land in Mint from many countries, so the currency guess from the browser was often wrong.
+- **Language & region first.** `js/locale.js` loads before anything else on every Budget and Templates page. The first visit shows one screen: English / Bahasa Indonesia / 简体中文 / Español and a region list (29 regions, names in the chosen language); the region sets the currency of new budgets and templates. Both can be changed later (Budget → Settings → Preferences → Region). Demo, self-test and download pages never stop at the question. Budget gained HKD, KRW, NZD, CAD, MXN, COP, BRL and AED.
+- **One name.** Everything is Mint now: budgets saved under the older storage prefix move once to `mint.budget.*` before any script reads them, the code namespace, broadcast channel and CSS are Mint's, and shared budgets sync on `mint-<id>` relay topics (a device coming from an older version posts a full snapshot on its first replay there, so nothing is lost). Only the silent forwarding from the pre-3.0 address remains, so old invite links keep working.
+- **Windows and Mac.** `apps/mint/desktop`: Mint in its own window through pywebview (Edge WebView2 / WebKit), budgets kept between launches, exports saved to Downloads, other sites opened in the browser, one window at a time and an offline page with *Try again*. PyInstaller builds a per-user Inno Setup installer and a portable zip for Windows and `.dmg`s for Apple-chip and Intel Macs. Not code-signed or notarized yet, so SmartScreen and Gatekeeper ask once.
+- **Android.** The Capacitor app now opens the front door (Budget), adds the App and Haptics plugins (Back button, vibration on warnings) and routes Budget's backups, CSV and result cards through the share sheet; signed with the existing Mint key, so it updates earlier installs.
+- **Release.** The `Mint apps` workflow builds every app, opens it on its own OS (Windows: installed, run and uninstalled; Mac: bundle id, version, signature and disk image; Android: on an emulator with its native plugins), and publishes the ones that pass to the `mint` release; `get.html` offers Windows, Mac (by chip), Android and iPhone.
+- **Verified.** 27 browser checks (first-visit screen in four languages and on a phone, region → currency, migration of an older saved budget with its language, region change in Settings, Templates following the language without asking again, download links), browser self-test 103/103, 43 Budget Python tests and the Templates core tests.
+
 ## Mint 3.0: one app (2026-10-29)
 
 - **Why.** Both halves serve people who already run their money in spreadsheets: Budget for a household's own money, Templates for the sheets people make, buy and sell. One name, one install and one look make each a natural next step from the other instead of two thin products.
 - **Shape.** Budget is the home screen (`/projects/mint/budget/`). Templates keeps its URLs (`app.html`, `web.html`, `mobile.html`), API, Android APK and share / affiliate links. The front door (`/projects/mint/`) sends template links (`#/…`, `?ref`, `?coupon`, `?listing`, `?item`, `?api`) to Templates and everything else to Budget.
-- **One product.** Each half links to the other: Budget's sidebar (*Also in Mint → Templates*), phone More sheet and welcome page; Templates' top bar and the first tab on phones. One manifest keeps Mint's install id and opens on Budget; the Mint mark and green on both halves; one light / dark / system theme (`mint.theme`) and one language (Budget `kitty.lang` ↔ Templates `mint.lang`), followed live by tabs that are already open.
-- **Nobody loses anything.** Old `/projects/kitty/` pages are redirect stubs that keep the hash and query, so invite links still open the right budget with their key, and `get`, `demo` and `tests` redirect too. `/projects/kitty/version.json` serves the 3.0.0 release, so an open Kitty 1.5 tab announces the update and reloads into Mint; a retiring worker at the old address clears only the `kitty-*` caches. Storage keys (`kitty.*`), the `window.Kitty` namespace and the relay topics keep their names on purpose, so every budget and live share carries over.
-- **Fixed on the way.** Kitty's service worker deleted every cache on the origin, Mint's included. The two workers now have separate scopes (`budget/` and `mint/`) and only clear their own caches.
-- **Verified.** 30 scripted merge checks (front door, old links and invites, shared theme and language both ways, a returning Kitty user keeps every budget and sees "Updated to Mint 3.0.0", phone layouts), the 40 UI checks, 20 update-flow checks, browser self-test 103/103, 36 Budget Python tests plus the Templates core tests, CI and the Pages deploy green. Live: front door and redirects with invite keys, both service workers and caches side by side, the retiring worker, 3.0.0 served at both addresses.
-- **Open.** The Android APK was not rebuilt: it opens on Templates with Budget one tap away, and Budget's downloads need Chrome or the installed web app there. Kitty icons already on home screens open the redirect until Mint is installed. Templates speaks English and Indonesian only.
+- **One product.** Each half links to the other: Budget's sidebar (*Also in Mint → Templates*), phone More sheet and welcome page; Templates' top bar and the first tab on phones. One manifest keeps Mint's install id and opens on Budget; the Mint mark and green on both halves; one light / dark / system theme (`mint.theme`) and one language, followed live by tabs that are already open.
+- **Nobody loses anything.** Budget's earlier address forwards to `/projects/mint/budget/` and keeps the hash and query, so invite links still open the right budget with their key; open tabs from before announce the update and reload into Mint, and a retiring worker there clears only its own old caches.
+- **Fixed on the way.** The old budget service worker deleted every cache on the origin, Mint's included. The two workers now have separate scopes (`budget/` and `mint/`) and only clear their own caches.
+- **Verified.** 30 scripted merge checks (front door, old links and invites, shared theme and language both ways, a returning user keeps every budget and sees "Updated to Mint 3.0.0", phone layouts), the 40 UI checks, 20 update-flow checks, browser self-test 103/103, 36 Budget Python tests plus the Templates core tests, CI and the Pages deploy green.
+- **Open then (closed in 3.1).** The Android APK opened on Templates and Budget's downloads needed Chrome there; there were no desktop apps.
 
-## Budget (formerly Kitty)
+## Budget
 
-A *kitty* is a shared pot of money; the name lives on in the storage keys.
 
 ### Why
 
@@ -67,7 +76,7 @@ the polish and brains of a budgeting app**, and no account.
 | iPhone / iPad | Safari → Share → **Add to Home Screen** (guided on `get.html`) | Full-screen app with its own icon and shortcuts |
 | Android | `Mint-android.apk` from the `mint-android` release, or install the web app from Chrome | The APK is the Templates Capacitor shell; it loads the live site, opens on Templates and has Budget first in the tab bar. Invites use the native share sheet |
 
-- **History:** Kitty 1.1 had its own Capacitor shell (`apps/kitty/mobile`) with haptics, the native share sheet, Back-button handling, invite deep links and a GitHub Actions build with an emulator run, but the workflow was never activated (pushing workflow files needs a token with the `workflow` scope), so no Kitty APK/IPA was ever published. Mint 3.0 removed that shell; Budget still uses those native hooks when a shell provides them and skips them quietly otherwise.
+- **History:** an earlier Capacitor shell for the budget app had haptics, the native share sheet, Back-button handling and invite deep links but was never published. Mint 3.1 brings those hooks into the Mint Android app (see the 3.1 section).
 - **Store listings** are out of scope for "free": the App Store needs an Apple Developer account ($99/year) and Google Play a one-time $25 registration.
 
 ### Languages and design (v1.2)
@@ -95,12 +104,12 @@ the polish and brains of a budgeting app**, and no account.
 
 ### Updates arrive by themselves (v1.5)
 
-- **Release manifest:** every deploy publishes `web/version.json` with the live version and two or three release notes in English, Indonesian, Chinese and Spanish. Open copies of Kitty read it when they start, every 30 minutes, when you come back to the app and when the connection returns.
-- **Heads-up in the app:** a newer version shows a toast ("Kitty 1.6.0 is ready" + **Update**), a card at the top of the bell (which counts it), an **Update Kitty** row at the top of the phone More sheet and an **Updates** card in Settings with the version, *Check for updates* and *What's new*.
-- **Update in place:** one tap saves the budget, re-downloads the app files past the browser cache, reloads and lands on the same page, month and scroll position. With *Install updates automatically* on (the default) Kitty also updates itself the next time you switch away, but never while a sheet, the quiz or a half-typed field is open.
-- **Afterwards:** "Updated to Kitty 1.5.0" appears once, with *What's new* listing the notes in your language. Brand-new visitors are not told about an update.
-- **Safety nets:** the service worker now revalidates every request (cheap 304s), never caches `version.json` and accepts SKIP_WAITING; if a reload still returns old files (a cache catching up), Kitty stays quiet for 10 minutes instead of looping, while the bell keeps the offer. The iPhone and Android apps load the live site, so they update the same way.
-- **Releasing:** bump `K.VERSION` and `web/budget/version.json` together (tests fail if they drift) and the service-worker cache name. `/projects/kitty/version.json` is copied from Budget at build time, so old Kitty tabs see every release.
+- **Release manifest:** every deploy publishes `web/version.json` with the live version and two or three release notes in English, Indonesian, Chinese and Spanish. Open copies of Budget read it when they start, every 30 minutes, when you come back to the app and when the connection returns.
+- **Heads-up in the app:** a newer version shows a toast ("Mint 3.1.0 is ready" + **Update**), a card at the top of the bell (which counts it), an **Update Mint** row at the top of the phone More sheet and an **Updates** card in Settings with the version, *Check for updates* and *What's new*.
+- **Update in place:** one tap saves the budget, re-downloads the app files past the browser cache, reloads and lands on the same page, month and scroll position. With *Install updates automatically* on (the default) Budget also updates itself the next time you switch away, but never while a sheet, the quiz or a half-typed field is open.
+- **Afterwards:** "Updated to Mint 3.1.0" appears once, with *What's new* listing the notes in your language. Brand-new visitors are not told about an update.
+- **Safety nets:** the service worker now revalidates every request (cheap 304s), never caches `version.json` and accepts SKIP_WAITING; if a reload still returns old files (a cache catching up), Budget stays quiet for 10 minutes instead of looping, while the bell keeps the offer. The iPhone and Android apps load the live site, so they update the same way.
+- **Releasing:** bump `K.VERSION` and `web/budget/version.json` together (tests fail if they drift) and the service-worker cache name. The pre-3.0 address serves the same release file, so tabs opened there before the move see every release.
 
 ### Verified (2026-10-28)
 
@@ -109,10 +118,10 @@ the polish and brains of a budgeting app**, and no account.
 - Python: relay tests (publish/poll/SSE, 400/413, restart persistence) and static web checks on Python 3.9 and 3.13. Monorepo `check_site.py` passes.
 - v1.1 mobile: self-test still 87/87 core in the browser; with a simulated Capacitor Android bridge the app detects native mode, fires haptics on add and on a limit crossing, closes the quick-add sheet / goes home / minimises on Back, opens the native share sheet with the invite link and shows the Join card for a deep-linked invite. `get.html` picks the right platform card on desktop, iPhone and Android, and shows "building soon" plus the Add to Home Screen fallback until the release assets exist. New static tests check the Capacitor config (HTTPS `server.url`), icon pixel sizes, version parity and that the workflow publishes the exact files `get.html` links to.
 
-- v1.2 (2026-10-29): crawl of every view in id / zh / es with the missing-string collector: no untranslated UI text left (only user data and locale-formatted dates). Share cards rendered for all 6 animals × 4 languages with no overflow. Phone (390×844) welcome, overview and You screens checked. Browser self-test 87/87; 30 Python tests including new `test_i18n.py` (table valid, packs up to date, load order, service-worker cache); `check_site.py` passes with no Kitty warnings.
+- v1.2 (2026-10-29): crawl of every view in id / zh / es with the missing-string collector: no untranslated UI text left (only user data and locale-formatted dates). Share cards rendered for all 6 animals × 4 languages with no overflow. Phone (390×844) welcome, overview and You screens checked. Browser self-test 87/87; 30 Python tests including new `test_i18n.py` (table valid, packs up to date, load order, service-worker cache); `check_site.py` passes.
 - v1.3 (2026-10-29): setup flow walked through in English, Indonesian, Chinese and Spanish on a 390×844 phone (3 taps to a budget, currency IDR for Indonesian and CNY for Chinese); checklist goes 1 → 2 → 3 of 5 and hides; full quiz still completes from the checklist; auto-category picks the right envelope in all four languages; crawl of every view finds no untranslated UI text; browser self-test 99/99 (12 new tests for currency and category guessing); 30 Python tests; `check_site.py` passes.
 - v1.4 (2026-10-29): 40 scripted UI checks in Chromium on desktop (1280×860), phone (390×844) and narrow phones (320 and 360 px): theme switch by top-bar button, Appearance tile, More sheet and `T`, kept after reload, status-bar colour; reduced motion; no animation replay on live re-renders, month change animates, count-up lands on the exact figure; tab bar, More navigation, bottom-sheet drag-to-close and snap-back, toasts above an open sheet; shortcuts, and typing never triggers them; no horizontal overflow. Every page reviewed in light and dark. New strings translated in id / zh / es (crawl clean); browser self-test 99/99; 32 Python tests (new: dark theme overrides every colour token, theme switch reachable everywhere); monorepo CI (`build_site.py`, `check_site.py`, all tests) and the Pages deploy green.
-- v1.5 (2026-10-29): 20 scripted update checks in Chromium with a faked newer `version.json`: toast, bell card and count, What's new with notes, Settings card, phone More row; *Update now* shows the updating screen, reloads and keeps page and month; no repeat toast while the old files are still served; automatic install on switch-away, never with a sheet open, and not when switched off; "Updated to Kitty 1.5.0" with notes in English and Indonesian, nothing for first-time visitors; up-to-date and offline states. Update texts translated in id / zh / es; the 40 v1.4 UI checks still pass; browser self-test 103/103; 34 Python tests; monorepo CI and the Pages deploy green; the live site serves 1.5.0.
+- v1.5 (2026-10-29): 20 scripted update checks in Chromium with a faked newer `version.json`: toast, bell card and count, What's new with notes, Settings card, phone More row; *Update now* shows the updating screen, reloads and keeps page and month; no repeat toast while the old files are still served; automatic install on switch-away, never with a sheet open, and not when switched off; "Updated to 1.5.0" with notes in English and Indonesian, nothing for first-time visitors; up-to-date and offline states. Update texts translated in id / zh / es; the 40 v1.4 UI checks still pass; browser self-test 103/103; 34 Python tests; monorepo CI and the Pages deploy green; the live site serves 1.5.0.
 
 ### Limits and next steps
 

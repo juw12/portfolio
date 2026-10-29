@@ -8,7 +8,7 @@ Project notes for every app and model in the portfolio, as a ready-to-open [Obsi
 - **Whole repo:** green *Code* button → *Download ZIP* (vault is in `obsidian/vault/`).
 - **Single notes:** browse [`vault/`](vault/) — every note is plain Markdown and reads fine on GitHub.
 
-Updated 2026-10-29 · 28 project notes · 21 update-log entries.
+Updated 2026-10-29 · 26 project notes · 22 update-log entries.
 
 ## Project notes
 
@@ -19,8 +19,6 @@ Updated 2026-10-29 · 28 project notes · 21 update-log entries.
 - [Glow](vault/Portfolio/Projects/Glow.md)
 - [Guang Yao Together · 光耀同行](vault/Portfolio/Projects/Guang%20Yao%20Together%20%C2%B7%20%E5%85%89%E8%80%80%E5%90%8C%E8%A1%8C.md)
 - [Hazel](vault/Portfolio/Projects/Hazel.md)
-- [Kitty](vault/Portfolio/Projects/Kitty.md) — now the Budget half of Mint
-- [Kitty — product note](vault/Portfolio/Projects/Kitty%20%E2%80%94%20product%20note.md) — merged into the Mint product note
 - [Lingua](vault/Portfolio/Projects/Lingua.md)
 - [Loka](vault/Portfolio/Projects/Loka.md)
 - [Marina Bay Sands Miniature](vault/Portfolio/Projects/Marina%20Bay%20Sands%20Miniature.md)
@@ -64,5 +62,6 @@ Updated 2026-10-29 · 28 project notes · 21 update-log entries.
 - [2026-10-29 1645 twin-in-app-updates](vault/Update%20Log/2026-10-29%201645%20twin-in-app-updates.md)
 - [2026-10-29 1809 mint-kitty-merge](vault/Update%20Log/2026-10-29%201809%20mint-kitty-merge.md)
 - [2026-10-29 1837 vitals-app-window](vault/Update%20Log/2026-10-29%201837%20vitals-app-window.md)
+- [2026-10-29 2010 mint-apps](vault/Update%20Log/2026-10-29%202010%20mint-apps.md)
 
 Notes are generated from the app catalog (`scripts/apps.json` in [juw12/projects](https://github.com/juw12/projects)) by `scripts/publish_portfolio.py`, plus hand-written product notes. Local machine paths and private storage locations are removed from this public copy.
