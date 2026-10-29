@@ -12,9 +12,9 @@
       <link>https://juw12.github.io/projects/pips/web.html</link>
       <guid isPermaLink="false">juwenlie-project-pips</guid>
       <pubDate>Wed, 28 Oct 2026 16:39:28 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/pips-pet-hero.jpg" alt="Pips: twelve of the 23 desktop pet animals next to the Pomodoro card" width="600"></p><p>Desktop pet + Pomodoro widget for Windows — 23 animals, moods, taskbar walks, reminders, 4 languages.</p>]]></description>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/pips-card.jpg" alt="Pips: twelve of the 23 desktop pet animals next to the Pomodoro card" width="600"></p><p>Desktop pet + Pomodoro widget for Windows — 23 animals, moods, taskbar walks, reminders, 4 languages.</p>]]></description>
       <jl:summary>Desktop pet + Pomodoro widget for Windows — 23 animals, moods, taskbar walks, reminders, 4 languages.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/pips-pet-hero.jpg" type="image/jpeg" length="0"/>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/pips-card.jpg" type="image/jpeg" length="0"/>
       <category>Windows app</category><category>desktop pet</category><category>Pomodoro</category><category>Python</category><category>tkinter</category><category>4 languages</category>
     </item>
     <item>
@@ -172,10 +172,10 @@
       <link>https://juw12.github.io/projects/twin/web.html</link>
       <guid isPermaLink="false">juwenlie-project-twin</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/twin-card.jpg" alt="Twin 1.5: redesigned Home, TwinAgent Buy verdict with evidence score, risk gate with practice-trade plan, and AAPL stock page" width="600"></p><p>Investing companion with a five-analyst AI research team, global stock search, paper trading and a replay lab.</p>]]></description>
-      <jl:summary>Investing companion with a five-analyst AI research team, global stock search, paper trading and a replay lab.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/twin-card.jpg" alt="Twin 1.5: redesigned Home, TwinAgent Buy verdict with evidence score, risk gate with practice-trade plan, and AAPL stock page" width="600"></p><p>Investing companion with a five-analyst AI research team, global stock search, paper trading, a replay lab and a rupiah side for IDX stocks, crypto and gold.</p>]]></description>
+      <jl:summary>Investing companion with a five-analyst AI research team, global stock search, paper trading, a replay lab and a rupiah side for IDX stocks, crypto and gold.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/twin-card.jpg" type="image/jpeg" length="0"/>
-      <category>TwinAgent</category><category>multi-agent research</category><category>global markets</category><category>exchange calendars</category><category>real-time data</category><category>multi-currency</category><category>paper trading</category><category>Interactive Brokers</category><category>Alpaca API</category><category>PWA</category>
+      <category>TwinAgent</category><category>multi-agent research</category><category>global markets</category><category>exchange calendars</category><category>real-time data</category><category>multi-currency</category><category>paper trading</category><category>Interactive Brokers</category><category>Alpaca API</category><category>Indonesia (IDX)</category><category>crypto &amp; gold</category><category>PWA</category>
     </item>
     <item>
       <title>Guang Yao Together · 光耀同行</title>
