@@ -18,7 +18,7 @@ Honest device-health copilot for Mac, Windows, Linux, iPhone and Android. Safety
 
 Monorepo: https://github.com/juw12/projects (`apps/vitals/`)
 
-## Download the app (1.2.1)
+## Download the app (1.2.2)
 
 Release page: https://github.com/juw12/projects/releases/tag/vitals
 
@@ -41,6 +41,7 @@ Release page: https://github.com/juw12/projects/releases/tag/vitals
 - Closing the window keeps the background agent running; opening Vitals again brings the same window back; the window remembers its size.
 - `Vitals --browser` still opens it in the web browser; without a web view it falls back to an Edge/Chrome app window, then the browser.
 - 1.2.1: the agent no longer stalls on start on macOS 15 (skips a reverse-DNS lookup that could hang 30–70 s), waits for a slow first start instead of reporting a busy port, and logs where it is stuck if start-up hangs.
+- 1.2.2: the process list is instant on managed Windows PCs. It used `tasklist /v`, which looks up every owner name (a domain lookup) and window title and took ~40 s on a work PC, so the list came back empty; Vitals now reads processes straight from Windows (about 0.5 s for 400+ processes) with memory, owner and CPU %.
 
 ## Install from a terminal (one step)
 
