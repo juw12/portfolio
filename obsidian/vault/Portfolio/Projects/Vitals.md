@@ -25,6 +25,14 @@ Monorepo: https://github.com/juw12/projects (`apps/vitals/`)
 - Installs into the user folder (no admin), sets up Python if needed, adds a Vitals app icon, starts at login, opens the dashboard; the web page auto-connects.
 - **Phone** — Devices → Connect my phone → scan the QR with the camera (single-use code, same Wi-Fi).
 
+## Simple mode (default)
+
+- **One status, one button** — Home says how the device is in plain words ("A few things to tidy up") with one **Fix everything safely** button. A first launch runs the checkup by itself.
+- **What I found** — short plain-language items, each with its own one-tap fix (free up space, close the app using the most memory, restart, battery settings).
+- **Fix sheet** — lists exactly what gets cleared (only junk that rebuilds itself), then *keep a 3-day backup* (default) or *free the space now* (suggested under 5% free). Undo sits on the result card.
+- **Automatic care** — one switch: a weekly safe cleanup into the Undo Vault plus a desktop notification when storage gets low.
+- **Ask in your own words** — "just fix it" or "make it faster" in chat runs the same safe fix. **Detailed view** brings back every score, chart and tool.
+
 ## What makes it different
 
 - **Undo Vault** — every cleanup is a move with one-click restore for 72 h; *Free now* is opt-in.
