@@ -22,18 +22,18 @@
       <link>https://juw12.github.io/projects/kitty/web.html</link>
       <guid isPermaLink="false">juwenlie-project-kitty</guid>
       <pubDate>Wed, 28 Oct 2026 16:39:28 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/kitty-card.jpg" alt="Kitty shared budget: overview with left-to-spend ring and pace chart on desktop, plus the sheet and overview on two phones" width="600"></p><p>Shared budgets you edit live together — money quiz, income plan, limit warnings, portfolio. Free on web, iPhone and Android.</p>]]></description>
-      <jl:summary>Shared budgets you edit live together — money quiz, income plan, limit warnings, portfolio. Free on web, iPhone and Android.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/kitty-card.jpg" alt="Kitty shared budget: overview with left-to-spend ring and pace chart on desktop, plus the sheet and overview on two phones" width="600"></p><p>Shared budgets you edit live together — 30-second setup, limit warnings, portfolio. 4 languages, free on web, iPhone and Android.</p>]]></description>
+      <jl:summary>Shared budgets you edit live together — 30-second setup, limit warnings, portfolio. 4 languages, free on web, iPhone and Android.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/kitty-card.jpg" type="image/jpeg" length="0"/>
-      <category>budgeting</category><category>real-time sync</category><category>E2E encrypted</category><category>personality quiz</category><category>portfolio</category><category>PWA</category><category>Android</category><category>iPhone</category>
+      <category>budgeting</category><category>real-time sync</category><category>E2E encrypted</category><category>personality quiz</category><category>portfolio</category><category>PWA</category><category>Android</category><category>iPhone</category><category>multilingual</category>
     </item>
     <item>
       <title>Vitals</title>
       <link>https://juw12.github.io/projects/vitals/index.html</link>
       <guid isPermaLink="false">juwenlie-project-vitals</guid>
       <pubDate>Wed, 28 Oct 2026 16:39:28 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/vitals-card.jpg" alt="Vitals overview: health score orb with an itemized why-this-score list, live vitals and ranked one-click fixes" width="600"></p><p>Device health copilot: undoable cleaning with measured receipts, battery wear forecast, drain detective and a fix-it chat.</p>]]></description>
-      <jl:summary>Device health copilot: undoable cleaning with measured receipts, battery wear forecast, drain detective and a fix-it chat.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/vitals-card.jpg" alt="Vitals overview: health score orb with an itemized why-this-score list, live vitals and ranked one-click fixes" width="600"></p><p>One-step install device health copilot: undoable cleaning, battery forecast, drain detective, QR phone pairing, fix-it chat.</p>]]></description>
+      <jl:summary>One-step install device health copilot: undoable cleaning, battery forecast, drain detective, QR phone pairing, fix-it chat.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/vitals-card.jpg" type="image/jpeg" length="0"/>
       <category>Python</category><category>PWA</category><category>undo vault</category><category>battery</category><category>local-only</category>
     </item>
@@ -152,8 +152,8 @@
       <link>https://juw12.github.io/projects/orbis/index.html</link>
       <guid isPermaLink="false">juwenlie-project-orbis</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/orbis-card.jpg" alt="Orbis Today view: triage counts and suggested replies, each with its source and a Why this? explanation" width="600"></p><p>Offline-first hub for replies, commitments and summaries, now with a Ctrl/⌘K palette, keyboard triage, undo, Kanban and dark mode.</p>]]></description>
-      <jl:summary>Offline-first hub for replies, commitments and summaries, now with a Ctrl/⌘K palette, keyboard triage, undo, Kanban and dark mode.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/orbis-card.jpg" alt="Orbis Today view: triage counts and suggested replies, each with its source and a Why this? explanation" width="600"></p><p>Personal comms hub plus live Orbis Chat: real accounts, teams, invites and push alerts on web, iPhone and Android.</p>]]></description>
+      <jl:summary>Personal comms hub plus live Orbis Chat: real accounts, teams, invites and push alerts on web, iPhone and Android.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/orbis-card.jpg" type="image/jpeg" length="0"/>
       <category>Python</category><category>SQLite</category><category>PWA</category><category>offline-first</category>
     </item>
