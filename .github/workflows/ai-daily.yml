@@ -15,7 +15,11 @@ name: AI Daily
 
 on:
   schedule:
-    - cron: "0 23 * * *"   # 06:00 WIB (UTC+7), every day
+    # Off the top of the hour: GitHub delays or drops scheduled runs at the
+    # hourly peak (the 23:00 UTC slot was dropped on 2026-10-29). The second
+    # slot is a safety net - it does nothing if the first one already ran.
+    - cron: "37 22 * * *"   # 05:37 WIB (UTC+7), every day
+    - cron: "43 23 * * *"   # 06:43 WIB backup
   workflow_dispatch:
     inputs:
       mode:
@@ -43,6 +47,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Is today's edition already out?
+        id: today
+        run: |
+          today=$(TZ=Asia/Jakarta date +%F)
+          if [ "${{ github.event_name }}" = "schedule" ] && [ -f "news/email/$today.json" ]; then
+            echo "Edition $today is already published - only making sure it was emailed."
+            echo "built=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "built=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -51,12 +66,14 @@ jobs:
         run: pip install --quiet requests beautifulsoup4
 
       - name: Cache the brief model
+        if: steps.today.outputs.built != 'true'
         uses: actions/cache@v4
         with:
           path: ~/.ollama/models
           key: ollama-qwen3-8b-v1
 
       - name: Start the brief model (Ollama, local to this runner)
+        if: steps.today.outputs.built != 'true'
         continue-on-error: true   # without it the brief falls back to top headlines
         run: |
           curl -fsSL https://ollama.com/install.sh | sh
@@ -70,10 +87,11 @@ jobs:
           ollama list
 
       - name: Build today's edition
+        if: steps.today.outputs.built != 'true'
         run: python scripts/ai_daily/build_ai_daily.py build
 
       - name: Publish to the site
-        if: github.event_name == 'schedule' || inputs.mode != 'test'
+        if: steps.today.outputs.built != 'true' && (github.event_name == 'schedule' || inputs.mode != 'test')
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -90,7 +108,7 @@ jobs:
           exit 1
 
       - name: Wait for the web edition to go live
-        if: github.event_name == 'schedule' || inputs.mode == 'publish+send'
+        if: steps.today.outputs.built != 'true' && (github.event_name == 'schedule' || inputs.mode == 'publish+send')
         run: sleep 90
 
       - name: Email subscribers
