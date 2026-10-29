@@ -22,8 +22,8 @@
       <link>https://juw12.github.io/projects/vitals/index.html</link>
       <guid isPermaLink="false">juwenlie-project-vitals</guid>
       <pubDate>Wed, 28 Oct 2026 16:39:28 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/vitals-card.jpg" alt="Vitals overview: health score orb with an itemized why-this-score list, live vitals and ranked one-click fixes" width="600"></p><p>Device health copilot with real desktop apps for Windows, Mac and Linux, plus Android and iPhone: undoable cleaning, fix-it chat.</p>]]></description>
-      <jl:summary>Device health copilot with real desktop apps for Windows, Mac and Linux, plus Android and iPhone: undoable cleaning, fix-it chat.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/vitals-card.jpg" alt="Vitals overview: health score orb with an itemized why-this-score list, live vitals and ranked one-click fixes" width="600"></p><p>Device health copilot: desktop apps for Windows, Mac and Linux; Android and iPhone apps check the phone itself. Undoable cleaning.</p>]]></description>
+      <jl:summary>Device health copilot: desktop apps for Windows, Mac and Linux; Android and iPhone apps check the phone itself. Undoable cleaning.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/vitals-card.jpg" type="image/jpeg" length="0"/>
       <category>Python</category><category>PWA</category><category>undo vault</category><category>battery</category><category>local-only</category>
     </item>

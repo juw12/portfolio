@@ -8,7 +8,7 @@ tags: [device-health, storage-cleaner, battery, undo-vault, chat-assistant, pwa,
 links: ["https://juw12.github.io/projects/vitals/app.html", "https://juw12.github.io/projects/vitals/index.html", "https://juw12.github.io/projects/vitals/mobile.html", "apps/vitals/"]
 ---
 
-Honest device-health copilot for Mac, Windows, Linux, iPhone and Android. Safety-graded storage cleaning where every cleanup sits in a 72-hour Undo Vault with measured before/after receipts; a goal planner (“free 10 GB without touching downloads”); a transparent health score; battery wear forecast, Drain Detective and idle-drainer alerts; a baseline that learns <em>your</em> normal; and a chat that diagnoses from plain words and runs reversible fixes. Desktop apps for Windows, Mac and Linux that open in their own window and keep checking in the background (Python bundled; starts at login), an Android app, Add to Home Screen on iPhone, or a one-copy-paste install; pair a phone by scanning a QR code. Zero-dependency Python agent + offline PWA, local-only, no telemetry.
+Honest device-health copilot for Mac, Windows, Linux, iPhone and Android. Safety-graded storage cleaning where every cleanup sits in a 72-hour Undo Vault with measured before/after receipts; a goal planner (“free 10 GB without touching downloads”); a transparent health score; battery wear forecast, Drain Detective and idle-drainer alerts; a baseline that learns <em>your</em> normal; and a chat that diagnoses from plain words and runs reversible fixes. Desktop apps for Windows, Mac and Linux that open in their own window and keep checking in the background (Python bundled; starts at login), Android and iPhone apps that check the phone itself (storage, memory, battery, heat and uptime, plus battery temperature, health and charge cycles on Android) and point to the built-in fixes, Add to Home Screen on iPhone, or a one-copy-paste install; pair a phone with your computer by scanning a QR code. Zero-dependency Python agent + offline PWA, local-only, no telemetry.
 
 ## App / Web / Mobile
 
@@ -25,7 +25,15 @@ Release page: https://github.com/juw12/projects/releases/tag/vitals
 - **Windows 10/11** — `Vitals-Windows-Setup.exe` (no admin; replaces an older Vitals automatically) or `Vitals-Windows-Portable.zip`. Unsigned, so SmartScreen asks once: *More info → Run anyway*.
 - **Mac** — `Vitals-macOS-AppleSilicon.dmg` or `Vitals-macOS-Intel.dmg`; drag to Applications, first launch via *System Settings → Privacy & Security → Open Anyway*.
 - **Linux** — `Vitals-Linux-x64.deb` (pulls in WebKitGTK for the window) or `Vitals-Linux-x64.tar.gz`.
-- **Android** — `Vitals-Android.apk`. **iPhone** — Add to Home Screen from Safari, or the unsigned `.ipa` for sideloading.
+- **Android** — `Vitals-Android.apk` (phone app 1.2.0). **iPhone** — the unsigned `Vitals-iPhone-unsigned.ipa` for sideloading (phone app 1.2.0), or Add to Home Screen from Safari.
+
+### Phones check themselves (phone apps 1.2.0)
+
+- Tapping Vitals on a phone now checks **that phone** — before, the phone app only showed a paired computer. Home becomes *This phone*: one **Check my phone** button, plain findings (storage getting full, running warm, worn battery, battery low or draining fast, memory full, slowing down under load, time for a restart) and a button on each that opens the built-in steps to fix it.
+- **Android app** reads storage, memory, battery level and charging, battery temperature, health and charge cycles (Android 14+), the heat state and time since the last restart.
+- **iPhone app** reads storage, memory, battery level, heat state, Low Power Mode and uptime (iOS doesn't give apps battery temperature, health or cycles).
+- In Safari or a phone browser it says honestly what websites can't read and still runs the 10-second speed test.
+- A small read-only native plugin (VitalsPhone) does the reading; nothing leaves the phone. Connecting a computer is still one tap away (*Check your computer too*).
 
 ### A real app window (1.2.0 → 1.2.1)
 
