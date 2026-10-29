@@ -41,7 +41,7 @@ outlets, writes "The Brief" with Qwen3 8B running in Ollama inside the free Acti
   checkbox in the /hi/ and /log/ forms and the form on /news/) and the `GMAIL_APP_PASSWORD` repository secret
   (optional `GMAIL_ADDRESS`, default juwpegatron@gmail.com). Free Gmail sends ~500 emails/day; the sender caps at 450.
 - Unsubscribe: `news/unsubscribe.html` (linked in every email), Gmail's unsubscribe button, or replying "unsubscribe".
-- Run it by hand: Actions → AI Daily → Run workflow → mode `test` (build without publishing, email only your own inbox), `publish` (rebuild + publish, no email) or `publish+send`.
+- Run it by hand: Actions → AI Daily → Run workflow → mode `check` (count signups, send nothing), `test` (email only your own inbox), `publish` (rebuild + publish, no email) or `publish+send`.
 
 ## Project cards
 

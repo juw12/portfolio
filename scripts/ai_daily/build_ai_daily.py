@@ -3,7 +3,7 @@
 
 Usage (from the repository root):
     python scripts/ai_daily/build_ai_daily.py build [--data cached.json]
-    python scripts/ai_daily/build_ai_daily.py send  [--force] [--test-to self|ADDRESS]
+    python scripts/ai_daily/build_ai_daily.py send  [--force] [--test-to self|ADDRESS] [--dry-run]
 
 build  collects the AI feeds, writes the AI brief (Qwen3 8B via Ollama, run
        inside the free GitHub Actions runner - no API key),
@@ -326,7 +326,7 @@ def send(args) -> int:
     if not password:
         log("send: skipped - add the GMAIL_APP_PASSWORD repository secret")
         return 0
-    if date_iso in sent and not args.force and not args.test_to:
+    if date_iso in sent and not (args.force or args.test_to or args.dry_run):
         log(f"send: {date_iso} already sent")
         return 0
     meta = json.loads((news_dir / "email" / f"{date_iso}.json").read_text(encoding="utf-8"))
@@ -362,6 +362,10 @@ def send(args) -> int:
     if len(recipients) > MAX_SENDS_PER_DAY:
         log(f"send: {len(recipients)} subscribers exceeds the Gmail daily cap; sending to the first {MAX_SENDS_PER_DAY}")
         recipients = recipients[:MAX_SENDS_PER_DAY]
+    if args.dry_run:
+        log(f"send: {active_count} active subscriber(s) - dry run, nothing sent")
+        imap.logout()
+        return 0
     log(f"send: {active_count} active subscriber(s); sending {len(recipients)}")
     if not recipients:
         imap.logout()
@@ -421,6 +425,7 @@ def main() -> int:
         "--test-to",
         help="send only to this address, or 'self' for the sender's own inbox (does not mark the day as sent)",
     )
+    send_parser.add_argument("--dry-run", action="store_true", help="read the inbox and report counts only")
     args = parser.parse_args()
     return build(args) if args.command == "build" else send(args)
 

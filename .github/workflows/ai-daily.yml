@@ -8,8 +8,9 @@ name: AI Daily
 # still publishes and the send step is skipped.
 #
 # Manual runs (Actions tab > AI Daily > Run workflow):
-#   test          build today's edition WITHOUT publishing and email it only
-#                 to the sender's own inbox - safe to run any time
+#   check         count signups/unsubscribes in the inbox, send nothing (~1 min)
+#   test          email today's edition only to the sender's own inbox (builds
+#                 an unpublished edition first if today's isn't out yet)
 #   publish       rebuild and publish today's edition, no email
 #   publish+send  rebuild, publish and email every subscriber (once per day)
 
@@ -26,10 +27,11 @@ on:
         description: "What to run"
         type: choice
         options:
+          - check
           - test
           - publish
           - publish+send
-        default: test
+        default: check
 
 permissions:
   contents: write
@@ -51,12 +53,18 @@ jobs:
         id: today
         run: |
           today=$(TZ=Asia/Jakarta date +%F)
-          if [ "${{ github.event_name }}" = "schedule" ] && [ -f "news/email/$today.json" ]; then
-            echo "Edition $today is already published - only making sure it was emailed."
-            echo "built=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "built=false" >> "$GITHUB_OUTPUT"
+          built=false
+          if [ "${{ inputs.mode }}" = "check" ]; then
+            built=true
+          elif [ -f "news/email/$today.json" ]; then
+            case "${{ github.event_name }}/${{ inputs.mode }}" in
+              schedule/* | workflow_dispatch/test)
+                echo "Edition $today is already published - reusing it."
+                built=true
+                ;;
+            esac
           fi
+          echo "built=$built" >> "$GITHUB_OUTPUT"
 
       - uses: actions/setup-python@v5
         with:
@@ -123,6 +131,13 @@ jobs:
             git commit -m "AI Daily: mark $(date -u -d '+7 hours' +%Y-%m-%d) as sent"
             git pull --rebase --quiet && git push
           fi
+
+      - name: Count signups in the inbox (sends nothing)
+        if: inputs.mode == 'check'
+        env:
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+        run: python scripts/ai_daily/build_ai_daily.py send --dry-run
 
       - name: Email a test copy to the sender only
         if: inputs.mode == 'test'
