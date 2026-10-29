@@ -23,7 +23,7 @@ Then visit http://localhost:8000/. The site works fully offline (`file://`) — 
 | `index.html` | The page (hero, about, experience, projects, skills, education, contact, connect) |
 | `styles.css` | Theme + layout |
 | `app.js` | Theme toggle, active-section nav, reveal on scroll, project filters + search, project details dialog, copy email |
-| `assets/projects/` | Project imagery (newsprint-halftone) |
+| `assets/projects/` | Project card art: 1600x1000 live-UI screenshots in the standard browser frame on the dark accent gradient. Make cards with `python scripts/portfolio_card.py <id>` in the projects repo; `.github/workflows/check-cards.yml` flags off-style art |
 | `assets/qr/` | Contact QR codes (LinkedIn, GitHub, email, bio.site) |
 | `obsidian/` | Portfolio Obsidian vault: every project note as Markdown plus a one-file zip bundle — see [`obsidian/README.md`](obsidian/README.md) |
 | `.github/workflows/pages.yml` | Deploys to GitHub Pages on push to `main` (kept so old links keep working) |

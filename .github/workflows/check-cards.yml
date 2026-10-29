@@ -1,0 +1,41 @@
+name: Check project card art
+
+# Flags card images that break the house style (framed live UI, 1600x1000, full colour).
+# Runs on pushes that touch card art; the hourly sync bot's own commits do not trigger it.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "assets/projects/**"
+      - "index.html"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout portfolio
+        uses: actions/checkout@v4
+        with:
+          path: portfolio
+
+      - name: Checkout projects (catalog + card tool)
+        uses: actions/checkout@v4
+        with:
+          repository: juw12/projects
+          path: projects
+          sparse-checkout: scripts
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Pillow for the colour test
+        run: python -m pip install --quiet pillow
+
+      - name: Audit every portfolio card
+        run: python projects/scripts/portfolio_card.py --check --portfolio-dir portfolio

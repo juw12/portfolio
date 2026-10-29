@@ -30,7 +30,7 @@ jobs:
           python-version: "3.12"
 
       - name: Regenerate the managed project cards
-        run: python projects/scripts/publish_portfolio.py --portfolio-dir portfolio --no-notes
+        run: python projects/scripts/publish_portfolio.py --portfolio-dir portfolio --no-notes --allow-card-issues
 
       - name: Rebuild the RSS feed (feed.xml) for RSS-to-email
         run: python portfolio/scripts/build_feed.py --apps projects/scripts/apps.json --portfolio-dir portfolio
