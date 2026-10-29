@@ -1,3 +1,5 @@
 new-items.json
 
 __pycache__/
+# Productivity diary is private - never publish it here
+diary/
