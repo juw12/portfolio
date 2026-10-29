@@ -1,16 +1,22 @@
 /*
  * Newsletter settings + helper shared by /hi/, /log/ and /news/.
  *
- *   inbox:    Gmail address that receives AI Daily signups (forwarded by
- *             FormSubmit, free and unlimited). Empty = AI Daily signups stay
- *             closed ("soon" badge, links to /news/).
+ *   inbox:    Gmail address that receives AI Daily signups. Empty = AI Daily
+ *             signups stay closed ("soon" badge, links to /news/).
  *             scripts/ai_daily/build_ai_daily.py reads the signups from this
  *             inbox every morning and emails each subscriber from the same Gmail.
- *   substack: the build-log publication.
+ *   endpoint: Google Apps Script web app (scripts/ai_daily/signups-apps-script.gs) that turns
+ *             each signup into an "AI Daily: subscribe" email in that inbox.
+ *             Empty = fall back to FormSubmit.
+ *   substack: the build-log publication (substackId = its publication id,
+ *             sent along with background signups the way Substack's own
+ *             embed form does).
  */
 window.JL_NEWSLETTER = {
   inbox: "juwpegatron@gmail.com",
-  substack: "https://juwenlie.substack.com"
+  endpoint: "",
+  substack: "https://juwenlie.substack.com",
+  substackId: "11952083"
 };
 
 window.JLNewsletter = (function () {
@@ -22,19 +28,31 @@ window.JLNewsletter = (function () {
     return Boolean(cfg.inbox);
   }
 
-  function post(subject, email) {
-    return fetch("https://formsubmit.co/ajax/" + encodeURIComponent(cfg.inbox), {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        email: email,
-        list: "AI Daily",
-        page: location.href,
-        _subject: subject,
-        _template: "table",
-        _captcha: "false"
-      })
-    })
+  // action: "subscribe" | "unsubscribe". Both backends answer {success: true}.
+  function record(action, email) {
+    var request;
+    if (cfg.endpoint) {
+      // text/plain keeps this a simple cross-origin request (no preflight).
+      request = fetch(cfg.endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ email: email, action: action, list: "AI Daily", page: location.href })
+      });
+    } else {
+      request = fetch("https://formsubmit.co/ajax/" + encodeURIComponent(cfg.inbox), {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          email: email,
+          list: "AI Daily",
+          page: location.href,
+          _subject: "AI Daily: " + action,
+          _template: "table",
+          _captcha: "false"
+        })
+      });
+    }
+    return request
       .then(function (response) {
         return response.json();
       })
@@ -50,16 +68,40 @@ window.JLNewsletter = (function () {
     if (!aiDailyOpen()) {
       return Promise.reject(new Error("AI Daily signups are not open yet"));
     }
-    return post("AI Daily: subscribe", email);
+    return record("subscribe", email);
   }
 
   function leaveAiDaily(email) {
-    return post("AI Daily: unsubscribe", email);
+    return record("unsubscribe", email);
   }
 
-  // Must run inside the submit handler (user gesture) so the tab isn't blocked.
+  // One press, no Substack tab: post the address to the endpoint Substack's own
+  // signup form uses, straight from the visitor's browser. The reply is opaque
+  // (no-cors), so success is confirmed by Substack's welcome email, and the
+  // success message keeps a manual link as a fallback.
   function joinBuildLog(email) {
-    window.open(cfg.substack + "/subscribe?email=" + encodeURIComponent(email), "_blank", "noopener");
+    var body = new URLSearchParams({
+      email: email,
+      first_url: location.href,
+      first_referrer: document.referrer || "",
+      current_url: location.href,
+      current_referrer: document.referrer || "",
+      referral_code: "",
+      source: "embed",
+      landingPublicationId: cfg.substackId || ""
+    });
+    return fetch(cfg.substack + "/api/v1/free", {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: body.toString()
+    }).then(function () {
+      return true;
+    });
+  }
+
+  function buildLogPage(email) {
+    return cfg.substack + "/subscribe" + (email ? "?email=" + encodeURIComponent(email) : "");
   }
 
   // Wires the list checkboxes inside any element with [data-newsletter-lists].
@@ -93,12 +135,16 @@ window.JLNewsletter = (function () {
     return picks;
   }
 
-  // Opens Substack synchronously, then resolves once the AI Daily signup is stored.
+  // Joins every picked list in one go. Rejects only if the AI Daily signup
+  // fails (the build-log reply can't be read, see joinBuildLog).
   function subscribe(email, picks) {
-    if (picks.buildlog) {
-      joinBuildLog(email);
-    }
-    return picks.aidaily ? joinAiDaily(email) : Promise.resolve(null);
+    var buildLog = picks.buildlog
+      ? joinBuildLog(email).catch(function () {
+          return false;
+        })
+      : Promise.resolve(null);
+    var aiDaily = picks.aidaily ? joinAiDaily(email) : Promise.resolve(null);
+    return Promise.all([buildLog, aiDaily]);
   }
 
   // Plain forms (/log/, /news/) opt in with data-newsletter-form.
@@ -135,10 +181,19 @@ window.JLNewsletter = (function () {
               parts.push("you're in for AI Daily; the first issue arrives tomorrow at 6:00 WIB");
             }
             if (picks.buildlog) {
-              parts.push("finish the build-log signup in the Substack tab");
+              parts.push("the next build log comes to you (Substack sends a welcome email)");
             }
             if (status) {
               status.textContent = "Done: " + parts.join(", and ") + ".";
+              if (picks.buildlog) {
+                var fallback = document.createElement("a");
+                fallback.href = buildLogPage(email);
+                fallback.target = "_blank";
+                fallback.rel = "noopener";
+                fallback.textContent = "No email from Substack in a few minutes? Subscribe there.";
+                status.appendChild(document.createTextNode(" "));
+                status.appendChild(fallback);
+              }
             }
             form.reset();
             prepare(form);
@@ -165,6 +220,7 @@ window.JLNewsletter = (function () {
 
   return {
     aiDailyOpen: aiDailyOpen,
+    buildLogPage: buildLogPage,
     leaveAiDaily: leaveAiDaily,
     prepare: prepare,
     selected: selected,

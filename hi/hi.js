@@ -13,6 +13,8 @@
   // form hands the email to Substack (free, unlimited subscribers, subscriber count,
   // one-click unsubscribe). Empty = fall back to FormSubmit.
   var SUBSTACK_URL = "https://juwenlie.substack.com";
+// Shown under a build-log success message, in case Substack's welcome email never comes.
+var SUBSTACK_LINK = '<a href="' + SUBSTACK_URL + '/subscribe" target="_blank" rel="noopener">';
 
   // ------------------------------------------------------------------
   // Copy. English lives in the HTML; ID and ZH override by key.
@@ -114,9 +116,10 @@
       invalid: "That email doesn't look right.",
       sending: "Sending…",
       ok: "You're in. The next build log comes to you.",
-      okConfirm: "Almost there: finish in the Substack tab, then check your inbox.",
+      okTab: "Almost there: finish in the Substack tab, then check your inbox.",
+      okConfirm: "You're in. The next build log comes to you; Substack sends a welcome email.<br><small>No email in a few minutes? " + SUBSTACK_LINK + "Subscribe on Substack</a>.</small>",
       okAi: "You're in. Your first AI Daily arrives tomorrow at 6:00 WIB.",
-      okBoth: "You're in for AI Daily (first issue tomorrow, 6:00 WIB). Finish the build log in the Substack tab.",
+      okBoth: "You're in for both: AI Daily arrives tomorrow at 6:00 WIB, and the next build log comes to you.<br><small>No welcome email from Substack in a few minutes? " + SUBSTACK_LINK + "Subscribe on Substack</a>.</small>",
       pickOne: "Pick at least one list.",
       fail: "Couldn't reach the list. <a href=\"mailto:" + CONTACT_EMAIL + "?subject=Add%20me%20to%20the%20build%20log\">Email me instead</a>."
     },
@@ -136,9 +139,10 @@
       invalid: "Alamat email sepertinya salah.",
       sending: "Mengirim…",
       ok: "Berhasil. Build log berikutnya akan sampai ke Anda.",
-      okConfirm: "Sedikit lagi: selesaikan di tab Substack, lalu cek inbox Anda.",
+      okTab: "Sedikit lagi: selesaikan di tab Substack, lalu cek inbox Anda.",
+      okConfirm: "Berhasil. Build log berikutnya akan sampai ke Anda; Substack mengirim email sambutan.<br><small>Belum ada email dalam beberapa menit? " + SUBSTACK_LINK + "Daftar di Substack</a>.</small>",
       okAi: "Berhasil. AI Daily pertama Anda tiba besok pukul 06.00 WIB.",
-      okBoth: "Berhasil untuk AI Daily (edisi pertama besok 06.00 WIB). Selesaikan build log di tab Substack.",
+      okBoth: "Berhasil untuk keduanya: AI Daily tiba besok pukul 06.00 WIB, dan build log berikutnya akan sampai ke Anda.<br><small>Belum ada email sambutan dari Substack? " + SUBSTACK_LINK + "Daftar di Substack</a>.</small>",
       pickOne: "Pilih minimal satu.",
       fail: "Gagal terhubung. <a href=\"mailto:" + CONTACT_EMAIL + "?subject=Add%20me%20to%20the%20build%20log\">Kirim email saja</a>."
     },
@@ -158,9 +162,10 @@
       invalid: "信箱格式好像不對。",
       sending: "傳送中…",
       ok: "訂閱成功，下一封 Build Log 會寄給你。",
-      okConfirm: "快完成了：請在 Substack 分頁完成訂閱，再到信箱確認。",
+      okTab: "快完成了：請在 Substack 分頁完成訂閱，再到信箱確認。",
+      okConfirm: "訂閱成功，下一封 Build Log 會寄給你；Substack 會寄一封歡迎信。<br><small>幾分鐘內沒收到信？" + SUBSTACK_LINK + "到 Substack 訂閱</a>。</small>",
       okAi: "訂閱成功！第一封 AI Daily 明天早上 6:00（WIB）寄到。",
-      okBoth: "AI Daily 訂閱成功（明早 6:00 第一封）。請在 Substack 分頁完成 Build Log 訂閱。",
+      okBoth: "兩個都訂閱成功：AI Daily 明早 6:00（WIB）寄到，下一封 Build Log 也會寄給你。<br><small>沒收到 Substack 的歡迎信？" + SUBSTACK_LINK + "到 Substack 訂閱</a>。</small>",
       pickOne: "請至少選一項。",
       fail: "暫時連不上。<a href=\"mailto:" + CONTACT_EMAIL + "?subject=Add%20me%20to%20the%20build%20log\">改用 Email 聯絡我</a>。"
     }
@@ -400,7 +405,7 @@
       if (SUBSTACK_URL) {
         window.open(SUBSTACK_URL + "/subscribe?email=" + encodeURIComponent(email), "_blank", "noopener");
         logSection.classList.add("is-done");
-        setNote(t("okConfirm"), "ok");
+        setNote(t("okTab"), "ok");
         return;
       }
       fetch(SIGNUP_ENDPOINT, {

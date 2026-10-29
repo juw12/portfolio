@@ -238,8 +238,12 @@ def collect_subscribers(imap, own_address, stats=None):
     from email.utils import parseaddr, parsedate_to_datetime
 
     imap.select(_all_mail_folder(imap), readonly=False)
+    # Signup notices arrive as "AI Daily: subscribe" / "AI Daily: unsubscribe",
+    # from the Apps Script endpoint (sent by this account to itself) or from
+    # FormSubmit; readers can also reply with "unsubscribe".
     queries = [
-        'X-GM-RAW "from:formsubmit.co subject:(AI Daily)"',
+        'X-GM-RAW "subject:(AI Daily subscribe)"',
+        'X-GM-RAW "subject:(AI Daily unsubscribe)"',
         'X-GM-RAW "subject:unsubscribe -from:formsubmit.co"',
     ]
     events = []
@@ -262,14 +266,15 @@ def collect_subscribers(imap, own_address, stats=None):
                 when = parsedate_to_datetime(message.get("Date")).timestamp()
             except Exception:
                 when = 0.0
-            if "formsubmit" in sender:
+            notice = subject.strip()
+            if notice in ("ai daily: subscribe", "ai daily: unsubscribe"):
                 addresses = [
                     a.lower() for a in EMAIL_RE.findall(_message_text(message))
                     if "formsubmit" not in a.lower() and a.lower() != own_address.lower()
                 ]
                 if not addresses:
                     continue
-                action = "unsubscribe" if "unsubscribe" in subject else "subscribe"
+                action = "unsubscribe" if notice.endswith("unsubscribe") else "subscribe"
                 events.append((when, action, addresses[0], uid, WELCOMED_LABEL in labels))
             elif "unsubscribe" in subject and sender and sender != own_address.lower():
                 events.append((when, "unsubscribe", sender, uid, False))

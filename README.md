@@ -42,6 +42,7 @@ outlets, writes "The Brief" with Qwen3 8B running in Ollama inside the free Acti
   (optional `GMAIL_ADDRESS`, default juwpegatron@gmail.com). Free Gmail sends ~500 emails/day; the sender caps at 450.
 - Unsubscribe: `news/unsubscribe.html` (linked in every email), Gmail's unsubscribe button, or replying "unsubscribe".
 - Run it by hand: Actions → AI Daily → Run workflow → mode `check` (count signups, send nothing), `test` (email only your own inbox), `publish` (rebuild + publish, no email) or `publish+send`.
+- Signups: the forms post to a free Google Apps Script web app (`scripts/ai_daily/signups-apps-script.gs`, deployed from the inbox's Google account; its URL goes in `endpoint` in `assets/subscribe.js`) that drops an "AI Daily: subscribe" email into the inbox. The build log joins Substack in the same press (background request to Substack's own signup endpoint).
 
 ## Project cards
 

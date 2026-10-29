@@ -55,11 +55,12 @@
         <h1 id="log-title">Build log<span class="dot">.</span></h1>
         <p class="dim">25 builds · newest first</p>
         <p class="lede">Engineering tools, CAD models and side projects I&rsquo;ve shipped. <strong>Get one short email when the next one lands.</strong></p>
-        <form class="signup" action="https://juwenlie.substack.com/subscribe" method="get" target="_blank">
+        <form class="signup" action="https://juwenlie.substack.com/subscribe" method="get" target="_blank" data-newsletter-form>
           <label class="visually-hidden" for="log-email">Email address</label>
           <input id="log-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
           <button type="submit">Subscribe</button>
         </form>
+        <p class="fine" data-newsletter-status role="status" aria-live="polite"></p>
         <p class="fine">No spam · unsubscribe in one click · <a href="https://juwenlie.substack.com/archive">past issues</a> · <a href="../feed.xml">RSS</a></p>
       </div>
       <dl class="titleblock">
@@ -164,5 +165,6 @@
       });
     })();
   </script>
+<script src="../assets/subscribe.js" defer></script>
 </body>
 </html>
