@@ -14,7 +14,7 @@
  */
 window.JL_NEWSLETTER = {
   inbox: "juwpegatron@gmail.com",
-  endpoint: "",
+  endpoint: "https://script.google.com/macros/s/AKfycby6D0jg4iOLwdC5JxF8zfphmbj_V9T7xyOMWD5peClIxKukIYfm8DtSpYHQExddTuxWYw/exec",
   substack: "https://juwenlie.substack.com",
   substackId: "11952083"
 };
