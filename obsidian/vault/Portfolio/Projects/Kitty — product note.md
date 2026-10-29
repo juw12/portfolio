@@ -4,7 +4,7 @@ app: kitty
 type: product-note
 status: live
 date: 2026-10-28
-tags: [budgeting, personal-finance, shared-budget, crdt, e2e-encryption, personality-quiz, investing, pwa, android, ios, capacitor]
+tags: [budgeting, personal-finance, shared-budget, crdt, e2e-encryption, personality-quiz, investing, pwa, android, ios, capacitor, i18n, multilingual]
 ---
 
 # Kitty — product note
@@ -58,12 +58,21 @@ the polish and brains of a budgeting app**, and no account.
 - **Build pipeline:** GitHub Actions workflow (`apps/kitty/mobile/ci/kitty-mobile.yml`): signed release APK plus debug APK, an API 35 emulator run (`scripts/android-e2e.py`: native flag, plugins, secure context + AES-GCM, demo, haptics, Back, live share, intent filter), unsigned IPA plus an iPhone-simulator launch screenshot, then publish to the stable `kitty-mobile` release.
 - **Store listings** are out of scope for "free": the App Store needs an Apple Developer account ($99/year) and Google Play a one-time $25 registration.
 
+## Languages and design (v1.2)
+
+- **Four languages:** English, Bahasa Indonesia, 简体中文 and Español. First launch follows `?lang=` → saved choice → browser language; switch any time from the picker on the welcome screen or **Settings → Preferences**. Month names and dates follow the locale.
+- **How it works:** one source table, `apps/kitty/i18n/strings.txt` (~760 rows, `English || Indonesian || Chinese || Spanish`). `build_i18n.py` validates columns, `{placeholder}` sets and duplicates, then writes `web/js/lang/{id,zh,es}.js`. The runtime (`web/js/i18n.js`) translates rendered text and attributes in place with a MutationObserver, handles templated strings (`{n} people`, `Tip for {name}`) and leaves user data (budget names, notes, amounts) untouched. Views did not need rewriting.
+- **Design system 1.2:** neutral off-white / near-black surfaces, a single indigo accent, ink-coloured primary buttons, quieter cards and KPI labels, an SVG cat-head logo, and a rebuilt welcome page (headline, two CTAs, trust row, icon feature grid, persona strip, closing CTA band). The "beta" labels are gone.
+- **Viral loop:** **Share your result** on the *You* tab renders a 1080×1350 money-animal card in the user's language (animal, name, tagline, three strengths, "What kind of money animal are you?" + link). Phones get the native share sheet with the image; desktops download the PNG and copy the invite text.
+
 ## Verified (2026-10-28)
 
 - Browser self-test 92/92, including live two-client sync through ntfy.sh and the local relay (about 1 s propagation).
 - UI walk-through: quiz → result → build budget on a 390×844 phone; quick-add warning; two-browser share → join → a remote edit triggers "Dining out is at 96%" on the other device in under 1 s.
 - Python: relay tests (publish/poll/SSE, 400/413, restart persistence) and static web checks on Python 3.9 and 3.13. Monorepo `check_site.py` passes.
 - v1.1 mobile: self-test still 87/87 core in the browser; with a simulated Capacitor Android bridge the app detects native mode, fires haptics on add and on a limit crossing, closes the quick-add sheet / goes home / minimises on Back, opens the native share sheet with the invite link and shows the Join card for a deep-linked invite. `get.html` picks the right platform card on desktop, iPhone and Android, and shows "building soon" plus the Add to Home Screen fallback until the release assets exist. New static tests check the Capacitor config (HTTPS `server.url`), icon pixel sizes, version parity and that the workflow publishes the exact files `get.html` links to.
+
+- v1.2 (2026-10-29): crawl of every view in id / zh / es with the missing-string collector: no untranslated UI text left (only user data and locale-formatted dates). Share cards rendered for all 6 animals × 4 languages with no overflow. Phone (390×844) welcome, overview and You screens checked. Browser self-test 87/87; 30 Python tests including new `test_i18n.py` (table valid, packs up to date, load order, service-worker cache); `check_site.py` passes with no Kitty warnings.
 
 ## Limits and next steps
 
@@ -73,4 +82,5 @@ the polish and brains of a budgeting app**, and no account.
 - Native APK/IPA builds start once the workflow is activated in `.github/workflows/` (pushing workflow files needs a GitHub token with the `workflow` scope). Until then iPhone and Android users install the home-screen web app, which has the same features.
 - The native apps need internet on first launch, because they load the live site.
 - Android opens `juw12.github.io` invite links in the app only if the user enables "Open supported links" (no verified App Links on a shared github.io domain).
+- Translations were written with AI assistance; a native-speaker pass for Indonesian, Chinese and Spanish is still recommended before marketing in those regions.
 - Ideas: recurring transactions, split-the-bill settle-up, receipt OCR, price feeds, push reminders.
