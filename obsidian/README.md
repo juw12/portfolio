@@ -8,7 +8,7 @@ Project notes for every app and model in the portfolio, as a ready-to-open [Obsi
 - **Whole repo:** green *Code* button → *Download ZIP* (vault is in `obsidian/vault/`).
 - **Single notes:** browse [`vault/`](vault/) — every note is plain Markdown and reads fine on GitHub.
 
-Updated 2026-10-29 · 29 project notes · 12 update-log entries.
+Updated 2026-10-29 · 29 project notes · 13 update-log entries.
 
 ## Project notes
 
@@ -20,14 +20,14 @@ Updated 2026-10-29 · 29 project notes · 12 update-log entries.
 - [Guang Yao Together · 光耀同行](vault/Portfolio/Projects/Guang%20Yao%20Together%20%C2%B7%20%E5%85%89%E8%80%80%E5%90%8C%E8%A1%8C.md)
 - [Hazel](vault/Portfolio/Projects/Hazel.md)
 - [House of Articles](vault/Portfolio/Projects/House%20of%20Articles.md)
-- [Kitty — product note](vault/Portfolio/Projects/Kitty%20%E2%80%94%20product%20note.md)
 - [Kitty](vault/Portfolio/Projects/Kitty.md)
+- [Kitty — product note](vault/Portfolio/Projects/Kitty%20%E2%80%94%20product%20note.md)
 - [Lingua](vault/Portfolio/Projects/Lingua.md)
 - [Loka](vault/Portfolio/Projects/Loka.md)
 - [Marina Bay Sands Miniature](vault/Portfolio/Projects/Marina%20Bay%20Sands%20Miniature.md)
 - [ME R&D Toolkit](vault/Portfolio/Projects/ME%20R%26D%20Toolkit.md)
-- [Mint — product note](vault/Portfolio/Projects/Mint%20%E2%80%94%20product%20note.md)
 - [Mint](vault/Portfolio/Projects/Mint.md)
+- [Mint — product note](vault/Portfolio/Projects/Mint%20%E2%80%94%20product%20note.md)
 - [Orbis](vault/Portfolio/Projects/Orbis.md)
 - [Peers](vault/Portfolio/Projects/Peers.md)
 - [Pips](vault/Portfolio/Projects/Pips.md)
