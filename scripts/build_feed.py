@@ -5,6 +5,8 @@ first time a project id is seen its timestamp is recorded in feed-state.json and
 forever after. Newsletter tools with RSS-to-email (Buttondown, Kit, Mailchimp, ...)
 can watch this feed and email subscribers whenever a new item appears.
 
+Apps marked "feed": false in the catalog are left out of the feed and the /log/ page.
+
 Usage:
     python scripts/build_feed.py --apps ../projects/scripts/apps.json --portfolio-dir .
 """
@@ -226,7 +228,8 @@ def main():
     state = json.loads(state_path.read_text(encoding="utf-8-sig")) if state_path.exists() else {}
     now = dt.datetime.now(dt.timezone.utc).replace(microsecond=0)
 
-    apps = load_apps(args.apps)
+    # "feed": false in the catalog keeps an app off feed.xml and the /log/ build log.
+    apps = [app for app in load_apps(args.apps) if app.get("feed", True)]
     new_ids = []
     for app in apps:
         if app["id"] not in state:

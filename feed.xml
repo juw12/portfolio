@@ -188,16 +188,6 @@
       <category>PWA</category><category>accounts + guest mode</category><category>admin console</category><category>AI study companion</category><category>Android app</category><category>iPhone home-screen app</category>
     </item>
     <item>
-      <title>House of Articles</title>
-      <link>https://juw12.github.io/projects/house-of-articles/desktop.html</link>
-      <guid isPermaLink="false">juwenlie-project-house-of-articles</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/house-of-articles-card.jpg" alt="House of Articles sneaker news and athlete moments feature" width="600"></p><p>Sneaker news meets market data — links athletes’ on-court moments to resale price moves.</p>]]></description>
-      <jl:summary>Sneaker news meets market data — links athletes’ on-court moments to resale price moves.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/house-of-articles-card.jpg" type="image/jpeg" length="0"/>
-      <category>sneakers</category><category>market data</category><category>JSON</category><category>prototypes</category>
-    </item>
-    <item>
       <title>Sync</title>
       <link>https://juw12.github.io/projects/sync/web.html</link>
       <guid isPermaLink="false">juwenlie-project-sync</guid>
