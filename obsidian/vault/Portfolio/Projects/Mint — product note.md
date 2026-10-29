@@ -4,19 +4,28 @@ app: mint
 type: product-note
 status: live
 date: 2026-10-29
-tags: [mint, budgeting, personal-finance, shared-budget, crdt, e2e-encryption, personality-quiz, investing, template-marketplace, excel, google-sheets, affiliate, creator-economy, cloudflare-workers, workers-ai, pwa, android, capacitor, i18n]
+tags: [mint, budgeting, personal-finance, shared-budget, crdt, e2e-encryption, personality-quiz, investing, template-marketplace, excel, google-sheets, affiliate, creator-economy, cloudflare-workers, workers-ai, pwa, android, capacitor, i18n, multi-currency, sync]
 aliases: [Sheetmint]
 ---
 
 # Mint — product note
 
-Project card: [[Mint]]. Mint is one app with two halves: **Budget**, the home screen, and **Templates**, the spreadsheet-template studio and marketplace (renamed from Sheetmint). Stackup was retired on 2026-10-26.
+Project card: [[Mint]]. Mint is one app with two halves: **Budget**, the home screen, and the **Marketplace** tab, the spreadsheet-template studio and store (Templates until 3.2, Sheetmint before that). Stackup was retired on 2026-10-26.
 
 - Live app: https://juw12.github.io/projects/mint/
 - Budget: https://juw12.github.io/projects/mint/budget/ · demo household: https://juw12.github.io/projects/mint/budget/demo.html · self-test: https://juw12.github.io/projects/mint/budget/tests.html
-- Templates: https://juw12.github.io/projects/mint/app.html · API: https://mint-api.juw12.workers.dev/api/health
+- Marketplace: https://juw12.github.io/projects/mint/budget/?view=market · API: https://mint-api.juw12.workers.dev/api/health
 - Install on iPhone / Android / computer (free): https://juw12.github.io/projects/mint/budget/get.html
 - Code: https://github.com/juw12/projects/tree/main/apps/mint
+
+## Mint 3.2: any currency, learning to invest, one Marketplace, one account (2026-10-29)
+
+- **Why.** People spend and invest in more than one currency, wanted the investing side to teach as well as track, found Templates a separate place with its own navigation, and asked for their budget to follow them from phone to laptop.
+- **Many currencies.** Quick-add, income and holdings take any supported currency; Mint converts to the budget's currency with daily rates (`/api/fx`: open.er-api.com with Frankfurter as fallback, cached 6 h at the edge, plus a built-in snapshot offline) and keeps the original amount on each transaction. Overview shows the total in the region's currency too; Settings can convert a whole budget or only relabel it.
+- **Invest → Portfolio · Learn · Tips · News.** A 12-question quiz with an explanation after every answer (best score kept), tips worked out from your own portfolio and plan, and regional money headlines (`/api/news`: Google News RSS, falling back to publisher feeds such as CNBC Indonesia, ANTARA, CNA, 中央社, Expansión and Infobae when Google refuses edge traffic).
+- **Marketplace tab.** The template studio and store now live inside Mint as one tab in Budget's look, with chips (Browse, Generate, Sell, Earn) instead of a second navigation. *Sell this plan* / *Sell this mix* turn a budget's envelopes or an investing target into a template made of shares of income only; buyers of those templates get *Use in my budget* / *Use as my investing target*. Prices show in the seller's currency with an estimate in the buyer's. Old template links open the tab.
+- **One account, every device.** Signing in once covers sync and the Marketplace. Budgets and preferences are encrypted on the device (AES-GCM with a random data key wrapped by PBKDF2 keys from the password and from a recovery code), so the server stores only ciphertext; devices push a second after a change, poll every 15 s and merge budgets record by record.
+- **Verified.** 32 browser checks across two devices (currency entry and conversion, quiz, tips, news, Marketplace browse / generate / sell / import, sign-up with recovery code, sync of an edit from a laptop to a phone and back), 43 API checks, 38 Budget Python tests and the Templates core tests; every new string translated into Indonesian, Chinese and Spanish (Templates itself stays English / Indonesian).
 
 ## Mint 3.1: language & region first, apps for every device (2026-10-29)
 
