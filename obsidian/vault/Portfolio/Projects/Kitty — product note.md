@@ -73,6 +73,14 @@ the polish and brains of a budgeting app**, and no account.
 - **Phone layout:** "left to spend" is the first thing on Home, with a compact ring beside it. Fixed a stretched name box in the quiz.
 - New budgets get their default name in the user's language ("Rumah kita", "我们的家").
 
+## Calmer look, one-tap themes (v1.4)
+
+- **Light / Dark / System in one tap:** the theme button sits in the top bar on every screen, phones included. The new theme grows out of the pressed button (View Transitions; other browsers cross-fade) and the choice is remembered. **Settings → Appearance** shows three live preview tiles, the phone **More** sheet has the same switch, and `T` toggles it from the keyboard. The browser/status-bar colour follows the theme.
+- **Calm motion:** rings sweep, bars grow, the pace line draws and money figures count up only when a page or month opens. Live re-renders (typing, sync, clock ticks) no longer replay the animations, and `prefers-reduced-motion` turns all of it off.
+- **Phone layout:** one tidy header row (logo, month switch, theme, bell), a tab bar with a big **+** in the middle (Overview · Sheet · + · Budget · More) and a **More** sheet for theme, language, Goals, Invest, You, Share and Settings. Every dialog opens as a bottom sheet with a grip you can drag down to close. The sheet toolbar stacks into full-width search, one row of filters and one row of actions.
+- **Small things that add up:** the overview KPI cards (Income, Spent, Saved, Safe) open the page behind the number; toasts show a draining time line, pause while the mouse rests on them, swipe away on touch and move to the top while a sheet is open; the daily tip waits until dialogs close; keyboard shortcuts `N` add · `1`–`8` pages · `/` search · `?` list them all.
+- **Fixed:** typing in the sheet search lost focus after the first letter because each keystroke re-rendered the page. The caret now stays in the box, and Chinese/Japanese input methods filter once the word is composed.
+
 ## Verified (2026-10-28)
 
 - Browser self-test 92/92, including live two-client sync through ntfy.sh and the local relay (about 1 s propagation).
@@ -82,6 +90,7 @@ the polish and brains of a budgeting app**, and no account.
 
 - v1.2 (2026-10-29): crawl of every view in id / zh / es with the missing-string collector: no untranslated UI text left (only user data and locale-formatted dates). Share cards rendered for all 6 animals × 4 languages with no overflow. Phone (390×844) welcome, overview and You screens checked. Browser self-test 87/87; 30 Python tests including new `test_i18n.py` (table valid, packs up to date, load order, service-worker cache); `check_site.py` passes with no Kitty warnings.
 - v1.3 (2026-10-29): setup flow walked through in English, Indonesian, Chinese and Spanish on a 390×844 phone (3 taps to a budget, currency IDR for Indonesian and CNY for Chinese); checklist goes 1 → 2 → 3 of 5 and hides; full quiz still completes from the checklist; auto-category picks the right envelope in all four languages; crawl of every view finds no untranslated UI text; browser self-test 99/99 (12 new tests for currency and category guessing); 30 Python tests; `check_site.py` passes.
+- v1.4 (2026-10-29): 40 scripted UI checks in Chromium on desktop (1280×860), phone (390×844) and narrow phones (320 and 360 px): theme switch by top-bar button, Appearance tile, More sheet and `T`, kept after reload, status-bar colour; reduced motion; no animation replay on live re-renders, month change animates, count-up lands on the exact figure; tab bar, More navigation, bottom-sheet drag-to-close and snap-back, toasts above an open sheet; shortcuts, and typing never triggers them; no horizontal overflow. Every page reviewed in light and dark. New strings translated in id / zh / es (crawl clean); browser self-test 99/99; 32 Python tests (new: dark theme overrides every colour token, theme switch reachable everywhere); monorepo CI (`build_site.py`, `check_site.py`, all tests) and the Pages deploy green.
 
 ## Limits and next steps
 
