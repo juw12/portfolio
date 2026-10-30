@@ -2,11 +2,14 @@
 id: sped
 app: sped
 type: project
-status: shipped
+status: merged
 date: 2026-10-28
 tags: [Web Audio, 9:16 video export, TikTok / Reels / Shorts, PWA]
 links: ["https://juw12.github.io/projects/sped/", "https://juw12.github.io/projects/sped/web.html", "https://juw12.github.io/projects/sped/mobile.html", "apps/sped/"]
 ---
+
+> [!note] Merged into [[Hazel]] on 2026-10-30
+> Sped is now **Hazel Sped** inside Hazel. This note is kept for history.
 
 Browser shorts studio for your own audio: sped-up, slowed and mashup styles, a CapCut-style 9:16 editor with captions, and 1080×1920 MP4 export for TikTok, Reels and Shorts.
 

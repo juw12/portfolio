@@ -8,7 +8,7 @@ Project notes for every app and model in the portfolio, as a ready-to-open [Obsi
 - **Whole repo:** green *Code* button → *Download ZIP* (vault is in `obsidian/vault/`).
 - **Single notes:** browse [`vault/`](vault/) — every note is plain Markdown and reads fine on GitHub.
 
-Updated 2026-10-30 · 26 project notes · 27 update-log entries.
+Updated 2026-10-30 · 26 project notes · 28 update-log entries.
 
 ## Project notes
 
@@ -65,6 +65,8 @@ Updated 2026-10-30 · 26 project notes · 27 update-log entries.
 - [2026-10-29 1955 vitals-phone-check](vault/Update%20Log/2026-10-29%201955%20vitals-phone-check.md)
 - [2026-10-29 2010 mint-apps](vault/Update%20Log/2026-10-29%202010%20mint-apps.md)
 - [2026-10-29 2015 vitals-1-2-2](vault/Update%20Log/2026-10-29%202015%20vitals-1-2-2.md)
+- [2026-10-29 2115 mint-3-2](vault/Update%20Log/2026-10-29%202115%20mint-3-2.md)
+- [2026-10-30 0816 windows-apps-hazel](vault/Update%20Log/2026-10-30%200816%20windows-apps-hazel.md)
 - [2026-10-30 0831 pips-auto-battle](vault/Update%20Log/2026-10-30%200831%20pips-auto-battle.md)
 - [2026-10-30 0905 glow-free-ai](vault/Update%20Log/2026-10-30%200905%20glow-free-ai.md)
 

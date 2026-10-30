@@ -2,11 +2,14 @@
 id: shortcraft
 app: shortcraft
 type: project
-status: shipped
+status: merged
 date: 2026-10-28
 tags: [video, captions, auto-post, Bahasa Indonesia]
 links: ["https://juw12.github.io/projects/shortcraft/app.html", "https://juw12.github.io/projects/shortcraft/", "https://juw12.github.io/projects/shortcraft/mobile.html", "apps/shortcraft/"]
 ---
+
+> [!note] Merged into [[Hazel]] on 2026-10-30
+> Shortcraft is now **Hazel Shorts** inside Hazel. This note is kept for history.
 
 Browser studio for faceless explainer shorts in English and Bahasa Indonesia: write scenes, add voice, export a captioned 1080×1920 MP4 and post to YouTube, TikTok and Instagram.
 
