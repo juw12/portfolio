@@ -95,47 +95,27 @@
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/fade-card.jpg" alt="Fade screens: home with trending barbers, a haircut short with a paid-partnership tag, and creator earnings, using fictional demo data" width="600"></p><p>Barber marketplace with haircut shorts — live and free: book barbers, pay them directly at 0% fee, earn from your shorts.</p>]]></description>
       <jl:summary>Barber marketplace with haircut shorts — live and free: book barbers, pay them directly at 0% fee, earn from your shorts.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/fade-card.jpg" type="image/jpeg" length="0"/>
-      <category>PWA</category><category>Nostr</category><category>direct payments</category><category>haircut shorts</category><category>creator commissions</category>
+      <category>PWA</category><category>Nostr</category><category>direct payments</category><category>haircut shorts</category><category>creator commissions</category><category>Windows app</category>
     </item>
     <item>
       <title>Sweep</title>
       <link>https://juw12.github.io/projects/sweep/</link>
       <guid isPermaLink="false">juwenlie-project-sweep</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/sweep-card.jpg" alt="Sweep turning a plain-words idea into a Build, Grow and Earn plan — a guided intake, an idea brief, a generated capability matrix, a Definition of Done checklist, a scaffold file tree and a project catalog" width="600"></p><p>Turns a rough app idea into a scored spec, task board and launch plan, then hands it to Cursor, v0 or Claude Code.</p>]]></description>
-      <jl:summary>Turns a rough app idea into a scored spec, task board and launch plan, then hands it to Cursor, v0 or Claude Code.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/sweep-card.jpg" alt="Sweep turning a plain-words idea into a Build, Grow and Earn plan — a guided intake, an idea brief, a generated capability matrix, a Definition of Done checklist, a scaffold file tree and a project catalog" width="600"></p><p>Turns a rough app idea into a scored spec, task board and launch plan; self-updating apps for Windows, Mac, Android and iPhone.</p>]]></description>
+      <jl:summary>Turns a rough app idea into a scored spec, task board and launch plan; self-updating apps for Windows, Mac, Android and iPhone.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/sweep-card.jpg" type="image/jpeg" length="0"/>
       <category>spec score</category><category>task board</category><category>1-click handoff</category><category>offline agent</category>
-    </item>
-    <item>
-      <title>Shortcraft</title>
-      <link>https://juw12.github.io/projects/shortcraft/</link>
-      <guid isPermaLink="false">juwenlie-project-shortcraft</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/shortcraft-card.jpg" alt="Shortcraft: two 9:16 explainer frames, a light editorial step tracker and a dark CCTV teardown, next to the Shortcraft title" width="600"></p><p>Browser studio for faceless explainer shorts — script, voice, captions and 1080×1920 MP4 export with auto-posting.</p>]]></description>
-      <jl:summary>Browser studio for faceless explainer shorts — script, voice, captions and 1080×1920 MP4 export with auto-posting.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/shortcraft-card.jpg" type="image/jpeg" length="0"/>
-      <category>video</category><category>captions</category><category>auto-post</category><category>Bahasa Indonesia</category>
-    </item>
-    <item>
-      <title>Sped</title>
-      <link>https://juw12.github.io/projects/sped/web.html</link>
-      <guid isPermaLink="false">juwenlie-project-sped</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/sped-card.jpg" alt="Sped 1.4 shorts editor with a 9:16 preview, timeline and post panel, using synthetic audio fixtures" width="600"></p><p>Turns your own songs into sped-up, slowed or mashup 9:16 shorts with captions for TikTok, Reels and Shorts.</p>]]></description>
-      <jl:summary>Turns your own songs into sped-up, slowed or mashup 9:16 shorts with captions for TikTok, Reels and Shorts.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/sped-card.jpg" type="image/jpeg" length="0"/>
-      <category>Web Audio</category><category>9:16 video export</category><category>TikTok / Reels / Shorts</category><category>PWA</category>
     </item>
     <item>
       <title>Hazel</title>
       <link>https://juw12.github.io/projects/hazel/</link>
       <guid isPermaLink="false">juwenlie-project-hazel</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/hazel-card.jpg" alt="Hazel studio generating a video from a prompt, with character casting, scene choice, length and size controls, a storyboard and a timeline" width="600"></p><p>Desktop creator studio: generate a video from a prompt, refine it and publish to every platform at once.</p>]]></description>
-      <jl:summary>Desktop creator studio: generate a video from a prompt, refine it and publish to every platform at once.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/hazel-card.jpg" alt="Hazel home: three app cards for Hazel Shorts, Hazel Sped and Hazel Long with the Hazel switcher" width="600"></p><p>One creator studio with three apps — Hazel Shorts, Hazel Sped and Hazel Long — for explainers, sped-up edits and long-form video.</p>]]></description>
+      <jl:summary>One creator studio with three apps — Hazel Shorts, Hazel Sped and Hazel Long — for explainers, sped-up edits and long-form video.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/hazel-card.jpg" type="image/jpeg" length="0"/>
-      <category>AI video</category><category>multi-platform publish</category><category>bulk upload</category><category>backup</category>
+      <category>Creator studio</category><category>Hazel Shorts</category><category>Hazel Sped</category><category>Hazel Long</category><category>9:16 video export</category><category>Web Audio</category><category>Bahasa Indonesia</category><category>PWA</category>
     </item>
     <item>
       <title>Orbis</title>
@@ -152,10 +132,10 @@
       <link>https://juw12.github.io/projects/peers/</link>
       <guid isPermaLink="false">juwenlie-project-peers</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/peers-card.jpg" alt="Peers app feed screen showing verified reviews" width="600"></p><p>Offline-first reviews across 32 categories with a Use it / Wait / Skip scorecard, a Ctrl/⌘K palette, saved reviews and dark mode.</p>]]></description>
-      <jl:summary>Offline-first reviews across 32 categories with a Use it / Wait / Skip scorecard, a Ctrl/⌘K palette, saved reviews and dark mode.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/peers-card.jpg" alt="Peers app feed screen showing verified reviews" width="600"></p><p>Offline reviews across 32 categories with a Use it / Wait / Skip scorecard, now also a Windows app with its own database.</p>]]></description>
+      <jl:summary>Offline reviews across 32 categories with a Use it / Wait / Skip scorecard, now also a Windows app with its own database.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/peers-card.jpg" type="image/jpeg" length="0"/>
-      <category>PWA</category><category>reviews</category><category>32 categories</category><category>offline-first</category>
+      <category>PWA</category><category>reviews</category><category>32 categories</category><category>offline-first</category><category>Windows app</category>
     </item>
     <item>
       <title>Twin</title>
@@ -165,7 +145,7 @@
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/twin-card.jpg" alt="Twin 1.5: redesigned Home, TwinAgent Buy verdict with evidence score, risk gate with practice-trade plan, and AAPL stock page" width="600"></p><p>Investing companion with an AI research team, global stocks, paper trading, a replay lab, and IDX, crypto and gold in rupiah.</p>]]></description>
       <jl:summary>Investing companion with an AI research team, global stocks, paper trading, a replay lab, and IDX, crypto and gold in rupiah.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/twin-card.jpg" type="image/jpeg" length="0"/>
-      <category>TwinAgent</category><category>multi-agent research</category><category>global markets</category><category>exchange calendars</category><category>real-time data</category><category>multi-currency</category><category>paper trading</category><category>Interactive Brokers</category><category>Alpaca API</category><category>Indonesia (IDX)</category><category>crypto &amp; gold</category><category>PWA</category>
+      <category>TwinAgent</category><category>multi-agent research</category><category>global markets</category><category>exchange calendars</category><category>real-time data</category><category>multi-currency</category><category>paper trading</category><category>Interactive Brokers</category><category>Alpaca API</category><category>Indonesia (IDX)</category><category>crypto &amp; gold</category><category>PWA</category><category>desktop app</category>
     </item>
     <item>
       <title>Guang Yao Together · 光耀同行</title>
@@ -225,7 +205,7 @@
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/me-rd-toolkit-card.jpg" alt="ME R&amp;D Toolkit dashboard with NPI flow, checklists, calculators and lessons quick-access tiles" width="600"></p><p>Offline workspace for mechanical R&amp;D — NPI task flow, review checklists, issue log and 11 engineering calculators.</p>]]></description>
       <jl:summary>Offline workspace for mechanical R&amp;D — NPI task flow, review checklists, issue log and 11 engineering calculators.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/me-rd-toolkit-card.jpg" type="image/jpeg" length="0"/>
-      <category>NPI</category><category>checklists</category><category>Cpk</category><category>PWA</category><category>offline-first</category>
+      <category>NPI</category><category>checklists</category><category>Cpk</category><category>PWA</category><category>offline-first</category><category>Windows app</category>
     </item>
     <item>
       <title>Game Library</title>
