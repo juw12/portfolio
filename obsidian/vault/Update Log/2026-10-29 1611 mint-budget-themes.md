@@ -1,0 +1,12 @@
+# Update - mint budget (one-tap themes, calmer motion, cleaner phone layout)
+
+- When: 2026-10-29 16:11
+- What: Budget 1.4.0 is calmer, neater and easier to use. Light / Dark / System is one tap from the top bar on every screen (the new theme grows out of the button), with live preview tiles in Settings → Appearance and the same switch in a new phone More sheet. Phones get a single-row header, a tab bar with a big + in the middle and bottom-sheet dialogs you can drag down to close. Animations play only when a page or month opens instead of on every edit, money figures count up, KPI cards open the page behind the number, toasts pause on hover, swipe away and never cover an open sheet, and keyboard shortcuts (N, T, 1–8, /) are listed under ?. Fixed the sheet search losing focus after the first letter.
+- App: https://juw12.github.io/projects/mint/budget/
+- Repos: juw12/projects (`apps/mint/web/budget`, `scripts/apps.json`; commits d446735, 48dd884), juw12/portfolio (notes)
+- Checks: 40 scripted UI checks on desktop, a 390 px phone and 320/360 px phones in light and dark; reduced motion; translation crawl clean in id / zh / es; browser self-test 99/99; 32 Python tests; monorepo CI and Pages deploy green; live site serves 1.4.0.
+- Pending: native-speaker review of translations; native APK/IPA workflow still needs a token with the `workflow` scope.
+
+## Notes
+
+- [[Mint]] · [[Mint — product note]]
