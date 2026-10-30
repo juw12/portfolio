@@ -12,10 +12,10 @@
       <link>https://juw12.github.io/projects/pips/web.html</link>
       <guid isPermaLink="false">juwenlie-project-pips</guid>
       <pubDate>Wed, 28 Oct 2026 16:39:28 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/pips-card.jpg" alt="Pips: twelve of the 23 desktop pet animals next to the Pomodoro card" width="600"></p><p>Desktop pet + Pomodoro widget for Windows — 23 animals, moods, taskbar walks, reminders, 4 languages.</p>]]></description>
-      <jl:summary>Desktop pet + Pomodoro widget for Windows — 23 animals, moods, taskbar walks, reminders, 4 languages.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/pips-card.jpg" alt="Pips: twelve desktop pet animals next to the Pomodoro card" width="600"></p><p>Desktop pet + Pomodoro for Windows — 51 animals, friends &amp; chat, skill battles with auto play, minigames, 4 languages.</p>]]></description>
+      <jl:summary>Desktop pet + Pomodoro for Windows — 51 animals, friends &amp; chat, skill battles with auto play, minigames, 4 languages.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/pips-card.jpg" type="image/jpeg" length="0"/>
-      <category>Windows app</category><category>desktop pet</category><category>Pomodoro</category><category>Python</category><category>tkinter</category><category>4 languages</category>
+      <category>Windows app</category><category>desktop pet</category><category>Pomodoro</category><category>skill battles</category><category>Python</category><category>4 languages</category>
     </item>
     <item>
       <title>Vitals</title>
@@ -82,8 +82,8 @@
       <link>https://juw12.github.io/projects/glow/</link>
       <guid isPermaLink="false">juwenlie-project-glow</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/glow-card.jpg" alt="Glow: GlowChat council with a Judge, part of the Glow ecosystem with GlowRoom" width="600"></p><p>Three AI apps on one free account, in 4 languages — GlowLead plans goals, GlowChat compares models, GlowRoom researches and codes; works offline and installs on Windows, Android, iPhone and Mac.</p>]]></description>
-      <jl:summary>Three AI apps on one free account, in 4 languages — GlowLead plans goals, GlowChat compares models, GlowRoom researches and codes; works offline and installs on Windows, Android, iPhone and Mac.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/glow-card.jpg" alt="Glow: GlowChat council with a Judge, part of the Glow ecosystem with GlowRoom" width="600"></p><p>Three AI apps on one free account, in 4 languages — GlowLead plans, GlowChat compares models, GlowRoom researches; free built-in AI, no keys, switches by itself when one runs out.</p>]]></description>
+      <jl:summary>Three AI apps on one free account, in 4 languages — GlowLead plans, GlowChat compares models, GlowRoom researches; free built-in AI, no keys, switches by itself when one runs out.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/glow-card.jpg" type="image/jpeg" length="0"/>
       <category>AI ecosystem</category><category>GlowLead</category><category>GlowChat</category><category>GlowRoom</category><category>AI agents</category><category>orchestrator</category><category>multilingual</category>
     </item>
