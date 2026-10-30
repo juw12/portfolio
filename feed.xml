@@ -52,8 +52,8 @@
       <link>https://juw12.github.io/projects/airiz-motor/</link>
       <guid isPermaLink="false">juwenlie-project-airiz-motor</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/airiz-motor-card.jpg" alt="Airiz Motor Test Console dashboard: command library, serial console and macro notepad for AIRIZ device motor testing" width="600"></p><p>AIRIZ test console for Windows, Android, iPhone and web — USB/Bluetooth jog, motor stop, LEDs, macros, phone camera sharing.</p>]]></description>
-      <jl:summary>AIRIZ test console for Windows, Android, iPhone and web — USB/Bluetooth jog, motor stop, LEDs, macros, phone camera sharing.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/airiz-motor-card.jpg" alt="Airiz Motor Test Console dashboard: command library, serial console and macro notepad for AIRIZ device motor testing" width="600"></p><p>AIRIZ test console for Windows, Android, iPhone and web — USB/Bluetooth jog, remote control by code, live device checks.</p>]]></description>
+      <jl:summary>AIRIZ test console for Windows, Android, iPhone and web — USB/Bluetooth jog, remote control by code, live device checks.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/airiz-motor-card.jpg" type="image/jpeg" length="0"/>
       <category>Windows app</category><category>Web Serial</category><category>Bluetooth control</category><category>camera sharing</category><category>macro runner</category><category>offline demo</category>
     </item>
@@ -82,10 +82,10 @@
       <link>https://juw12.github.io/projects/glow/</link>
       <guid isPermaLink="false">juwenlie-project-glow</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/glow-card.jpg" alt="Glow: GlowChat council with a Judge, part of the Glow ecosystem with GlowRoom" width="600"></p><p>Three AI apps on one free account, in 4 languages — GlowLead plans, GlowChat compares models, GlowRoom researches; free built-in AI, no keys, switches by itself when one runs out.</p>]]></description>
-      <jl:summary>Three AI apps on one free account, in 4 languages — GlowLead plans, GlowChat compares models, GlowRoom researches; free built-in AI, no keys, switches by itself when one runs out.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/glow-card.jpg" alt="Glow: GlowChat council with a Judge, part of the Glow ecosystem with GlowRoom" width="600"></p><p>Four AI apps, one free account — GlowLead plans, GlowChat compares models, GlowRoom researches, GlowNews briefs you on AI news.</p>]]></description>
+      <jl:summary>Four AI apps, one free account — GlowLead plans, GlowChat compares models, GlowRoom researches, GlowNews briefs you on AI news.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/glow-card.jpg" type="image/jpeg" length="0"/>
-      <category>AI ecosystem</category><category>GlowLead</category><category>GlowChat</category><category>GlowRoom</category><category>AI agents</category><category>orchestrator</category><category>multilingual</category>
+      <category>AI ecosystem</category><category>GlowLead</category><category>GlowChat</category><category>GlowRoom</category><category>GlowNews</category><category>AI news</category><category>AI agents</category><category>orchestrator</category><category>multilingual</category>
     </item>
     <item>
       <title>Fade</title>
