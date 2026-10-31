@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 28 Oct 2026 16:39:28 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 31 Oct 2026 17:45:17 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Teman Sehat</title>
+      <link>https://juw12.github.io/projects/teman-sehat/index.html</link>
+      <guid isPermaLink="false">juwenlie-project-teman-sehat</guid>
+      <pubDate>Sat, 31 Oct 2026 17:45:17 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/teman-sehat-card.jpg" alt="Teman Sehat today view: next reminder, daily kcal, protein and exercise summary, after-meal timer and GERD habit checklist" width="600"></p><p>GERD companion in Bahasa Indonesia: reminders, diet &amp; fitness without fasting, acne care. Desktop, Android, iPhone.</p>]]></description>
+      <jl:summary>GERD companion in Bahasa Indonesia: reminders, diet &amp; fitness without fasting, acne care. Desktop, Android, iPhone.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/teman-sehat-card.jpg" type="image/jpeg" length="0"/>
+      <category>PWA</category><category>Capacitor</category><category>health</category><category>Bahasa Indonesia</category><category>local-only</category>
+    </item>
     <item>
       <title>Pips</title>
       <link>https://juw12.github.io/projects/pips/web.html</link>
