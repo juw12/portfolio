@@ -8,7 +8,7 @@ Project notes for every app and model in the portfolio, as a ready-to-open [Obsi
 - **Whole repo:** green *Code* button → *Download ZIP* (vault is in `obsidian/vault/`).
 - **Single notes:** browse [`vault/`](vault/) — every note is plain Markdown and reads fine on GitHub.
 
-Updated 2026-10-31 · 26 project notes · 31 update-log entries.
+Updated 2026-11-01 · 27 project notes · 33 update-log entries.
 
 ## Project notes
 
@@ -34,6 +34,7 @@ Updated 2026-10-31 · 26 project notes · 31 update-log entries.
 - [Sped](vault/Portfolio/Projects/Sped.md)
 - [Sweep](vault/Portfolio/Projects/Sweep.md)
 - [Sync](vault/Portfolio/Projects/Sync.md)
+- [Teman Sehat](vault/Portfolio/Projects/Teman%20Sehat.md)
 - [Twin](vault/Portfolio/Projects/Twin.md)
 - [Vector](vault/Portfolio/Projects/Vector.md)
 - [Vertex](vault/Portfolio/Projects/Vertex.md)
@@ -72,5 +73,7 @@ Updated 2026-10-31 · 26 project notes · 31 update-log entries.
 - [2026-10-30 1449 glow-news](vault/Update%20Log/2026-10-30%201449%20glow-news.md)
 - [2026-10-30 1450 airiz-motor-1-11-17](vault/Update%20Log/2026-10-30%201450%20airiz-motor-1-11-17.md)
 - [2026-10-31 1200 airiz-motor-1-11-20](vault/Update%20Log/2026-10-31%201200%20airiz-motor-1-11-20.md)
+- [2026-10-31 1330 airiz-motor-1-11-21](vault/Update%20Log/2026-10-31%201330%20airiz-motor-1-11-21.md)
+- [2026-11-01 0024 teman-sehat](vault/Update%20Log/2026-11-01%200024%20teman-sehat.md)
 
 Notes are generated from the app catalog (`scripts/apps.json` in [juw12/projects](https://github.com/juw12/projects)) by `scripts/publish_portfolio.py`, plus hand-written product notes. Local machine paths and private storage locations are removed from this public copy.
