@@ -8,7 +8,7 @@ Project notes for every app and model in the portfolio, as a ready-to-open [Obsi
 - **Whole repo:** green *Code* button → *Download ZIP* (vault is in `obsidian/vault/`).
 - **Single notes:** browse [`vault/`](vault/) — every note is plain Markdown and reads fine on GitHub.
 
-Updated 2026-10-30 · 26 project notes · 30 update-log entries.
+Updated 2026-10-31 · 26 project notes · 31 update-log entries.
 
 ## Project notes
 
@@ -71,5 +71,6 @@ Updated 2026-10-30 · 26 project notes · 30 update-log entries.
 - [2026-10-30 0905 glow-free-ai](vault/Update%20Log/2026-10-30%200905%20glow-free-ai.md)
 - [2026-10-30 1449 glow-news](vault/Update%20Log/2026-10-30%201449%20glow-news.md)
 - [2026-10-30 1450 airiz-motor-1-11-17](vault/Update%20Log/2026-10-30%201450%20airiz-motor-1-11-17.md)
+- [2026-10-31 1200 airiz-motor-1-11-20](vault/Update%20Log/2026-10-31%201200%20airiz-motor-1-11-20.md)
 
 Notes are generated from the app catalog (`scripts/apps.json` in [juw12/projects](https://github.com/juw12/projects)) by `scripts/publish_portfolio.py`, plus hand-written product notes. Local machine paths and private storage locations are removed from this public copy.
