@@ -5,8 +5,17 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 31 Oct 2026 17:45:17 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2026 15:12:33 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Photo2CAD</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-photo2cad</guid>
+      <pubDate>Sun, 01 Nov 2026 15:12:33 +0000</pubDate>
+      <description><![CDATA[<p>PRD + six reference photos to a validated STEP (.stp) CAD model via an LLM-written CadQuery program - a deployable service.</p>]]></description>
+      <jl:summary>PRD + six reference photos to a validated STEP (.stp) CAD model via an LLM-written CadQuery program - a deployable service.</jl:summary>
+      <category>CAD</category><category>STEP</category><category>CadQuery</category><category>LLM</category><category>Python</category><category>deployable service</category>
+    </item>
     <item>
       <title>Teman Sehat</title>
       <link>https://juw12.github.io/projects/teman-sehat/index.html</link>
@@ -66,16 +75,6 @@
       <jl:summary>AIRIZ test console for Windows, Android, iPhone and web — USB/Bluetooth jog, remote control by code, live device checks, auto night vision from camera + light sensor.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/airiz-motor-card.jpg" type="image/jpeg" length="0"/>
       <category>Windows app</category><category>Web Serial</category><category>Bluetooth control</category><category>camera sharing</category><category>macro runner</category><category>offline demo</category>
-    </item>
-    <item>
-      <title>Vertex</title>
-      <link>https://juw12.github.io/projects/vertex/index.html</link>
-      <guid isPermaLink="false">juwenlie-project-vertex</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/vertex-card.jpg" alt="Vertex: a dark 3D engineering workspace with a fitted part in a viewport, a ranked repair plan, a universal adapter strip (Fusion, SOLIDWORKS, FreeCAD, Blender, open formats) and review-gated export/apply steps" width="600"></p><p>Offline parametric CAD and engineering copilot that repairs models, checks clearances and exports STL, 3MF and DXF.</p>]]></description>
-      <jl:summary>Offline parametric CAD and engineering copilot that repairs models, checks clearances and exports STL, 3MF and DXF.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/vertex-card.jpg" type="image/jpeg" length="0"/>
-      <category>parametric CAD</category><category>model repair</category><category>simulation</category><category>offline-first</category>
     </item>
     <item>
       <title>3D Models Library</title>
