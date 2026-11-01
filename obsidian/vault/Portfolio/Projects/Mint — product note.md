@@ -3,8 +3,8 @@ id: mint-product-note
 app: mint
 type: product-note
 status: live
-date: 2026-10-29
-tags: [mint, budgeting, personal-finance, shared-budget, crdt, e2e-encryption, personality-quiz, investing, template-marketplace, excel, google-sheets, affiliate, creator-economy, cloudflare-workers, workers-ai, pwa, android, capacitor, i18n, multi-currency, sync]
+date: 2026-11-01
+tags: [mint, budgeting, personal-finance, shared-budget, crdt, e2e-encryption, personality-quiz, investing, template-marketplace, excel, google-sheets, affiliate, creator-economy, cloudflare-workers, workers-ai, pwa, android, capacitor, i18n, multi-currency, sync, whatsapp]
 aliases: [Sheetmint]
 ---
 
@@ -17,6 +17,14 @@ Project card: [[Mint]]. Mint is one app with two halves: **Budget**, the home sc
 - Marketplace: https://juw12.github.io/projects/mint/budget/?view=market · API: https://mint-api.juw12.workers.dev/api/health
 - Install on iPhone / Android / computer (free): https://juw12.github.io/projects/mint/budget/get.html
 - Code: https://github.com/juw12/projects/tree/main/apps/mint
+
+## WhatsApp: log expenses by chat (2026-11-01)
+
+- **Why.** Opening an app for every coffee is the moment people stop tracking. Texting is already open all day.
+- **How it works.** Text Mint's WhatsApp number `coffee 25k`, `grab 18rb`, `lunch 12 usd yesterday` or `+5jt salary` (several per message, one per line). Mint replies with what it understood; the entries land in the chosen budget the next time Mint is open on any signed-in device, categorised with the same parser and history as Quick add, converted from any currency, dated "yesterday" when asked. `undo`, `stop`, `help` and `total` work from the chat.
+- **Privacy.** Each message is sealed on arrival to an account inbox key (ECDH P-256 + HKDF + AES-GCM) whose private half lives only on the user's devices (stored server-side sealed with the sync key), so the Worker keeps ciphertext only; phone numbers are kept as an HMAC. Totals are never available over WhatsApp because the server can't read the budget. Every entry's id derives from the WhatsApp message id, so two devices never file it twice.
+- **Setup.** Settings → WhatsApp → Connect shows a one-time `link MINT-XXXXXX` code (15 min) and a wa.me button. Owner setup (Meta app, Worker secrets, webhook) is in `apps/mint/docs/whatsapp.md`; the feature stays off until those secrets are set.
+- **Checks.** API end-to-end 49/49 (6 new WhatsApp checks against a mock Graph API), budget self-test 120/120 (17 new chat checks), client round trip (link → file → two devices → undo), i18n EN/ID/ZH/ES. Live: site and Worker deployed from `main` (02f3f0d); `/api/health` reports `whatsapp: false` until the WhatsApp Business number is configured.
 
 ## Mint 3.2: any currency, learning to invest, one Marketplace, one account (2026-10-29)
 
