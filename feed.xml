@@ -12,8 +12,9 @@
       <link>https://juwenlie.pages.dev/#projects</link>
       <guid isPermaLink="false">juwenlie-project-photo2cad</guid>
       <pubDate>Sun, 01 Nov 2026 15:12:33 +0000</pubDate>
-      <description><![CDATA[<p>PRD + six reference photos to a validated STEP (.stp) CAD model via an LLM-written CadQuery program - a deployable service.</p>]]></description>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/photo2cad-card.jpg" alt="photo2cad workbench: a PRD editor and six reference-photo slots beside a CAD viewport" width="600"></p><p>PRD + six reference photos to a validated STEP (.stp) CAD model via an LLM-written CadQuery program - a deployable service.</p>]]></description>
       <jl:summary>PRD + six reference photos to a validated STEP (.stp) CAD model via an LLM-written CadQuery program - a deployable service.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/photo2cad-card.jpg" type="image/jpeg" length="0"/>
       <category>CAD</category><category>STEP</category><category>CadQuery</category><category>LLM</category><category>Python</category><category>deployable service</category>
     </item>
     <item>
