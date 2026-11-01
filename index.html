@@ -611,6 +611,27 @@
               </div>
             </div>
           </article>
+          
+          <article class="project-card" data-category="Engineering">
+            <img src="./assets/projects/photo2cad-card.jpg" alt="photo2cad workbench: a PRD editor and six reference-photo slots beside a CAD viewport" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">Engineering</span>
+              <h3 class="project-title">Photo2CAD</h3>
+              <p class="project-description">PRD + six reference photos to a validated STEP (.stp) CAD model via an LLM-written CadQuery program - a deployable service.</p>
+              <div class="project-details" hidden>Engineering service that turns a product requirements document (PRD) and six reference photographs (front/back/left/right/top/bottom) into a real CAD file. A Pegatron MAAS LLM writes a parametric CadQuery program from the PRD (the photos are visual/dimension reference), a sandboxed child process builds it, and the server re-imports the STEP to validate a single solid with its bounding box and volume - returning a downloadable .stp plus an STL preview. Ships as a deployable web service (Docker + Kubernetes). Output is STEP; Creo .prt is proprietary and not produced (Creo imports STEP).</div>
+              <div class="project-tags">
+                <span class="tag">CAD</span>
+                <span class="tag">STEP</span>
+                <span class="tag">CadQuery</span>
+                <span class="tag">LLM</span>
+                <span class="tag">Python</span>
+                <span class="tag">deployable service</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://github.com/juw12/projects/tree/main/apps/photo2cad" target="_blank" rel="noopener noreferrer">Files</a>
+              </div>
+            </div>
+          </article>
           <!-- PROJECTS:MANAGED:END -->
 
           <!-- Hand-written cards shown after the featured set -->
