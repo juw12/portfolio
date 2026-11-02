@@ -1,4 +1,12 @@
 {
+  "ashiato": {
+    "announced_at": "2026-11-02T15:57:46+00:00",
+    "issue": "https://github.com/juw12/portfolio/issues/9"
+  },
+  "crewcup": {
+    "announced_at": "2026-11-02T15:57:46+00:00",
+    "issue": "https://github.com/juw12/portfolio/issues/9"
+  },
   "kinibuka": {
     "announced_at": "2026-11-02T06:08:28+00:00",
     "issue": "https://github.com/juw12/portfolio/issues/8"
@@ -22,6 +30,10 @@
   "rewind": {
     "announced_at": "2026-11-02T06:08:28+00:00",
     "issue": "https://github.com/juw12/portfolio/issues/8"
+  },
+  "scopeguard": {
+    "announced_at": "2026-11-02T15:57:46+00:00",
+    "issue": "https://github.com/juw12/portfolio/issues/9"
   },
   "shiphub": {
     "announced_at": "2026-11-02T06:08:28+00:00",
