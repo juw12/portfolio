@@ -1,3 +1,12 @@
+# Games 🎮
+
+| Game | Play | What it is |
+| --- | --- | --- |
+| **Cozy Island** 🎣 | [Play](https://juwenlie.pages.dev/game/) | A cozy 3D island for laptop workers: fishing, garden, tea breaks and a Desk mode. [Details below](#cozy-island-) |
+| **Townsquare 3D** 🏘️ | [Play](https://juw12.github.io/portfolio/game/townsquare/) | A shared 3D town: claim land, run producers, trade at the market, build, and meet the townsfolk. [Details](townsquare/README.md) |
+
+---
+
 # Cozy Island 🎣🌿
 
 A small, cozy 3D island for laptop workers: fish off the dock, tend a garden, breathe with a cup of tea,

@@ -1,0 +1,23 @@
+{
+  "name": "Townsquare 3D",
+  "short_name": "Townsquare",
+  "description": "A shared 3D world you can walk around in from phone or desktop.",
+  "start_url": "./",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#5b8fd1",
+  "theme_color": "#5b8fd1",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

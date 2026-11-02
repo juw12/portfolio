@@ -1,0 +1,1284 @@
+:root {
+  --ui-font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif,
+    "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji";
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #5b8fd1;
+  font-family: var(--ui-font);
+  color: #fff;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#scene {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* ---------- Join screen ---------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(20, 30, 60, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 20;
+}
+
+.card {
+  width: min(90vw, 360px);
+  padding: 28px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #1d2433;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.card h1 {
+  margin: 0 0 6px;
+  font-size: 26px;
+}
+
+.card p {
+  margin: 0 0 18px;
+  color: #5a6478;
+  font-size: 14px;
+}
+
+#nameInput {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #d5dbe6;
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+}
+
+#nameInput:focus {
+  border-color: #00a5cf;
+}
+
+#colorPicker {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 16px 0 20px;
+}
+
+.swatch {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.swatch.selected {
+  border-color: #1d2433;
+}
+
+#joinButton {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #00a5cf;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ---------- HUD ---------- */
+#hud {
+  position: fixed;
+  top: calc(12px + env(safe-area-inset-top));
+  left: calc(12px + env(safe-area-inset-left));
+  z-index: 10;
+  pointer-events: none;
+}
+
+#status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+}
+
+#statusDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f3a712;
+}
+
+#statusDot.online {
+  background: #29bf12;
+}
+
+#statusDot.offline {
+  background: #e4572e;
+}
+
+#hint {
+  margin-top: 8px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* ---------- Chat ---------- */
+#chat {
+  position: fixed;
+  left: calc(12px + env(safe-area-inset-left));
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  width: min(380px, 60vw);
+  z-index: 10;
+}
+
+#chatLog {
+  max-height: 180px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-bottom: 6px;
+  pointer-events: none;
+}
+
+.chat-line {
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+  word-break: break-word;
+}
+
+.chat-line b {
+  margin-right: 6px;
+}
+
+#chatInput {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+}
+
+#chatInput::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#chatInput:focus {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* ---------- Touch controls ---------- */
+#joystick {
+  position: fixed;
+  left: calc(24px + env(safe-area-inset-left));
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  touch-action: none;
+  z-index: 11;
+}
+
+#joystickKnob {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.75);
+  pointer-events: none;
+}
+
+#jumpButton {
+  position: fixed;
+  right: calc(28px + env(safe-area-inset-right));
+  bottom: calc(40px + env(safe-area-inset-bottom));
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  touch-action: none;
+  z-index: 11;
+}
+
+/* On phones: chat moves to the top so thumbs keep the bottom corners. */
+body.touch #hint {
+  display: none;
+}
+
+body.touch #chat {
+  top: calc(52px + env(safe-area-inset-top));
+  bottom: auto;
+  width: min(320px, 70vw);
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+body.touch #chatLog {
+  max-height: 120px;
+  margin: 6px 0 0;
+}
+
+body.touch .chat-line {
+  font-size: 13px;
+}
+
+/* ---------- Build mode ---------- */
+#buildButton {
+  position: fixed;
+  top: calc(12px + env(safe-area-inset-top));
+  right: calc(12px + env(safe-area-inset-right));
+  z-index: 12;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#buildButton.active {
+  background: #29bf12;
+}
+
+#buildBar {
+  position: fixed;
+  right: calc(12px + env(safe-area-inset-right));
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  z-index: 12;
+  max-width: min(560px, calc(100vw - 420px));
+  padding: 10px;
+  border-radius: 16px;
+  background: rgba(20, 24, 36, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+#buildItems {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+}
+
+.build-item {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 60px;
+  padding: 6px 0;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+}
+
+.build-item .icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.build-item .label {
+  font-size: 11px;
+}
+
+.build-item.selected {
+  border-color: #29bf12;
+  background: rgba(41, 191, 18, 0.25);
+}
+
+.build-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+#buildColors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.build-color {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.build-color.selected {
+  border-color: #fff;
+  transform: scale(1.15);
+}
+
+.build-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.build-actions button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 19px;
+  cursor: pointer;
+}
+
+#deleteButton.active {
+  background: #e53935;
+}
+
+#toast {
+  position: fixed;
+  top: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.7);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+/* ---------- Land / plot panel ---------- */
+#plotPanel {
+  position: fixed;
+  top: calc(12px + env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 6px 6px 14px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+#plotAction {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 999px;
+  background: #29bf12;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#plotAction.danger {
+  background: rgba(229, 57, 53, 0.85);
+}
+
+/* Phones: plot panel sits above the joystick row (and above the build bar while building). */
+body.touch #plotPanel {
+  top: auto;
+  bottom: calc(170px + env(safe-area-inset-bottom));
+}
+
+body.touch.building #plotPanel {
+  bottom: calc(300px + env(safe-area-inset-bottom));
+}
+
+body.touch #toast {
+  top: auto;
+  bottom: calc(360px + env(safe-area-inset-bottom));
+}
+
+/* On phones the build bar spans the width, above the joystick and jump button. */
+body.touch #buildBar {
+  left: calc(8px + env(safe-area-inset-left));
+  right: calc(8px + env(safe-area-inset-right));
+  bottom: calc(170px + env(safe-area-inset-bottom));
+  max-width: none;
+}
+
+body.touch .build-color {
+  width: 26px;
+  height: 26px;
+}
+
+/* Contextual sit / stand button: appears next to benches */
+#sitButton {
+  position: fixed;
+  right: calc(20px + env(safe-area-inset-right));
+  bottom: calc(132px + env(safe-area-inset-bottom));
+  z-index: 11;
+  padding: 10px 16px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+#sitButton:active {
+  background: rgba(41, 191, 18, 0.8);
+}
+
+/* ---------- Economy: wallet, build costs, market ---------- */
+#wallet {
+  position: fixed;
+  top: calc(62px + env(safe-area-inset-top));
+  right: calc(12px + env(safe-area-inset-right));
+  z-index: 5;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(20, 24, 32, 0.72);
+  color: #fff;
+  font: 600 15px/1.2 var(--ui-font);
+  white-space: pre;
+  pointer-events: none;
+  backdrop-filter: blur(6px);
+}
+
+.build-item .cost {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+.build-item.producer {
+  box-shadow: inset 0 -3px 0 #e9c46a;
+}
+
+#marketPanel {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  width: min(460px, calc(100vw - 24px));
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(28, 24, 20, 0.92);
+  color: #f2e8cf;
+  font: 15px/1.3 var(--ui-font);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+}
+
+.market-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-size: 17px;
+}
+
+.market-head #marketCoins {
+  flex: 1;
+  text-align: right;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+#marketClose {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.market-row {
+  display: grid;
+  grid-template-columns: 1fr 44px auto auto auto;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+  border-top: 1px solid rgba(242, 232, 207, 0.12);
+}
+
+.market-have {
+  text-align: right;
+  opacity: 0.8;
+}
+
+.market-row button {
+  min-width: 70px;
+  padding: 7px 8px;
+  border: 0;
+  border-radius: 8px;
+  background: #e9c46a;
+  color: #2b1d0e;
+  font: 600 13px var(--ui-font);
+  cursor: pointer;
+}
+
+.market-row button.buy {
+  background: #a8dadc;
+}
+
+.market-row button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.market-note {
+  margin: 10px 0 0;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+body.touch #wallet {
+  font-size: 13px;
+  padding: 6px 10px;
+}
+
+/* ---------- Accounts ---------- */
+.hud-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#accountButton {
+  pointer-events: auto;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#accountButton.guest {
+  background: rgba(233, 196, 106, 0.85);
+  color: #2b1d0e;
+}
+
+.link-button {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px;
+  border: 0;
+  background: transparent;
+  color: #00a5cf;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#join .link-button {
+  background: transparent;
+  color: #00a5cf;
+}
+
+#nameInput:disabled {
+  opacity: 0.75;
+}
+
+#accountPanel {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  width: min(380px, calc(100vw - 24px));
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(20, 24, 36, 0.94);
+  color: #f1f1f1;
+  font: 15px/1.35 var(--ui-font);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+}
+
+#accountPanel button {
+  font-family: inherit;
+}
+
+.account-note {
+  margin: 0 0 10px;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+#accountForm input {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 16px; /* 16px stops iOS from zooming into the field */
+}
+
+.account-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.account-buttons button,
+#accountLogout {
+  flex: 1;
+  padding: 10px;
+  border: 0;
+  border-radius: 10px;
+  background: #00a5cf;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#accountRegister {
+  background: #29bf12;
+}
+
+#accountLogout {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+#accountMessage.error {
+  color: #ff8a80;
+  opacity: 1;
+}
+
+#accountMessage:empty {
+  display: none;
+}
+
+/* ---------- Social: friends, co-builders, share ---------- */
+#socialButton {
+  pointer-events: auto;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#plotShare {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  cursor: pointer;
+}
+
+#socialPanel {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 25;
+  width: min(400px, calc(100vw - 24px));
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(20, 30, 28, 0.94);
+  color: #f1f1f1;
+  font: 15px/1.35 var(--ui-font);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+}
+
+#socialPanel button {
+  font-family: inherit;
+}
+
+#socialClose {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.social-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.social-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #777;
+}
+
+.social-dot.online {
+  background: #29bf12;
+  box-shadow: 0 0 6px #29bf12;
+}
+
+.social-visit,
+.social-form button,
+#shareButton,
+#coBuildLeave {
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: #00a5cf;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.social-visit:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.social-remove {
+  border: 0;
+  background: transparent;
+  color: #ff8a80;
+  cursor: pointer;
+}
+
+.social-form {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0 4px;
+}
+
+.social-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 16px;
+}
+
+.social-section {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.social-muted,
+.social-empty {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.social-empty {
+  margin: 6px 0;
+}
+
+#coBuildNote {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+#coBuildNote[hidden] {
+  display: none;
+}
+
+#coBuildNote span {
+  flex: 1;
+}
+
+#shareButton {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* ---------- Doom rendering: goal pill + live town feed ---------- */
+#goalPill {
+  position: fixed;
+  top: calc(104px + env(safe-area-inset-top));
+  right: calc(12px + env(safe-area-inset-right));
+  z-index: 5;
+  max-width: min(360px, calc(100vw - 24px));
+  padding: 7px 12px;
+  border-radius: 12px;
+  background: rgba(41, 120, 60, 0.85);
+  color: #fff;
+  font: 600 13px/1.3 var(--ui-font);
+  pointer-events: none;
+  backdrop-filter: blur(6px);
+}
+
+#goalPill.pop {
+  animation: goal-pop 0.9s ease-out;
+}
+
+@keyframes goal-pop {
+  0% { transform: scale(1); background: rgba(233, 196, 106, 0.95); color: #2b1d0e; }
+  30% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+#townFeed {
+  position: fixed;
+  top: calc(146px + env(safe-area-inset-top));
+  right: calc(12px + env(safe-area-inset-right));
+  z-index: 5;
+  width: min(300px, calc(100vw - 24px));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  font: 13px/1.3 var(--ui-font);
+}
+
+#feedToggle {
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(20, 24, 32, 0.72);
+  color: #fff;
+  font: 600 13px var(--ui-font);
+  cursor: pointer;
+}
+
+#feedList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.feed-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 10px;
+  background: rgba(20, 24, 32, 0.62);
+  color: #fff;
+  font: 13px/1.3 var(--ui-font);
+  text-align: left;
+  cursor: pointer;
+}
+
+.feed-row:hover {
+  background: rgba(0, 165, 207, 0.75);
+}
+
+.feed-row.fresh {
+  animation: feed-flash 1.6s ease-out;
+}
+
+@keyframes feed-flash {
+  0% { background: rgba(233, 196, 106, 0.95); color: #2b1d0e; transform: translateX(-6px); }
+  100% { background: rgba(20, 24, 32, 0.62); color: #fff; transform: none; }
+}
+
+.feed-meta {
+  font-size: 11px;
+  opacity: 0.75;
+}
+
+.feed-empty {
+  margin: 0;
+  padding: 7px 10px;
+  border-radius: 10px;
+  background: rgba(20, 24, 32, 0.55);
+  color: #fff;
+  font-size: 12px;
+}
+
+/* Phones: goal and feed sit lower on the left, clear of the joystick and the plot bar. */
+body.touch #goalPill {
+  top: calc(96px + env(safe-area-inset-top));
+  font-size: 12px;
+}
+
+body.touch #townFeed {
+  top: calc(136px + env(safe-area-inset-top));
+  width: min(240px, calc(100vw - 24px));
+}
+
+body.touch .feed-row {
+  font-size: 12px;
+  padding: 6px 8px;
+}
+
+body.building #townFeed,
+body.building #goalPill {
+  display: none;
+}
+
+/* Showcase stars on the plot bar */
+#plotLike {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#plotLike.starred {
+  background: #e9c46a;
+  color: #2b1d0e;
+}
+
+/* Rosa's daily order: in the market panel and at the top of the town feed */
+#marketOrder {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(233, 196, 106, 0.18);
+  font-size: 13px;
+}
+
+#marketOrder[hidden] {
+  display: none;
+}
+
+#marketOrderText {
+  flex: 1;
+}
+
+#marketOrderButton {
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: #29bf12;
+  color: #fff;
+  font: 600 13px var(--ui-font);
+  cursor: pointer;
+}
+
+#marketOrderButton:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.feed-row.feed-order {
+  background: rgba(233, 196, 106, 0.88);
+  color: #2b1d0e;
+}
+
+.feed-row.feed-order.done {
+  background: rgba(41, 191, 18, 0.55);
+  color: #fff;
+}
+
+.feed-top {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: 10px;
+  background: rgba(20, 24, 32, 0.62);
+  color: #fff;
+}
+
+.feed-top-title {
+  font-size: 11px;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.feed-top-row {
+  padding: 3px 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  font: 13px/1.3 var(--ui-font);
+  text-align: left;
+  cursor: pointer;
+}
+
+.feed-top-row:hover {
+  color: #e9c46a;
+}
+
+/* ---------- Game feel: level chip, floating numbers, level-up banner ---------- */
+#levelChip {
+  position: fixed;
+  top: calc(76px + env(safe-area-inset-top));
+  left: calc(12px + env(safe-area-inset-left));
+  z-index: 5;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 118px;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 12px;
+  background: rgba(20, 24, 32, 0.6);
+  color: #fff;
+  font: 600 12px var(--ui-font);
+  text-align: left;
+  cursor: default;
+}
+
+#levelChip[hidden] {
+  display: none;
+}
+
+.level-bar {
+  display: block;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+#levelFill {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #e9c46a, #f4a261);
+  transition: width 0.6s ease-out;
+}
+
+#levelChip.pulse {
+  animation: chip-pulse 0.6s ease-out;
+}
+
+@keyframes chip-pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(233, 196, 106, 0.8); }
+  40% { transform: scale(1.08); }
+  100% { transform: scale(1); box-shadow: 0 0 0 12px rgba(233, 196, 106, 0); }
+}
+
+#soundToggle {
+  padding: 5px 9px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(20, 24, 32, 0.6);
+  color: #fff;
+  cursor: pointer;
+}
+
+#wallet.bump {
+  animation: wallet-bump 0.5s ease-out;
+}
+
+@keyframes wallet-bump {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.15); background: rgba(233, 196, 106, 0.9); color: #2b1d0e; }
+  100% { transform: scale(1); }
+}
+
+#fxLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.fx-float {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(20, 24, 32, 0.7);
+  color: #fff;
+  font: 800 18px var(--ui-font);
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  will-change: transform, opacity;
+}
+
+.fx-float.coins {
+  background: rgba(233, 196, 106, 0.95);
+  color: #2b1d0e;
+  text-shadow: none;
+}
+
+.fx-float.xp {
+  background: rgba(42, 157, 143, 0.9);
+  font-size: 14px;
+}
+
+.fx-float.bumper {
+  background: linear-gradient(90deg, #2a9d8f, #29bf12);
+  font-size: 22px;
+}
+
+.fx-float.star {
+  background: rgba(255, 214, 224, 0.95);
+  color: #5a1f33;
+  text-shadow: none;
+}
+
+#levelBanner {
+  position: fixed;
+  top: 28%;
+  left: 50%;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 18px 34px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(233, 196, 106, 0.97), rgba(244, 162, 97, 0.97));
+  color: #2b1d0e;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  transform: translate(-50%, 0);
+}
+
+#levelBanner[hidden] {
+  display: none;
+}
+
+#levelBanner.show {
+  animation: banner-in 3.2s ease-out forwards;
+}
+
+@keyframes banner-in {
+  0% { transform: translate(-50%, 0) scale(0.4); opacity: 0; }
+  12% { transform: translate(-50%, 0) scale(1.12); opacity: 1; }
+  20% { transform: translate(-50%, 0) scale(1); }
+  85% { opacity: 1; }
+  100% { transform: translate(-50%, -20px) scale(1); opacity: 0; }
+}
+
+#levelBannerTitle {
+  font: 900 34px var(--ui-font);
+  letter-spacing: 2px;
+}
+
+#levelBannerText {
+  font: 700 16px var(--ui-font);
+}
+
+#levelConfetti {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+
+#levelConfetti span {
+  position: absolute;
+  top: 0;
+  width: 8px;
+  height: 12px;
+  border-radius: 2px;
+  animation: confetti-fall 1.8s ease-in forwards;
+}
+
+@keyframes confetti-fall {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  100% { transform: translate(var(--drift), 220px) rotate(540deg); opacity: 0; }
+}
+
+body.touch #levelChip {
+  top: calc(60px + env(safe-area-inset-top));
+  min-width: 96px;
+  font-size: 11px;
+}
+
+body.building #levelChip {
+  display: none;
+}
+
+/* Shown when a moderator has banned this player (see showBanNotice in main.js). */
+#banNotice {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(20, 20, 28, 0.88);
+  color: #fff;
+  font: 600 18px/1.5 system-ui, sans-serif;
+  text-align: center;
+}
+#banNotice[hidden] {
+  display: none;
+}

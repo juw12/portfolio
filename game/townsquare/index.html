@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#5b8fd1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Townsquare 3D</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script src="solo.js"></script>
+</head>
+<body>
+  <canvas id="scene"></canvas>
+
+  <div id="join" class="overlay">
+    <div class="card">
+      <h1>Townsquare 3D</h1>
+      <p>A shared little world. Claim land, grow and make goods, trade at the market, build and meet people.</p>
+      <input id="nameInput" maxlength="16" placeholder="Your name" autocomplete="off">
+      <div id="colorPicker" aria-label="Avatar color"></div>
+      <button id="joinButton">Enter world</button>
+      <button id="joinAccount" class="link-button" type="button">🔑 Log in or create an account</button>
+    </div>
+  </div>
+
+  <div id="hud" hidden>
+    <div class="hud-row">
+      <div id="status"><span id="statusDot"></span><span id="statusText">connecting…</span></div>
+      <button id="accountButton" class="guest" type="button">👤 Guest</button>
+      <button id="socialButton" type="button" title="Friends and co-builders" hidden>👥 0/0</button>
+      <button id="soundToggle" type="button" title="Sound on">🔊</button>
+    </div>
+    <div id="hint"></div>
+  </div>
+  <div id="wallet" hidden></div>
+  <button id="levelChip" type="button" hidden><span id="levelText"></span><span class="level-bar"><span id="levelFill"></span></span></button>
+  <div id="goalPill" hidden></div>
+  <div id="townFeed" hidden>
+    <button id="feedToggle" type="button">📰 Town</button>
+    <div id="feedList"></div>
+  </div>
+
+  <button id="buildButton" hidden>🔨 Build</button>
+
+  <div id="plotPanel" hidden>
+    <span id="plotText"></span>
+    <button id="plotShare" hidden title="Copy a link to this plot">🔗</button>
+    <button id="plotLike" hidden title="Star this plot">☆ Star</button>
+    <button id="plotAction" hidden></button>
+  </div>
+
+  <div id="buildBar" hidden>
+    <div id="buildItems"></div>
+    <div class="build-row">
+      <div id="buildColors"></div>
+      <div class="build-actions">
+        <button id="rotateButton" title="Rotate (R)">⟳</button>
+        <button id="deleteButton" title="Remove (X)">🗑</button>
+        <button id="undoButton" title="Undo (Ctrl+Z)">↶</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" hidden></div>
+
+  <div id="levelBanner" hidden>
+    <div id="levelConfetti"></div>
+    <b id="levelBannerTitle"></b>
+    <span id="levelBannerText"></span>
+  </div>
+
+  <div id="marketPanel" hidden>
+    <div class="market-head">
+      <b>🛒 Market</b>
+      <span id="marketCoins"></span>
+      <button id="marketClose" aria-label="Close market">✖</button>
+    </div>
+    <div id="marketOrder" hidden>
+      <span id="marketOrderText"></span>
+      <button id="marketOrderButton" type="button">Deliver</button>
+    </div>
+    <div id="marketRows"></div>
+    <p class="market-note">Prices fall as people sell and recover over a few minutes.</p>
+  </div>
+
+  <div id="accountPanel" hidden>
+    <div class="market-head">
+      <b>👤 Account</b>
+      <span></span>
+      <button id="accountClose" aria-label="Close account">✖</button>
+    </div>
+    <p id="accountGuestNote" class="account-note">
+      You are playing as a guest: your land, builds and coins live in this browser only.
+      Create an account to keep them and to play from your phone and computer.
+    </p>
+    <form id="accountForm" autocomplete="on">
+      <input id="accountUser" name="username" autocomplete="username" maxlength="16" placeholder="Username" spellcheck="false" autocapitalize="off">
+      <input id="accountPass" name="password" type="password" autocomplete="current-password" maxlength="128" placeholder="Password (6+ characters)">
+      <div class="account-buttons">
+        <button id="accountLogin" type="submit">Log in</button>
+        <button id="accountRegister" type="button">Create account</button>
+      </div>
+    </form>
+    <div id="accountSignedIn" hidden>
+      <p class="account-note">Signed in as <b id="accountName"></b>. Your land, builds and coins are saved to this account: log in on any device to carry on.</p>
+      <button id="accountLogout" type="button">Log out</button>
+    </div>
+    <p id="accountMessage" class="market-note"></p>
+  </div>
+
+  <div id="socialPanel" hidden>
+    <div class="market-head">
+      <b>👥 Friends</b>
+      <span></span>
+      <button id="socialClose" aria-label="Close friends">✖</button>
+    </div>
+    <p id="socialGuestNote" class="account-note">Friends and co-builders need an account: create one with the 👤 button so people can find you.</p>
+    <div id="friendList"></div>
+    <form id="friendForm" class="social-form">
+      <input id="friendName" maxlength="16" placeholder="Add friend by username" autocomplete="off" spellcheck="false" autocapitalize="off">
+      <button type="submit">Add</button>
+    </form>
+
+    <div class="social-section">
+      <b>🔨 Co-builders</b> <span id="builderPlot" class="social-muted"></span>
+    </div>
+    <div id="builderList"></div>
+    <form id="builderForm" class="social-form" hidden>
+      <input id="builderName" maxlength="16" placeholder="Invite by username" autocomplete="off" spellcheck="false" autocapitalize="off">
+      <button type="submit">Invite</button>
+    </form>
+    <div id="coBuildNote" hidden>
+      <span id="coBuildText"></span>
+      <button id="coBuildLeave" type="button">Leave</button>
+    </div>
+    <button id="shareButton" type="button" hidden>🔗 Copy link to my plot</button>
+    <p class="market-note">Chat commands: /visit name · /home · /friend name · /invite name · /help</p>
+  </div>
+
+  <div id="chat" hidden>
+    <div id="chatLog"></div>
+    <form id="chatForm">
+      <input id="chatInput" maxlength="140" placeholder="Say something…" autocomplete="off" enterkeyhint="send">
+    </form>
+  </div>
+
+  <div id="joystick" hidden><div id="joystickKnob"></div></div>
+  <button id="jumpButton" hidden aria-label="Jump">JUMP</button>
+  <button id="sitButton" hidden>🪑 Sit</button>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
