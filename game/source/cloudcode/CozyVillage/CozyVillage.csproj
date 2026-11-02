@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>CozyVillage</AssemblyName>
+    <RootNamespace>CozyVillage</RootNamespace>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Check nuget.org for the latest versions before deploying. -->
+    <PackageReference Include="Com.Unity.Services.CloudCode.Core" Version="0.0.*" />
+    <PackageReference Include="Com.Unity.Services.CloudCode.Apis" Version="0.0.*" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Same rules + data model as the game client. -->
+    <Compile Include="..\..\unity\Scripts\Village\Shared\VillageModels.cs" Link="Shared\VillageModels.cs" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cozy Island</title>
+  <style>
+    :root {
+      --cream: #FFF5E1;
+      --panel: rgba(46, 34, 28, 0.58);
+      --panel-strong: rgba(46, 34, 28, 0.78);
+      --sage: #9ED99A;
+      --peach: #FFC78C;
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      background: #F0C3AE;
+      font-family: "Segoe UI Rounded", "Nunito", "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--cream);
+      user-select: none;
+    }
+    #app, #app canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+    .panel {
+      position: fixed;
+      background: var(--panel);
+      backdrop-filter: blur(6px);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      box-shadow: 0 6px 24px rgba(40, 20, 10, 0.18);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    }
+    .row { padding: 3px 0; display: flex; justify-content: space-between; gap: 18px; }
+    .row.clickable { cursor: pointer; justify-content: flex-start; border-radius: 8px; padding: 3px 6px; margin: 0 -6px; }
+    .row.clickable:hover { background: rgba(255, 245, 225, 0.12); }
+    .key {
+      display: inline-block; min-width: 22px; text-align: center; border-radius: 6px;
+      background: rgba(255, 245, 225, 0.18); margin-right: 8px; font-weight: 600;
+    }
+    .small { font-size: 13px; opacity: 0.85; }
+
+    #explore { top: 16px; left: 16px; width: 300px; }
+    #explore h1 { margin: 0 0 8px; font-size: 22px; font-weight: 600; letter-spacing: 0.5px; }
+    #explore .controls { margin-top: 10px; line-height: 1.6; }
+    #activity-title {
+      top: 14px; left: 50%; transform: translateX(-50%); font-size: 20px; padding: 6px 18px;
+    }
+    #timer { top: 16px; right: 16px; padding: 8px 16px; font-size: 15px; }
+    #timer.focus { background: rgba(40, 72, 58, 0.72); }
+    #timer.break { background: rgba(110, 66, 44, 0.72); }
+    #esc-hint { bottom: 16px; left: 16px; padding: 6px 14px; font-size: 14px; }
+
+    #toast {
+      top: 62px; left: 50%; transform: translate(-50%, -10px); max-width: min(640px, 90vw);
+      text-align: center; font-size: 16px; opacity: 0; transition: opacity 0.4s, transform 0.4s; pointer-events: none;
+    }
+    #toast.visible { opacity: 1; transform: translate(-50%, 0); }
+    #tooltip {
+      top: 0; left: 0; padding: 6px 12px; font-size: 14px; pointer-events: none; border-radius: 12px;
+      background: var(--panel-strong); white-space: nowrap;
+    }
+
+    .hud {
+      bottom: 26px; left: 50%; transform: translateX(-50%); min-width: 440px; text-align: center;
+    }
+    .hud-title { font-size: 20px; }
+    .hud-sub { font-size: 14px; opacity: 0.85; margin-top: 4px; }
+    .bars { margin-top: 10px; display: grid; gap: 6px; }
+    .bar { height: 12px; background: rgba(0, 0, 0, 0.3); border-radius: 8px; overflow: hidden; }
+    .fill { height: 100%; width: 0%; border-radius: 8px; transition: width 0.08s linear; }
+    .fill.sage { background: var(--sage); }
+    .fill.warm { background: var(--peach); }
+
+    #breath {
+      position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none;
+    }
+    #breath-ring {
+      position: absolute; width: min(44vh, 44vw); height: min(44vh, 44vw); border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12); box-shadow: 0 0 60px rgba(255, 230, 200, 0.25);
+    }
+    #breath-circle {
+      position: absolute; width: min(44vh, 44vw); height: min(44vh, 44vw); border-radius: 50%;
+      transform: scale(0.35); box-shadow: 0 0 80px rgba(255, 220, 160, 0.45);
+    }
+    #breath-text { position: relative; text-align: center; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4); }
+    #breath-label { font-size: 30px; }
+    #breath-count { font-size: 22px; opacity: 0.9; }
+    #breath-cycle { position: fixed; bottom: 40px; width: 100%; text-align: center; font-size: 14px; opacity: 0.85; }
+
+    #journal, #bird-journal, #village-panel { width: 380px; }
+    #fish-journal { top: 64px; right: 16px; width: 420px; max-height: calc(100vh - 200px); overflow-y: auto; }
+    #fish-journal-sub { text-align: center; font-size: 13px; opacity: 0.8; margin: -6px 0 8px; }
+    .fish-row {
+      display: grid; grid-template-columns: 26px 1fr auto; gap: 10px; align-items: center;
+      padding: 3px 6px; border-radius: 8px; font-size: 14px; opacity: 0.6;
+    }
+    .fish-row.in-season { opacity: 1; background: rgba(255, 245, 225, 0.08); }
+    #bird-list .row { opacity: 0.6; }
+    /* ---- desk mode: a small always-on-top view while you work ---- */
+    #desk-hud { position: fixed; left: 8px; right: 8px; bottom: 8px; display: flex; flex-direction: column;
+      align-items: stretch; gap: 5px; pointer-events: none; font-size: 12px; line-height: 1.3; color: #FFF6E8; z-index: 20; }
+    #desk-hud .desk-row { display: flex; gap: 6px; align-items: center; justify-content: space-between; }
+    #desk-status { background: rgba(38, 28, 22, 0.58); padding: 3px 9px; border-radius: 10px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    #desk-ping { position: fixed; top: 8px; left: 50%; transform: translateX(-50%); max-width: 90%; text-align: center;
+      background: rgba(255, 220, 160, 0.95); color: #3A2A1E; padding: 5px 12px; border-radius: 12px; font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25); }
+    #desk-ping.bite { background: #FFE38A; animation: desk-pulse 1s ease-in-out infinite; }
+    @keyframes desk-pulse { 50% { transform: translateX(-50%) scale(1.06); } }
+    #desk-hud button { pointer-events: auto; background: rgba(38, 28, 22, 0.7); color: #FFF6E8; border: 0;
+      border-radius: 10px; padding: 4px 10px; cursor: pointer; font: inherit; }
+    #desk-hud button:hover { background: rgba(70, 52, 40, 0.85); }
+    body.desk > *:not(#app):not(#desk-hud):not(script):not(style) { display: none !important; }
+    body.desk-pip { margin: 0; overflow: hidden; background: #1E1B18; }
+    #bird-list .row.in-season { opacity: 1; background: rgba(255, 245, 225, 0.08); }
+    .cat-line { color: #FFD9A8; }
+    .fish-swatch { width: 26px; height: 10px; border-radius: 6px; }
+    .fish-info { font-size: 12px; opacity: 0.85; white-space: nowrap; }
+    #cook-book { top: 64px; right: 16px; width: 440px; }
+    .heat-bar { position: relative; overflow: visible; }
+    .heat-zone { position: absolute; top: 0; bottom: 0; background: rgba(158, 217, 154, 0.55); border-radius: 8px; }
+    .heat-marker {
+      position: absolute; top: -3px; width: 6px; height: 18px; border-radius: 3px;
+      background: var(--cream); box-shadow: 0 0 8px rgba(255, 180, 90, 0.9);
+    }
+    #journal { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    #bird-journal { top: 70px; right: 16px; }
+    #village-panel { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 440px; line-height: 1.5; }
+    .panel h2 { margin: 0 0 10px; font-size: 20px; font-weight: 600; text-align: center; }
+    #village-code {
+      margin: 12px 0; padding: 10px; text-align: center; font-size: 15px; border-radius: 12px;
+      background: rgba(255, 245, 225, 0.12);
+    }
+    button {
+      font: inherit; color: #3B2A20; background: var(--peach); border: 0; border-radius: 12px;
+      padding: 8px 18px; cursor: pointer; box-shadow: 0 3px 0 rgba(0, 0, 0, 0.15);
+    }
+    button:hover { filter: brightness(1.05); }
+
+    #village-panel-body > * { margin-top: 8px; }
+    .big-code { font-size: 30px; letter-spacing: 6px; font-weight: 600; }
+    .invite-link { text-align: center; word-break: break-all; opacity: 0.8; }
+    .village-row { display: flex; gap: 8px; justify-content: center; align-items: center; }
+    .village-row input {
+      flex: 1; font: inherit; padding: 7px 10px; border-radius: 10px; border: 0;
+      background: rgba(255, 245, 225, 0.9); color: #3B2A20;
+    }
+    .code-input { text-transform: uppercase; letter-spacing: 3px; max-width: 150px; }
+    .village-row select {
+      flex: 1; font: inherit; padding: 7px 10px; border-radius: 10px; border: 0;
+      background: rgba(255, 245, 225, 0.9); color: #3B2A20;
+    }
+    .gift-heading { margin-top: 14px; font-weight: 600; opacity: 1; }
+    .gift-row { justify-content: space-between; text-align: left; }
+    .gift-text { flex: 1; font-size: 14px; }
+    .mail-list { max-height: 220px; overflow-y: auto; padding: 6px 10px; border-radius: 12px; background: rgba(255, 245, 225, 0.08); }
+    .mail-note { padding: 5px 0; border-bottom: 1px solid rgba(255, 245, 225, 0.12); font-size: 14px; }
+    #online-list {
+      bottom: 16px; right: 16px; padding: 8px 14px; font-size: 13px; line-height: 1.6;
+      white-space: pre-line; max-width: 280px; pointer-events: none;
+    }
+    .friend-label { background: rgba(255, 214, 150, 0.85); color: #3B2A20; }
+    .world-label {
+      position: fixed; top: 0; left: 0; padding: 3px 10px; border-radius: 10px; font-size: 13px;
+      background: var(--panel); white-space: nowrap; pointer-events: none;
+    }
+    #flash { position: fixed; inset: 0; background: white; opacity: 0; pointer-events: none; }
+    #flash.go { animation: flash 0.5s ease-out; }
+    @keyframes flash { from { opacity: 0.85; } to { opacity: 0; } }
+
+    #start {
+      position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(ellipse at center, rgba(255, 220, 190, 0.15), rgba(60, 35, 30, 0.45));
+      transition: opacity 0.7s;
+    }
+    #start.hidden { opacity: 0; pointer-events: none; }
+    #start .card { position: static; text-align: center; width: 420px; padding: 28px 30px; }
+    #start h1 { margin: 0; font-size: 42px; font-weight: 600; letter-spacing: 1px; }
+    #start p { margin: 8px 0 18px; opacity: 0.9; }
+    #start input {
+      font: inherit; width: 100%; padding: 9px 12px; border-radius: 12px; border: 0; margin-bottom: 14px;
+      background: rgba(255, 245, 225, 0.9); color: #3B2A20; text-align: center;
+    }
+    #start .tips { margin-top: 16px; font-size: 13px; opacity: 0.8; line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <div id="labels"></div>
+
+  <div id="explore" class="panel">
+    <h1>Cozy Island</h1>
+    <div id="explore-list"></div>
+    <div class="controls small">
+      Click a glowing spot or press a number<br>
+      <span class="key">J</span>journal &nbsp; <span class="key">F</span>focus timer<br>
+      <span class="key">S</span>season: <span id="season-label"></span><br>
+      <span class="key">N</span>time: <span id="time-label"></span><br>
+      <span class="key">R</span>weather: <span id="weather-label"></span><br>
+    <span class="key">D</span>desk mode: a tiny island beside your work<br>
+      <span id="mute-label">M  sound on</span> &nbsp;·&nbsp; right-drag look · wheel zoom
+      <br>Click Mochi the cat on the dock to pet her
+    </div>
+  </div>
+  <div id="activity-title" class="panel" style="display:none"></div>
+  <div id="timer" class="panel pill">F  start focus</div>
+  <div id="esc-hint" class="panel" style="display:none">Esc · back to the island</div>
+  <div id="toast" class="panel"></div>
+  <div id="tooltip" class="panel" style="display:none"></div>
+
+  <div id="hud-fishing" class="panel hud" style="display:none">
+    <div class="hud-title" id="fish-hint"></div>
+    <div class="bars" id="fish-bars" style="display:none">
+      <div class="bar"><div class="fill sage" id="fish-progress"></div></div>
+      <div class="bar"><div class="fill warm" id="fish-tension"></div></div>
+    </div>
+    <div class="hud-sub" id="fish-count"></div>
+  </div>
+  <div id="fish-journal" class="panel" style="display:none">
+    <h2 id="fish-journal-title">Fish journal</h2>
+    <div id="fish-journal-sub"></div>
+    <div id="fish-list"></div>
+  </div>
+
+  <div id="hud-cooking" class="panel hud" style="display:none">
+    <div class="hud-title" id="cook-title"></div>
+    <div class="hud-sub" id="cook-sub"></div>
+    <div class="bars" id="cook-bars" style="display:none">
+      <div class="bar heat-bar"><div class="heat-zone" id="cook-zone"></div><div class="heat-marker" id="cook-marker"></div></div>
+      <div class="bar"><div class="fill sage" id="cook-progress"></div></div>
+    </div>
+  </div>
+  <div id="cook-book" class="panel" style="display:none">
+    <h2 id="cook-book-title">Cookbook</h2>
+    <div id="cook-list"></div>
+  </div>
+
+  <div id="hud-garden" class="panel hud" style="display:none">
+    <div class="hud-title" id="garden-seed"></div>
+    <div class="hud-sub" id="garden-sub"></div>
+    <div class="hud-sub" id="garden-thirsty"></div>
+    <div class="bars"><div class="bar" style="display:none"><div class="fill sage" id="garden-water"></div></div></div>
+  </div>
+
+  <div id="hud-tea" style="display:none">
+    <div id="tea-panel" class="panel hud">
+      <div class="hud-title" id="tea-title"></div>
+      <div class="hud-sub" id="tea-sub"></div>
+      <div class="bars"><div class="bar" style="display:none"><div class="fill warm" id="tea-heat"></div></div></div>
+    </div>
+    <div id="breath" style="display:none">
+      <div id="breath-ring"></div>
+      <div id="breath-circle"></div>
+      <div id="breath-text"><div id="breath-label"></div><div id="breath-count"></div></div>
+      <div id="breath-cycle"></div>
+    </div>
+  </div>
+
+  <div id="hud-birds" class="panel hud" style="display:none">
+    <div class="hud-title" id="bird-hint"></div>
+  </div>
+  <div id="bird-journal" class="panel" style="display:none">
+    <h2 id="bird-journal-title">Bird journal</h2>
+    <div id="bird-list"></div>
+  </div>
+
+  <div id="hud-viewpoint" class="panel hud" style="display:none">
+    <div class="hud-title" id="view-title"></div>
+    <div class="hud-sub" id="view-sub"></div>
+    <div class="bars"><div class="bar"><div class="fill warm" id="view-bar"></div></div></div>
+  </div>
+
+  <div id="hud-village" class="panel hud" style="display:none">
+    <div class="hud-title" id="village-title"></div>
+    <div class="hud-sub" id="village-sub"></div>
+  </div>
+  <div id="village-panel" class="panel" style="display:none">
+    <h2 id="village-panel-title">Invite friends</h2>
+    <div id="village-panel-body"></div>
+    <div style="text-align:center; margin-top: 12px;"><button id="village-close">Close</button></div>
+  </div>
+  <div id="online-list" class="panel" style="display:none"></div>
+
+  <div id="journal" class="panel" style="display:none">
+    <h2>Cozy journal</h2>
+    <div id="journal-rows"></div>
+  </div>
+
+  <div id="flash"></div>
+<div id="desk-hud" style="display:none">
+  <div id="desk-ping" style="display:none"></div>
+  <div class="desk-row">
+    <div id="desk-status"></div>
+    <div>
+      <button id="desk-focus">Focus</button>
+      <button id="desk-open" title="Open the full island (D)">Open island</button>
+    </div>
+  </div>
+</div>
+
+  <div id="start">
+    <div class="panel card">
+      <h1>Cozy Island</h1>
+      <p>A little island for laptop breaks.</p>
+      <input id="name-input" maxlength="20" placeholder="Your name (optional)">
+      <button id="start-button">Begin (sound on)</button>
+      <div class="tips">
+        Fishing · garden · tea &amp; breathing · birdwatching · sunset eye-rest · village · campfire cooking<br>
+        Press <b>F</b> for a 25-minute focus timer - plants keep growing while you work.
+      </div>
+    </div>
+  </div>
+
+  <script src="vendor/three.min.js"></script>
+  <script src="src/core.js"></script>
+  <script src="src/world.js"></script>
+  <script src="src/online.js"></script>
+  <script src="src/activities.js"></script>
+  <script src="src/main.js"></script>
+</body>
+</html>

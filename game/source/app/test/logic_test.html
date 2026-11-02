@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html><body><pre id="out">running</pre>
+<script src="../vendor/three.min.js"></script>
+<script src="../src/core.js"></script>
+<script src="../src/world.js"></script>
+<script src="../src/online.js"></script>
+<script src="../src/activities.js"></script>
+<script>
+  const lines = [];
+  const check = (ok, label) => lines.push((ok ? 'PASS ' : 'FAIL ') + label);
+  try {
+    const A = Cozy.activities;
+    const seasons = Cozy.season.IDS;
+    check(A.FISH.length === 21, 'fish species count = ' + A.FISH.length);
+    check(new Set(A.FISH.map((f) => f.name)).size === A.FISH.length, 'fish names unique');
+    for (const s of seasons) {
+      const pool = A.FISH.filter((f) => f.seasons.includes(s));
+      const total = pool.reduce((sum, f) => sum + A.RARITY[f.rarity].weight, 0);
+      const share = (r) => pool.filter((f) => f.rarity === r).reduce((sum, f) => sum + A.RARITY[f.rarity].weight, 0) / total;
+      const commons = pool.filter((f) => f.rarity === 'common').length;
+      check(pool.length >= 6 && commons >= 2,
+        `${s}: ${pool.length} fish, ${commons} common, rare+legendary chance ${(100 * (share('rare') + share('legendary'))).toFixed(1)}%`);
+    }
+    for (const f of A.FISH) {
+      if (!(f.kg[0] > 0 && f.kg[1] > f.kg[0] && f.color && f.accent && f.note && A.RARITY[f.rarity] && f.difficulty > 0)) {
+        check(false, 'bad fish entry ' + f.name);
+      }
+    }
+    const seedIds = A.SEEDS.map((s) => s.id + ':' + s.minutes).sort().join(',');
+    lines.push('SEEDS ' + seedIds);
+    for (const s of seasons) {
+      const available = A.SEEDS.filter((seed) => !seed.season || seed.season === s).map((seed) => seed.id);
+      check(available.length === 6, `${s} seeds: ${available.join(' ')}`);
+    }
+    // season clock: url override wins, cycle order, calendar mapping
+    check(Cozy.season.mode === 'winter', 'url ?season=winter respected: ' + Cozy.season.current());
+    const order = [];
+    for (let i = 0; i < 5; i++) {
+      Cozy.season.cycle();
+      order.push(Cozy.season.mode);
+    }
+    check(order.join(',') === 'auto,spring,summer,autumn,winter', 'cycle order ' + order.join(','));
+    localStorage.removeItem('cozy.seasonMode');
+  } catch (error) {
+    lines.push('FAIL exception ' + error.message);
+  }
+  document.getElementById('out').textContent = lines.join('\n');
+</script></body></html>
