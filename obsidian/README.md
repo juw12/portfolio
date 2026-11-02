@@ -8,12 +8,13 @@ Project notes for every app and model in the portfolio, as a ready-to-open [Obsi
 - **Whole repo:** green *Code* button → *Download ZIP* (vault is in `obsidian/vault/`).
 - **Single notes:** browse [`vault/`](vault/) — every note is plain Markdown and reads fine on GitHub.
 
-Updated 2026-11-02 · 30 project notes · 37 update-log entries.
+Updated 2026-11-02 · 31 project notes · 38 update-log entries.
 
 ## Project notes
 
 - [3D Models Library](vault/Portfolio/Projects/3D%20Models%20Library.md)
 - [Airiz Motor](vault/Portfolio/Projects/Airiz%20Motor.md)
+- [CrewCup](vault/Portfolio/Projects/CrewCup.md)
 - [Eiffel Tower](vault/Portfolio/Projects/Eiffel%20Tower.md)
 - [Fade](vault/Portfolio/Projects/Fade.md)
 - [Glow](vault/Portfolio/Projects/Glow.md)
@@ -82,5 +83,6 @@ Updated 2026-11-02 · 30 project notes · 37 update-log entries.
 - [2026-11-02 0856 sortie](vault/Update%20Log/2026-11-02%200856%20sortie.md)
 - [2026-11-02 0923 kinibuka](vault/Update%20Log/2026-11-02%200923%20kinibuka.md)
 - [2026-11-02 1053 rewind](vault/Update%20Log/2026-11-02%201053%20rewind.md)
+- [2026-11-02 1432 crewcup](vault/Update%20Log/2026-11-02%201432%20crewcup.md)
 
 Notes are generated from the app catalog (`scripts/apps.json` in [juw12/projects](https://github.com/juw12/projects)) by `scripts/publish_portfolio.py`, plus hand-written product notes. Local machine paths and private storage locations are removed from this public copy.
