@@ -8,7 +8,7 @@ Project notes for every app and model in the portfolio, as a ready-to-open [Obsi
 - **Whole repo:** green *Code* button → *Download ZIP* (vault is in `obsidian/vault/`).
 - **Single notes:** browse [`vault/`](vault/) — every note is plain Markdown and reads fine on GitHub.
 
-Updated 2026-11-02 · 28 project notes · 35 update-log entries.
+Updated 2026-11-02 · 29 project notes · 36 update-log entries.
 
 ## Project notes
 
@@ -19,6 +19,7 @@ Updated 2026-11-02 · 28 project notes · 35 update-log entries.
 - [Glow](vault/Portfolio/Projects/Glow.md)
 - [Guang Yao Together · 光耀同行](vault/Portfolio/Projects/Guang%20Yao%20Together%20%C2%B7%20%E5%85%89%E8%80%80%E5%90%8C%E8%A1%8C.md)
 - [Hazel](vault/Portfolio/Projects/Hazel.md)
+- [KiniBuka](vault/Portfolio/Projects/KiniBuka.md)
 - [Lingua](vault/Portfolio/Projects/Lingua.md)
 - [Loka](vault/Portfolio/Projects/Loka.md)
 - [Marina Bay Sands Miniature](vault/Portfolio/Projects/Marina%20Bay%20Sands%20Miniature.md)
@@ -78,5 +79,6 @@ Updated 2026-11-02 · 28 project notes · 35 update-log entries.
 - [2026-11-01 0024 teman-sehat](vault/Update%20Log/2026-11-01%200024%20teman-sehat.md)
 - [2026-11-01 1821 mint-whatsapp](vault/Update%20Log/2026-11-01%201821%20mint-whatsapp.md)
 - [2026-11-02 0856 sortie](vault/Update%20Log/2026-11-02%200856%20sortie.md)
+- [2026-11-02 0923 kinibuka](vault/Update%20Log/2026-11-02%200923%20kinibuka.md)
 
 Notes are generated from the app catalog (`scripts/apps.json` in [juw12/projects](https://github.com/juw12/projects)) by `scripts/publish_portfolio.py`, plus hand-written product notes. Local machine paths and private storage locations are removed from this public copy.
