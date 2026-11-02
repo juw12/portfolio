@@ -8,7 +8,7 @@ Project notes for every app and model in the portfolio, as a ready-to-open [Obsi
 - **Whole repo:** green *Code* button → *Download ZIP* (vault is in `obsidian/vault/`).
 - **Single notes:** browse [`vault/`](vault/) — every note is plain Markdown and reads fine on GitHub.
 
-Updated 2026-11-02 · 29 project notes · 36 update-log entries.
+Updated 2026-11-02 · 30 project notes · 37 update-log entries.
 
 ## Project notes
 
@@ -30,6 +30,7 @@ Updated 2026-11-02 · 29 project notes · 36 update-log entries.
 - [Peers](vault/Portfolio/Projects/Peers.md)
 - [Pips](vault/Portfolio/Projects/Pips.md)
 - [PLM AML Approval Assistant](vault/Portfolio/Projects/PLM%20AML%20Approval%20Assistant.md)
+- [Rewind](vault/Portfolio/Projects/Rewind.md)
 - [Shortcraft](vault/Portfolio/Projects/Shortcraft.md)
 - [SOMA](vault/Portfolio/Projects/SOMA.md)
 - [Sortie](vault/Portfolio/Projects/Sortie.md)
@@ -80,5 +81,6 @@ Updated 2026-11-02 · 29 project notes · 36 update-log entries.
 - [2026-11-01 1821 mint-whatsapp](vault/Update%20Log/2026-11-01%201821%20mint-whatsapp.md)
 - [2026-11-02 0856 sortie](vault/Update%20Log/2026-11-02%200856%20sortie.md)
 - [2026-11-02 0923 kinibuka](vault/Update%20Log/2026-11-02%200923%20kinibuka.md)
+- [2026-11-02 1053 rewind](vault/Update%20Log/2026-11-02%201053%20rewind.md)
 
 Notes are generated from the app catalog (`scripts/apps.json` in [juw12/projects](https://github.com/juw12/projects)) by `scripts/publish_portfolio.py`, plus hand-written product notes. Local machine paths and private storage locations are removed from this public copy.
