@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 02 Nov 2026 15:57:45 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 06:51:02 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Haru</title>
+      <link>https://juw12.github.io/projects/haru/app/</link>
+      <guid isPermaLink="false">juwenlie-project-haru</guid>
+      <pubDate>Tue, 03 Nov 2026 06:51:02 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/haru-card.jpg" alt="Haru swipe deck: a day card with a tiny 3D street-corner diorama in autumn light, a cat polaroid, a short note and a hanko mood stamp" width="600"></p><p>Your days as a cozy little town: a weather-lit diorama, photo, note and walk for each day, plus a screenshot tidy-up.</p>]]></description>
+      <jl:summary>Your days as a cozy little town: a weather-lit diorama, photo, note and walk for each day, plus a screenshot tidy-up.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/haru-card.jpg" type="image/jpeg" length="0"/>
+      <category>PWA</category><category>Android</category><category>Windows / Mac</category><category>iOS / SwiftUI</category><category>Photo diary</category><category>Walking map</category><category>On-device OCR</category><category>JA / KO / EN</category>
+    </item>
     <item>
       <title>ScopeGuard</title>
       <link>https://juw12.github.io/projects/scopeguard/</link>
@@ -16,16 +26,6 @@
       <jl:summary>Stop users turning your business AI into a free ChatGPT: allow, steer, redirect or block every message.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/scopeguard-card.jpg" type="image/jpeg" length="0"/>
       <category>AI guardrails</category><category>LLM cost control</category><category>Jailbreak blocking</category><category>Analytics</category><category>PWA</category><category>Vanilla JS</category><category>Python stdlib</category>
-    </item>
-    <item>
-      <title>Ashiato</title>
-      <link>https://juw12.github.io/projects/ashiato/?lang=en</link>
-      <guid isPermaLink="false">juwenlie-project-ashiato</guid>
-      <pubDate>Mon, 02 Nov 2026 15:57:45 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/ashiato-card.jpg" alt="Ashiato swipe deck: a day card with a tiny 3D street-corner diorama in autumn light, a cat polaroid, a short note and a hanko mood stamp" width="600"></p><p>Your days as a cozy 3D swipe deck: a weather-lit diorama, photo, note and walk for each day, plus a screenshot tidy-up.</p>]]></description>
-      <jl:summary>Your days as a cozy 3D swipe deck: a weather-lit diorama, photo, note and walk for each day, plus a screenshot tidy-up.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/ashiato-card.jpg" type="image/jpeg" length="0"/>
-      <category>iOS / SwiftUI</category><category>three.js</category><category>Photo diary</category><category>Walking map</category><category>On-device OCR</category><category>JA / KO / EN</category>
     </item>
     <item>
       <title>CrewCup</title>
