@@ -1,4 +1,53 @@
-# Juwen Lie — Portfolio
+<!-- HERO:START -->
+<p align="center">
+  <a href="https://juw12.github.io/portfolio/"><img src="docs/media/banner.jpg" alt="Juwen Lie: Portfolio: Mechanical engineering, software projects and browser games." width="100%"></a>
+</p>
+
+<p align="center">
+  <b>Mechanical engineering, software projects and browser games.</b><br>
+  An interactive portfolio, plus Townsquare 3D and Cozy Island, playable in the browser.
+</p>
+
+<p align="center">
+  <a href="https://juw12.github.io/portfolio/"><b>Try it live</b></a> ·
+  <a href="#see-it-in-action">See it in action</a> ·
+  <a href="#highlights">Highlights</a> ·
+  <a href="https://github.com/juw12">More by juw12</a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/juw12/portfolio"><img src="https://img.shields.io/github/last-commit/juw12/portfolio?label=updated&color=2563eb" alt="Last updated"></a>
+  <a href="https://juw12.github.io/portfolio/"><img src="https://img.shields.io/badge/demo-live-2ea44f" alt="Live demo"></a>
+  <img src="https://img.shields.io/badge/Web-24292f" alt="Web">
+</p>
+
+<a id="highlights"></a>
+<table>
+  <tr>
+    <td width="33%" valign="top">
+      <b>R&D engineering</b><br>
+      Product reliability, DVT, NPI and root-cause analysis work.
+    </td>
+    <td width="33%" valign="top">
+      <b>Townsquare 3D</b><br>
+      A shared 3D town: claim land, run crops and trade at a live market.
+    </td>
+    <td width="33%" valign="top">
+      <b>Cozy Island</b><br>
+      A cozy 3D island for laptop workers, in a single HTML file.
+    </td>
+  </tr>
+</table>
+
+## See it in action
+
+<p align="center">
+  <a href="https://juw12.github.io/portfolio/"><img src="docs/media/demo.png" alt="Juwen Lie: Portfolio screenshot" width="820"></a><br>
+  <sub>Open the interactive demo at <a href="https://juw12.github.io/portfolio/">juw12.github.io/portfolio/</a></sub>
+</p>
+<!-- HERO:END -->
+
+## About
 
 Interactive personal portfolio for **Juwen Lie** — R&D Mechanical Engineer (Mechanical · Aerospace · AI · Tech · Systems).
 
