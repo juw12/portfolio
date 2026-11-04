@@ -306,6 +306,7 @@
             <button class="filter-tab" type="button" data-filter="AI" role="tab" aria-selected="false" aria-controls="project-grid">AI</button>
             <button class="filter-tab" type="button" data-filter="Creator Tools" role="tab" aria-selected="false" aria-controls="project-grid">Creator Tools</button>
             <button class="filter-tab" type="button" data-filter="Apps" role="tab" aria-selected="false" aria-controls="project-grid">Apps</button>
+            <button class="filter-tab" type="button" data-filter="Software" role="tab" aria-selected="false" aria-controls="project-grid">Software</button>
           </div>
           <label class="project-search">
             <span class="visually-hidden">Search projects</span>
@@ -353,6 +354,138 @@
           </article>
 
           <!-- PROJECTS:MANAGED:START (auto-generated from apps.json by scripts/publish_portfolio.py — do not edit by hand) -->
+          <article class="project-card" data-category="Automation">
+            <img src="./assets/projects/airiz-motor-card.jpg" alt="Airiz Motor Test Console dashboard: command library, serial console and macro notepad for AIRIZ device motor testing" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">Automation</span>
+              <h3 class="project-title">Airiz Motor</h3>
+              <p class="project-description">AIRIZ test console for Windows, Android, iPhone and web &mdash; USB/Bluetooth jog, remote control by code, live device checks, auto night vision from camera + light sensor.</p>
+              <div class="project-details" hidden>Downloadable Windows console (v1.11.25) with a locally bundled controller, serial port chooser, macros and offline demo. Remote by code lets a phone or another PC control the AIRIZ and see its camera through this PC with the owner's 6-digit code. The dashboard shows real device facts: the firmware the AIRIZ reports, live link activity, a camera check that confirms each jog really moved the camera, automatic aim and timing calibration from the camera picture, a camera-based wobble test that grades the rising head 1 to 4, and a read-only hardware check report. Camera tab: Home key sends the camera home; auto night vision uses both the on-board light sensor and the camera mean luminance (either source can pull the mode to night, both must agree to go back to day). Camera tools add presets, motion detection, a siren and talk / listen through the AIRIZ speaker and microphone. The browser and mobile-web editions remain available.</div>
+              <div class="project-tags">
+                <span class="tag">Windows app</span>
+                <span class="tag">Web Serial</span>
+                <span class="tag">Bluetooth control</span>
+                <span class="tag">camera sharing</span>
+                <span class="tag">macro runner</span>
+                <span class="tag">offline demo</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://github.com/juw12/projects/releases/tag/airiz-desktop-v1.11.25" target="_blank" rel="noopener noreferrer">Windows app</a>
+                <a class="project-link" href="https://juw12.github.io/projects/airiz-motor/" target="_blank" rel="noopener noreferrer">Web</a>
+                <a class="project-link" href="https://juw12.github.io/projects/airiz-motor/" target="_blank" rel="noopener noreferrer">Mobile web</a>
+                <a class="project-link" href="https://github.com/juw12/projects/releases/tag/airiz-mobile-v1.0.3" target="_blank" rel="noopener noreferrer">Android app</a>
+                <a class="project-link" href="https://juw12.github.io/projects/airiz-motor/iphone.html" target="_blank" rel="noopener noreferrer">iPhone (Bluefy)</a>
+              </div>
+            </div>
+          </article>
+          
+          <article class="project-card" data-category="Apps">
+            <img src="./assets/projects/twin-card.jpg" alt="Twin 1.5: redesigned Home, TwinAgent Buy verdict with evidence score, risk gate with practice-trade plan, and AAPL stock page" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">Apps</span>
+              <h3 class="project-title">Twin</h3>
+              <p class="project-description">Investing companion with an AI research team, global stocks, paper trading, a replay lab, and IDX, crypto and gold in rupiah.</p>
+              <div class="project-details" hidden>Twin is an iPhone-ready investing and trading companion with a clean, professional design (1.5.1: new design system, line icons, dark and light themes) that tells you when a new version is ready and installs it in one tap. New in 1.15: the Twin desktop app for Windows and Mac — your own Twin server and app in one program, so real trading with Alpaca or Interactive Brokers needs no Python or terminal — and Add money: see your broker cash and buying power, follow a step-by-step deposit at your broker and get told when the money arrives (Twin never holds your money). From 1.14: updates inside the app — the installed app shows "Update ready" with what's new and updates in one tap (nothing reloads by surprise), and a Twin running on your own computer can update itself from the app: it downloads the published bundle, checks its SHA-256, backs up the whole Twin folder, keeps accounts and data, and restarts; Me shows the version with a Check for updates button. From 1.13: two wallets, one picture — move practice money between your US dollar portfolio and the Twin Indonesia rupiah wallet at the delayed mid rate minus a 0.5% practice spread; both ledgers update together (in one revision-checked request on your own server, or in this browser on the web demo), moved money counts as money put in so returns stay honest, and Portfolio and Me show both wallets and the combined total. From 1.12: the Twin Indonesia rupiah wallet shows on Home and Me, syncs to your Twin account on your own server (conflict-safe across devices), and Indonesian, crypto and gold headlines come from every feed through the server or refresh hourly on the web demo. From 1.11: Twin Indonesia, the rupiah side of Twin at twin/id/ — IDX stocks in 100-share lots with price steps and broker fees, US stocks at the shown USD/IDR rate, crypto and gold priced in rupiah, community rooms with Scam Shield, an Analyst Desk whose ideas are scored against real prices, and nine interactive lessons, with a separate rupiah practice wallet. From 1.10: a premium landing page and the premium look on every tab — glowing portfolio card on Invest, gradient academy and colourful course tiles on Learn, rounded Trade and News cards, and a big avatar header on Me. From 1.9: a premium dark design with a glowing balance hero, quick actions, swipeable cards and a Buy/Sell dock on every stock. From 1.8: big bold numbers, soft borderless cards, pill buttons, coloured ticker badges, a floating glass tab bar, charts that draw themselves in, count-up portfolio value and swipe-to-close sheets. New in 1.7: real-time prices from your own Interactive Brokers, Alpaca or Finnhub account with the source shown on every stock page (Yahoo stays the labelled, delayed fallback), a read-only IBKR gateway self-test, Qatar and Abu Dhabi holiday calendars, daily backups of your data and a safe updater. From 1.6: the web demo covers about 280 stocks and ETFs on 35+ exchanges plus 34 indices, refreshed hourly; market status follows real exchange calendars (holidays, early closes); FX rates refresh every minute with their time shown; and real orders can go through Interactive Brokers for world exchanges as well as Alpaca for US listings. From 1.5: TwinAgent, a free research team of five analysts (trend, SEC-filed fundamentals, risk, relevance-screened headlines, famous investors' 13Fs) that argue a bull and bear case from cited, dated evidence; a portfolio manager rates the stock and a risk gate built from your own limits sizes or blocks the idea. No AI subscription, the same evidence always gives the same report, future data is filtered out, and a walk-forward scorecard tests the price evidence over decades against buy-and-hold. Search stocks by company, ticker or country — Tokyo, Hong Kong, Jakarta, London, Frankfurt, Mumbai, Toronto, São Paulo, Sydney and more — with exchange, currency, market status and next holidays, ≈ USD price with the FX time and US-listing hints on every stock page. World markets shows market clocks, 34 indices, movers and a heatmap; practice trades in a separate $10,000 USD portfolio convert foreign prices at current FX rates, and totals can be shown in your home currency (25 currencies). Continue as guest or share a ?guest link; market, limit, stop, stop-limit and trailing orders with brackets, price alerts, scrub charts with SMA/EMA/RSI, portfolio X-ray with country and currency exposure, a bar-by-bar Replay Lab and 12 Twin Academy lessons. The local server searches any Yahoo Finance listing; the web demo uses an hourly snapshot of about 280 global stocks and ETFs. Optional real trading on the local server through your own Alpaca (US) or Interactive Brokers (world exchanges) account, with preview, confirm, caps and submission-time checks. Not financial advice.</div>
+              <div class="project-tags">
+                <span class="tag">TwinAgent</span>
+                <span class="tag">multi-agent research</span>
+                <span class="tag">global markets</span>
+                <span class="tag">exchange calendars</span>
+                <span class="tag">real-time data</span>
+                <span class="tag">multi-currency</span>
+                <span class="tag">paper trading</span>
+                <span class="tag">Interactive Brokers</span>
+                <span class="tag">Alpaca API</span>
+                <span class="tag">Indonesia (IDX)</span>
+                <span class="tag">crypto & gold</span>
+                <span class="tag">PWA</span>
+                <span class="tag">desktop app</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://github.com/juw12/projects/releases/tag/twin" target="_blank" rel="noopener noreferrer">Windows app</a>
+                <a class="project-link" href="https://github.com/juw12/projects/releases/tag/twin" target="_blank" rel="noopener noreferrer">Mac app</a>
+                <a class="project-link" href="https://juw12.github.io/projects/twin/?v=1.15.0" target="_blank" rel="noopener noreferrer">Web</a>
+                <a class="project-link" href="https://juw12.github.io/projects/twin/mobile.html" target="_blank" rel="noopener noreferrer">Mobile web</a>
+              </div>
+            </div>
+          </article>
+          
+          <article class="project-card" data-category="AI">
+            <img src="./assets/projects/glow-card.jpg" alt="Glow: GlowChat council with a Judge, part of the Glow ecosystem with GlowRoom" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">AI</span>
+              <h3 class="project-title">Glow</h3>
+              <p class="project-description">Four AI apps, one free account &mdash; GlowLead plans, GlowChat compares models, GlowRoom researches, GlowNews briefs you on AI news.</p>
+              <div class="project-details" hidden>One home, one free account, four AI apps. <strong>GlowLead</strong>: give one goal and the AI lead plans it, hands each step to GlowChat or the GlowRoom crew, checks the work against clear done-criteria and reports back. <strong>GlowChat</strong>: chat with any model (ranked by category), your own persona, images, a usage meter, temporary chats, a Council with a Judge and an Arena. <strong>GlowRoom</strong>: an AI crew that searches the web, runs code and cites sources, in a warm Glow Studio office. <strong>GlowNews</strong>: the day's AI news in one place, a new edition twice a day; the same story from many outlets becomes one card with every source, ranked and tagged by topic, with free-AI summaries, a 5-point briefing, &ldquo;new for you&rdquo; and one tap to discuss any story in GlowChat. <strong>Free AI built in</strong>: no keys or setup. Puter, OVHcloud (Llama 3.3 70B, GPT-OSS 120B, Qwen 3.5 397B, Mistral Small), LLM7 and Glow Free back each other up: when one is busy or used up, the next answers the same message, with the AI on your device as the last backup. One avatar in every app opens <strong>Profile &amp; settings</strong>: name, Puter account, persona, token usage and allowance, privacy and your data. <strong>Speaks your language</strong>: pick English, Bahasa Indonesia, 简体中文 or 繁體中文 and your region on first open; the region decides which AI models you get (only providers that serve mainland China there, with PIPL consent), plus local prices and privacy notes. Free for guests.</div>
+              <div class="project-tags">
+                <span class="tag">AI ecosystem</span>
+                <span class="tag">GlowLead</span>
+                <span class="tag">GlowChat</span>
+                <span class="tag">GlowRoom</span>
+                <span class="tag">GlowNews</span>
+                <span class="tag">AI news</span>
+                <span class="tag">AI agents</span>
+                <span class="tag">orchestrator</span>
+                <span class="tag">multilingual</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://juw12.github.io/projects/glow/" target="_blank" rel="noopener noreferrer">Glow home</a>
+                <a class="project-link" href="https://juw12.github.io/projects/glow/lead/" target="_blank" rel="noopener noreferrer">GlowLead</a>
+                <a class="project-link" href="https://juw12.github.io/projects/glow/chat/" target="_blank" rel="noopener noreferrer">GlowChat</a>
+                <a class="project-link" href="https://juw12.github.io/projects/glow/room/" target="_blank" rel="noopener noreferrer">GlowRoom</a>
+                <a class="project-link" href="https://juw12.github.io/projects/glow/news/" target="_blank" rel="noopener noreferrer">GlowNews</a>
+                <a class="project-link" href="https://juw12.github.io/projects/glow/download/" target="_blank" rel="noopener noreferrer">Download</a>
+              </div>
+            </div>
+          </article>
+          
+          <article class="project-card" data-category="AI">
+            <img src="./assets/projects/buddy-card.jpg" alt="Buddy pointing at File, Save As in Notepad with a speech bubble that says Right here" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">AI</span>
+              <h3 class="project-title">Buddy</h3>
+              <p class="project-description">AI buddy next to your mouse: hold Ctrl+Alt+Space, ask about your screen, and it points at the answer or does it for you.</p>
+              <div class="project-details" hidden>A small orange pointer rests next to your mouse. Hold <strong>Ctrl+Alt+Space</strong> and ask out loud (or tap it to type): Buddy looks once at the screen under your mouse, flies to the exact button, explains it in a speech bubble and reads it aloud in a <strong>natural, on-device voice</strong> (7 languages). If your words ask for it, it <strong>clicks, types, opens, closes and presses shortcuts</strong> for you, asks Yes/No before anything risky, and writes every action to a log. Pick the brain: a fast vision model on any OpenAI-compatible endpoint, or <strong>Local GPU / CPU</strong> so nothing leaves the PC. The pointer runs on its own thread and window, so it keeps up even on a busy laptop. Pick its colour and icon. Bundles the Pips focus pet and KeyIt keyboard and mouse sounds. <strong>Buddy Lite for Mac</strong> (Control+Option+Space, one universal app for Apple Silicon and Intel) points and answers with Apple speech recognition and system voices; it is built and self-tested on real macOS by GitHub Actions. Free, MIT, no installer and no account.</div>
+              <div class="project-tags">
+                <span class="tag">Windows + Mac</span>
+                <span class="tag">AI assistant</span>
+                <span class="tag">vision model</span>
+                <span class="tag">on-device voice</span>
+                <span class="tag">UI automation</span>
+                <span class="tag">Python</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://juw12.github.io/buddy/" target="_blank" rel="noopener noreferrer">Website &amp; demo</a>
+                <a class="project-link" href="https://github.com/juw12/buddy/releases/latest" target="_blank" rel="noopener noreferrer">Download (Windows &amp;amp; Mac)</a>
+                <a class="project-link" href="https://github.com/juw12/buddy" target="_blank" rel="noopener noreferrer">Source</a>
+              </div>
+            </div>
+          </article>
+          
+          <article class="project-card" data-category="Engineering">
+            <img src="./assets/projects/me-rd-toolkit-card.jpg" alt="ME R&D Toolkit dashboard with NPI flow, checklists, calculators and lessons quick-access tiles" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">Engineering</span>
+              <h3 class="project-title">Datum Bench</h3>
+              <p class="project-description">Offline workspace for mechanical R&amp;D &mdash; NPI task flow, review checklists, issue log and 11 engineering calculators.</p>
+              <div class="project-details" hidden>Offline-first workspace for hardware/mechanical R&amp;D: NPI task flow, OK/NG/NA review checklists, issue log and one-page project report, 11 calculators (Cpk, x&#772; &minus; 3&sigma;, torque window, stack-up, snap-fit, thermal pad, IEC openings, &Delta;E) and an optional stdlib-only file vault server. Ships with generic demo data; real content loads from a private data pack.</div>
+              <div class="project-tags">
+                <span class="tag">NPI</span>
+                <span class="tag">checklists</span>
+                <span class="tag">Cpk</span>
+                <span class="tag">PWA</span>
+                <span class="tag">offline-first</span>
+                <span class="tag">Windows app</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://github.com/juw12/projects/releases/tag/me-rd-toolkit" target="_blank" rel="noopener noreferrer">Windows app</a>
+                <a class="project-link" href="https://juw12.github.io/projects/me-rd-toolkit/index.html" target="_blank" rel="noopener noreferrer">Open app</a>
+                <a class="project-link" href="https://juw12.github.io/projects/me-rd-toolkit/vertex/index.html" target="_blank" rel="noopener noreferrer">Vertex</a>
+                <a class="project-link" href="https://juw12.github.io/projects/me-rd-toolkit/photo2cad/gallery.html" target="_blank" rel="noopener noreferrer">Datum CAD</a>
+              </div>
+            </div>
+          </article>
+          
           <article class="project-card" data-category="Software">
             <img src="./assets/projects/mint-card.jpg" alt="Mint: the shared budget overview with the left-to-spend ring and pace chart, and Templates one tap away in the sidebar" class="project-card-image" loading="lazy" decoding="async">
             <div class="project-content">
@@ -410,74 +543,24 @@
             </div>
           </article>
           
-          <article class="project-card" data-category="Apps">
-            <img src="./assets/projects/teman-sehat-card.jpg" alt="Teman Sehat today view: next reminder, daily kcal, protein and exercise summary, after-meal timer and GERD habit checklist" class="project-card-image" loading="lazy" decoding="async">
-            <div class="project-content">
-              <span class="project-category">Apps</span>
-              <h3 class="project-title">Teman Sehat</h3>
-              <p class="project-description">GERD companion in Bahasa Indonesia: reminders, diet &amp; fitness without fasting, acne care. Desktop, Android, iPhone.</p>
-              <div class="project-details" hidden>Lifestyle companion for people with GERD, in Bahasa Indonesia, that also covers dieting without fasting and acne care. <strong>Hari Ini</strong> brings it together: the next reminder, a daily summary (kcal, protein, exercise, GERD habits, skin routine, symptoms, pimples) and an after-meal timer (&ldquo;stay upright 3&nbsp;h, hard exercise after about 2&nbsp;h&rdquo;). <strong>Pengingat</strong>: an editable daily schedule for GERD habits, exercise and the morning/night skin routine. <strong>Gejala</strong>: a symptom log with triggers and a 30-day trigger ranking. <strong>Fit</strong>: calorie and protein targets (Mifflin&ndash;St Jeor, Asian BMI cut-offs, a calorie floor) split into five small meals, a food log of GERD-friendly Indonesian foods with trigger foods flagged, an exercise log against 150&nbsp;min cardio plus 2&ndash;3 strength days, and a weight chart with a goal line. <strong>Kulit</strong>: a skin-routine checklist, a 14-day pimple counter and a guide (actives, non-BPOM creams to avoid, whey and high-GI links, and the doxycycline warning for GERD). Installable PWA for desktop, Android and iPhone that works offline; a Capacitor build schedules reminders as native notifications so they fire with the app closed. Local-only, no account, with a clear not-medical-advice note.</div>
-              <div class="project-tags">
-                <span class="tag">PWA</span>
-                <span class="tag">Capacitor</span>
-                <span class="tag">health</span>
-                <span class="tag">Bahasa Indonesia</span>
-                <span class="tag">local-only</span>
-              </div>
-              <div class="project-links">
-                <a class="project-link" href="https://juw12.github.io/projects/teman-sehat/index.html" target="_blank" rel="noopener noreferrer">Open app</a>
-                <a class="project-link" href="https://juw12.github.io/projects/teman-sehat/index.html#demo" target="_blank" rel="noopener noreferrer">Demo</a>
-                <a class="project-link" href="https://github.com/juw12/projects/tree/main/apps/teman-sehat" target="_blank" rel="noopener noreferrer">Source</a>
-              </div>
-            </div>
-          </article>
-          
-          <article class="project-card" data-category="Engineering">
-            <img src="./assets/projects/me-rd-toolkit-card.jpg" alt="ME R&D Toolkit dashboard with NPI flow, checklists, calculators and lessons quick-access tiles" class="project-card-image" loading="lazy" decoding="async">
-            <div class="project-content">
-              <span class="project-category">Engineering</span>
-              <h3 class="project-title">Datum Bench</h3>
-              <p class="project-description">Offline workspace for mechanical R&amp;D &mdash; NPI task flow, review checklists, issue log and 11 engineering calculators.</p>
-              <div class="project-details" hidden>Offline-first workspace for hardware/mechanical R&amp;D: NPI task flow, OK/NG/NA review checklists, issue log and one-page project report, 11 calculators (Cpk, x&#772; &minus; 3&sigma;, torque window, stack-up, snap-fit, thermal pad, IEC openings, &Delta;E) and an optional stdlib-only file vault server. Ships with generic demo data; real content loads from a private data pack.</div>
-              <div class="project-tags">
-                <span class="tag">NPI</span>
-                <span class="tag">checklists</span>
-                <span class="tag">Cpk</span>
-                <span class="tag">PWA</span>
-                <span class="tag">offline-first</span>
-                <span class="tag">Windows app</span>
-              </div>
-              <div class="project-links">
-                <a class="project-link" href="https://github.com/juw12/projects/releases/tag/me-rd-toolkit" target="_blank" rel="noopener noreferrer">Windows app</a>
-                <a class="project-link" href="https://juw12.github.io/projects/me-rd-toolkit/index.html" target="_blank" rel="noopener noreferrer">Open app</a>
-                <a class="project-link" href="https://juw12.github.io/projects/me-rd-toolkit/vertex/index.html" target="_blank" rel="noopener noreferrer">Vertex</a>
-                <a class="project-link" href="https://juw12.github.io/projects/me-rd-toolkit/photo2cad/gallery.html" target="_blank" rel="noopener noreferrer">Datum CAD</a>
-              </div>
-            </div>
-          </article>
-          
           <article class="project-card" data-category="Software">
-            <img src="./assets/projects/pips-card.jpg" alt="Pips: twelve desktop pet animals next to the Pomodoro card" class="project-card-image" loading="lazy" decoding="async">
+            <img src="./assets/projects/earlystar-card.jpg" alt="EarlyStar leaderboard of GitHub repositories ranked by stars gained, with activity columns" class="project-card-image" loading="lazy" decoding="async">
             <div class="project-content">
               <span class="project-category">Software</span>
-              <h3 class="project-title">Pips</h3>
-              <p class="project-description">Desktop pet + Pomodoro for Windows &mdash; 51 animals, friends, skill battles, a Strava-style Focus Trail and Phone Trail, 4 languages.</p>
-              <div class="project-details" hidden>A tiny animated pet that lives on your desktop: <strong>51 animals</strong> &mdash; land animals walk the taskbar and ride along on your open windows, water animals swim and leap out with a splash, sky animals fly anywhere and perch. Every animal has its own voice and song; pets have moods, grow up from baby to grown-up, catch a little cold when you skip breaks and show the live weather on your desktop. Click to tickle, double-click to open the Hub. <strong>Pips Friends</strong>: chat, groups and the Pips Community, pet visits, pokes, birthdays and gifts. <strong>Arena</strong>: turn-based skill battles (best of 1, 3 or 5) &mdash; press the skills yourself or switch on <strong>Auto</strong> and let your pet fight &mdash; plus minigames and a shop of hats, wings, moves and arena gear. Underneath, an always-on-top Pomodoro timer with soundscapes, app-usage tracking, a daily 1&ndash;5 star score, goals, streaks and history. <strong>Focus Trail</strong> turns your work day into a Strava-style route sticker: the trail turns clockwise through the day, runs straight while you stay in one app, kinks when you switch and loops on distracting time &mdash; save it or share it. <strong>Phone Trail</strong> does the same for your phone's screen time (<a href="https://juw12.github.io/projects/pips/trail/">web page</a> for any phone, plus Android and iPhone apps). English, Bahasa Indonesia, 繁體中文 and 简体中文. One-click Windows installer with in-app updates; focus history stays local, social features use the Pips online service.</div>
+              <h3 class="project-title">EarlyStar</h3>
+              <p class="project-description">Find GitHub repos before they trend: ranked by stars actually gained, with real activity, Trending history and a free API.</p>
+              <div class="project-details" hidden>EarlyStar finds GitHub repositories <strong>before they trend</strong>. Instead of total stars it ranks repos by the <strong>stars they actually gained</strong>, and puts <strong>real activity</strong> next to the hype so a breakout is easy to tell from a spike. It keeps a <strong>GitHub Trending history</strong> and offers embeddable <strong>badges</strong>, a free <strong>JSON API</strong> and a desktop app.</div>
               <div class="project-tags">
-                <span class="tag">Windows app</span>
-                <span class="tag">desktop pet</span>
-                <span class="tag">Pomodoro</span>
-                <span class="tag">Focus Trail</span>
-                <span class="tag">skill battles</span>
-                <span class="tag">Python</span>
-                <span class="tag">4 languages</span>
+                <span class="tag">GitHub data</span>
+                <span class="tag">Trending</span>
+                <span class="tag">JSON API</span>
+                <span class="tag">GitHub Actions</span>
+                <span class="tag">static site</span>
+                <span class="tag">Tauri desktop</span>
               </div>
               <div class="project-links">
-                <a class="project-link" href="https://juw12.github.io/projects/pips/download/Pips-Setup.exe" target="_blank" rel="noopener noreferrer">Download for Windows</a>
-                <a class="project-link" href="https://juw12.github.io/projects/pips/web.html" target="_blank" rel="noopener noreferrer">Web</a>
-                <a class="project-link" href="https://juw12.github.io/projects/pips/mobile.html" target="_blank" rel="noopener noreferrer">Mobile</a>
-                <a class="project-link" href="https://juw12.github.io/projects/pips/download/Pips-Guide.pptx" target="_blank" rel="noopener noreferrer">User guide (PPT)</a>
-                <a class="project-link" href="https://github.com/juw12/projects/tree/main/apps/pips" target="_blank" rel="noopener noreferrer">Source</a>
+                <a class="project-link" href="https://juw12.github.io/earlystar/" target="_blank" rel="noopener noreferrer">Open site</a>
+                <a class="project-link" href="https://github.com/juw12/earlystar" target="_blank" rel="noopener noreferrer">Source</a>
               </div>
             </div>
           </article>
@@ -501,82 +584,48 @@
             </div>
           </article>
           
-          <article class="project-card" data-category="Automation">
-            <img src="./assets/projects/airiz-motor-card.jpg" alt="Airiz Motor Test Console dashboard: command library, serial console and macro notepad for AIRIZ device motor testing" class="project-card-image" loading="lazy" decoding="async">
+          <article class="project-card" data-category="Engineering">
+            <img src="./assets/projects/photo2cad-card.jpg" alt="photo2cad workbench: a PRD editor and six reference-photo slots beside a CAD viewport" class="project-card-image" loading="lazy" decoding="async">
             <div class="project-content">
-              <span class="project-category">Automation</span>
-              <h3 class="project-title">Airiz Motor</h3>
-              <p class="project-description">AIRIZ test console for Windows, Android, iPhone and web &mdash; USB/Bluetooth jog, remote control by code, live device checks, auto night vision from camera + light sensor.</p>
-              <div class="project-details" hidden>Downloadable Windows console (v1.11.25) with a locally bundled controller, serial port chooser, macros and offline demo. Remote by code lets a phone or another PC control the AIRIZ and see its camera through this PC with the owner's 6-digit code. The dashboard shows real device facts: the firmware the AIRIZ reports, live link activity, a camera check that confirms each jog really moved the camera, automatic aim and timing calibration from the camera picture, a camera-based wobble test that grades the rising head 1 to 4, and a read-only hardware check report. Camera tab: Home key sends the camera home; auto night vision uses both the on-board light sensor and the camera mean luminance (either source can pull the mode to night, both must agree to go back to day). Camera tools add presets, motion detection, a siren and talk / listen through the AIRIZ speaker and microphone. The browser and mobile-web editions remain available.</div>
+              <span class="project-category">Engineering</span>
+              <h3 class="project-title">Photo2CAD</h3>
+              <p class="project-description">PRD + six reference photos to a validated STEP (.stp) CAD model via an LLM-written CadQuery program - a deployable service.</p>
+              <div class="project-details" hidden>Engineering service that turns a product requirements document (PRD) and six reference photographs (front/back/left/right/top/bottom) into a real CAD file. A Pegatron MAAS LLM writes a parametric CadQuery program from the PRD (the photos are visual/dimension reference), a sandboxed child process builds it, and the server re-imports the STEP to validate a single solid with its bounding box and volume - returning a downloadable .stp plus an STL preview. Ships as a deployable web service (Docker + Kubernetes). Output is STEP; Creo .prt is proprietary and not produced (Creo imports STEP).</div>
               <div class="project-tags">
-                <span class="tag">Windows app</span>
-                <span class="tag">Web Serial</span>
-                <span class="tag">Bluetooth control</span>
-                <span class="tag">camera sharing</span>
-                <span class="tag">macro runner</span>
-                <span class="tag">offline demo</span>
+                <span class="tag">CAD</span>
+                <span class="tag">STEP</span>
+                <span class="tag">CadQuery</span>
+                <span class="tag">LLM</span>
+                <span class="tag">Python</span>
+                <span class="tag">deployable service</span>
               </div>
               <div class="project-links">
-                <a class="project-link" href="https://github.com/juw12/projects/releases/tag/airiz-desktop-v1.11.25" target="_blank" rel="noopener noreferrer">Windows app</a>
-                <a class="project-link" href="https://juw12.github.io/projects/airiz-motor/" target="_blank" rel="noopener noreferrer">Web</a>
-                <a class="project-link" href="https://juw12.github.io/projects/airiz-motor/" target="_blank" rel="noopener noreferrer">Mobile web</a>
-                <a class="project-link" href="https://github.com/juw12/projects/releases/tag/airiz-mobile-v1.0.3" target="_blank" rel="noopener noreferrer">Android app</a>
-                <a class="project-link" href="https://juw12.github.io/projects/airiz-motor/iphone.html" target="_blank" rel="noopener noreferrer">iPhone (Bluefy)</a>
+                <a class="project-link" href="https://github.com/juw12/projects/tree/main/apps/me-rd-toolkit/photo2cad" target="_blank" rel="noopener noreferrer">Files</a>
               </div>
             </div>
           </article>
           
-          <article class="project-card" data-category="AI">
-            <img src="./assets/projects/glow-card.jpg" alt="Glow: GlowChat council with a Judge, part of the Glow ecosystem with GlowRoom" class="project-card-image" loading="lazy" decoding="async">
+          <article class="project-card" data-category="Apps">
+            <img src="./assets/projects/sync-card.jpg" alt="Sync listening room with a synced now-playing card, cross-service queue and party voice chat" class="project-card-image" loading="lazy" decoding="async">
             <div class="project-content">
-              <span class="project-category">AI</span>
-              <h3 class="project-title">Glow</h3>
-              <p class="project-description">Four AI apps, one free account &mdash; GlowLead plans, GlowChat compares models, GlowRoom researches, GlowNews briefs you on AI news.</p>
-              <div class="project-details" hidden>One home, one free account, four AI apps. <strong>GlowLead</strong>: give one goal and the AI lead plans it, hands each step to GlowChat or the GlowRoom crew, checks the work against clear done-criteria and reports back. <strong>GlowChat</strong>: chat with any model (ranked by category), your own persona, images, a usage meter, temporary chats, a Council with a Judge and an Arena. <strong>GlowRoom</strong>: an AI crew that searches the web, runs code and cites sources, in a warm Glow Studio office. <strong>GlowNews</strong>: the day's AI news in one place, a new edition twice a day; the same story from many outlets becomes one card with every source, ranked and tagged by topic, with free-AI summaries, a 5-point briefing, &ldquo;new for you&rdquo; and one tap to discuss any story in GlowChat. <strong>Free AI built in</strong>: no keys or setup. Puter, OVHcloud (Llama 3.3 70B, GPT-OSS 120B, Qwen 3.5 397B, Mistral Small), LLM7 and Glow Free back each other up: when one is busy or used up, the next answers the same message, with the AI on your device as the last backup. One avatar in every app opens <strong>Profile &amp; settings</strong>: name, Puter account, persona, token usage and allowance, privacy and your data. <strong>Speaks your language</strong>: pick English, Bahasa Indonesia, 简体中文 or 繁體中文 and your region on first open; the region decides which AI models you get (only providers that serve mainland China there, with PIPL consent), plus local prices and privacy notes. Free for guests.</div>
+              <span class="project-category">Apps</span>
+              <h3 class="project-title">Sync</h3>
+              <p class="project-description">Listen together in real time across Spotify, Apple Music and YouTube, with voice chat, on web, Android and iPhone.</p>
+              <div class="project-details" hidden><strong>Sync</strong> lets friends hear the same song at the same second from anywhere, with no shared Wi-Fi or Bluetooth. Spotify, Apple Music and YouTube listeners share one room, each hearing it on their own service. You can also share your own audio files peer-to-peer, and voice chat lowers the music while friends talk. The Android app keeps playing in the background and with the screen off, with lock-screen controls; on iPhone it installs from Safari to the home screen. No account or server: rooms run device-to-device over WebRTC.</div>
               <div class="project-tags">
-                <span class="tag">AI ecosystem</span>
-                <span class="tag">GlowLead</span>
-                <span class="tag">GlowChat</span>
-                <span class="tag">GlowRoom</span>
-                <span class="tag">GlowNews</span>
-                <span class="tag">AI news</span>
-                <span class="tag">AI agents</span>
-                <span class="tag">orchestrator</span>
-                <span class="tag">multilingual</span>
-              </div>
-              <div class="project-links">
-                <a class="project-link" href="https://juw12.github.io/projects/glow/" target="_blank" rel="noopener noreferrer">Glow home</a>
-                <a class="project-link" href="https://juw12.github.io/projects/glow/lead/" target="_blank" rel="noopener noreferrer">GlowLead</a>
-                <a class="project-link" href="https://juw12.github.io/projects/glow/chat/" target="_blank" rel="noopener noreferrer">GlowChat</a>
-                <a class="project-link" href="https://juw12.github.io/projects/glow/room/" target="_blank" rel="noopener noreferrer">GlowRoom</a>
-                <a class="project-link" href="https://juw12.github.io/projects/glow/news/" target="_blank" rel="noopener noreferrer">GlowNews</a>
-                <a class="project-link" href="https://juw12.github.io/projects/glow/download/" target="_blank" rel="noopener noreferrer">Download</a>
-              </div>
-            </div>
-          </article>
-          
-          <article class="project-card" data-category="Creator Tools">
-            <img src="./assets/projects/hazel-card.jpg" alt="Hazel home: three app cards for Hazel Shorts, Hazel Sped and Hazel Long with the Hazel switcher" class="project-card-image" loading="lazy" decoding="async">
-            <div class="project-content">
-              <span class="project-category">Creator Tools</span>
-              <h3 class="project-title">Hazel</h3>
-              <p class="project-description">One creator studio with three apps &mdash; Hazel Shorts, Hazel Sped and Hazel Long &mdash; for explainers, sped-up edits and long-form video.</p>
-              <div class="project-details" hidden>Hazel brings three creator tools under one name and one switcher. <strong>Hazel Shorts</strong> (formerly Shortcraft): write scenes, add your voice, and export a captioned 1080&times;1920 explainer with generated music, a post kit and YouTube upload, in English or Bahasa Indonesia. <strong>Hazel Sped</strong> (formerly Sped): turn your own songs into sped-up, slowed or mashup 9:16 shorts with a CapCut-style editor and MP4 export, fully offline. <strong>Hazel Long</strong> (the original Hazel): generate a storyboard from a prompt, refine it, package it for every platform &mdash; plus a Windows desktop app that auto-cuts silences and filler words with ffmpeg and Whisper. Local-first: no account, and existing projects from the old apps open as they were.</div>
-              <div class="project-tags">
-                <span class="tag">Creator studio</span>
-                <span class="tag">Hazel Shorts</span>
-                <span class="tag">Hazel Sped</span>
-                <span class="tag">Hazel Long</span>
-                <span class="tag">9:16 video export</span>
-                <span class="tag">Web Audio</span>
-                <span class="tag">Bahasa Indonesia</span>
+                <span class="tag">WebRTC</span>
+                <span class="tag">real-time sync</span>
+                <span class="tag">voice chat</span>
+                <span class="tag">cross-service</span>
                 <span class="tag">PWA</span>
+                <span class="tag">Android</span>
+                <span class="tag">iOS</span>
               </div>
               <div class="project-links">
-                <a class="project-link" href="https://juw12.github.io/projects/hazel/" target="_blank" rel="noopener noreferrer">Hazel home</a>
-                <a class="project-link" href="https://juw12.github.io/projects/hazel/shorts/app.html" target="_blank" rel="noopener noreferrer">Hazel Shorts</a>
-                <a class="project-link" href="https://juw12.github.io/projects/hazel/sped/" target="_blank" rel="noopener noreferrer">Hazel Sped</a>
-                <a class="project-link" href="https://juw12.github.io/projects/hazel/long/" target="_blank" rel="noopener noreferrer">Hazel Long</a>
+                <a class="project-link" href="https://juw12.github.io/projects/sync/" target="_blank" rel="noopener noreferrer">Open app</a>
+                <a class="project-link" href="https://github.com/juw12/projects/releases/tag/sync-mobile" target="_blank" rel="noopener noreferrer">Android app</a>
+                <a class="project-link" href="https://juw12.github.io/projects/sync/mobile.html" target="_blank" rel="noopener noreferrer">iPhone</a>
+                <a class="project-link" href="https://github.com/juw12/projects/tree/main/apps/sync" target="_blank" rel="noopener noreferrer">Source</a>
               </div>
             </div>
           </article>
@@ -613,88 +662,204 @@
             </div>
           </article>
           
-          <article class="project-card" data-category="Engineering">
-            <img src="./assets/projects/photo2cad-card.jpg" alt="photo2cad workbench: a PRD editor and six reference-photo slots beside a CAD viewport" class="project-card-image" loading="lazy" decoding="async">
-            <div class="project-content">
-              <span class="project-category">Engineering</span>
-              <h3 class="project-title">Photo2CAD</h3>
-              <p class="project-description">PRD + six reference photos to a validated STEP (.stp) CAD model via an LLM-written CadQuery program - a deployable service.</p>
-              <div class="project-details" hidden>Engineering service that turns a product requirements document (PRD) and six reference photographs (front/back/left/right/top/bottom) into a real CAD file. A Pegatron MAAS LLM writes a parametric CadQuery program from the PRD (the photos are visual/dimension reference), a sandboxed child process builds it, and the server re-imports the STEP to validate a single solid with its bounding box and volume - returning a downloadable .stp plus an STL preview. Ships as a deployable web service (Docker + Kubernetes). Output is STEP; Creo .prt is proprietary and not produced (Creo imports STEP).</div>
-              <div class="project-tags">
-                <span class="tag">CAD</span>
-                <span class="tag">STEP</span>
-                <span class="tag">CadQuery</span>
-                <span class="tag">LLM</span>
-                <span class="tag">Python</span>
-                <span class="tag">deployable service</span>
-              </div>
-              <div class="project-links">
-                <a class="project-link" href="https://github.com/juw12/projects/tree/main/apps/me-rd-toolkit/photo2cad" target="_blank" rel="noopener noreferrer">Files</a>
-              </div>
+          <article class="project-card" data-category="Apps" data-project-id="peers">
+            <img src="./assets/projects/peers-card.jpg" alt="Peers app feed screen showing verified reviews" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-thumbnails">
+              <button type="button" class="thumbnail-btn" data-primary="./assets/projects/peers-market.jpg" data-alt="Peers app market screen" aria-label="View market screen">
+                <img src="./assets/projects/peers-market.jpg" alt="Peers app market screen" class="thumbnail-img" loading="lazy" decoding="async">
+              </button>
+              <button type="button" class="thumbnail-btn" data-primary="./assets/projects/peers-product.jpg" data-alt="Peers app product screen" aria-label="View product screen">
+                <img src="./assets/projects/peers-product.jpg" alt="Peers app product screen" class="thumbnail-img" loading="lazy" decoding="async">
+              </button>
             </div>
-          </article>
-          
-          <article class="project-card" data-category="Software">
-            <img src="./assets/projects/shiphub-card.jpg" alt="shiphub feed: a dark masonry board of app-idea cards with Hot, New, Top and Discussed tabs and tag chips" class="project-card-image" loading="lazy" decoding="async">
-            <div class="project-content">
-              <span class="project-category">Software</span>
-              <h3 class="project-title">shiphub</h3>
-              <p class="project-description">Pinterest for app ideas with forum threads: save, discuss, fork, claim and ship ideas, with GitHub sign-in.</p>
-              <div class="project-details" hidden>shiphub is a pinboard of app ideas worth vibe-coding, with a forum built in. Ideas show up as a <strong>masonry feed</strong> (Hot, New, Top, Discussed; filter by Up for grabs, Building or Shipped; tags and live search). Each idea has a <strong>threaded discussion</strong> with votes, a <strong>fork</strong> button to remix it, and <strong>builders</strong>: hit &ldquo;I'm building this&rdquo;, then mark it shipped with a repo and demo link. Save ideas to <strong>boards</strong>, get notifications for replies, builds and forks, and copy any idea as a ready-to-paste AI prompt. Accounts with passwords or <strong>GitHub sign-in</strong>, cover and profile-photo <strong>uploads</strong>, moderators, rate limits and a strict content security policy. The server is plain Python (no dependencies) on SQLite, or Postgres for hosting, with Docker, Render and Fly.io configs.</div>
-              <div class="project-tags">
-                <span class="tag">App ideas</span>
-                <span class="tag">Forum</span>
-                <span class="tag">GitHub sign-in</span>
-                <span class="tag">Python</span>
-                <span class="tag">SQLite / Postgres</span>
-                <span class="tag">Docker</span>
-              </div>
-              <div class="project-links">
-                <a class="project-link" href="https://github.com/juw12/shiphub" target="_blank" rel="noopener noreferrer">Open site</a>
-              </div>
-            </div>
-          </article>
-          
-          <article class="project-card" data-category="Apps" data-project-id="sortie">
-            <img src="./assets/projects/sortie-card.jpg" alt="Sortie file organizer: Finder-style sidebar with folders and tags, Drive-style search and filter chips, and a grid of files" class="project-card-image" loading="lazy" decoding="async">
             <div class="project-content">
               <span class="project-category">Apps</span>
-              <h3 class="project-title">Sortie</h3>
-              <p class="project-description">File organizer with fly-into-folder animations, a vacuum for deletes and an AI assistant that plans before it acts.</p>
-              <div class="project-details" hidden>Sortie is a file organizer styled as a <strong>Google Drive &times; macOS Finder</strong> hybrid. Sorted files <strong>fly into their folders</strong>, and deleted files get sucked up by a <strong>vacuum cleaner</strong> into a recoverable Vacuum bag. Finder-style sidebar with Favorites, Folders and Tags, Drive-style filter chips and selection bar, icon and striped list views, back/forward history and a path bar. An <strong>AI assistant</strong> (offline rule-based helper, or OpenAI, Anthropic, Gemini, OpenRouter, Groq, Ollama and LM Studio) turns plain requests such as &ldquo;vacuum duplicates&rdquo; into a plan you Run or Cancel; everything is undoable. Works on real folders in Chrome and Edge via the File System Access API, with demo and preview modes that never touch the disk. Installable PWA, light and dark themes, no build step.</div>
+              <h3 class="project-title">Peers</h3>
+              <p class="project-description">Offline reviews across 32 categories with a Use it / Wait / Skip scorecard, now also a Windows app with its own database.</p>
+              <div class="project-details" hidden>Offline-first review app across 32 categories, from food to AI tools, with a built-in Use it / Wait / Skip scorecard. Now with a Ctrl/⌘K command palette, keyboard shortcuts, undo, saved reviews and light/dark themes with custom accents.</div>
               <div class="project-tags">
-                <span class="tag">File manager</span>
-                <span class="tag">AI assistant</span>
                 <span class="tag">PWA</span>
-                <span class="tag">File System Access</span>
-                <span class="tag">Vanilla JS</span>
+                <span class="tag">reviews</span>
+                <span class="tag">32 categories</span>
+                <span class="tag">offline-first</span>
+                <span class="tag">Windows app</span>
               </div>
               <div class="project-links">
-                <a class="project-link" href="https://juw12.github.io/projects/sortie/" target="_blank" rel="noopener noreferrer">App</a>
-                <a class="project-link" href="https://juw12.github.io/projects/sortie/" target="_blank" rel="noopener noreferrer">Web</a>
-                <a class="project-link" href="https://juw12.github.io/projects/sortie/" target="_blank" rel="noopener noreferrer">Mobile</a>
+                <a class="project-link" href="https://github.com/juw12/projects/releases/tag/peers" target="_blank" rel="noopener noreferrer">Windows app</a>
+                <a class="project-link" href="https://juw12.github.io/projects/peers/" target="_blank" rel="noopener noreferrer">Web</a>
+                <a class="project-link" href="https://juw12.github.io/projects/peers/mobile.html" target="_blank" rel="noopener noreferrer">Mobile web</a>
+                <a class="project-link" href="https://juw12.github.io/projects/peers/app.html" target="_blank" rel="noopener noreferrer">Install</a>
+              </div>
+            </div>
+          </article>
+          
+          <article class="project-card" data-category="Apps" data-project-id="haru">
+            <img src="./assets/projects/haru-card.jpg" alt="Haru swipe deck: a day card with a tiny 3D street-corner diorama in autumn light, a cat polaroid, a short note and a hanko mood stamp" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">Apps</span>
+              <h3 class="project-title">Haru</h3>
+              <p class="project-description">Your days as a cozy little town: a weather-lit diorama, photo, note and walk for each day, plus a screenshot tidy-up.</p>
+              <div class="project-details" hidden>Haru is a calm <strong>photo diary, walking map and weather town</strong> in a cozy Japanese/Korean indie style. Each day becomes a card: a tiny street-corner <strong>diorama</strong> lit by that day&rsquo;s real weather and time (192 pre-rendered scenes), a polaroid photo, a short note, a hanko mood stamp and the distance you walked, with new streets marked on your personal <strong>walk map</strong>. On-this-day memories, random fragments and gentle daily prompts bring old days back. A <strong>screenshot tidy-up</strong> swipes through your screenshots (keep, let go, later), reads them on the device with OCR in Japanese, Korean and English, sorts them into drawers (tickets, receipts, recipes, places, chats), finds duplicates and flags expiring tickets. <strong>Four language modes</strong>: Japanese and Korean side by side, English, Japanese or Korean. Use it now in any browser (installable on iPhone via Add to Home Screen), or download it for <strong>Android, Windows and Mac</strong>; the native SwiftUI iPhone app (SwiftData, WeatherKit, PhotoKit, Vision, widgets) builds and is tested on CI.</div>
+              <div class="project-tags">
+                <span class="tag">PWA</span>
+                <span class="tag">Android</span>
+                <span class="tag">Windows / Mac</span>
+                <span class="tag">iOS / SwiftUI</span>
+                <span class="tag">Photo diary</span>
+                <span class="tag">Walking map</span>
+                <span class="tag">On-device OCR</span>
+                <span class="tag">JA / KO / EN</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://juw12.github.io/projects/haru/app/" target="_blank" rel="noopener noreferrer">Open the app</a>
+                <a class="project-link" href="https://github.com/juw12/projects/releases/tag/haru-latest" target="_blank" rel="noopener noreferrer">Android · Windows · Mac</a>
+                <a class="project-link" href="https://juw12.github.io/projects/haru/?lang=en" target="_blank" rel="noopener noreferrer">3D diary deck</a>
+                <a class="project-link" href="https://github.com/juw12/projects/tree/main/apps/haru" target="_blank" rel="noopener noreferrer">Source</a>
+              </div>
+            </div>
+          </article>
+          
+          <article class="project-card" data-category="AI">
+            <img src="./assets/projects/lingua-card.jpg" alt="Lingua on Windows: the main window with live-caption controls next to the Text desk translating an English note into Traditional Chinese" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">AI</span>
+              <h3 class="project-title">Lingua</h3>
+              <p class="project-description">Universal language helper for Windows, iPhone and Android: text, pictures and live captions, with local AI and offline fallback.</p>
+              <div class="project-details" hidden>Picture-to-text reader with crop, rotate, batch, history, read-aloud and translation into 16 languages, plus an always-on-top overlay that translates Microsoft Teams captions live. Windows app with a Share-to-phone QR pairing so iPhone and Android can read pictures with the camera through the laptop. Now also includes a translation desk: paste text and translate it with a tone, context, glossary, alternatives and word-choice notes, using the company AI, local AI on the laptop (Ollama) or offline packs.</div>
+              <div class="project-tags">
+                <span class="tag">translation desk</span>
+                <span class="tag">OCR</span>
+                <span class="tag">translation</span>
+                <span class="tag">Windows</span>
+                <span class="tag">iPhone</span>
+                <span class="tag">Android</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://juw12.github.io/projects/lingua/picture.html" target="_blank" rel="noopener noreferrer">Read picture</a>
+                <a class="project-link" href="https://juw12.github.io/projects/lingua/web.html" target="_blank" rel="noopener noreferrer">Web captions</a>
+                <a class="project-link" href="https://juw12.github.io/projects/lingua/mobile.html" target="_blank" rel="noopener noreferrer">Mobile</a>
+                <a class="project-link" href="https://github.com/juw12/projects/raw/refs/heads/main/apps/lingua/docs/Lingua_Installation_and_Usage_Guide.pptx" target="_blank" rel="noopener noreferrer">Install guide (PPT)</a>
+                <a class="project-link" href="https://github.com/juw12/projects/releases/tag/lingua-v2.3.1" target="_blank" rel="noopener noreferrer">Windows download</a>
               </div>
             </div>
           </article>
           
           <article class="project-card" data-category="Apps">
-            <img src="./assets/projects/kinibuka-card.jpg" alt="KiniBuka on three phone screens: a live feed of stalls opening and closing, an Explore map with search, and a stall page with menu and order-ahead" class="project-card-image" loading="lazy" decoding="async">
+            <img src="./assets/projects/fade-card.jpg" alt="Fade screens: home with trending barbers, a haircut short with a paid-partnership tag, and creator earnings, using fictional demo data" class="project-card-image" loading="lazy" decoding="async">
             <div class="project-content">
               <span class="project-category">Apps</span>
-              <h3 class="project-title">KiniBuka</h3>
-              <p class="project-description">Find UMKM stalls open right now: live status, branches, bazaars, map, follow alerts and order-ahead via WhatsApp.</p>
-              <div class="project-details" hidden>KiniBuka (&ldquo;now open&rdquo;) helps people find small Indonesian food and retail stalls <strong>that are open right now</strong>. A <strong>live feed</strong> shows openings, closings, new branches, promos and bazaars; <strong>Explore</strong> combines search, category filters and an OpenStreetMap <strong>map</strong>. Buyers <strong>follow</strong> stalls to get alerts and <strong>order ahead</strong> with a pickup time, tracking it from accepted to ready to done, with one-tap <strong>WhatsApp</strong> buttons to chat with the seller. Sellers get a dashboard to toggle open/closed, manage branches, menu and promos, run bazaars and handle incoming orders, with optional WhatsApp auto-notifications through Fonnte or the Meta Cloud API. Interface in <strong>Bahasa Indonesia, English and 中文</strong>. Plain Python server (no dependencies) on SQLite.</div>
+              <h3 class="project-title">Fade</h3>
+              <p class="project-description">Barber marketplace with haircut shorts &mdash; live and free: book barbers, pay them directly at 0% fee, earn from your shorts.</p>
+              <div class="project-details" hidden>Barber marketplace with haircut shorts, live on the decentralised Fade Network or your own server: real accounts, end-to-end encrypted bookings and DMs, direct payments (PayPal, Venmo, Cash App, Stripe links, bank/QR, Lightning) with a 0% fee, private-by-default, recallable push notifications and 2 h reminders, automatic transcoding, nudity checks that don't trust the uploader's app (re-checked by the server, or by every viewer's device before anything is shown), human review of new accounts' first posts, built-in violence/weapon/hate-symbol checks (Sightengine) and a hook for CSAM hash-matching services, evidence export for moderators, re-upload blocking and spam filters, moderation that reaches even the offline demo, and 5&ndash;10% creator commissions when a short sends a booking.</div>
               <div class="project-tags">
-                <span class="tag">UMKM</span>
-                <span class="tag">Marketplace</span>
-                <span class="tag">Map</span>
-                <span class="tag">WhatsApp</span>
-                <span class="tag">Python</span>
-                <span class="tag">SQLite</span>
-                <span class="tag">ID / EN / 中文</span>
+                <span class="tag">PWA</span>
+                <span class="tag">Nostr</span>
+                <span class="tag">direct payments</span>
+                <span class="tag">haircut shorts</span>
+                <span class="tag">creator commissions</span>
+                <span class="tag">Windows app</span>
               </div>
               <div class="project-links">
-                <a class="project-link" href="https://github.com/juw12/projects/tree/main/apps/kinibuka" target="_blank" rel="noopener noreferrer">Source</a>
+                <a class="project-link" href="https://github.com/juw12/projects/releases/tag/fade" target="_blank" rel="noopener noreferrer">Windows app</a>
+                <a class="project-link" href="https://juw12.github.io/projects/fade/" target="_blank" rel="noopener noreferrer">Open app</a>
+                <a class="project-link" href="https://juw12.github.io/projects/fade/web.html" target="_blank" rel="noopener noreferrer">Web</a>
+                <a class="project-link" href="https://juw12.github.io/projects/fade/mobile.html" target="_blank" rel="noopener noreferrer">Mobile</a>
+              </div>
+            </div>
+          </article>
+          
+          <article class="project-card" data-category="AI">
+            <img src="./assets/projects/sweep-card.jpg" alt="Sweep turning a plain-words idea into a Build, Grow and Earn plan — a guided intake, an idea brief, a generated capability matrix, a Definition of Done checklist, a scaffold file tree and a project catalog" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">AI</span>
+              <h3 class="project-title">Sweep</h3>
+              <p class="project-description">Turns a rough app idea into a scored spec, task board and launch plan; self-updating apps for Windows, Mac, Android and iPhone.</p>
+              <div class="project-details" hidden>Turns a rough app idea into a scored spec, a task board and a Build &rarr; Grow &rarr; Earn plan, then hands it to Lovable, v0, Cursor or Claude Code in one click. Its local agent Otto drafts brand, site and posts. Fully offline.</div>
+              <div class="project-tags">
+                <span class="tag">spec score</span>
+                <span class="tag">task board</span>
+                <span class="tag">1-click handoff</span>
+                <span class="tag">offline agent</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://github.com/juw12/projects/releases/tag/sweep" target="_blank" rel="noopener noreferrer">Windows app</a>
+                <a class="project-link" href="https://juw12.github.io/projects/sweep/app.html" target="_blank" rel="noopener noreferrer">Mac app</a>
+                <a class="project-link" href="https://github.com/juw12/projects/releases/tag/sweep" target="_blank" rel="noopener noreferrer">Android app</a>
+                <a class="project-link" href="https://juw12.github.io/projects/sweep/app.html#iphone" target="_blank" rel="noopener noreferrer">iPhone</a>
+                <a class="project-link" href="https://juw12.github.io/projects/sweep/" target="_blank" rel="noopener noreferrer">Web</a>
+              </div>
+            </div>
+          </article>
+          
+          <article class="project-card" data-category="Creator Tools">
+            <img src="./assets/projects/hazel-card.jpg" alt="Hazel home: three app cards for Hazel Shorts, Hazel Sped and Hazel Long with the Hazel switcher" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">Creator Tools</span>
+              <h3 class="project-title">Hazel</h3>
+              <p class="project-description">One creator studio with three apps &mdash; Hazel Shorts, Hazel Sped and Hazel Long &mdash; for explainers, sped-up edits and long-form video.</p>
+              <div class="project-details" hidden>Hazel brings three creator tools under one name and one switcher. <strong>Hazel Shorts</strong> (formerly Shortcraft): write scenes, add your voice, and export a captioned 1080&times;1920 explainer with generated music, a post kit and YouTube upload, in English or Bahasa Indonesia. <strong>Hazel Sped</strong> (formerly Sped): turn your own songs into sped-up, slowed or mashup 9:16 shorts with a CapCut-style editor and MP4 export, fully offline. <strong>Hazel Long</strong> (the original Hazel): generate a storyboard from a prompt, refine it, package it for every platform &mdash; plus a Windows desktop app that auto-cuts silences and filler words with ffmpeg and Whisper. Local-first: no account, and existing projects from the old apps open as they were.</div>
+              <div class="project-tags">
+                <span class="tag">Creator studio</span>
+                <span class="tag">Hazel Shorts</span>
+                <span class="tag">Hazel Sped</span>
+                <span class="tag">Hazel Long</span>
+                <span class="tag">9:16 video export</span>
+                <span class="tag">Web Audio</span>
+                <span class="tag">Bahasa Indonesia</span>
+                <span class="tag">PWA</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://juw12.github.io/projects/hazel/" target="_blank" rel="noopener noreferrer">Hazel home</a>
+                <a class="project-link" href="https://juw12.github.io/projects/hazel/shorts/app.html" target="_blank" rel="noopener noreferrer">Hazel Shorts</a>
+                <a class="project-link" href="https://juw12.github.io/projects/hazel/sped/" target="_blank" rel="noopener noreferrer">Hazel Sped</a>
+                <a class="project-link" href="https://juw12.github.io/projects/hazel/long/" target="_blank" rel="noopener noreferrer">Hazel Long</a>
+              </div>
+            </div>
+          </article>
+          
+          <article class="project-card" data-category="Software">
+            <img src="./assets/projects/pips-card.jpg" alt="Pips: twelve desktop pet animals next to the Pomodoro card" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">Software</span>
+              <h3 class="project-title">Pips</h3>
+              <p class="project-description">Desktop pet + Pomodoro for Windows &mdash; 51 animals, friends, skill battles, a Strava-style Focus Trail and Phone Trail, 4 languages.</p>
+              <div class="project-details" hidden>A tiny animated pet that lives on your desktop: <strong>51 animals</strong> &mdash; land animals walk the taskbar and ride along on your open windows, water animals swim and leap out with a splash, sky animals fly anywhere and perch. Every animal has its own voice and song; pets have moods, grow up from baby to grown-up, catch a little cold when you skip breaks and show the live weather on your desktop. Click to tickle, double-click to open the Hub. <strong>Pips Friends</strong>: chat, groups and the Pips Community, pet visits, pokes, birthdays and gifts. <strong>Arena</strong>: turn-based skill battles (best of 1, 3 or 5) &mdash; press the skills yourself or switch on <strong>Auto</strong> and let your pet fight &mdash; plus minigames and a shop of hats, wings, moves and arena gear. Underneath, an always-on-top Pomodoro timer with soundscapes, app-usage tracking, a daily 1&ndash;5 star score, goals, streaks and history. <strong>Focus Trail</strong> turns your work day into a Strava-style route sticker: the trail turns clockwise through the day, runs straight while you stay in one app, kinks when you switch and loops on distracting time &mdash; save it or share it. <strong>Phone Trail</strong> does the same for your phone's screen time (<a href="https://juw12.github.io/projects/pips/trail/">web page</a> for any phone, plus Android and iPhone apps). English, Bahasa Indonesia, 繁體中文 and 简体中文. One-click Windows installer with in-app updates; focus history stays local, social features use the Pips online service.</div>
+              <div class="project-tags">
+                <span class="tag">Windows app</span>
+                <span class="tag">desktop pet</span>
+                <span class="tag">Pomodoro</span>
+                <span class="tag">Focus Trail</span>
+                <span class="tag">skill battles</span>
+                <span class="tag">Python</span>
+                <span class="tag">4 languages</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://juw12.github.io/projects/pips/download/Pips-Setup.exe" target="_blank" rel="noopener noreferrer">Download for Windows</a>
+                <a class="project-link" href="https://juw12.github.io/projects/pips/web.html" target="_blank" rel="noopener noreferrer">Web</a>
+                <a class="project-link" href="https://juw12.github.io/projects/pips/mobile.html" target="_blank" rel="noopener noreferrer">Mobile</a>
+                <a class="project-link" href="https://juw12.github.io/projects/pips/download/Pips-Guide.pptx" target="_blank" rel="noopener noreferrer">User guide (PPT)</a>
+                <a class="project-link" href="https://github.com/juw12/projects/tree/main/apps/pips" target="_blank" rel="noopener noreferrer">Source</a>
+              </div>
+            </div>
+          </article>
+          
+          <article class="project-card" data-category="Apps">
+            <img src="./assets/projects/orbis-card.jpg" alt="Orbis Today view: triage counts and suggested replies, each with its source and a Why this? explanation" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">Apps</span>
+              <h3 class="project-title">Orbis</h3>
+              <p class="project-description">Personal comms hub plus live Orbis Chat: real accounts, teams, invites and push alerts on web, iPhone and Android.</p>
+              <div class="project-details" hidden>Offline-first personal hub for communication and growth &mdash; manage replies, commitments and summaries on a zero-dependency Python + SQLite backend. Now with a Ctrl/⌘K command palette, keyboard-first triage, undo on every action, a drag-and-drop Kanban board, a focus timer and light/dark themes. Includes <strong>Orbis Chat</strong>: real-time messaging between real accounts with teams, channels, email invites, read receipts, typing indicators and push notifications that arrive even when the app is closed &mdash; on web, iPhone and Android.</div>
+              <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">SQLite</span>
+                <span class="tag">PWA</span>
+                <span class="tag">offline-first</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://juw12.github.io/projects/orbis/app.html" target="_blank" rel="noopener noreferrer">App</a>
+                <a class="project-link" href="https://juw12.github.io/projects/orbis/index.html" target="_blank" rel="noopener noreferrer">Web</a>
+                <a class="project-link" href="https://juw12.github.io/projects/orbis/app-mobile.html" target="_blank" rel="noopener noreferrer">Mobile</a>
               </div>
             </div>
           </article>
@@ -746,28 +911,46 @@
             </div>
           </article>
           
-          <article class="project-card" data-category="Apps" data-project-id="haru">
-            <img src="./assets/projects/haru-card.jpg" alt="Haru swipe deck: a day card with a tiny 3D street-corner diorama in autumn light, a cat polaroid, a short note and a hanko mood stamp" class="project-card-image" loading="lazy" decoding="async">
+          <article class="project-card" data-category="Apps">
+            <img src="./assets/projects/teman-sehat-card.jpg" alt="Teman Sehat today view: next reminder, daily kcal, protein and exercise summary, after-meal timer and GERD habit checklist" class="project-card-image" loading="lazy" decoding="async">
             <div class="project-content">
               <span class="project-category">Apps</span>
-              <h3 class="project-title">Haru</h3>
-              <p class="project-description">Your days as a cozy little town: a weather-lit diorama, photo, note and walk for each day, plus a screenshot tidy-up.</p>
-              <div class="project-details" hidden>Haru is a calm <strong>photo diary, walking map and weather town</strong> in a cozy Japanese/Korean indie style. Each day becomes a card: a tiny street-corner <strong>diorama</strong> lit by that day&rsquo;s real weather and time (192 pre-rendered scenes), a polaroid photo, a short note, a hanko mood stamp and the distance you walked, with new streets marked on your personal <strong>walk map</strong>. On-this-day memories, random fragments and gentle daily prompts bring old days back. A <strong>screenshot tidy-up</strong> swipes through your screenshots (keep, let go, later), reads them on the device with OCR in Japanese, Korean and English, sorts them into drawers (tickets, receipts, recipes, places, chats), finds duplicates and flags expiring tickets. <strong>Four language modes</strong>: Japanese and Korean side by side, English, Japanese or Korean. Use it now in any browser (installable on iPhone via Add to Home Screen), or download it for <strong>Android, Windows and Mac</strong>; the native SwiftUI iPhone app (SwiftData, WeatherKit, PhotoKit, Vision, widgets) builds and is tested on CI.</div>
+              <h3 class="project-title">Teman Sehat</h3>
+              <p class="project-description">GERD companion in Bahasa Indonesia: reminders, diet &amp; fitness without fasting, acne care. Desktop, Android, iPhone.</p>
+              <div class="project-details" hidden>Lifestyle companion for people with GERD, in Bahasa Indonesia, that also covers dieting without fasting and acne care. <strong>Hari Ini</strong> brings it together: the next reminder, a daily summary (kcal, protein, exercise, GERD habits, skin routine, symptoms, pimples) and an after-meal timer (&ldquo;stay upright 3&nbsp;h, hard exercise after about 2&nbsp;h&rdquo;). <strong>Pengingat</strong>: an editable daily schedule for GERD habits, exercise and the morning/night skin routine. <strong>Gejala</strong>: a symptom log with triggers and a 30-day trigger ranking. <strong>Fit</strong>: calorie and protein targets (Mifflin&ndash;St Jeor, Asian BMI cut-offs, a calorie floor) split into five small meals, a food log of GERD-friendly Indonesian foods with trigger foods flagged, an exercise log against 150&nbsp;min cardio plus 2&ndash;3 strength days, and a weight chart with a goal line. <strong>Kulit</strong>: a skin-routine checklist, a 14-day pimple counter and a guide (actives, non-BPOM creams to avoid, whey and high-GI links, and the doxycycline warning for GERD). Installable PWA for desktop, Android and iPhone that works offline; a Capacitor build schedules reminders as native notifications so they fire with the app closed. Local-only, no account, with a clear not-medical-advice note.</div>
               <div class="project-tags">
                 <span class="tag">PWA</span>
-                <span class="tag">Android</span>
-                <span class="tag">Windows / Mac</span>
-                <span class="tag">iOS / SwiftUI</span>
-                <span class="tag">Photo diary</span>
-                <span class="tag">Walking map</span>
-                <span class="tag">On-device OCR</span>
-                <span class="tag">JA / KO / EN</span>
+                <span class="tag">Capacitor</span>
+                <span class="tag">health</span>
+                <span class="tag">Bahasa Indonesia</span>
+                <span class="tag">local-only</span>
               </div>
               <div class="project-links">
-                <a class="project-link" href="https://juw12.github.io/projects/haru/app/" target="_blank" rel="noopener noreferrer">Open the app</a>
-                <a class="project-link" href="https://github.com/juw12/projects/releases/tag/haru-latest" target="_blank" rel="noopener noreferrer">Android · Windows · Mac</a>
-                <a class="project-link" href="https://juw12.github.io/projects/haru/?lang=en" target="_blank" rel="noopener noreferrer">3D diary deck</a>
-                <a class="project-link" href="https://github.com/juw12/projects/tree/main/apps/haru" target="_blank" rel="noopener noreferrer">Source</a>
+                <a class="project-link" href="https://juw12.github.io/projects/teman-sehat/index.html" target="_blank" rel="noopener noreferrer">Open app</a>
+                <a class="project-link" href="https://juw12.github.io/projects/teman-sehat/index.html#demo" target="_blank" rel="noopener noreferrer">Demo</a>
+                <a class="project-link" href="https://github.com/juw12/projects/tree/main/apps/teman-sehat" target="_blank" rel="noopener noreferrer">Source</a>
+              </div>
+            </div>
+          </article>
+          
+          <article class="project-card" data-category="Apps" data-project-id="sortie">
+            <img src="./assets/projects/sortie-card.jpg" alt="Sortie file organizer: Finder-style sidebar with folders and tags, Drive-style search and filter chips, and a grid of files" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">Apps</span>
+              <h3 class="project-title">Sortie</h3>
+              <p class="project-description">File organizer with fly-into-folder animations, a vacuum for deletes and an AI assistant that plans before it acts.</p>
+              <div class="project-details" hidden>Sortie is a file organizer styled as a <strong>Google Drive &times; macOS Finder</strong> hybrid. Sorted files <strong>fly into their folders</strong>, and deleted files get sucked up by a <strong>vacuum cleaner</strong> into a recoverable Vacuum bag. Finder-style sidebar with Favorites, Folders and Tags, Drive-style filter chips and selection bar, icon and striped list views, back/forward history and a path bar. An <strong>AI assistant</strong> (offline rule-based helper, or OpenAI, Anthropic, Gemini, OpenRouter, Groq, Ollama and LM Studio) turns plain requests such as &ldquo;vacuum duplicates&rdquo; into a plan you Run or Cancel; everything is undoable. Works on real folders in Chrome and Edge via the File System Access API, with demo and preview modes that never touch the disk. Installable PWA, light and dark themes, no build step.</div>
+              <div class="project-tags">
+                <span class="tag">File manager</span>
+                <span class="tag">AI assistant</span>
+                <span class="tag">PWA</span>
+                <span class="tag">File System Access</span>
+                <span class="tag">Vanilla JS</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://juw12.github.io/projects/sortie/" target="_blank" rel="noopener noreferrer">App</a>
+                <a class="project-link" href="https://juw12.github.io/projects/sortie/" target="_blank" rel="noopener noreferrer">Web</a>
+                <a class="project-link" href="https://juw12.github.io/projects/sortie/" target="_blank" rel="noopener noreferrer">Mobile</a>
               </div>
             </div>
           </article>
@@ -789,6 +972,49 @@
               </div>
               <div class="project-links">
                 <a class="project-link" href="https://github.com/juw12/projects/tree/main/apps/crewcup" target="_blank" rel="noopener noreferrer">Source</a>
+              </div>
+            </div>
+          </article>
+          
+          <article class="project-card" data-category="Software">
+            <img src="./assets/projects/shiphub-card.jpg" alt="shiphub feed: a dark masonry board of app-idea cards with Hot, New, Top and Discussed tabs and tag chips" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">Software</span>
+              <h3 class="project-title">shiphub</h3>
+              <p class="project-description">Pinterest for app ideas with forum threads: save, discuss, fork, claim and ship ideas, with GitHub sign-in.</p>
+              <div class="project-details" hidden>shiphub is a pinboard of app ideas worth vibe-coding, with a forum built in. Ideas show up as a <strong>masonry feed</strong> (Hot, New, Top, Discussed; filter by Up for grabs, Building or Shipped; tags and live search). Each idea has a <strong>threaded discussion</strong> with votes, a <strong>fork</strong> button to remix it, and <strong>builders</strong>: hit &ldquo;I'm building this&rdquo;, then mark it shipped with a repo and demo link. Save ideas to <strong>boards</strong>, get notifications for replies, builds and forks, and copy any idea as a ready-to-paste AI prompt. Accounts with passwords or <strong>GitHub sign-in</strong>, cover and profile-photo <strong>uploads</strong>, moderators, rate limits and a strict content security policy. The server is plain Python (no dependencies) on SQLite, or Postgres for hosting, with Docker, Render and Fly.io configs.</div>
+              <div class="project-tags">
+                <span class="tag">App ideas</span>
+                <span class="tag">Forum</span>
+                <span class="tag">GitHub sign-in</span>
+                <span class="tag">Python</span>
+                <span class="tag">SQLite / Postgres</span>
+                <span class="tag">Docker</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://github.com/juw12/shiphub" target="_blank" rel="noopener noreferrer">Open site</a>
+              </div>
+            </div>
+          </article>
+          
+          <article class="project-card" data-category="Apps">
+            <img src="./assets/projects/kinibuka-card.jpg" alt="KiniBuka on three phone screens: a live feed of stalls opening and closing, an Explore map with search, and a stall page with menu and order-ahead" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">Apps</span>
+              <h3 class="project-title">KiniBuka</h3>
+              <p class="project-description">Find UMKM stalls open right now: live status, branches, bazaars, map, follow alerts and order-ahead via WhatsApp.</p>
+              <div class="project-details" hidden>KiniBuka (&ldquo;now open&rdquo;) helps people find small Indonesian food and retail stalls <strong>that are open right now</strong>. A <strong>live feed</strong> shows openings, closings, new branches, promos and bazaars; <strong>Explore</strong> combines search, category filters and an OpenStreetMap <strong>map</strong>. Buyers <strong>follow</strong> stalls to get alerts and <strong>order ahead</strong> with a pickup time, tracking it from accepted to ready to done, with one-tap <strong>WhatsApp</strong> buttons to chat with the seller. Sellers get a dashboard to toggle open/closed, manage branches, menu and promos, run bazaars and handle incoming orders, with optional WhatsApp auto-notifications through Fonnte or the Meta Cloud API. Interface in <strong>Bahasa Indonesia, English and 中文</strong>. Plain Python server (no dependencies) on SQLite.</div>
+              <div class="project-tags">
+                <span class="tag">UMKM</span>
+                <span class="tag">Marketplace</span>
+                <span class="tag">Map</span>
+                <span class="tag">WhatsApp</span>
+                <span class="tag">Python</span>
+                <span class="tag">SQLite</span>
+                <span class="tag">ID / EN / 中文</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://github.com/juw12/projects/tree/main/apps/kinibuka" target="_blank" rel="noopener noreferrer">Source</a>
               </div>
             </div>
           </article>
@@ -837,6 +1063,7 @@
           <button type="button" class="btn btn-secondary" data-show-all>Show all projects</button>
         </div>
         <p class="project-empty" hidden>No projects match that search. <button type="button" class="link-button" data-reset-filters>Clear filters</button></p>
+        <p class="project-gallery-note">These are the highlights, ranked by how solid each project is. Every project (50+) has its own landing page in the <a href="https://juw12.github.io/p/" target="_blank" rel="noopener">project gallery</a>, with source on <a href="https://github.com/juw12" target="_blank" rel="noopener">GitHub</a> (all MIT licensed).</p>
       </div>
     </section>
 
@@ -983,7 +1210,7 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
       <div class="dialog-media">
-        <img class="dialog-image" src="" alt="">
+        <img class="dialog-image" alt="">
         <div class="dialog-thumbs"></div>
       </div>
       <div class="dialog-body">

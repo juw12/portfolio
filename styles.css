@@ -1999,3 +1999,22 @@ body.dialog-open {
   gap: 6px 18px;
   font-size: 0.9rem;
 }
+
+/* Pointer from the curated grid to the full project gallery */
+.project-gallery-note {
+  margin: 2rem auto 0;
+  max-width: 46rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.project-gallery-note a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Filters with no matching cards are hidden by app.js; make [hidden] win over display rules */
+.filter-tab[hidden] {
+  display: none;
+}
