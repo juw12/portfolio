@@ -5,8 +5,28 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 03 Nov 2026 06:51:02 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 17:21:33 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Buddy</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-buddy</guid>
+      <pubDate>Wed, 04 Nov 2026 17:21:33 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/buddy-card.jpg" alt="Buddy pointing at File, Save As in Notepad with a speech bubble that says Right here" width="600"></p><p>AI buddy next to your mouse: hold Ctrl+Alt+Space, ask about your screen, and it points at the answer or does it for you.</p>]]></description>
+      <jl:summary>AI buddy next to your mouse: hold Ctrl+Alt+Space, ask about your screen, and it points at the answer or does it for you.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/buddy-card.jpg" type="image/jpeg" length="0"/>
+      <category>Windows + Mac</category><category>AI assistant</category><category>vision model</category><category>on-device voice</category><category>UI automation</category><category>Python</category>
+    </item>
+    <item>
+      <title>EarlyStar</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-earlystar</guid>
+      <pubDate>Wed, 04 Nov 2026 17:21:33 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/earlystar-card.jpg" alt="EarlyStar leaderboard of GitHub repositories ranked by stars gained, with activity columns" width="600"></p><p>Find GitHub repos before they trend: ranked by stars actually gained, with real activity, Trending history and a free API.</p>]]></description>
+      <jl:summary>Find GitHub repos before they trend: ranked by stars actually gained, with real activity, Trending history and a free API.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/earlystar-card.jpg" type="image/jpeg" length="0"/>
+      <category>GitHub data</category><category>Trending</category><category>JSON API</category><category>GitHub Actions</category><category>static site</category><category>Tauri desktop</category>
+    </item>
     <item>
       <title>Haru</title>
       <link>https://juw12.github.io/projects/haru/app/</link>
@@ -286,15 +306,6 @@
       <jl:summary>Offline workspace for mechanical R&amp;D — NPI task flow, review checklists, issue log and 11 engineering calculators.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/me-rd-toolkit-card.jpg" type="image/jpeg" length="0"/>
       <category>NPI</category><category>checklists</category><category>Cpk</category><category>PWA</category><category>offline-first</category><category>Windows app</category>
-    </item>
-    <item>
-      <title>Game Library</title>
-      <link>https://juw12.github.io/projects/gamelib/</link>
-      <guid isPermaLink="false">juwenlie-project-gamelib</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p>A collection of browser games maintained inside Projects.</p>]]></description>
-      <jl:summary>A collection of browser games maintained inside Projects.</jl:summary>
-      <category>browser games</category><category>JavaScript</category>
     </item>
   </channel>
 </rss>
