@@ -110,3 +110,7 @@ CVs and employer-specific information are shared privately on request.
 
 Maintained by [@juw12](https://github.com/juw12).
 Original commit authorship is preserved.
+
+## License
+
+Released under the [MIT License](LICENSE) © 2026 Juwen Lie. Contributions are welcome under the same license; see the [contributing guide](https://github.com/juw12/.github/blob/main/CONTRIBUTING.md) and [Code of Conduct](https://github.com/juw12/.github/blob/main/CODE_OF_CONDUCT.md).
