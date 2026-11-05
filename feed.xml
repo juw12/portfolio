@@ -12,9 +12,9 @@
       <link>https://juw12.github.io/projects/together/index.html</link>
       <guid isPermaLink="false">juwenlie-project-together</guid>
       <pubDate>Thu, 05 Nov 2026 06:50:43 +0000</pubDate>
-      <description><![CDATA[<p>Couples&#x27; life plan from dating to golden years: roadmap with both ages, goals, savings, check-ins. Offline, private.</p>]]></description>
-      <jl:summary>Couples&#x27; life plan from dating to golden years: roadmap with both ages, goals, savings, check-ins. Offline, private.</jl:summary>
-      <category>couples</category><category>life planning</category><category>local-only</category><category>single file</category>
+      <description><![CDATA[<p>Couples&#x27; life plan: roadmap with both ages, goals, money, check-ins. Encrypted partner sync, reminders, offline.</p>]]></description>
+      <jl:summary>Couples&#x27; life plan: roadmap with both ages, goals, money, check-ins. Encrypted partner sync, reminders, offline.</jl:summary>
+      <category>couples</category><category>life planning</category><category>PWA</category><category>end-to-end encrypted</category><category>Cloudflare Workers</category>
     </item>
     <item>
       <title>Buddy</title>
