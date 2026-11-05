@@ -5,8 +5,68 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 05 Nov 2026 06:50:43 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 13:16:15 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Cairn</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-cairn</guid>
+      <pubDate>Thu, 05 Nov 2026 13:16:15 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/cairn-card.jpg" alt="Cairn home page: A second brain that lives inside your repo, with Try the demo, Open a repo folder and Run it locally" width="600"></p><p>A second brain inside your repo: ideas wall, task board, decision log and AI context pack, all as plain Markdown.</p>]]></description>
+      <jl:summary>A second brain inside your repo: ideas wall, task board, decision log and AI context pack, all as plain Markdown.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/cairn-card.jpg" type="image/jpeg" length="0"/>
+      <category>Markdown</category><category>local-first</category><category>kanban</category><category>decision log</category><category>Python</category>
+    </item>
+    <item>
+      <title>Jeda</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-jeda</guid>
+      <pubDate>Thu, 05 Nov 2026 13:16:15 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/jeda-card.jpg" alt="Jeda start screen: Ruang hening untuk setiap iman, with a Mulai button and a Ruang Live join link" width="600"></p><p>Jeda, ruang hening setiap iman: a quiet space for every faith, offline-first and installable as a PWA.</p>]]></description>
+      <jl:summary>Jeda, ruang hening setiap iman: a quiet space for every faith, offline-first and installable as a PWA.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/jeda-card.jpg" type="image/jpeg" length="0"/>
+      <category>PWA</category><category>offline-first</category><category>interfaith</category><category>Indonesia</category>
+    </item>
+    <item>
+      <title>The Morning Paper</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-morning-paper-web</guid>
+      <pubDate>Thu, 05 Nov 2026 13:16:15 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/morning-paper-web-card.jpg" alt="The Morning Paper Brief tab: a lead markets story beside a numbered list of today&#x27;s top headlines" width="600"></p><p>The Morning Paper, web edition: curated news, a stock desk, and a portfolio with alerts that sync once you sign in.</p>]]></description>
+      <jl:summary>The Morning Paper, web edition: curated news, a stock desk, and a portfolio with alerts that sync once you sign in.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/morning-paper-web-card.jpg" type="image/jpeg" length="0"/>
+      <category>news</category><category>stocks</category><category>portfolio alerts</category><category>web</category>
+    </item>
+    <item>
+      <title>Nudge</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-nudge</guid>
+      <pubDate>Thu, 05 Nov 2026 13:16:15 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/nudge-card.jpg" alt="Nudge home page: See who&#x27;s waiting on a reply, with a drop zone for chat exports and per-app export guides" width="600"></p><p>See which friends you&#x27;ve been leaving on read: local-only analysis of your chat exports, plus a weekly nudge.</p>]]></description>
+      <jl:summary>See which friends you&#x27;ve been leaving on read: local-only analysis of your chat exports, plus a weekly nudge.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/nudge-card.jpg" type="image/jpeg" length="0"/>
+      <category>digital wellbeing</category><category>local-only</category><category>CLI</category><category>Python</category>
+    </item>
+    <item>
+      <title>Undanu</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-undanu</guid>
+      <pubDate>Thu, 05 Nov 2026 13:16:15 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/undanu-card.jpg" alt="Undanu home page: a wedding invitation builder beside a phone preview of an invitation for Leo and Maya" width="600"></p><p>Digital wedding invitations for Indonesia with RSVP, guest tracking, donations and QR check-in.</p>]]></description>
+      <jl:summary>Digital wedding invitations for Indonesia with RSVP, guest tracking, donations and QR check-in.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/undanu-card.jpg" type="image/jpeg" length="0"/>
+      <category>invitations</category><category>RSVP</category><category>QR check-in</category><category>Python</category><category>SQLite</category>
+    </item>
+    <item>
+      <title>VALE</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-vale</guid>
+      <pubDate>Thu, 05 Nov 2026 13:16:15 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/vale-card.jpg" alt="VALE concept render: the glowing entrance to a misty, overgrown fairy forest" width="600"></p><p>A 3D fairy world: a first-person explorer collecting five Lumenshards to restore a fading realm (Unity 6 + HDRP).</p>]]></description>
+      <jl:summary>A 3D fairy world: a first-person explorer collecting five Lumenshards to restore a fading realm (Unity 6 + HDRP).</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/vale-card.jpg" type="image/jpeg" length="0"/>
+      <category>game</category><category>Unity 6</category><category>HDRP</category><category>first-person</category><category>3D</category>
+    </item>
     <item>
       <title>Together</title>
       <link>https://juw12.github.io/projects/together/index.html</link>
@@ -245,66 +305,6 @@
       <jl:summary>Offline reviews across 32 categories with a Use it / Wait / Skip scorecard, now also a Windows app with its own database.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/peers-card.jpg" type="image/jpeg" length="0"/>
       <category>PWA</category><category>reviews</category><category>32 categories</category><category>offline-first</category><category>Windows app</category>
-    </item>
-    <item>
-      <title>Twin</title>
-      <link>https://juw12.github.io/projects/twin/web.html</link>
-      <guid isPermaLink="false">juwenlie-project-twin</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/twin-card.jpg" alt="Twin 1.5: redesigned Home, TwinAgent Buy verdict with evidence score, risk gate with practice-trade plan, and AAPL stock page" width="600"></p><p>Investing companion with an AI research team, global stocks, paper trading, a replay lab, and IDX, crypto and gold in rupiah.</p>]]></description>
-      <jl:summary>Investing companion with an AI research team, global stocks, paper trading, a replay lab, and IDX, crypto and gold in rupiah.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/twin-card.jpg" type="image/jpeg" length="0"/>
-      <category>TwinAgent</category><category>multi-agent research</category><category>global markets</category><category>exchange calendars</category><category>real-time data</category><category>multi-currency</category><category>paper trading</category><category>Interactive Brokers</category><category>Alpaca API</category><category>Indonesia (IDX)</category><category>crypto &amp; gold</category><category>PWA</category><category>desktop app</category>
-    </item>
-    <item>
-      <title>Guang Yao Together · 光耀同行</title>
-      <link>https://juw12.github.io/projects/guangyao/</link>
-      <guid isPermaLink="false">juwenlie-project-guangyao</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/guangyao-card.jpg" alt="Guang Yao Together desktop: today&#x27;s goal, newest official lessons and the study dashboard" width="600"></p><p>Unofficial Traditional Chinese learning app for 發一光耀 with lessons, an AI study companion and spaced review.</p>]]></description>
-      <jl:summary>Unofficial Traditional Chinese learning app for 發一光耀 with lessons, an AI study companion and spaced review.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/guangyao-card.jpg" type="image/jpeg" length="0"/>
-      <category>PWA</category><category>accounts + guest mode</category><category>admin console</category><category>AI study companion</category><category>Android app</category><category>iPhone home-screen app</category>
-    </item>
-    <item>
-      <title>Sync</title>
-      <link>https://juw12.github.io/projects/sync/web.html</link>
-      <guid isPermaLink="false">juwenlie-project-sync</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/sync-card.jpg" alt="Sync listening room with a synced now-playing card, cross-service queue and party voice chat" width="600"></p><p>Listen together in real time across Spotify, Apple Music and YouTube, with voice chat, on web, Android and iPhone.</p>]]></description>
-      <jl:summary>Listen together in real time across Spotify, Apple Music and YouTube, with voice chat, on web, Android and iPhone.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/sync-card.jpg" type="image/jpeg" length="0"/>
-      <category>WebRTC</category><category>real-time sync</category><category>voice chat</category><category>cross-service</category><category>PWA</category><category>Android</category><category>iOS</category>
-    </item>
-    <item>
-      <title>SOMA</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-soma</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/soma-hero.svg" alt="SOMA: a CadQuery code panel beside a rebuilt parametric part and a build log" width="600"></p><p>Open-source AI CAD by Kai Jungsthöfel — a coding agent writes CadQuery, SOMA builds, checks and exports it.</p>]]></description>
-      <jl:summary>Open-source AI CAD by Kai Jungsthöfel — a coding agent writes CadQuery, SOMA builds, checks and exports it.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/soma-hero.svg" type="image/svg+xml" length="0"/>
-      <category>AI CAD</category><category>CadQuery</category><category>open source</category><category>3D printing</category>
-    </item>
-    <item>
-      <title>Vector</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-vector</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/vector-hero.svg" alt="Vector: connected Fusion and SOLIDWORKS integrations beside a chat panel showing a ranked repair plan" width="600"></p><p>AI engineering copilot for Fusion and SOLIDWORKS by Vector Copilot LLC that builds and repairs native features.</p>]]></description>
-      <jl:summary>AI engineering copilot for Fusion and SOLIDWORKS by Vector Copilot LLC that builds and repairs native features.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/vector-hero.svg" type="image/svg+xml" length="0"/>
-      <category>AI copilot</category><category>Fusion</category><category>SOLIDWORKS</category><category>CAD repair</category>
-    </item>
-    <item>
-      <title>Mint</title>
-      <link>https://juw12.github.io/projects/mint/web.html</link>
-      <guid isPermaLink="false">juwenlie-project-mint</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/mint-card.jpg" alt="Mint: the shared budget overview with the left-to-spend ring and pace chart, and Templates one tap away in the sidebar" width="600"></p><p>Shared budgets in any currency, synced on every device. Log expenses by WhatsApp, plus a template Marketplace.</p>]]></description>
-      <jl:summary>Shared budgets in any currency, synced on every device. Log expenses by WhatsApp, plus a template Marketplace.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/mint-card.jpg" type="image/jpeg" length="0"/>
-      <category>Shared budgeting</category><category>E2E encrypted</category><category>WhatsApp</category><category>Template marketplace</category><category>Workers AI</category><category>Midtrans / Xendit / Stripe</category><category>Excel / Sheets</category><category>Windows / Mac</category><category>PWA</category><category>Android</category><category>Multilingual</category>
     </item>
   </channel>
 </rss>

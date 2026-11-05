@@ -7,6 +7,10 @@
     "announced_at": "2026-11-04T17:21:34+00:00",
     "issue": "https://github.com/juw12/portfolio/issues/11"
   },
+  "cairn": {
+    "announced_at": "2026-11-05T13:16:16+00:00",
+    "issue": "https://github.com/juw12/portfolio/issues/14"
+  },
   "crewcup": {
     "announced_at": "2026-11-02T15:57:46+00:00",
     "issue": "https://github.com/juw12/portfolio/issues/9"
@@ -19,6 +23,10 @@
     "announced_at": "2026-11-03T06:51:03+00:00",
     "issue": "https://github.com/juw12/portfolio/issues/10"
   },
+  "jeda": {
+    "announced_at": "2026-11-05T13:16:16+00:00",
+    "issue": "https://github.com/juw12/portfolio/issues/14"
+  },
   "kinibuka": {
     "announced_at": "2026-11-02T06:08:28+00:00",
     "issue": "https://github.com/juw12/portfolio/issues/8"
@@ -26,6 +34,14 @@
   "lingua": {
     "announced_at": "2026-10-27T07:31:11+00:00",
     "issue": "https://github.com/juw12/portfolio/issues/2"
+  },
+  "morning-paper-web": {
+    "announced_at": "2026-11-05T13:16:16+00:00",
+    "issue": "https://github.com/juw12/portfolio/issues/14"
+  },
+  "nudge": {
+    "announced_at": "2026-11-05T13:16:16+00:00",
+    "issue": "https://github.com/juw12/portfolio/issues/14"
   },
   "photo2cad": {
     "announced_at": "2026-11-01T15:12:33+00:00",
@@ -62,6 +78,14 @@
   "together": {
     "announced_at": "2026-11-05T06:50:44+00:00",
     "issue": "https://github.com/juw12/portfolio/issues/12"
+  },
+  "undanu": {
+    "announced_at": "2026-11-05T13:16:16+00:00",
+    "issue": "https://github.com/juw12/portfolio/issues/14"
+  },
+  "vale": {
+    "announced_at": "2026-11-05T13:16:16+00:00",
+    "issue": "https://github.com/juw12/portfolio/issues/14"
   },
   "vitals": {
     "announced_at": "2026-10-28T16:39:29+00:00",
