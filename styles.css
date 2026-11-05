@@ -16,7 +16,7 @@
   --border-strong: #cfd6e2;
   --text: #0f172a;
   --text-muted: #556070;
-  --text-subtle: #7b8596;
+  --text-subtle: #636d7d; /* 4.6:1 on --bg-alt (WCAG AA) */
   --accent: #1f5eff;
   --accent-hover: #1749cc;
   --accent-soft: #edf2ff;
@@ -46,7 +46,7 @@
   --border-strong: #2e3a4e;
   --text: #e7ecf3;
   --text-muted: #9aa5b6;
-  --text-subtle: #737f92;
+  --text-subtle: #7d889a; /* 4.6:1 on --surface (WCAG AA) */
   --accent: #6d9eff;
   --accent-hover: #8fb4ff;
   --accent-soft: rgba(109, 158, 255, 0.12);
@@ -739,6 +739,13 @@ html.reveal-ready .reveal.visible {
   font-size: 0.95rem;
 }
 
+/* Inline links in prose need a non-colour cue (WCAG 1.4.1). */
+.facts dd a {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
 .about-figure {
   margin: 0;
   overflow: hidden;
@@ -1273,8 +1280,9 @@ html.reveal-ready .reveal.visible {
 }
 
 .project-more::after {
-  content: " →";
+  content: "→";
   display: inline-block;
+  margin-left: 0.3em; /* inline-block drops a leading space in content */
   transition: transform 0.15s ease;
 }
 
@@ -1444,8 +1452,34 @@ body.dialog-open {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: 1fr;
   gap: 20px;
+}
+
+/* Fixed column counts so the five groups never leave one card stranded:
+   phone 1 col, tablet 2 + 2, desktop 4 across; Languages runs full width below. */
+@media (min-width: 640px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skills-grid > .skill-group:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1000px) {
+  .skills-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .skills-grid > .skill-group:last-child:nth-child(4n + 1) {
+    grid-column: 1 / -1;
+  }
+}
+
+.skills-grid > .skill-group:last-child:nth-child(odd) .chip-list {
+  flex-direction: row;
 }
 
 .skill-group {
