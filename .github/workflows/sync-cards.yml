@@ -40,6 +40,13 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python portfolio/scripts/notify_substack_draft.py portfolio
 
+      - name: Flag public repos that have no portfolio card
+        # Keeps one issue ("Public repos without a portfolio card") in sync; never blocks the card sync.
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python portfolio/scripts/check_missing_repos.py --apps projects/scripts/apps.json --portfolio-dir portfolio --owner juw12
+
       - name: Commit and push if the catalog changed
         working-directory: portfolio
         run: |

@@ -97,6 +97,8 @@ outlets, writes "The Brief" with Qwen3 8B running in Ollama inside the free Acti
 
 Most cards are generated from `scripts/apps.json` in [juw12/projects](https://github.com/juw12/projects) by `scripts/publish_portfolio.py` (hourly via `.github/workflows/sync-cards.yml`). Each app has a one-line `summary` (the card text, kept under ~120 characters so every card is the same size) and a full `description` (shown when the card is clicked). Edit the catalog, not the generated block in `index.html`. To hide an app, set `"portfolio": false` on its catalog entry (no card) and/or `"feed": false` (left out of `feed.xml` and the `/log/` build log).
 
+New repos are not added automatically: every hourly run, `scripts/check_missing_repos.py` compares the public repos on github.com/juw12 with the catalog and keeps one issue, **Public repos without a portfolio card**, up to date (it closes itself when the list is empty). Add the repo to `apps.json` to give it a card, or list it in `repo-ignore.json` to skip it for good.
+
 ## CV & documents
 
 CVs and employer-specific information are shared privately on request.

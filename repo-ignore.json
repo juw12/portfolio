@@ -1,0 +1,10 @@
+{
+  "_comment": "Public repos that should never get a portfolio card. Used by scripts/check_missing_repos.py.",
+  "ignore": [
+    "juw12",
+    "juw12.github.io",
+    ".github",
+    "portfolio",
+    "projects"
+  ]
+}
