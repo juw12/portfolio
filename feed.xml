@@ -5,8 +5,17 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 04 Nov 2026 17:21:33 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 06:50:43 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Together</title>
+      <link>https://juw12.github.io/projects/together/index.html</link>
+      <guid isPermaLink="false">juwenlie-project-together</guid>
+      <pubDate>Thu, 05 Nov 2026 06:50:43 +0000</pubDate>
+      <description><![CDATA[<p>Couples&#x27; life plan from dating to golden years: roadmap with both ages, goals, savings, check-ins. Offline, private.</p>]]></description>
+      <jl:summary>Couples&#x27; life plan from dating to golden years: roadmap with both ages, goals, savings, check-ins. Offline, private.</jl:summary>
+      <category>couples</category><category>life planning</category><category>local-only</category><category>single file</category>
+    </item>
     <item>
       <title>Buddy</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -296,16 +305,6 @@
       <jl:summary>Shared budgets in any currency, synced on every device. Log expenses by WhatsApp, plus a template Marketplace.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/mint-card.jpg" type="image/jpeg" length="0"/>
       <category>Shared budgeting</category><category>E2E encrypted</category><category>WhatsApp</category><category>Template marketplace</category><category>Workers AI</category><category>Midtrans / Xendit / Stripe</category><category>Excel / Sheets</category><category>Windows / Mac</category><category>PWA</category><category>Android</category><category>Multilingual</category>
-    </item>
-    <item>
-      <title>Datum Bench</title>
-      <link>https://juw12.github.io/projects/me-rd-toolkit/index.html</link>
-      <guid isPermaLink="false">juwenlie-project-me-rd-toolkit</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/me-rd-toolkit-card.jpg" alt="ME R&amp;D Toolkit dashboard with NPI flow, checklists, calculators and lessons quick-access tiles" width="600"></p><p>Offline workspace for mechanical R&amp;D — NPI task flow, review checklists, issue log and 11 engineering calculators.</p>]]></description>
-      <jl:summary>Offline workspace for mechanical R&amp;D — NPI task flow, review checklists, issue log and 11 engineering calculators.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/me-rd-toolkit-card.jpg" type="image/jpeg" length="0"/>
-      <category>NPI</category><category>checklists</category><category>Cpk</category><category>PWA</category><category>offline-first</category><category>Windows app</category>
     </item>
   </channel>
 </rss>
