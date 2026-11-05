@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 05 Nov 2026 13:16:15 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 13:30:52 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Watt Reserve</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-watt-reserve</guid>
+      <pubDate>Thu, 05 Nov 2026 13:30:52 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/watt-reserve-card.jpg" alt="Watt Reserve calculator showing a 4 MWh recommendation with 6-year payback, 15.9% IRR and NT$18.72M NPV" width="600"></p><p>Free bilingual calculator: does on-site battery storage pay back for a Taiwan factory? Real tariff, subsidy, PDF report.</p>]]></description>
+      <jl:summary>Free bilingual calculator: does on-site battery storage pay back for a Taiwan factory? Real tariff, subsidy, PDF report.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/watt-reserve-card.jpg" type="image/jpeg" length="0"/>
+      <category>Energy storage</category><category>Taiwan</category><category>Calculator</category><category>Python model</category><category>static site</category><category>bilingual</category>
+    </item>
     <item>
       <title>Cairn</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -295,16 +305,6 @@
       <jl:summary>Personal comms hub plus live Orbis Chat: real accounts, teams, invites and push alerts on web, iPhone and Android.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/orbis-card.jpg" type="image/jpeg" length="0"/>
       <category>Python</category><category>SQLite</category><category>PWA</category><category>offline-first</category>
-    </item>
-    <item>
-      <title>Peers</title>
-      <link>https://juw12.github.io/projects/peers/</link>
-      <guid isPermaLink="false">juwenlie-project-peers</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/peers-card.jpg" alt="Peers app feed screen showing verified reviews" width="600"></p><p>Offline reviews across 32 categories with a Use it / Wait / Skip scorecard, now also a Windows app with its own database.</p>]]></description>
-      <jl:summary>Offline reviews across 32 categories with a Use it / Wait / Skip scorecard, now also a Windows app with its own database.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/peers-card.jpg" type="image/jpeg" length="0"/>
-      <category>PWA</category><category>reviews</category><category>32 categories</category><category>offline-first</category><category>Windows app</category>
     </item>
   </channel>
 </rss>
