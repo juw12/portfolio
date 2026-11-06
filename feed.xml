@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 06 Nov 2026 04:06:18 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 06:07:40 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Peakwise</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-peakwise</guid>
+      <pubDate>Fri, 06 Nov 2026 06:07:40 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/peakwise-card.jpg" alt="Peakwise showing a 4 MWh recommendation: 6-year payback, 14.8% IRR and NT$16.4M NPV, with a worth-a-look verdict" width="600"></p><p>Neutral 60-second check: does a battery pay back for a Taiwan factory? Real tariff, subsidy and a quote checker.</p>]]></description>
+      <jl:summary>Neutral 60-second check: does a battery pay back for a Taiwan factory? Real tariff, subsidy and a quote checker.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/peakwise-card.jpg" type="image/jpeg" length="0"/>
+      <category>Energy storage</category><category>Taiwan</category><category>Calculator</category><category>Python model</category><category>static site</category><category>bilingual</category>
+    </item>
     <item>
       <title>Hearthwood</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -16,16 +26,6 @@
       <jl:summary>Medieval low-poly village prototype (Unity 6 + URP): quests, dialogue, NPC AI and a playable browser preview.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/hearthwood-card.jpg" type="image/jpeg" length="0"/>
       <category>game</category><category>Unity 6</category><category>URP</category><category>C#</category><category>HTML preview</category>
-    </item>
-    <item>
-      <title>Peakwise</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-watt-reserve</guid>
-      <pubDate>Thu, 05 Nov 2026 13:30:52 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/watt-reserve-card.jpg" alt="Peakwise showing a 4 MWh recommendation: 6-year payback, 14.8% IRR and NT$16.4M NPV, with a worth-a-look verdict" width="600"></p><p>Neutral 60-second check: does a battery pay back for a Taiwan factory? Real tariff, subsidy and a quote checker.</p>]]></description>
-      <jl:summary>Neutral 60-second check: does a battery pay back for a Taiwan factory? Real tariff, subsidy and a quote checker.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/watt-reserve-card.jpg" type="image/jpeg" length="0"/>
-      <category>Energy storage</category><category>Taiwan</category><category>Calculator</category><category>Python model</category><category>static site</category><category>bilingual</category>
     </item>
     <item>
       <title>Cairn</title>
