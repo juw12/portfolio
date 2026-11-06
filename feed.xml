@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 06 Nov 2026 07:53:40 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 15:04:52 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Retrace</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-retrace</guid>
+      <pubDate>Fri, 06 Nov 2026 15:04:52 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/retrace-card.jpg" alt="Retrace analyze page: a white header with a teal logo and tabs for Analyze, Prompt library, API test and Settings, a large input box with Add image and Analyze buttons, example chips, and four cards explaining what it finds in images, text, websites and AI apps" width="600"></p><p>Find the AI, prompt, model and settings behind an image, text, website or chatbot API.</p>]]></description>
+      <jl:summary>Find the AI, prompt, model and settings behind an image, text, website or chatbot API.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/retrace-card.jpg" type="image/jpeg" length="0"/>
+      <category>Python</category><category>AI</category><category>Forensics</category>
+    </item>
     <item>
       <title>Millennium Digest</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -295,16 +305,6 @@
       <jl:summary>Barber marketplace with haircut shorts — live and free: book barbers, pay them directly at 0% fee, earn from your shorts.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/fade-card.jpg" type="image/jpeg" length="0"/>
       <category>PWA</category><category>Nostr</category><category>direct payments</category><category>haircut shorts</category><category>creator commissions</category><category>Windows app</category>
-    </item>
-    <item>
-      <title>Sweep</title>
-      <link>https://juw12.github.io/projects/sweep/</link>
-      <guid isPermaLink="false">juwenlie-project-sweep</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/sweep-card.jpg" alt="Sweep turning a plain-words idea into a Build, Grow and Earn plan — a guided intake, an idea brief, a generated capability matrix, a Definition of Done checklist, a scaffold file tree and a project catalog" width="600"></p><p>Turns a rough app idea into a scored spec, task board and launch plan; self-updating apps for Windows, Mac, Android and iPhone.</p>]]></description>
-      <jl:summary>Turns a rough app idea into a scored spec, task board and launch plan; self-updating apps for Windows, Mac, Android and iPhone.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/sweep-card.jpg" type="image/jpeg" length="0"/>
-      <category>spec score</category><category>task board</category><category>1-click handoff</category><category>offline agent</category>
     </item>
   </channel>
 </rss>
