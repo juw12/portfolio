@@ -18,11 +18,11 @@
       <category>game</category><category>Unity 6</category><category>URP</category><category>C#</category><category>HTML preview</category>
     </item>
     <item>
-      <title>Battery Check (Watt Reserve)</title>
+      <title>Peakwise</title>
       <link>https://juwenlie.pages.dev/#projects</link>
       <guid isPermaLink="false">juwenlie-project-watt-reserve</guid>
       <pubDate>Thu, 05 Nov 2026 13:30:52 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/watt-reserve-card.jpg" alt="Battery Check showing a 4 MWh recommendation: 6-year payback, 14.8% IRR and NT$16.4M NPV, with a worth-a-look verdict" width="600"></p><p>Neutral 60-second check: does a battery pay back for a Taiwan factory? Real tariff, subsidy and a quote checker.</p>]]></description>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/watt-reserve-card.jpg" alt="Peakwise showing a 4 MWh recommendation: 6-year payback, 14.8% IRR and NT$16.4M NPV, with a worth-a-look verdict" width="600"></p><p>Neutral 60-second check: does a battery pay back for a Taiwan factory? Real tariff, subsidy and a quote checker.</p>]]></description>
       <jl:summary>Neutral 60-second check: does a battery pay back for a Taiwan factory? Real tariff, subsidy and a quote checker.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/watt-reserve-card.jpg" type="image/jpeg" length="0"/>
       <category>Energy storage</category><category>Taiwan</category><category>Calculator</category><category>Python model</category><category>static site</category><category>bilingual</category>
