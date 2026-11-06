@@ -18,12 +18,12 @@
       <category>game</category><category>Unity 6</category><category>URP</category><category>C#</category><category>HTML preview</category>
     </item>
     <item>
-      <title>Watt Reserve</title>
+      <title>Battery Check (Watt Reserve)</title>
       <link>https://juwenlie.pages.dev/#projects</link>
       <guid isPermaLink="false">juwenlie-project-watt-reserve</guid>
       <pubDate>Thu, 05 Nov 2026 13:30:52 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/watt-reserve-card.jpg" alt="Watt Reserve calculator showing a 4 MWh recommendation with 6-year payback, 15.9% IRR and NT$18.72M NPV" width="600"></p><p>Free bilingual calculator: does on-site battery storage pay back for a Taiwan factory? Real tariff, subsidy, PDF report.</p>]]></description>
-      <jl:summary>Free bilingual calculator: does on-site battery storage pay back for a Taiwan factory? Real tariff, subsidy, PDF report.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/watt-reserve-card.jpg" alt="Battery Check showing a 4 MWh recommendation: 6-year payback, 14.8% IRR and NT$16.4M NPV, with a worth-a-look verdict" width="600"></p><p>Neutral 60-second check: does a battery pay back for a Taiwan factory? Real tariff, subsidy and a quote checker.</p>]]></description>
+      <jl:summary>Neutral 60-second check: does a battery pay back for a Taiwan factory? Real tariff, subsidy and a quote checker.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/watt-reserve-card.jpg" type="image/jpeg" length="0"/>
       <category>Energy storage</category><category>Taiwan</category><category>Calculator</category><category>Python model</category><category>static site</category><category>bilingual</category>
     </item>
