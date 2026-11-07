@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 07 Nov 2026 19:06:52 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2026 19:16:53 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Meetline</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-meetline</guid>
+      <pubDate>Sat, 07 Nov 2026 19:16:53 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/meetline-card.jpg" alt="Meetline dark map console: three people in Batam with coloured road routes converging on a cafe, the result card showing 27 min longest trip and a ranked list of nearby cafes." width="600"></p><p>Find the fairest place for 2-8 people to meet.</p>]]></description>
+      <jl:summary>Find the fairest place for 2-8 people to meet.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/meetline-card.jpg" type="image/jpeg" length="0"/>
+      <category>geolocation</category><category>javascript</category><category>leaflet</category><category>meeting-point</category><category>openstreetmap</category>
+    </item>
     <item>
       <title>precedent</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -295,16 +305,6 @@
       <jl:summary>PRD + six reference photos to a validated STEP (.stp) CAD model via an LLM-written CadQuery program - a deployable service.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/photo2cad-card.jpg" type="image/jpeg" length="0"/>
       <category>CAD</category><category>STEP</category><category>CadQuery</category><category>LLM</category><category>Python</category><category>deployable service</category>
-    </item>
-    <item>
-      <title>Teman Sehat</title>
-      <link>https://juw12.github.io/projects/teman-sehat/index.html</link>
-      <guid isPermaLink="false">juwenlie-project-teman-sehat</guid>
-      <pubDate>Sat, 31 Oct 2026 17:45:17 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/teman-sehat-card.jpg" alt="Teman Sehat today view: next reminder, daily kcal, protein and exercise summary, after-meal timer and GERD habit checklist" width="600"></p><p>GERD companion in Bahasa Indonesia: reminders, diet &amp; fitness without fasting, acne care. Desktop, Android, iPhone.</p>]]></description>
-      <jl:summary>GERD companion in Bahasa Indonesia: reminders, diet &amp; fitness without fasting, acne care. Desktop, Android, iPhone.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/teman-sehat-card.jpg" type="image/jpeg" length="0"/>
-      <category>PWA</category><category>Capacitor</category><category>health</category><category>Bahasa Indonesia</category><category>local-only</category>
     </item>
   </channel>
 </rss>
