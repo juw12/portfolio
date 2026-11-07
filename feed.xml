@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 07 Nov 2026 10:42:40 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2026 11:49:49 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Vow</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-vow</guid>
+      <pubDate>Sat, 07 Nov 2026 11:49:49 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/vow-card.jpg" alt="Vow home on desktop: two active vows with stake, proof type, witness and a send-invite pill, countdowns and Check in buttons" width="600"></p><p>Free, private commitment app: stake a promise, name a witness who signs your check-ins, pay your cause if you miss.</p>]]></description>
+      <jl:summary>Free, private commitment app: stake a promise, name a witness who signs your check-ins, pay your cause if you miss.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/vow-card.jpg" type="image/jpeg" length="0"/>
+      <category>PWA</category><category>offline-first</category><category>Web Crypto</category><category>commitment</category>
+    </item>
     <item>
       <title>Nadaku</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -295,16 +305,6 @@
       <jl:summary>Device health copilot: desktop apps for Windows, Mac and Linux; Android and iPhone apps check the phone itself. Undoable cleaning.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/vitals-card.jpg" type="image/jpeg" length="0"/>
       <category>Python</category><category>PWA</category><category>undo vault</category><category>battery</category><category>local-only</category>
-    </item>
-    <item>
-      <title>PLM AML Approval Assistant</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-plm-aml-approval</guid>
-      <pubDate>Tue, 27 Oct 2026 13:13:51 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/plm-aml-approval-card.jpg" alt="PLM AML Approval Assistant: six automated steps from part search to a verified approval form, stopping before Submit" width="600"></p><p>Automates a PLM part-approval workflow in Edge — final or conditional — and stops before Submit for a human check.</p>]]></description>
-      <jl:summary>Automates a PLM part-approval workflow in Edge — final or conditional — and stops before Submit for a human check.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/plm-aml-approval-card.jpg" type="image/jpeg" length="0"/>
-      <category>Python</category><category>Playwright</category><category>Windchill PLM</category><category>workflow automation</category>
     </item>
   </channel>
 </rss>
