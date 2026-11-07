@@ -3,7 +3,12 @@
 <head>
   <link rel="icon" href="data:,">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F0C3AE">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Cozy Island">
   <title>Cozy Island</title>
   <style>
     :root {
@@ -24,7 +29,10 @@
       color: var(--cream);
       user-select: none;
     }
+    html, body { overscroll-behavior: none; -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; }
     #app, #app canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+    #app canvas { touch-action: none; }
+    button, [role=button] { touch-action: manipulation; }
     .panel {
       position: fixed;
       background: var(--panel);
@@ -52,7 +60,6 @@
     #timer { top: 16px; right: 16px; padding: 8px 16px; font-size: 15px; }
     #timer.focus { background: rgba(40, 72, 58, 0.72); }
     #timer.break { background: rgba(110, 66, 44, 0.72); }
-    #esc-hint { bottom: 16px; left: 16px; padding: 6px 14px; font-size: 14px; }
 
     #toast {
       top: 62px; left: 50%; transform: translate(-50%, -10px); max-width: min(640px, 90vw);
@@ -186,6 +193,130 @@
       background: rgba(255, 245, 225, 0.9); color: #3B2A20; text-align: center;
     }
     #start .tips { margin-top: 16px; font-size: 13px; opacity: 0.8; line-height: 1.6; }
+
+    /* ---- navigation: activity rail (back + switch), explore tools, in-HUD action chips ---- */
+    [hidden] { display: none !important; }
+    .ui-btn {
+      font: inherit; color: var(--cream); background: transparent; border: 0; box-shadow: none;
+      text-shadow: inherit; cursor: pointer; filter: none;
+    }
+    .ui-btn:hover { filter: none; background: rgba(255, 245, 225, 0.12); }
+    .ui-btn:focus-visible { outline: 2px solid var(--peach); outline-offset: 2px; }
+    #explore-list .row.clickable { width: 100%; text-align: left; align-items: center; }
+    .tool-list { display: grid; gap: 1px; margin-top: 2px; }
+    .tool-list .row.clickable { width: 100%; text-align: left; font-size: 13px; }
+    #explore-list .row.clickable, .tool-list .row.clickable { justify-content: flex-start; gap: 6px; }
+    #explore-list .row.clickable .key, .tool-list .row.clickable .key { margin-right: 4px; }
+    .hint-line { opacity: 0.85; margin-bottom: 4px; }
+    .only-touch { display: none; }
+    .name-short { display: none; }
+    @media (hover: none) and (pointer: coarse) { .only-mouse-flex { display: none !important; } }
+
+    #mode-rail {
+      top: 14px; left: 14px; padding: 8px; display: flex; flex-direction: column; gap: 2px;
+      max-height: calc(100% - 28px); overflow-y: auto; scrollbar-width: none;
+    }
+    .rail-btn {
+      display: flex; align-items: center; gap: 10px; min-height: 36px; padding: 4px 10px;
+      border-radius: 12px; font-size: 15px; white-space: nowrap; text-align: left;
+    }
+    .rail-btn .rail-icon { width: 22px; text-align: center; font-size: 17px; }
+    .rail-btn .rail-label { flex: 1; }
+    .rail-btn .key { margin: 0 0 0 10px; font-size: 12px; padding: 0 5px; }
+    .rail-btn[aria-current="true"] { background: var(--peach); color: #3B2A20; text-shadow: none; }
+    .rail-btn[aria-current="true"] .key { background: rgba(59, 42, 32, 0.14); }
+    .rail-back { font-weight: 600; }
+    #mode-list {
+      display: flex; flex-direction: column; gap: 2px; margin-top: 4px; padding-top: 4px;
+      border-top: 1px solid rgba(255, 245, 225, 0.18);
+    }
+    #timer[role=button] { cursor: pointer; }
+
+    .act-tools { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 4px 14px;
+      border-radius: 999px; background: rgba(255, 245, 225, 0.16); font-size: 14px;
+    }
+    .chip .key { margin: 0; font-size: 12px; padding: 0 5px; }
+
+    /* ---- phones and tablets (touch screens) ---- */
+    @media (hover: none) and (pointer: coarse) {
+      .key, .only-mouse { display: none !important; }
+      .only-touch { display: block; }
+      #tooltip { display: none !important; }
+      button, .ui-btn, .row.clickable, #timer { min-height: 44px; }
+      .chip { min-height: 44px; padding: 6px 16px; font-size: 15px; }
+      .rail-btn { min-height: 44px; }
+    }
+
+    /* ---- small screens (and phones held sideways): bottom sheet on the island, icon rail in activities ---- */
+    @media (max-width: 640px), (max-height: 500px) {
+      .panel { padding: 10px 12px; }
+      #explore {
+        top: auto; left: max(8px, env(safe-area-inset-left)); right: max(8px, env(safe-area-inset-right));
+        bottom: max(8px, env(safe-area-inset-bottom)); width: auto; max-height: 46%; overflow-y: auto;
+      }
+      #explore h2 { display: none; }
+      .name-long { display: none; }
+      .name-short { display: inline; }
+      #explore-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+      #explore-list .row.clickable {
+        width: auto; margin: 0; padding: 4px 2px; border-radius: 14px; background: rgba(255, 245, 225, 0.14);
+        flex-direction: column; justify-content: center; align-items: center; gap: 0; text-align: center;
+        font-size: 13px; line-height: 1.15; min-height: 50px;
+      }
+      #explore-list .row-icon { font-size: 18px; }
+      .tool-list { display: flex; justify-content: space-between; gap: 6px; }
+      .tool-list .row.clickable {
+        flex: 1 1 0; width: auto; margin: 0; padding: 0; justify-content: center; border-radius: 14px;
+        background: rgba(255, 245, 225, 0.14); min-width: 44px;
+      }
+      .tool-list .tool-icon { font-size: 19px; }
+      .tool-list .tool-text {
+        position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+      }
+      #explore .controls { margin-top: 8px; line-height: 1.4; }
+      .tool-list { margin-top: 8px; }
+      #timer { top: max(8px, env(safe-area-inset-top)); right: max(8px, env(safe-area-inset-right)); font-size: 14px; padding: 6px 12px; display: flex; align-items: center; }
+      #toast { top: calc(max(8px, env(safe-area-inset-top)) + 54px); max-width: calc(100% - 24px); font-size: 15px; }
+      body.in-activity #toast { left: calc(50% + 32px); max-width: calc(100% - 88px); }
+      #activity-title { display: none !important; }
+      #mode-rail { top: max(8px, env(safe-area-inset-top)); left: max(8px, env(safe-area-inset-left)); padding: 4px; max-height: calc(100% - 16px); }
+      .rail-btn {
+        flex-direction: column; justify-content: center; gap: 0; padding: 3px 4px; width: 58px; min-height: 48px;
+        text-align: center;
+      }
+      .rail-btn .rail-icon { width: auto; font-size: 18px; line-height: 1.1; }
+      .rail-btn .rail-label { flex: none; font-size: 12px; line-height: 1.2; }
+      .rail-btn .rail-label .name-long { display: none; }
+      .hud {
+        min-width: 0; left: max(8px, env(safe-area-inset-left)); right: max(8px, env(safe-area-inset-right));
+        bottom: max(8px, env(safe-area-inset-bottom)); transform: none;
+      }
+      .hud-title { font-size: 17px; }
+      #journal, #bird-journal, #village-panel, #fish-journal, #cook-book {
+        top: calc(max(8px, env(safe-area-inset-top)) + 52px); left: 64px; right: 8px; width: auto; transform: none;
+        max-height: calc(100% - 300px); overflow-y: auto;
+      }
+      #journal { left: 8px; max-height: calc(100% - 260px); }
+      #village-panel { left: 8px; max-height: calc(100% - 80px); }
+      .fish-info { white-space: normal; }
+      #start .card { width: min(420px, calc(100vw - 24px)); padding: 22px 18px; }
+      #start h1 { font-size: 34px; }
+      #online-list { display: none !important; }
+    }
+    /* phone held sideways: rail on the left, HUD beside it, shorter panels */
+    @media (max-height: 500px) {
+      .rail-btn { min-height: 40px; }
+      .rail-btn .rail-label { display: none; }
+      .rail-btn[aria-current="true"] .rail-label, .rail-back .rail-label { display: block; }
+      #mode-rail { gap: 0; }
+      #mode-list { gap: 0; }
+      .hud { left: calc(max(8px, env(safe-area-inset-left)) + 64px); }
+      #explore { max-height: 52%; }
+      #journal, #bird-journal, #fish-journal, #cook-book { max-height: calc(100% - 170px); }
+      #toast { top: max(8px, env(safe-area-inset-top)); left: 50%; }
+    }
   </style>
 </head>
 <body>
@@ -194,21 +325,35 @@
 
   <div id="explore" class="panel">
     <h2>Cozy Island</h2>
-    <div id="explore-list"></div>
+    <div id="explore-list" role="group" aria-label="Activities"></div>
     <div class="controls small">
-      Click a glowing spot or press a number<br>
-      <span class="key">J</span>journal &nbsp; <span class="key">F</span>focus timer<br>
-      <span class="key">S</span>season: <span id="season-label"></span><br>
-      <span class="key">N</span>time: <span id="time-label"></span><br>
-      <span class="key">R</span>weather: <span id="weather-label"></span><br>
-    <span class="key">D</span>desk mode: a tiny island beside your work<br>
-      <span id="mute-label">M  sound on</span> &nbsp;·&nbsp; right-drag look · wheel zoom
-      <br>Click Mochi the cat on the dock to pet her
+      <div class="hint-line only-mouse">Click a glowing spot or press a number · right-drag look · wheel zoom</div>
+      <div class="hint-line only-touch">Tap a glowing spot · drag to look · pinch to zoom</div>
+      <div class="tool-list" role="group" aria-label="Island tools">
+        <button class="ui-btn row clickable tool" data-key="KeyJ"><span class="key">J</span><span class="tool-icon" aria-hidden="true">📖</span><span class="tool-text">journal</span></button>
+        <button class="ui-btn row clickable tool" data-key="KeyF"><span class="key">F</span><span class="tool-icon" aria-hidden="true">⏱</span><span class="tool-text">focus timer</span></button>
+        <button class="ui-btn row clickable tool" data-key="KeyS"><span class="key">S</span><span class="tool-icon" aria-hidden="true">🍃</span><span class="tool-text">season: <span id="season-label"></span></span></button>
+        <button class="ui-btn row clickable tool" data-key="KeyN"><span class="key">N</span><span class="tool-icon" aria-hidden="true">🌤</span><span class="tool-text">time: <span id="time-label"></span></span></button>
+        <button class="ui-btn row clickable tool" data-key="KeyR"><span class="key">R</span><span class="tool-icon" aria-hidden="true">☔</span><span class="tool-text">weather: <span id="weather-label"></span></span></button>
+        <button class="ui-btn row clickable tool" data-key="KeyM"><span class="key">M</span><span class="tool-icon" aria-hidden="true">🔊</span><span class="tool-text" id="mute-label">sound on</span></button>
+        <button class="ui-btn row clickable only-mouse-flex" id="desk-button"><span class="key">D</span>🖥 desk mode: a tiny island beside your work</button>
+      </div>
+      <div class="hint-line only-mouse" style="margin-top: 4px">Click Mochi the cat on the dock to pet her</div>
     </div>
   </div>
   <div id="activity-title" class="panel" style="display:none"></div>
-  <div id="timer" class="panel pill">F  start focus</div>
-  <div id="esc-hint" class="panel" style="display:none">Esc · back to the island</div>
+  <div id="timer" class="panel pill" role="button" tabindex="0" aria-label="Focus timer">F  start focus</div>
+  <nav id="mode-rail" class="panel" style="display:none" aria-label="Activities">
+    <button class="ui-btn rail-btn rail-back" id="back-button" aria-label="Back to the island">
+      <span class="rail-icon" aria-hidden="true">←</span><span class="rail-label">Island</span><span class="key">Esc</span>
+    </button>
+    <div id="mode-list" role="group" aria-label="Switch activity"></div>
+  </nav>
+  <div id="act-tools" class="act-tools" style="display:none">
+    <button class="ui-btn chip" id="act-prev" data-key="KeyQ" aria-label="Previous"><span class="key">Q</span>‹ <span class="chip-text">previous</span></button>
+    <button class="ui-btn chip" id="act-next" data-key="KeyE" aria-label="Next"><span class="chip-text">next</span> ›<span class="key">E</span></button>
+    <button class="ui-btn chip" id="act-journal" data-key="KeyJ" aria-label="Journal">📖 <span class="chip-text">journal</span><span class="key">J</span></button>
+  </div>
   <div id="toast" class="panel"></div>
   <div id="tooltip" class="panel" style="display:none"></div>
 
@@ -310,7 +455,8 @@
       <button id="start-button">Begin (sound on)</button>
       <div class="tips">
         Fishing · garden · tea &amp; breathing · birdwatching · sunset eye-rest · village · campfire cooking<br>
-        Press <b>F</b> for a 25-minute focus timer - plants keep growing while you work.
+        <span class="only-mouse">Press <b>F</b> for a 25-minute focus timer - plants keep growing while you work.</span>
+        <span class="only-touch">Tap the timer for a 25-minute focus session - plants keep growing while you're away.</span>
       </div>
     </div>
   </div>
