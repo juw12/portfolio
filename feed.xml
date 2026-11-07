@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 07 Nov 2026 03:54:44 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2026 03:57:05 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>ReachPilot</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-reachpilot</guid>
+      <pubDate>Sat, 07 Nov 2026 03:57:05 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/reachpilot-card.jpg" alt="ReachPilot demo dashboard with made-up data: a to-do list of items that need a human, such as a stopped job application, above cards for LinkedIn posts, job search and e-mail applications" width="600"></p><p>Local hub for outreach bots: LinkedIn posts from real repo facts, job search and e-mail applications.</p>]]></description>
+      <jl:summary>Local hub for outreach bots: LinkedIn posts from real repo facts, job search and e-mail applications.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/reachpilot-card.jpg" type="image/jpeg" length="0"/>
+      <category>automation</category><category>python</category><category>linkedin</category><category>dashboard</category>
+    </item>
     <item>
       <title>Tally</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -295,16 +305,6 @@
       <jl:summary>41 landmark and character miniatures as STL/STEP, including a 100 mm Kobo-chan figurine revised for Form 3 SLA.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/kobochan-card.jpg" type="image/jpeg" length="0"/>
       <category>CadQuery</category><category>SOMA</category><category>OpenCASCADE</category><category>Form 3 / SLA</category><category>3D printing</category><category>STL</category><category>STEP</category><category>miniatures</category>
-    </item>
-    <item>
-      <title>Glow</title>
-      <link>https://juw12.github.io/projects/glow/</link>
-      <guid isPermaLink="false">juwenlie-project-glow</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/glow-card.jpg" alt="Glow: GlowChat council with a Judge, part of the Glow ecosystem with GlowRoom" width="600"></p><p>Four AI apps, one free account — GlowLead plans, GlowChat compares models, GlowRoom researches, GlowNews briefs you on AI news.</p>]]></description>
-      <jl:summary>Four AI apps, one free account — GlowLead plans, GlowChat compares models, GlowRoom researches, GlowNews briefs you on AI news.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/glow-card.jpg" type="image/jpeg" length="0"/>
-      <category>AI ecosystem</category><category>GlowLead</category><category>GlowChat</category><category>GlowRoom</category><category>GlowNews</category><category>AI news</category><category>AI agents</category><category>orchestrator</category><category>multilingual</category>
     </item>
   </channel>
 </rss>
