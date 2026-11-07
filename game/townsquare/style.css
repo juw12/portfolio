@@ -109,7 +109,7 @@ body {
   padding: 14px;
   border: none;
   border-radius: 12px;
-  background: #00a5cf;
+  background: #00758f;
   color: #fff;
   font-size: 17px;
   font-weight: 600;
@@ -622,7 +622,7 @@ body.touch #wallet {
   padding: 8px;
   border: 0;
   background: transparent;
-  color: #00a5cf;
+  color: #00758f;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -630,7 +630,7 @@ body.touch #wallet {
 
 #join .link-button {
   background: transparent;
-  color: #00a5cf;
+  color: #00758f;
 }
 
 #nameInput:disabled {
