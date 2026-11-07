@@ -5,8 +5,28 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 07 Nov 2026 19:16:53 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2026 20:40:50 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Teduh</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-teduh</guid>
+      <pubDate>Sat, 07 Nov 2026 20:40:50 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/teduh-card.jpg" alt="Teduh start screen: name, colour and language picker over a low-poly sky village of floating islands" width="600"></p><p>Free, cozy solarpunk life sim on floating islands, offline in any browser.</p>]]></description>
+      <jl:summary>Free, cozy solarpunk life sim on floating islands, offline in any browser.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/teduh-card.jpg" type="image/jpeg" length="0"/>
+      <category>browser-game</category><category>cozy-game</category><category>game</category><category>indonesia</category><category>life-sim</category>
+    </item>
+    <item>
+      <title>Nongkrong</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-nongkrong</guid>
+      <pubDate>Sat, 07 Nov 2026 20:40:50 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/nongkrong-card.jpg" alt="Nongkrong floor plan of a Batam warung kopi: six marble tables with stools, a counter strip, and the Meja 1 chat panel with three people talking" width="600"></p><p>Virtual warung and cafe tables for your city. Only your table can read or hear you.</p>]]></description>
+      <jl:summary>Virtual warung and cafe tables for your city. Only your table can read or hear you.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/nongkrong-card.jpg" type="image/jpeg" length="0"/>
+      <category>webrtc</category><category>p2p</category><category>voice-chat</category><category>pwa</category><category>indonesia</category>
+    </item>
     <item>
       <title>Meetline</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -285,26 +305,6 @@
       <jl:summary>Find UMKM stalls open right now: live status, branches, bazaars, map, follow alerts and order-ahead via WhatsApp.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/kinibuka-card.jpg" type="image/jpeg" length="0"/>
       <category>UMKM</category><category>Marketplace</category><category>Map</category><category>WhatsApp</category><category>Python</category><category>SQLite</category><category>ID / EN / 中文</category>
-    </item>
-    <item>
-      <title>Rewind</title>
-      <link>https://juw12.github.io/projects/rewind/</link>
-      <guid isPermaLink="false">juwenlie-project-rewind</guid>
-      <pubDate>Mon, 02 Nov 2026 06:08:27 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/rewind-card.jpg" alt="Rewind archive in dark mode: a grid of series poster tiles with search, decade and availability filters" width="600"></p><p>Remember the shows streaming forgot: share memories and quotes, track where a series can still be watched.</p>]]></description>
-      <jl:summary>Remember the shows streaming forgot: share memories and quotes, track where a series can still be watched.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/rewind-card.jpg" type="image/jpeg" length="0"/>
-      <category>Community</category><category>TV archive</category><category>PWA</category><category>Supabase</category><category>Day/night mode</category><category>Vanilla JS</category>
-    </item>
-    <item>
-      <title>Photo2CAD</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-photo2cad</guid>
-      <pubDate>Sun, 01 Nov 2026 15:12:33 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/photo2cad-card.jpg" alt="photo2cad workbench: a PRD editor and six reference-photo slots beside a CAD viewport" width="600"></p><p>PRD + six reference photos to a validated STEP (.stp) CAD model via an LLM-written CadQuery program - a deployable service.</p>]]></description>
-      <jl:summary>PRD + six reference photos to a validated STEP (.stp) CAD model via an LLM-written CadQuery program - a deployable service.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/photo2cad-card.jpg" type="image/jpeg" length="0"/>
-      <category>CAD</category><category>STEP</category><category>CadQuery</category><category>LLM</category><category>Python</category><category>deployable service</category>
     </item>
   </channel>
 </rss>
