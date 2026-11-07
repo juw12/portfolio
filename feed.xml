@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 07 Nov 2026 11:49:49 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2026 17:43:00 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Founder Studio</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-founder-studio</guid>
+      <pubDate>Sat, 07 Nov 2026 17:43:00 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/founder-studio-card.jpg" alt="Founder Studio online demo after a quick sim: 3D buyer bots split into PASS and BUY piles, a buy-rate gauge, the live decisions list and the Results tab" width="600"></p><p>Pre-launch simulator: 3D buyer bots walk up to your stall and decide BUY or PASS.</p>]]></description>
+      <jl:summary>Pre-launch simulator: 3D buyer bots walk up to your stall and decide BUY or PASS.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/founder-studio-card.jpg" type="image/jpeg" length="0"/>
+      
+    </item>
     <item>
       <title>Vow</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -32,7 +42,7 @@
       <link>https://juwenlie.pages.dev/#projects</link>
       <guid isPermaLink="false">juwenlie-project-gate</guid>
       <pubDate>Sat, 07 Nov 2026 06:56:20 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/gate-card.jpg" alt="gate demo page: headline &#x27;A merge gate for AI-agent code&#x27;, outcome tiles (26 sessions, 19 merged, 3 rejected by tests) and a terminal listing merged and rejected agent sessions" width="600"></p><p>A merge gate for AI-agent code: parallel sessions in, tested and provenance-tagged commits out.</p>]]></description>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/gate-card.jpg" alt="gate site: serif headline &#x27;A merge gate for AI-agent code&#x27; beside a ledger card of the recorded run (26 sessions, 19 merged, 3 rejected by tests) with one coloured block per session" width="600"></p><p>A merge gate for AI-agent code: parallel sessions in, tested and provenance-tagged commits out.</p>]]></description>
       <jl:summary>A merge gate for AI-agent code: parallel sessions in, tested and provenance-tagged commits out.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/gate-card.jpg" type="image/jpeg" length="0"/>
       <category>python</category><category>git</category><category>ci</category><category>ai-agents</category><category>cli</category>
@@ -295,16 +305,6 @@
       <jl:summary>Desktop pet + Pomodoro for Windows — 51 animals, friends, skill battles, a Strava-style Focus Trail and Phone Trail, 4 languages.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/pips-card.jpg" type="image/jpeg" length="0"/>
       <category>Windows app</category><category>desktop pet</category><category>Pomodoro</category><category>Focus Trail</category><category>skill battles</category><category>Python</category><category>4 languages</category>
-    </item>
-    <item>
-      <title>Vitals</title>
-      <link>https://juw12.github.io/projects/vitals/index.html</link>
-      <guid isPermaLink="false">juwenlie-project-vitals</guid>
-      <pubDate>Wed, 28 Oct 2026 16:39:28 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/vitals-card.jpg" alt="Vitals overview: health score orb with an itemized why-this-score list, live vitals and ranked one-click fixes" width="600"></p><p>Device health copilot: desktop apps for Windows, Mac and Linux; Android and iPhone apps check the phone itself. Undoable cleaning.</p>]]></description>
-      <jl:summary>Device health copilot: desktop apps for Windows, Mac and Linux; Android and iPhone apps check the phone itself. Undoable cleaning.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/vitals-card.jpg" type="image/jpeg" length="0"/>
-      <category>Python</category><category>PWA</category><category>undo vault</category><category>battery</category><category>local-only</category>
     </item>
   </channel>
 </rss>
