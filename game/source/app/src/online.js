@@ -121,7 +121,9 @@
     },
 
     async start() {
-      if (!base) {
+      // A static copy (e.g. GitHub Pages) has no village server: skip the handshake unless ?server= is given.
+      const staticHost = document.querySelector('meta[name="cozy-static"]') && !params.get('server');
+      if (!base || staticHost) {
         return false;
       }
       try {
