@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 07 Nov 2026 17:43:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2026 19:06:52 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>precedent</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-precedent</guid>
+      <pubDate>Sat, 07 Nov 2026 19:06:52 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/precedent-card.jpg" alt="precedent landing page: serif headline &#x27;Stop false I can&#x27;ts and unchecked dones in your AI coding agents&#x27; beside a case-book icon with a check mark" width="600"></p><p>Stops false &quot;I can&#x27;t&quot;s and unchecked &quot;done&quot;s in AI coding agents.</p>]]></description>
+      <jl:summary>Stops false &quot;I can&#x27;t&quot;s and unchecked &quot;done&quot;s in AI coding agents.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/precedent-card.jpg" type="image/jpeg" length="0"/>
+      <category>ai-agents</category><category>claude-code</category><category>codex</category><category>llm-guardrails</category><category>mcp</category>
+    </item>
     <item>
       <title>Founder Studio</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -295,16 +305,6 @@
       <jl:summary>GERD companion in Bahasa Indonesia: reminders, diet &amp; fitness without fasting, acne care. Desktop, Android, iPhone.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/teman-sehat-card.jpg" type="image/jpeg" length="0"/>
       <category>PWA</category><category>Capacitor</category><category>health</category><category>Bahasa Indonesia</category><category>local-only</category>
-    </item>
-    <item>
-      <title>Pips</title>
-      <link>https://juw12.github.io/projects/pips/web.html</link>
-      <guid isPermaLink="false">juwenlie-project-pips</guid>
-      <pubDate>Wed, 28 Oct 2026 16:39:28 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/pips-card.jpg" alt="Pips: twelve desktop pet animals next to the Pomodoro card" width="600"></p><p>Desktop pet + Pomodoro for Windows — 51 animals, friends, skill battles, a Strava-style Focus Trail and Phone Trail, 4 languages.</p>]]></description>
-      <jl:summary>Desktop pet + Pomodoro for Windows — 51 animals, friends, skill battles, a Strava-style Focus Trail and Phone Trail, 4 languages.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/pips-card.jpg" type="image/jpeg" length="0"/>
-      <category>Windows app</category><category>desktop pet</category><category>Pomodoro</category><category>Focus Trail</category><category>skill battles</category><category>Python</category><category>4 languages</category>
     </item>
   </channel>
 </rss>
