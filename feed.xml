@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 07 Nov 2026 03:57:05 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2026 06:01:00 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Batam Uncle Says</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-batam-uncle-says</guid>
+      <pubDate>Sat, 07 Nov 2026 06:01:00 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/batam-uncle-says-card.jpg" alt="Batam Uncle Says home page: Barelang Bridge hero with the headline Batam, without the guesswork, a live Batam clock with a leave-for-terminal countdown, and key facts on ferry fare, exchange rate, time difference and visa-free stay" width="600"></p><p>Batam day trips for Singaporeans, planned around your ferry and usable offline.</p>]]></description>
+      <jl:summary>Batam day trips for Singaporeans, planned around your ferry and usable offline.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/batam-uncle-says-card.jpg" type="image/jpeg" length="0"/>
+      <category>pwa</category><category>travel</category><category>batam</category><category>offline</category><category>javascript</category>
+    </item>
     <item>
       <title>ReachPilot</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -295,16 +305,6 @@
       <jl:summary>AIRIZ motor test console for Windows, Android, iPhone and web: USB/Bluetooth jog, remote control and live device checks.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/airiz-motor-card.jpg" type="image/jpeg" length="0"/>
       <category>Windows app</category><category>Web Serial</category><category>Bluetooth control</category><category>camera sharing</category><category>macro runner</category><category>offline demo</category>
-    </item>
-    <item>
-      <title>3D Models Library</title>
-      <link>https://github.com/juw12/projects/tree/main/outputs/3d-models</link>
-      <guid isPermaLink="false">juwenlie-project-3d-models-library</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/kobochan-card.jpg" alt="Kobo-chan: a 100 mm solid figurine revised for Form 3, shown from the front and three-quarter view" width="600"></p><p>41 landmark and character miniatures as STL/STEP, including a 100 mm Kobo-chan figurine revised for Form 3 SLA.</p>]]></description>
-      <jl:summary>41 landmark and character miniatures as STL/STEP, including a 100 mm Kobo-chan figurine revised for Form 3 SLA.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/kobochan-card.jpg" type="image/jpeg" length="0"/>
-      <category>CadQuery</category><category>SOMA</category><category>OpenCASCADE</category><category>Form 3 / SLA</category><category>3D printing</category><category>STL</category><category>STEP</category><category>miniatures</category>
     </item>
   </channel>
 </rss>
