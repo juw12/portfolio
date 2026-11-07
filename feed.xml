@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 07 Nov 2026 06:56:20 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2026 10:42:40 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Nadaku</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-nadaku</guid>
+      <pubDate>Sat, 07 Nov 2026 10:42:40 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/nadaku-card.jpg" alt="Nadaku home screen in dark mode: daily XP ring at 22 of 30, HSK 1 progress, Memory Meter with 113 of 120 words remembered, and the Indonesian-speaker card" width="600"></p><p>Offline HSK 1-6 Mandarin app for Indonesian speakers, with native audio and a tone mirror.</p>]]></description>
+      <jl:summary>Offline HSK 1-6 Mandarin app for Indonesian speakers, with native audio and a tone mirror.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/nadaku-card.jpg" type="image/jpeg" length="0"/>
+      <category>mandarin</category><category>hsk</category><category>pwa</category><category>indonesia</category><category>fsrs</category>
+    </item>
     <item>
       <title>gate</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -295,16 +305,6 @@
       <jl:summary>Automates a PLM part-approval workflow in Edge — final or conditional — and stops before Submit for a human check.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/plm-aml-approval-card.jpg" type="image/jpeg" length="0"/>
       <category>Python</category><category>Playwright</category><category>Windchill PLM</category><category>workflow automation</category>
-    </item>
-    <item>
-      <title>Lingua</title>
-      <link>https://juw12.github.io/projects/lingua/web.html</link>
-      <guid isPermaLink="false">juwenlie-project-lingua</guid>
-      <pubDate>Tue, 27 Oct 2026 07:31:10 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/lingua-card.jpg" alt="Lingua on Windows: the main window with live-caption controls next to the Text desk translating an English note into Traditional Chinese" width="600"></p><p>Universal language helper for Windows, iPhone and Android: text, pictures and live captions, with local AI and offline fallback.</p>]]></description>
-      <jl:summary>Universal language helper for Windows, iPhone and Android: text, pictures and live captions, with local AI and offline fallback.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/lingua-card.jpg" type="image/jpeg" length="0"/>
-      <category>translation desk</category><category>OCR</category><category>translation</category><category>Windows</category><category>iPhone</category><category>Android</category>
     </item>
   </channel>
 </rss>
