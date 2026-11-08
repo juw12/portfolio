@@ -44,3 +44,11 @@ Steppers use chevron icons with plain labels ("Previous", "Next"); the menu togg
 ## Banned
 Emoji, gradient text, neon glow, purple-blue gradients, Inter, drop shadows heavier than
 0 10px 30px at 0.22, more than one accent colour.
+
+## Behaviour notes (round 4)
+- Phone landscape: the island sheet shows one row of places; **More** opens the tool row. Activity panels sit
+  bottom-right (max 420 px wide) so the scene stays in view.
+- One panel per activity: the activity hint is a quiet last line inside its HUD, not a separate toast.
+- Tool chips show values as words ("Autumn", "Day", "Clear"); exact values live in the tooltip.
+  Focus looks pressed while a session runs; Sound dims when muted. Desk mode spans two cells.
+- Key badges (1-7, Esc) are outlined and quiet: present for keyboard users, not shouting.

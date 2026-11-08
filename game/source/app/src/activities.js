@@ -522,7 +522,7 @@
     const activity = {
       id: 'fishing', name: 'Fishing', key: 1,
       station: places.playerSpot, focus: places.playerSpot, from: places.fishingFrom, distance: 9, pitch: 0.42,
-      hint: 'Click to cast. Wait for the big dip, then hold to reel.',
+      hint: 'Cast, wait for the big dip, then hold to reel.',
 
       enter() {
         state.mode = 'idle';
@@ -777,10 +777,12 @@
           const season = Cozy.season.current();
           const biting = fishBook.inSeason(season);
           const newHere = biting.filter((fish) => fishBook.caught(fish) === 0).length;
+          // two short rows: your progress, then what is biting right now
           ui.setText(els.count,
-            `Fish caught: ${progress.get('fish')} · ${Cozy.season.name()}: ${biting.length} kinds biting`
-            + `${world.rain > 0.5 ? ' · rain: quicker bites' : ''}`
-            + `${newHere ? `, ${newHere} new to you` : ''} · J journal ${fishBook.speciesCount()}/${FISH.length}`);
+            `Caught ${progress.get('fish')} · Journal ${fishBook.speciesCount()}/${FISH.length}\n`
+            + `${Cozy.season.name()}: ${biting.length} kinds biting`
+            + `${newHere ? `, ${newHere} new to you` : ''}`
+            + `${world.rain > 0.5 ? ' · rain brings quicker bites' : ''}`);
         }
       },
     };
