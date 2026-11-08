@@ -450,6 +450,43 @@
     @media (max-width: 640px) and (min-height: 501px) {
       .rail-btn .rail-label { font-size: 10.5px; letter-spacing: -0.1px; }
     }
+  
+    /* round 3: compact landscape sheet, one HUD per activity, quieter key badges, clearer Desk mode */
+    .explore-more { display: none; }
+    .hud-hint { margin-top: 6px; font-size: 12.5px; line-height: 1.4; opacity: 0.72; }
+    #explore-list .key, .rail-btn .key {
+      background: transparent; box-shadow: inset 0 0 0 1px rgba(var(--ink-rgb), 0.18);
+      font-size: 11px; font-weight: 600; opacity: 0.6;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      #explore .tool-list #desk-button { grid-column: span 2; }
+    }
+    @media (max-height: 500px) {
+      .explore-more { display: inline-flex; }
+      #explore:not(.tools-open) .tool-list, #explore:not(.tools-open) .controls { display: none; }
+      #explore { max-height: none; }
+    }
+  
+    /* round 4: toggles show their state, no duplicate activity title on desktop */
+    #explore .tool-list .row.clickable.tool.is-on {
+      background: rgba(200, 100, 63, 0.16); color: var(--accent); box-shadow: inset 0 0 0 1px rgba(200, 100, 63, 0.35);
+    }
+    #explore .tool-list .row.clickable.tool.is-muted { opacity: 0.7; }
+    @media (hover: hover) and (pointer: fine) {
+      #activity-title { display: none !important; }
+    }
+      #fish-count { white-space: pre-line; }
+  
+    /* phone landscape: activity panel tucks into the bottom-right corner, the scene stays in view */
+    @media (max-height: 500px) {
+      .hud {
+        left: auto; right: max(8px, env(safe-area-inset-right)); width: min(420px, calc(100% - 96px));
+        padding: 8px 12px;
+      }
+      .hud-title { font-size: 15px; }
+      .hud-sub, #fish-count { font-size: 12.5px; }
+      .hud .hud-hint { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -481,12 +518,13 @@
     <div class="explore-head">
       <h2>Cozy Island</h2>
       <span class="head-hint only-touch">Tap a glowing spot · drag to look</span>
+      <button class="ui-btn explore-toggle explore-more" id="explore-more" aria-expanded="false" aria-controls="explore-body" aria-label="Show tools">More</button>
       <button class="ui-btn explore-toggle" id="explore-toggle" aria-expanded="true" aria-controls="explore-body" aria-label="Hide menu"><span class="toggle-text">Hide</span><svg class="ico toggle-arrow" aria-hidden="true"><use href="#i-chev-down"/></svg></button>
     </div>
     <div id="explore-body">
     <div id="explore-list" role="group" aria-label="Activities"></div>
     <div class="controls small">
-      <div class="hint-line only-mouse">Click a glowing spot or press 1-7 · right-drag to look · scroll to zoom · pet Mochi on the dock</div>
+      <div class="hint-line only-mouse">Click a glowing spot or press 1-7 · right-drag to look around</div>
       <div class="hint-line only-touch">Tap a glowing spot · drag to look · pinch to zoom</div>
       <div class="tool-list" role="group" aria-label="Island tools">
         <button class="ui-btn row clickable tool" title="Journal (J)" data-key="KeyJ"><span class="key">J</span><span class="tool-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg></span><span class="tool-text">journal</span><span class="tool-short" aria-hidden="true">Journal</span></button>
@@ -495,7 +533,7 @@
         <button class="ui-btn row clickable tool" title="Change time of day (N)" data-key="KeyN"><span class="key">N</span><span class="tool-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg></span><span class="tool-text">time: <span id="time-label"></span></span><span class="tool-short" id="time-short" aria-hidden="true">Time</span></button>
         <button class="ui-btn row clickable tool" title="Change weather (R)" data-key="KeyR"><span class="key">R</span><span class="tool-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="tool-text">weather: <span id="weather-label"></span></span><span class="tool-short" id="weather-short" aria-hidden="true">Weather</span></button>
         <button class="ui-btn row clickable tool" title="Sound on/off (M)" data-key="KeyM"><span class="key">M</span><span class="tool-icon" id="mute-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-sound"/></svg></span><span class="tool-text" id="mute-label">sound on</span><span class="tool-short" id="mute-short" aria-hidden="true">Sound</span></button>
-        <button class="ui-btn row clickable tool only-mouse-flex" id="desk-button" title="Desk mode: a tiny island beside your work (D)"><span class="key">D</span><span class="tool-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-desk"/></svg></span><span class="tool-text">desk mode</span><span class="tool-short" aria-hidden="true">Desk</span></button>
+        <button class="ui-btn row clickable tool only-mouse-flex" id="desk-button" title="Desk mode: a tiny island beside your work (D)"><span class="key">D</span><span class="tool-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-desk"/></svg></span><span class="tool-text">desk mode</span><span class="tool-short" aria-hidden="true">Desk mode</span></button>
       </div>
     </div>
     </div>

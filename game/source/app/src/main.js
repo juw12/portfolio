@@ -238,7 +238,12 @@
     };
     const clock = String(els.time.textContent || '').match(/\d{1,2}:\d{2}/);
     ui.setText(ui.el('season-short'), firstWord(els.season.textContent) || 'Season');
-    ui.setText(ui.el('time-short'), clock ? clock[0] : 'Time');
+    // a word reads faster than a bare clock: "Day", "Sunset", "Night" (the exact time stays in the tooltip)
+    ui.setText(ui.el('time-short'), firstWord(els.time.textContent) || 'Time');
+    const timeButton = document.querySelector('[data-key="KeyN"]');
+    if (timeButton) {
+      timeButton.title = `Time of day: ${clock ? clock[0] : ''} - change it (N)`;
+    }
     ui.setText(ui.el('weather-short'), firstWord(els.weather.textContent) || 'Weather');
   }
 
@@ -368,6 +373,16 @@
   }
   onPress(els.exploreToggle, () => setExploreCollapsed(!els.explore.classList.contains('collapsed')));
 
+  // phone landscape: places stay on one row, the tool row opens on demand
+  const exploreMore = ui.el('explore-more');
+  function setToolsOpen(open) {
+    els.explore.classList.toggle('tools-open', open);
+    exploreMore.setAttribute('aria-expanded', open ? 'true' : 'false');
+    exploreMore.setAttribute('aria-label', open ? 'Hide tools' : 'Show tools');
+    exploreMore.textContent = open ? 'Less' : 'More';
+  }
+  onPress(exploreMore, () => setToolsOpen(!els.explore.classList.contains('tools-open')));
+
   // dragging the island with one finger tucks the menu away; returning to the island brings it back
   const dragStart = { x: 0, y: 0, active: false };
   const appEl = ui.el('app');
@@ -459,7 +474,20 @@
     if (current) {
       current.enter();
       ui.setText(els.title, current.name);
-      ui.toast(current.hint, 5);
+      // the activity hint lives inside its own HUD, so there is one panel to read instead of two
+      const hud = document.getElementById('hud-' + current.id);
+      if (hud) {
+        let hintLine = hud.querySelector('.hud-hint');
+        if (!hintLine) {
+          hintLine = document.createElement('div');
+          hintLine.className = 'hud-hint';
+          hud.appendChild(hintLine);
+        }
+        ui.setText(hintLine, current.hint);
+        ui.clearToast();
+      } else {
+        ui.toast(current.hint, 5);
+      }
       sound.tick(0.05, 1200);
     } else {
       // the activity hint ("Tap to cast...") means nothing back on the island
@@ -487,6 +515,11 @@
       ui.setText(els.mute, muted ? 'sound off' : 'sound on');
       els.muteIcon.innerHTML = svgIcon(muted ? 'mute' : 'sound');
       ui.setText(els.muteShort, muted ? 'Muted' : 'Sound');
+      const muteButton = document.querySelector('.tool[data-key="KeyM"]');
+      if (muteButton) {
+        muteButton.classList.toggle('is-muted', muted);
+        muteButton.setAttribute('aria-pressed', muted ? 'true' : 'false');
+      }
       ui.toast(muted ? 'Sound off' : 'Sound on', 1.5);
     }
     if (current) {
@@ -583,6 +616,13 @@
   function updateFocus(dt) {
     if (input.pressed('KeyF')) {
       toggleFocus();
+    }
+    // the Focus tool looks pressed while a session runs
+    const focusButton = document.querySelector('.tool[data-key="KeyF"]');
+    if (focusButton) {
+      const running = focus.phase !== 'idle';
+      focusButton.classList.toggle('is-on', running);
+      focusButton.setAttribute('aria-pressed', running ? 'true' : 'false');
     }
     if (focus.phase !== 'idle' && !focus.paused) {
       focus.remaining -= dt;
