@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 07 Nov 2026 20:40:50 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2026 03:28:24 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Bilas</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-bilas</guid>
+      <pubDate>Sun, 08 Nov 2026 03:28:24 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/bilas-card.jpg" alt="Bilas start card over a softly lit 3D coin laundromat with washers and a folding table" width="600"></p><p>A quiet first-person 3D coin laundry with synthesized ASMR.</p>]]></description>
+      <jl:summary>A quiet first-person 3D coin laundry with synthesized ASMR.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/bilas-card.jpg" type="image/jpeg" length="0"/>
+      <category>three.js</category><category>Web Audio</category><category>PWA</category><category>Android</category>
+    </item>
     <item>
       <title>Teduh</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -295,16 +305,6 @@
       <jl:summary>File organizer with fly-into-folder animations, a vacuum for deletes and an AI assistant that plans before it acts.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/sortie-card.jpg" type="image/jpeg" length="0"/>
       <category>File manager</category><category>AI assistant</category><category>PWA</category><category>File System Access</category><category>Vanilla JS</category>
-    </item>
-    <item>
-      <title>KiniBuka</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-kinibuka</guid>
-      <pubDate>Mon, 02 Nov 2026 06:08:27 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/kinibuka-card.jpg" alt="KiniBuka on three phone screens: a live feed of stalls opening and closing, an Explore map with search, and a stall page with menu and order-ahead" width="600"></p><p>Find UMKM stalls open right now: live status, branches, bazaars, map, follow alerts and order-ahead via WhatsApp.</p>]]></description>
-      <jl:summary>Find UMKM stalls open right now: live status, branches, bazaars, map, follow alerts and order-ahead via WhatsApp.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/kinibuka-card.jpg" type="image/jpeg" length="0"/>
-      <category>UMKM</category><category>Marketplace</category><category>Map</category><category>WhatsApp</category><category>Python</category><category>SQLite</category><category>ID / EN / 中文</category>
     </item>
   </channel>
 </rss>
