@@ -197,11 +197,15 @@
     actPrev: ui.el('act-prev'),
     actNext: ui.el('act-next'),
     actJournal: ui.el('act-journal'),
+    actBack: ui.el('act-back'),
+    exploreToggle: ui.el('explore-toggle'),
     journal: ui.el('journal'),
     journalRows: ui.el('journal-rows'),
     timer: ui.el('timer'),
     start: ui.el('start'),
     mute: ui.el('mute-label'),
+    muteIcon: ui.el('mute-icon'),
+    muteShort: ui.el('mute-short'),
     season: ui.el('season-label'),
     time: ui.el('time-label'),
     weather: ui.el('weather-label'),
@@ -226,8 +230,21 @@
   let timeLabelTimer = 0;
   let wasRaining = Cozy.weather.isRaining();
 
+  /** One-word value under each island tool icon: "Autumn", "12:30", "Clear". */
+  function refreshToolShorts() {
+    const firstWord = (text) => {
+      const word = String(text || '').trim().split(/[\s(]+/)[0] || '';
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    };
+    const clock = String(els.time.textContent || '').match(/\d{1,2}:\d{2}/);
+    ui.setText(ui.el('season-short'), firstWord(els.season.textContent) || 'Season');
+    ui.setText(ui.el('time-short'), clock ? clock[0] : 'Time');
+    ui.setText(ui.el('weather-short'), firstWord(els.weather.textContent) || 'Weather');
+  }
+
   function showSeasonLabel() {
     ui.setText(els.season, `${Cozy.season.label()}`);
+    refreshToolShorts();
   }
 
   Cozy.season.onChange((season) => {
@@ -242,6 +259,7 @@
   function showClockLabels() {
     ui.setText(els.time, Cozy.daytime.label());
     ui.setText(els.weather, Cozy.weather.label());
+    refreshToolShorts();
   }
   showClockLabels();  // fill the explore panel straight away, not after the first tick
 
@@ -286,7 +304,7 @@
   // ------------------------------------------------------------------ navigation (mouse, touch and keys)
 
   const SHORT_NAMES = {
-    fishing: 'Fishing', garden: 'Garden', tea: 'Tea', birds: 'Birds', viewpoint: 'Sunset', village: 'Village', cooking: 'Campfire',
+    fishing: 'Fishing', garden: 'Garden', tea: 'Tea', birds: 'Birds', viewpoint: 'Sunset', village: 'Village', cooking: 'Cooking',
   };
   const ICONS = {
     fishing: '🎣', garden: '🌱', tea: '🍵', birds: '🐦', viewpoint: '🌅', village: '🏡', cooking: '🔥',
@@ -334,6 +352,38 @@
     railButtons.set(activity, railButton);
   });
   onPress(els.back, () => switchTo(null));
+  onPress(els.actBack, () => switchTo(null));
+
+  /** Fold the island menu away (or back out) so the scene can breathe on small screens. */
+  function setExploreCollapsed(collapsed) {
+    els.explore.classList.toggle('collapsed', collapsed);
+    els.exploreToggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+    els.exploreToggle.setAttribute('aria-label', collapsed ? 'Show menu' : 'Hide menu');
+    els.exploreToggle.querySelector('.toggle-text').textContent = collapsed ? 'menu' : 'hide';
+    els.exploreToggle.querySelector('.toggle-arrow').textContent = collapsed ? '▴' : '▾';
+  }
+  onPress(els.exploreToggle, () => setExploreCollapsed(!els.explore.classList.contains('collapsed')));
+
+  // dragging the island with one finger tucks the menu away; returning to the island brings it back
+  const dragStart = { x: 0, y: 0, active: false };
+  const appEl = ui.el('app');
+  appEl.addEventListener('pointerdown', (event) => {
+    dragStart.active = event.pointerType === 'touch' && !current;
+    dragStart.x = event.clientX;
+    dragStart.y = event.clientY;
+  });
+  appEl.addEventListener('pointermove', (event) => {
+    if (!dragStart.active || current) {
+      return;
+    }
+    if (Math.hypot(event.clientX - dragStart.x, event.clientY - dragStart.y) > 32) {
+      dragStart.active = false;
+      setExploreCollapsed(true);
+    }
+  });
+  appEl.addEventListener('pointerup', () => {
+    dragStart.active = false;
+  });
 
   // every on-screen tool button with data-key does exactly what that key does
   document.querySelectorAll('[data-key]').forEach((button) => {
@@ -349,13 +399,22 @@
 
   /** Put the previous / next / journal chips inside the current activity's HUD panel. */
   function placeActionChips(activity) {
-    const labels = activity && ACTION_LABELS[activity.id];
+    const labels = activity ? ACTION_LABELS[activity.id] : null;
     const host = activity && (document.querySelector(`#hud-${activity.id} .hud`) || ui.el('hud-' + activity.id));
-    if (!labels || !host) {
+    if (!host) {
       ui.show(els.actTools, false);
       return;
     }
     host.appendChild(els.actTools);
+    // activities without previous/next or a journal still get the phone back chip
+    els.actTools.classList.toggle('only-back', !labels);
+    if (!labels) {
+      els.actPrev.hidden = true;
+      els.actNext.hidden = true;
+      els.actJournal.hidden = true;
+      ui.show(els.actTools, true);
+      return;
+    }
     const cycle = labels.cycle;
     els.actPrev.hidden = !cycle;
     els.actNext.hidden = !cycle;
@@ -401,6 +460,7 @@
     } else {
       // the activity hint ("Tap to cast...") means nothing back on the island
       ui.clearToast();
+      setExploreCollapsed(false);
     }
     focusRig(current);
   }
@@ -421,6 +481,8 @@
     if (input.pressed('KeyM')) {
       const muted = sound.toggleMute();
       ui.setText(els.mute, muted ? 'sound off' : 'sound on');
+      ui.setText(els.muteIcon, muted ? '🔇' : '🔊');
+      ui.setText(els.muteShort, muted ? 'Muted' : 'Sound');
       ui.toast(muted ? 'Sound off' : 'Sound on', 1.5);
     }
     if (current) {

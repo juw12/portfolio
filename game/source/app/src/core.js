@@ -492,6 +492,7 @@ window.Cozy = window.Cozy || {};
       .replace(/\bClick\b/g, 'Tap').replace(/\bclick\b/g, 'tap').replace(/\bclicking\b/g, 'tapping')
       // keyboard hints become the on-screen buttons' wording
       .replace(/\bQ\s+‹\s*/g, '‹ ').replace(/\s*›\s+E\b/g, ' ›')
+      .replace(/\bQ\/E (pick|change|choose)\b/g, 'the ‹ › buttons $1')
       .replace(/\bQ\/E\b/g, '‹ ›').replace(/ or Space\b/g, '')
       .replace(/\bJ (journal|opens)\b/g, (match, word) => (word === 'journal' ? 'journal' : 'the 📖 button opens'))
       .replace(/([.!?]\s+)the 📖/g, '$1The 📖');

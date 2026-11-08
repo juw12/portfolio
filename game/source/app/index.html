@@ -53,6 +53,15 @@
 
     #explore { top: 16px; left: 16px; width: 300px; }
     #explore h2 { margin: 0 0 8px; font-size: 22px; font-weight: 600; letter-spacing: 0.5px; }
+    .explore-head { display: flex; align-items: flex-start; gap: 8px; }
+    .explore-head h2 { flex: 1; }
+    .head-hint { display: none !important; }
+    .explore-toggle {
+      flex: none; min-height: 30px; padding: 2px 10px; border-radius: 999px; font-size: 13px;
+      background: rgba(255, 245, 225, 0.12); opacity: 0.85;
+    }
+    #explore.collapsed #explore-body { display: none; }
+    #explore.collapsed h2 { margin-bottom: 0; }
     #explore .controls { margin-top: 10px; line-height: 1.6; }
     #activity-title {
       top: 14px; left: 50%; transform: translateX(-50%); font-size: 20px; padding: 6px 18px;
@@ -203,7 +212,19 @@
     .ui-btn:hover { filter: none; background: rgba(255, 245, 225, 0.12); }
     .ui-btn:focus-visible { outline: 2px solid var(--peach); outline-offset: 2px; }
     #explore-list .row.clickable { width: 100%; text-align: left; align-items: center; }
-    .tool-list { display: grid; gap: 1px; margin-top: 2px; }
+    .tool-list { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+    .tool-list .row.clickable.tool {
+      flex: 1 1 0; min-width: 0; width: auto; margin: 0; padding: 5px 0 4px; border-radius: 12px;
+      flex-direction: column; align-items: center; justify-content: center; gap: 1px;
+      background: rgba(255, 245, 225, 0.12); text-align: center;
+    }
+    .tool-list .tool .key { display: none; }
+    .tool-list .tool .tool-icon { font-size: 17px; line-height: 1.1; }
+    .tool-list .tool .tool-text {
+      position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+    }
+    .tool-list #desk-button { flex-basis: 100%; margin-top: 2px; font-size: 13px; }
+    .tool-short { display: block; font-size: 11px; line-height: 1.15; opacity: 0.92; white-space: nowrap; }
     .tool-list .row.clickable { width: 100%; text-align: left; font-size: 13px; }
     #explore-list .row.clickable, .tool-list .row.clickable { justify-content: flex-start; gap: 6px; }
     #explore-list .row.clickable .key, .tool-list .row.clickable .key { margin-right: 4px; }
@@ -222,7 +243,7 @@
     }
     .rail-btn .rail-icon { width: 22px; text-align: center; font-size: 17px; }
     .rail-btn .rail-label { flex: 1; }
-    .rail-btn .key { margin: 0 0 0 10px; font-size: 12px; padding: 0 5px; }
+    .rail-btn .key { margin: 0 0 0 10px; font-size: 12px; padding: 0 5px; opacity: 0.6; }
     .rail-btn[aria-current="true"] { background: var(--peach); color: #3B2A20; text-shadow: none; }
     .rail-btn[aria-current="true"] .key { background: rgba(59, 42, 32, 0.14); }
     .rail-back { font-weight: 600; }
@@ -238,6 +259,8 @@
       border-radius: 999px; background: rgba(255, 245, 225, 0.16); font-size: 14px;
     }
     .chip .key { margin: 0; font-size: 12px; padding: 0 5px; }
+    .act-back { display: none !important; }
+    .act-tools.only-back { display: none !important; }
 
     /* ---- phones and tablets (touch screens) ---- */
     @media (hover: none) and (pointer: coarse) {
@@ -257,21 +280,30 @@
         bottom: max(8px, env(safe-area-inset-bottom)); width: auto; max-height: 46%; overflow-y: auto;
       }
       #explore h2 { display: none; }
+      .explore-head { align-items: center; margin-bottom: 6px; }
+      .head-hint { display: block !important; flex: 1; font-size: 13px; opacity: 0.85; }
+      #explore.collapsed .explore-head { margin-bottom: 0; }
+      #explore .controls .hint-line.only-touch { display: none; }
+      .explore-toggle { min-height: 40px; font-size: 14px; padding: 2px 12px; }
+      .act-back { display: inline-flex !important; font-weight: 600; }
+      .act-tools.only-back { display: flex !important; }
       .name-long { display: none; }
       .name-short { display: inline; }
       #explore-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
       #explore-list .row.clickable {
         width: auto; margin: 0; padding: 4px 2px; border-radius: 14px; background: rgba(255, 245, 225, 0.14);
         flex-direction: column; justify-content: center; align-items: center; gap: 0; text-align: center;
-        font-size: 13px; line-height: 1.15; min-height: 50px;
+        font-size: 13px; line-height: 1.15; min-height: 44px;
       }
       #explore-list .row-icon { font-size: 18px; }
       .tool-list { display: flex; justify-content: space-between; gap: 6px; }
       .tool-list .row.clickable {
-        flex: 1 1 0; width: auto; margin: 0; padding: 0; justify-content: center; border-radius: 14px;
-        background: rgba(255, 245, 225, 0.14); min-width: 44px;
+        flex: 1 1 0; width: auto; margin: 0; padding: 3px 0 2px; justify-content: center; border-radius: 14px;
+        background: rgba(255, 245, 225, 0.14); min-width: 44px; min-height: 44px;
+        flex-direction: column; align-items: center; gap: 1px;
       }
-      .tool-list .tool-icon { font-size: 19px; }
+      .tool-list .tool-icon { font-size: 18px; line-height: 1.1; }
+      .tool-list .tool-short { display: block; font-size: 11px; line-height: 1.1; opacity: 0.92; }
       .tool-list .tool-text {
         position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
       }
@@ -305,6 +337,34 @@
       #start h1 { font-size: 34px; }
       #online-list { display: none !important; }
     }
+    /* phone held upright: activities as a slim strip along the top, the scene stays open */
+    @media (max-width: 640px) and (min-height: 501px) {
+      #mode-rail {
+        left: max(4px, env(safe-area-inset-left)); right: max(4px, env(safe-area-inset-right));
+        flex-direction: row; align-items: stretch; gap: 2px; padding: 3px; overflow-x: auto; overflow-y: hidden;
+        scrollbar-width: none;
+      }
+      #mode-rail::-webkit-scrollbar { display: none; }
+      #mode-list {
+        flex-direction: row; flex: 1; gap: 1px; margin: 0 0 0 3px; padding: 0 0 0 3px;
+        border-top: none; border-left: 1px solid rgba(255, 245, 225, 0.18);
+      }
+      /* every activity keeps an icon and a tiny name, all at least 44 px wide */
+      .rail-btn { width: auto; flex: 1 0 44px; min-width: 44px; min-height: 50px; padding: 4px 0 3px; gap: 1px; }
+      .rail-back { flex: 0 0 48px; width: 48px; }
+      .rail-btn .rail-label { display: block; font-size: 9.5px; letter-spacing: -0.2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; opacity: 0.85; }
+      #mode-list .rail-btn .rail-icon { font-size: 19px; }
+      #mode-list .rail-btn[aria-current="true"] .rail-label { font-weight: 700; opacity: 1; }
+      body.in-activity #toast { left: 50%; top: calc(max(8px, env(safe-area-inset-top)) + 70px); max-width: calc(100% - 24px); }
+      body.in-activity #timer { top: calc(max(8px, env(safe-area-inset-top)) + 66px); }
+      #bird-journal, #fish-journal, #cook-book { top: calc(max(8px, env(safe-area-inset-top)) + 70px); left: 8px; }
+    }
+    /* upright phones that are wide enough: all seven activities on one labelled row, so the island sheet stays short */
+    @media (min-width: 380px) and (max-width: 640px) and (min-height: 501px) {
+      #explore-list { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+      #explore-list .row.clickable { padding: 5px 0 4px; font-size: 10px; letter-spacing: -0.2px; min-height: 50px; }
+      #explore-list .row-icon { font-size: 19px; }
+    }
     /* phone held sideways: rail on the left, HUD beside it, shorter panels */
     @media (max-height: 500px) {
       .rail-btn { min-height: 40px; }
@@ -313,7 +373,12 @@
       #mode-rail { gap: 0; }
       #mode-list { gap: 0; }
       .hud { left: calc(max(8px, env(safe-area-inset-left)) + 64px); }
-      #explore { max-height: 52%; }
+      #explore { max-height: 52%; padding: 8px 10px; }
+      #explore-list { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; }
+      #explore-list .row.clickable { min-height: 44px; font-size: 12px; }
+      #explore .controls { margin-top: 5px; }
+      .tool-list { margin-top: 5px; }
+      .tool-list .row.clickable { min-height: 44px; flex-direction: row; gap: 5px; }
       #journal, #bird-journal, #fish-journal, #cook-book { max-height: calc(100% - 170px); }
       #toast { top: max(8px, env(safe-area-inset-top)); left: 50%; }
     }
@@ -324,21 +389,27 @@
   <div id="labels"></div>
 
   <div id="explore" class="panel">
-    <h2>Cozy Island</h2>
+    <div class="explore-head">
+      <h2>Cozy Island</h2>
+      <span class="head-hint only-touch">Tap a glowing spot · drag to look</span>
+      <button class="ui-btn explore-toggle" id="explore-toggle" aria-expanded="true" aria-controls="explore-body" aria-label="Hide menu"><span class="toggle-text">hide</span> <span class="toggle-arrow" aria-hidden="true">▾</span></button>
+    </div>
+    <div id="explore-body">
     <div id="explore-list" role="group" aria-label="Activities"></div>
     <div class="controls small">
       <div class="hint-line only-mouse">Click a glowing spot or press a number · right-drag look · wheel zoom</div>
       <div class="hint-line only-touch">Tap a glowing spot · drag to look · pinch to zoom</div>
       <div class="tool-list" role="group" aria-label="Island tools">
-        <button class="ui-btn row clickable tool" data-key="KeyJ"><span class="key">J</span><span class="tool-icon" aria-hidden="true">📖</span><span class="tool-text">journal</span></button>
-        <button class="ui-btn row clickable tool" data-key="KeyF"><span class="key">F</span><span class="tool-icon" aria-hidden="true">⏱</span><span class="tool-text">focus timer</span></button>
-        <button class="ui-btn row clickable tool" data-key="KeyS"><span class="key">S</span><span class="tool-icon" aria-hidden="true">🍃</span><span class="tool-text">season: <span id="season-label"></span></span></button>
-        <button class="ui-btn row clickable tool" data-key="KeyN"><span class="key">N</span><span class="tool-icon" aria-hidden="true">🌤</span><span class="tool-text">time: <span id="time-label"></span></span></button>
-        <button class="ui-btn row clickable tool" data-key="KeyR"><span class="key">R</span><span class="tool-icon" aria-hidden="true">☔</span><span class="tool-text">weather: <span id="weather-label"></span></span></button>
-        <button class="ui-btn row clickable tool" data-key="KeyM"><span class="key">M</span><span class="tool-icon" aria-hidden="true">🔊</span><span class="tool-text" id="mute-label">sound on</span></button>
+        <button class="ui-btn row clickable tool" title="Journal (J)" data-key="KeyJ"><span class="key">J</span><span class="tool-icon" aria-hidden="true">📖</span><span class="tool-text">journal</span><span class="tool-short" aria-hidden="true">Journal</span></button>
+        <button class="ui-btn row clickable tool" title="Focus timer (F)" data-key="KeyF"><span class="key">F</span><span class="tool-icon" aria-hidden="true">⏱</span><span class="tool-text">focus timer</span><span class="tool-short" aria-hidden="true">Focus</span></button>
+        <button class="ui-btn row clickable tool" title="Change season (S)" data-key="KeyS"><span class="key">S</span><span class="tool-icon" aria-hidden="true">🍃</span><span class="tool-text">season: <span id="season-label"></span></span><span class="tool-short" id="season-short" aria-hidden="true">Season</span></button>
+        <button class="ui-btn row clickable tool" title="Change time of day (N)" data-key="KeyN"><span class="key">N</span><span class="tool-icon" aria-hidden="true">🌤</span><span class="tool-text">time: <span id="time-label"></span></span><span class="tool-short" id="time-short" aria-hidden="true">Time</span></button>
+        <button class="ui-btn row clickable tool" title="Change weather (R)" data-key="KeyR"><span class="key">R</span><span class="tool-icon" aria-hidden="true">☔</span><span class="tool-text">weather: <span id="weather-label"></span></span><span class="tool-short" id="weather-short" aria-hidden="true">Weather</span></button>
+        <button class="ui-btn row clickable tool" title="Sound on/off (M)" data-key="KeyM"><span class="key">M</span><span class="tool-icon" id="mute-icon" aria-hidden="true">🔊</span><span class="tool-text" id="mute-label">sound on</span><span class="tool-short" id="mute-short" aria-hidden="true">Sound</span></button>
         <button class="ui-btn row clickable only-mouse-flex" id="desk-button"><span class="key">D</span>🖥 desk mode: a tiny island beside your work</button>
       </div>
       <div class="hint-line only-mouse" style="margin-top: 4px">Click Mochi the cat on the dock to pet her</div>
+    </div>
     </div>
   </div>
   <div id="activity-title" class="panel" style="display:none"></div>
@@ -350,6 +421,7 @@
     <div id="mode-list" role="group" aria-label="Switch activity"></div>
   </nav>
   <div id="act-tools" class="act-tools" style="display:none">
+    <button class="ui-btn chip act-back" id="act-back" aria-label="Back to the island">← <span class="chip-text">Island</span></button>
     <button class="ui-btn chip" id="act-prev" data-key="KeyQ" aria-label="Previous"><span class="key">Q</span>‹ <span class="chip-text">previous</span></button>
     <button class="ui-btn chip" id="act-next" data-key="KeyE" aria-label="Next"><span class="chip-text">next</span> ›<span class="key">E</span></button>
     <button class="ui-btn chip" id="act-journal" data-key="KeyJ" aria-label="Journal">📖 <span class="chip-text">journal</span><span class="key">J</span></button>
