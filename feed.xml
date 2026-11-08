@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 08 Nov 2026 04:55:57 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2026 05:00:47 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>PocketDex</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-pocketdex</guid>
+      <pubDate>Sun, 08 Nov 2026 05:00:47 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/pocketdex-card.jpg" alt="PocketDex Today page on warm paper: a greeting with caught, streak, focus and habit counters, a low-poly 3D meadow with trees, a pond and a pixel Pokemon on a dirt path, today&#x27;s encounter card with a pixel sprite, and a training checklist with type-tagged habits" width="600"></p><p>A calm pixel Pokedex you use every day: habits, focus timer and a quiet 3D meadow.</p>]]></description>
+      <jl:summary>A calm pixel Pokedex you use every day: habits, focus timer and a quiet 3D meadow.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/pocketdex-card.jpg" type="image/jpeg" length="0"/>
+      <category>PWA</category><category>offline-first</category><category>pixel art</category><category>habit tracker</category><category>three.js</category>
+    </item>
     <item>
       <title>Hoki</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -295,16 +305,6 @@
       <jl:summary>Find GitHub repos before they trend: ranked by stars actually gained, with real activity, Trending history and a free API.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/earlystar-card.jpg" type="image/jpeg" length="0"/>
       <category>GitHub data</category><category>Trending</category><category>JSON API</category><category>GitHub Actions</category><category>static site</category><category>Tauri desktop</category>
-    </item>
-    <item>
-      <title>Haru</title>
-      <link>https://juw12.github.io/projects/haru/app/</link>
-      <guid isPermaLink="false">juwenlie-project-haru</guid>
-      <pubDate>Tue, 03 Nov 2026 06:51:02 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/haru-card.jpg" alt="Haru swipe deck: a day card with a tiny 3D street-corner diorama in autumn light, a cat polaroid, a short note and a hanko mood stamp" width="600"></p><p>Your days as a cozy little town: a weather-lit diorama, photo, note and walk for each day, plus a screenshot tidy-up.</p>]]></description>
-      <jl:summary>Your days as a cozy little town: a weather-lit diorama, photo, note and walk for each day, plus a screenshot tidy-up.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/haru-card.jpg" type="image/jpeg" length="0"/>
-      <category>PWA</category><category>Android</category><category>Windows / Mac</category><category>iOS / SwiftUI</category><category>Photo diary</category><category>Walking map</category><category>On-device OCR</category><category>JA / KO / EN</category>
     </item>
   </channel>
 </rss>
