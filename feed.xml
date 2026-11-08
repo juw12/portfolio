@@ -65,7 +65,7 @@
       <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/bilas-card.jpg" alt="Bilas start card over a softly lit 3D coin laundromat with washers and a folding table" width="600"></p><p>A quiet first-person 3D coin laundry with synthesized ASMR.</p>]]></description>
       <jl:summary>A quiet first-person 3D coin laundry with synthesized ASMR.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/bilas-card.jpg" type="image/jpeg" length="0"/>
-      <category>three.js</category><category>Web Audio</category><category>PWA</category><category>Android</category>
+      <category>three.js</category><category>Web Audio</category><category>PWA</category><category>Android</category><category>iOS</category>
     </item>
     <item>
       <title>Teduh</title>
