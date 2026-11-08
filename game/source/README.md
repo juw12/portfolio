@@ -1,5 +1,7 @@
 # Cozy Fishing – starter kit (Blender → Unity)
 
+> The web game in `app/` follows the UI spec in [design.md](design.md) (tokens, type, spacing, touch sizes, no emoji).
+
 ## 1. Generate the island in Blender (4.x recommended)
 1. Open Blender → **Scripting** tab → **Open** → `blender/cozy_fishing_scene.py` → **Run Script**.
 2. It builds a low-poly island: cabin with glowing windows, wooden dock, lanterns, rowboat,

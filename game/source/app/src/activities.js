@@ -270,9 +270,9 @@
   /** Rarity sets how often a fish bites (weight) and how hard it fights (difficulty). */
   const RARITY = {
     common: { weight: 6, difficulty: 0.25, stars: '', label: 'common' },
-    uncommon: { weight: 2.5, difficulty: 0.45, stars: '★', label: 'uncommon' },
-    rare: { weight: 0.8, difficulty: 0.65, stars: '★★', label: 'rare' },
-    legendary: { weight: 0.2, difficulty: 0.82, stars: '★★★', label: 'legendary' },
+    uncommon: { weight: 2.5, difficulty: 0.45, stars: '(uncommon)', label: 'uncommon' },
+    rare: { weight: 0.8, difficulty: 0.65, stars: '(rare)', label: 'rare' },
+    legendary: { weight: 0.2, difficulty: 0.82, stars: '(legendary)', label: 'legendary' },
   };
   const ALL_YEAR = ['spring', 'summer', 'autumn', 'winter'];
 
@@ -1781,7 +1781,7 @@
         const row = node('div', '', 'village-row gift-row');
         const text = document.createElement('span');
         text.className = 'gift-text';
-        text.textContent = `\uD83C\uDF81 ${gift.fromName}: ${giftLabel(gift.kind, gift.item)}${gift.note ? ` \u2014 \u201C${gift.note}\u201D` : ''}`;
+        text.textContent = `Gift from ${gift.fromName}: ${giftLabel(gift.kind, gift.item)}${gift.note ? ` \u2014 \u201C${gift.note}\u201D` : ''}`;
         row.appendChild(text);
         button('Open', async () => {
           const data = await online.act('opengift', { id: gift.id });
@@ -2275,7 +2275,7 @@
           els.marker.style.left = `calc(${(s.heat * 100).toFixed(1)}% - 3px)`;
           ui.bar(els.progress, s.progress);
         } else {
-          title = `${recipe.name} ${'★'.repeat(s.stars)}`;
+          title = `${recipe.name} · ${s.stars} of 3`;
           sub = `${recipe.note} · ${progress.get('dishes')} dishes cooked · click to cook again`;
         }
         ui.setText(els.title, title);
@@ -2410,7 +2410,7 @@
         if (pets === 1) {
           ui.toast(`This is ${CAT_NAME}, the dock cat. She likes chin scratches and fish.`, 5);
         } else if (pets % 8 === 0) {
-          ui.toast(`${CAT_NAME} trusts you a little more ${'♥'.repeat(friendship())}`, 3);
+          ui.toast(`${CAT_NAME} trusts you a little more (friendship ${friendship()})`, 3);
         }
       },
 
