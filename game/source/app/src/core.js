@@ -494,8 +494,8 @@ window.Cozy = window.Cozy || {};
       .replace(/\bQ\s+‹\s*/g, '‹ ').replace(/\s*›\s+E\b/g, ' ›')
       .replace(/\bQ\/E (pick|change|choose)\b/g, 'the ‹ › buttons $1')
       .replace(/\bQ\/E\b/g, '‹ ›').replace(/ or Space\b/g, '')
-      .replace(/\bJ (journal|opens)\b/g, (match, word) => (word === 'journal' ? 'journal' : 'the 📖 button opens'))
-      .replace(/([.!?]\s+)the 📖/g, '$1The 📖');
+      .replace(/\bJ (journal|opens)\b/g, (match, word) => (word === 'journal' ? 'journal' : 'the Journal button opens'))
+      .replace(/([.!?]\s+)the Journal button/g, '$1The Journal button');
   }
 
   const UI = {

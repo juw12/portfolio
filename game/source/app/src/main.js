@@ -307,7 +307,7 @@
     fishing: 'Fishing', garden: 'Garden', tea: 'Tea', birds: 'Birds', viewpoint: 'Sunset', village: 'Village', cooking: 'Cooking',
   };
   const ICONS = {
-    fishing: '🎣', garden: '🌱', tea: '🍵', birds: '🐦', viewpoint: '🌅', village: '🏡', cooking: '🔥',
+    fishing: 'fish', garden: 'sprout', tea: 'cup', birds: 'bird', viewpoint: 'sunset', village: 'house', cooking: 'flame',
   };
   // which activities have previous/next (Q/E) and a journal (J), and what they are called there
   const ACTION_LABELS = {
@@ -328,9 +328,14 @@
     });
   }
 
+  /** One line icon from the inline SVG sprite in index.html (no emoji anywhere in the UI). */
+  function svgIcon(name) {
+    return `<svg class="ico" aria-hidden="true"><use href="#i-${name}"/></svg>`;
+  }
+
   const railButtons = new Map();
   activities.forEach((activity) => {
-    const icon = ICONS[activity.id] || '•';
+    const icon = svgIcon(ICONS[activity.id] || 'sun');
     const row = document.createElement('button');
     row.className = 'ui-btn row clickable';
     row.setAttribute('aria-label', activity.name);
@@ -359,8 +364,7 @@
     els.explore.classList.toggle('collapsed', collapsed);
     els.exploreToggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
     els.exploreToggle.setAttribute('aria-label', collapsed ? 'Show menu' : 'Hide menu');
-    els.exploreToggle.querySelector('.toggle-text').textContent = collapsed ? 'menu' : 'hide';
-    els.exploreToggle.querySelector('.toggle-arrow').textContent = collapsed ? '▴' : '▾';
+    els.exploreToggle.querySelector('.toggle-text').textContent = collapsed ? 'Menu' : 'Hide';
   }
   onPress(els.exploreToggle, () => setExploreCollapsed(!els.explore.classList.contains('collapsed')));
 
@@ -422,12 +426,12 @@
     if (cycle) {
       els.actPrev.setAttribute('aria-label', `Previous ${cycle}`);
       els.actNext.setAttribute('aria-label', `Next ${cycle}`);
-      els.actPrev.querySelector('.chip-text').textContent = cycle;
-      els.actNext.querySelector('.chip-text').textContent = cycle;
+      els.actPrev.querySelector('.chip-text').textContent = 'Previous';
+      els.actNext.querySelector('.chip-text').textContent = 'Next';
     }
     if (labels.journal) {
       els.actJournal.setAttribute('aria-label', labels.journal);
-      els.actJournal.querySelector('.chip-text').textContent = labels.journal.toLowerCase();
+      els.actJournal.querySelector('.chip-text').textContent = labels.journal;
     }
     ui.show(els.actTools, true);
   }
@@ -481,7 +485,7 @@
     if (input.pressed('KeyM')) {
       const muted = sound.toggleMute();
       ui.setText(els.mute, muted ? 'sound off' : 'sound on');
-      ui.setText(els.muteIcon, muted ? '🔇' : '🔊');
+      els.muteIcon.innerHTML = svgIcon(muted ? 'mute' : 'sound');
       ui.setText(els.muteShort, muted ? 'Muted' : 'Sound');
       ui.toast(muted ? 'Sound off' : 'Sound on', 1.5);
     }
@@ -516,7 +520,7 @@
     rows.push(['Moonflower seeds', progress.get('rare_seeds')]);
     rows.push(['Fish species found', `${A.fishSpeciesCount()}/${A.FISH.length}`]);
     rows.push(['Dishes cooked', progress.get('dishes')]);
-    rows.push([`${cat.name} the cat`, cat.friendship() ? '♥'.repeat(cat.friendship()) : `${progress.get('cat_pets')} pets`]);
+    rows.push([`${cat.name} the cat`, cat.friendship() ? `friendship ${cat.friendship()}` : `${progress.get('cat_pets')} pets`]);
     rows.push([`${cat.name}'s visits to friends`, progress.get('cat_visits')]);
     rows.push(['Bird species seen', `${A.birdSpeciesCount()}/${A.BIRDS.length}`]);
     rows.push(['Rainbows seen', progress.get('rainbows')]);
