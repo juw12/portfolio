@@ -32,8 +32,8 @@
       <link>https://juwenlie.pages.dev/#projects</link>
       <guid isPermaLink="false">juwenlie-project-lahap</guid>
       <pubDate>Sun, 08 Nov 2026 04:38:12 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/lahap-card.jpg" alt="Lahap diary with sample data: What did I eat? search, taste filters, a 76% taste-bud match, meal tickets with price and plate score, and a week panel with meals, variety, health and spend" width="600"></p><p>Food diary you can search: have I eaten this, where, for how much. Strava-style share cards.</p>]]></description>
-      <jl:summary>Food diary you can search: have I eaten this, where, for how much. Strava-style share cards.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/lahap-card.jpg" alt="Lahap diary with sample data: What did I eat? search, taste filters, a 76% taste-bud match, meal tickets with price and plate score, and a week panel with meals, variety, health and spend" width="600"></p><p>Snap a meal, keep just the food, see protein and calories against your goal, and cook from what is in the fridge.</p>]]></description>
+      <jl:summary>Snap a meal, keep just the food, see protein and calories against your goal, and cook from what is in the fridge.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/lahap-card.jpg" type="image/jpeg" length="0"/>
       <category>PWA</category><category>offline-first</category><category>food diary</category><category>share cards</category><category>Indonesia</category>
     </item>
