@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 08 Nov 2026 04:38:12 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2026 04:55:57 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Hoki</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-hoki</guid>
+      <pubDate>Sun, 08 Nov 2026 04:55:57 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/hoki-card.jpg" alt="Hoki in dark mode: a calico lucky cat holding a gold 福 coin waves its paw inside a round moon-gate scene with red lanterns, next to a luck card showing today&#x27;s count, a boost bar and buttons for Add to home screen and Desktop widget" width="600"></p><p>A calm, waving Chinese lucky cat for your phone home screen and Windows desktop. Tap it for a luck boost.</p>]]></description>
+      <jl:summary>A calm, waving Chinese lucky cat for your phone home screen and Windows desktop. Tap it for a luck boost.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/hoki-card.jpg" type="image/jpeg" length="0"/>
+      <category>pwa</category><category>lucky-cat</category><category>desktop-widget</category><category>svg</category>
+    </item>
     <item>
       <title>Lahap</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -295,16 +305,6 @@
       <jl:summary>Your days as a cozy little town: a weather-lit diorama, photo, note and walk for each day, plus a screenshot tidy-up.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/haru-card.jpg" type="image/jpeg" length="0"/>
       <category>PWA</category><category>Android</category><category>Windows / Mac</category><category>iOS / SwiftUI</category><category>Photo diary</category><category>Walking map</category><category>On-device OCR</category><category>JA / KO / EN</category>
-    </item>
-    <item>
-      <title>ScopeGuard</title>
-      <link>https://juw12.github.io/projects/scopeguard/</link>
-      <guid isPermaLink="false">juwenlie-project-scopeguard</guid>
-      <pubDate>Mon, 02 Nov 2026 15:57:45 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/scopeguard-card.jpg" alt="ScopeGuard dashboard in dark mode: decisions, unmet-demand themes, flagged users and a review queue" width="600"></p><p>Stop users turning your business AI into a free ChatGPT: allow, steer, redirect or block every message.</p>]]></description>
-      <jl:summary>Stop users turning your business AI into a free ChatGPT: allow, steer, redirect or block every message.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/scopeguard-card.jpg" type="image/jpeg" length="0"/>
-      <category>AI guardrails</category><category>LLM cost control</category><category>Jailbreak blocking</category><category>Analytics</category><category>PWA</category><category>Vanilla JS</category><category>Python stdlib</category>
     </item>
   </channel>
 </rss>
