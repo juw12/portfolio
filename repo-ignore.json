@@ -9,6 +9,7 @@
     "game",
     "Explicit-Maccormack-Method",
     "Upwind-Differencing-Scheme",
+    "cfd-wave-schemes",
     "tools",
     "atomize",
     "launchkit",
