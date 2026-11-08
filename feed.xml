@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 08 Nov 2026 03:41:27 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2026 03:44:00 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Riak</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-riak</guid>
+      <pubDate>Sun, 08 Nov 2026 03:44:00 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/riak-card.jpg" alt="Riak tank view: a planted vector aquarium with neon tetras, guppies and cherry barbs, the tank tools below and the care notes on the right" width="600"></p><p>Cozy aquarium PWA: care for a living tank, fish nine places, grow plants, breed corals.</p>]]></description>
+      <jl:summary>Cozy aquarium PWA: care for a living tank, fish nine places, grow plants, breed corals.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/riak-card.jpg" type="image/jpeg" length="0"/>
+      <category>PWA</category><category>JavaScript</category><category>Canvas</category><category>Game</category>
+    </item>
     <item>
       <title>Trunnion TopOpt</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -295,16 +305,6 @@
       <jl:summary>Office coffee for teams: one-tap usual, group runs, company allowance, badge pickup at partner cafés and rewards.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/crewcup-card.jpg" type="image/jpeg" length="0"/>
       <category>Office coffee</category><category>Teams</category><category>PWA</category><category>Python</category><category>SQLite</category><category>EN / ID</category>
-    </item>
-    <item>
-      <title>shiphub</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-shiphub</guid>
-      <pubDate>Mon, 02 Nov 2026 06:08:27 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/shiphub-card.jpg" alt="shiphub feed: a dark masonry board of app-idea cards with Hot, New, Top and Discussed tabs and tag chips" width="600"></p><p>Pinterest for app ideas with forum threads: save, discuss, fork, claim and ship ideas, with GitHub sign-in.</p>]]></description>
-      <jl:summary>Pinterest for app ideas with forum threads: save, discuss, fork, claim and ship ideas, with GitHub sign-in.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/shiphub-card.jpg" type="image/jpeg" length="0"/>
-      <category>App ideas</category><category>Forum</category><category>GitHub sign-in</category><category>Python</category><category>SQLite / Postgres</category><category>Docker</category>
     </item>
   </channel>
 </rss>

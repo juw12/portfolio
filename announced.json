@@ -111,6 +111,10 @@
     "announced_at": "2026-11-02T06:08:28+00:00",
     "issue": "https://github.com/juw12/portfolio/issues/8"
   },
+  "riak": {
+    "announced_at": "2026-11-08T03:44:00+00:00",
+    "issue": "https://github.com/juw12/portfolio/issues/40"
+  },
   "scopeguard": {
     "announced_at": "2026-11-02T15:57:46+00:00",
     "issue": "https://github.com/juw12/portfolio/issues/9"
