@@ -326,6 +326,14 @@ window.Cozy = window.Cozy || {};
     dragX: 0,
     dragY: 0,
     wheel: 0,
+    touchOrbit: false,   // set by the game: one-finger drag looks around (only while exploring the island)
+    touches: new Map(),  // active touch pointers: id -> { x, y }
+    pinchDistance: 0,
+
+    /** On-screen buttons call this so a tap does exactly what the matching key does. */
+    tap(code) {
+      this.keysPressed.add(code);
+    },
 
     init(canvas) {
       window.addEventListener('keydown', (event) => {
@@ -351,6 +359,22 @@ window.Cozy = window.Cozy || {};
       canvas.addEventListener('contextmenu', (event) => event.preventDefault());
       canvas.addEventListener('pointerdown', (event) => {
         canvas.setPointerCapture(event.pointerId);
+        // a tap has no pointermove before it: aim where the finger (or pen) lands
+        this.pointer.x = event.clientX;
+        this.pointer.y = event.clientY;
+        if (event.pointerType === 'touch') {
+          this.touches.set(event.pointerId, { x: event.clientX, y: event.clientY });
+          if (this.touches.size === 2) {
+            // a second finger means look / zoom, not a long press on the first spot
+            this.left = false;
+            this.leftPressed = false;
+            this.pinchDistance = this.touchSpread();
+            return;
+          }
+          if (this.touches.size > 2) {
+            return;
+          }
+        }
         if (event.button === 0) {
           this.left = true;
           this.leftPressed = true;
@@ -360,7 +384,21 @@ window.Cozy = window.Cozy || {};
           this.rightDragDistance = 0;
         }
       });
+      const releaseTouch = (event) => {
+        if (event.pointerType !== 'touch') {
+          return;
+        }
+        this.touches.delete(event.pointerId);
+        if (this.touches.size < 2) {
+          this.pinchDistance = 0;
+        }
+      };
+      canvas.addEventListener('pointercancel', (event) => {
+        releaseTouch(event);
+        this.left = false;
+      });
       canvas.addEventListener('pointerup', (event) => {
+        releaseTouch(event);
         if (event.button === 0) {
           this.left = false;
         } else if (event.button === 2) {
@@ -369,6 +407,28 @@ window.Cozy = window.Cozy || {};
         }
       });
       canvas.addEventListener('pointermove', (event) => {
+        if (event.pointerType === 'touch' && this.touches.has(event.pointerId)) {
+          const last = this.touches.get(event.pointerId);
+          const dx = event.clientX - last.x;
+          const dy = event.clientY - last.y;
+          last.x = event.clientX;
+          last.y = event.clientY;
+          if (this.touches.size >= 2) {
+            // two fingers: drag to look around (averaged), pinch to zoom
+            this.dragX += dx / this.touches.size;
+            this.dragY += dy / this.touches.size;
+            const spread = this.touchSpread();
+            if (this.pinchDistance > 0 && spread > 0) {
+              this.wheel += (this.pinchDistance / spread - 1) * 10;
+            }
+            this.pinchDistance = spread;
+            return;
+          }
+          if (this.touchOrbit) {
+            this.dragX += dx;
+            this.dragY += dy;
+          }
+        }
         this.pointer.x = event.clientX;
         this.pointer.y = event.clientY;
         if (this.right) {
@@ -381,6 +441,14 @@ window.Cozy = window.Cozy || {};
         event.preventDefault();
         this.wheel += Math.sign(event.deltaY);
       }, { passive: false });
+    },
+
+    touchSpread() {
+      const points = [...this.touches.values()];
+      if (points.length < 2) {
+        return 0;
+      }
+      return Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
     },
 
     pressed(code) {
@@ -413,11 +481,30 @@ window.Cozy = window.Cozy || {};
 
   // ------------------------------------------------------------------ UI helpers
 
+  const TOUCH_SCREEN = !!(window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches);
+
+  /** On phones and tablets the hints say "tap" instead of "click". */
+  function forScreen(text) {
+    if (!TOUCH_SCREEN || typeof text !== 'string') {
+      return text;
+    }
+    return text
+      .replace(/\bClick\b/g, 'Tap').replace(/\bclick\b/g, 'tap').replace(/\bclicking\b/g, 'tapping')
+      // keyboard hints become the on-screen buttons' wording
+      .replace(/\bQ\s+‹\s*/g, '‹ ').replace(/\s*›\s+E\b/g, ' ›')
+      .replace(/\bQ\/E (pick|change|choose)\b/g, 'the ‹ › buttons $1')
+      .replace(/\bQ\/E\b/g, '‹ ›').replace(/ or Space\b/g, '')
+      .replace(/\bJ (journal|opens)\b/g, (match, word) => (word === 'journal' ? 'journal' : 'the 📖 button opens'))
+      .replace(/([.!?]\s+)the 📖/g, '$1The 📖');
+  }
+
   const UI = {
+    touchScreen: TOUCH_SCREEN,
     el(id) {
       return document.getElementById(id);
     },
     setText(element, text) {
+      text = forScreen(text);
       if (element && element.textContent !== text) {
         element.textContent = text;
       }
@@ -432,9 +519,13 @@ window.Cozy = window.Cozy || {};
       }
     },
     toastTimer: 0,
+    clearToast() {
+      this.toastTimer = 0;
+      this.el('toast').classList.remove('visible');
+    },
     toast(text, seconds) {
       const toast = this.el('toast');
-      toast.textContent = text;
+      toast.textContent = forScreen(text);
       toast.classList.add('visible');
       this.toastTimer = seconds || 4;
     },
@@ -493,7 +584,7 @@ window.Cozy = window.Cozy || {};
       compressor.threshold.value = -18;
       compressor.ratio.value = 3;
       this.master = ctx.createGain();
-      this.master.gain.value = 0.85;
+      this.master.gain.value = this.muted ? 0 : 0.85;
       this.master.connect(compressor);
       compressor.connect(ctx.destination);
       this.buffers.white = this.makeNoise('white');
@@ -503,11 +594,11 @@ window.Cozy = window.Cozy || {};
     },
 
     toggleMute() {
-      if (!this.ctx) {
-        return false;
-      }
+      // remember the choice even before audio has started (or when it is blocked)
       this.muted = !this.muted;
-      this.master.gain.setTargetAtTime(this.muted ? 0 : 0.85, this.ctx.currentTime, 0.15);
+      if (this.ctx && this.master) {
+        this.master.gain.setTargetAtTime(this.muted ? 0 : 0.85, this.ctx.currentTime, 0.15);
+      }
       return this.muted;
     },
 
@@ -1088,6 +1179,21 @@ window.Cozy = window.Cozy || {};
       delete this.loops.reel;
     },
   };
+
+  // Audio only starts after a tap/click (browser rule). Until then - or if the browser blocks audio,
+  // e.g. a phone on silent - every sound call is a quiet no-op instead of an error that stops the game loop.
+  Object.keys(Sound).forEach((key) => {
+    const method = Sound[key];
+    if (typeof method !== 'function' || key === 'start' || key === 'toggleMute') {
+      return;
+    }
+    Sound[key] = function soundIfReady(...args) {
+      if (!this.ctx) {
+        return undefined;
+      }
+      return method.apply(this, args);
+    };
+  });
 
   Cozy.sound = Sound;
 })(window.Cozy);

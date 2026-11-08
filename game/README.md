@@ -48,8 +48,9 @@ and it runs in low-power mode (~20 fps, 1× resolution, slow shadow refresh).
 
 | Key / mouse | Action |
 | --- | --- |
-| Click a glowing spot or press **1–7** | Start an activity |
-| **Esc** | Back to the island |
+| Click a glowing spot, its button, or press **1–7** | Start an activity |
+| **← Island** button (left rail) or **Esc** | Back to the island |
+| Activity buttons in the left rail | Switch straight to another activity |
 | Right-drag · wheel | Look around · zoom |
 | **Q / E** | Previous / next seed, tea or recipe |
 | **J** | Journal (fish, birds) |
@@ -57,6 +58,13 @@ and it runs in low-power mode (~20 fps, 1× resolution, slow shadow refresh).
 | **D** | Desk mode |
 | **S / N / R** | Cycle season / time of day / weather |
 | **M** | Sound on/off |
+
+**On a phone or tablet** (iPhone Safari, Android Chrome): tap a glowing spot or an activity button, drag with one
+finger to look around the island and pinch to zoom. The island menu folds away while you drag (or tap **hide**) and
+comes back when you return. Inside an activity, a labelled strip along the top (left rail when the phone is sideways)
+goes back to the island or switches straight to another activity, and a **← Island** button sits by your thumb at the
+bottom. The on-screen ‹ › and 📖 buttons replace Q/E and J, and the tool row (Journal, Focus, season, time, weather,
+Sound) replaces J/F/S/N/R/M.
 
 ## Seasons, weather and friends
 

@@ -190,12 +190,22 @@
     explore: ui.el('explore'),
     list: ui.el('explore-list'),
     title: ui.el('activity-title'),
-    esc: ui.el('esc-hint'),
+    rail: ui.el('mode-rail'),
+    railList: ui.el('mode-list'),
+    back: ui.el('back-button'),
+    actTools: ui.el('act-tools'),
+    actPrev: ui.el('act-prev'),
+    actNext: ui.el('act-next'),
+    actJournal: ui.el('act-journal'),
+    actBack: ui.el('act-back'),
+    exploreToggle: ui.el('explore-toggle'),
     journal: ui.el('journal'),
     journalRows: ui.el('journal-rows'),
     timer: ui.el('timer'),
     start: ui.el('start'),
     mute: ui.el('mute-label'),
+    muteIcon: ui.el('mute-icon'),
+    muteShort: ui.el('mute-short'),
     season: ui.el('season-label'),
     time: ui.el('time-label'),
     weather: ui.el('weather-label'),
@@ -220,8 +230,21 @@
   let timeLabelTimer = 0;
   let wasRaining = Cozy.weather.isRaining();
 
+  /** One-word value under each island tool icon: "Autumn", "12:30", "Clear". */
+  function refreshToolShorts() {
+    const firstWord = (text) => {
+      const word = String(text || '').trim().split(/[\s(]+/)[0] || '';
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    };
+    const clock = String(els.time.textContent || '').match(/\d{1,2}:\d{2}/);
+    ui.setText(ui.el('season-short'), firstWord(els.season.textContent) || 'Season');
+    ui.setText(ui.el('time-short'), clock ? clock[0] : 'Time');
+    ui.setText(ui.el('weather-short'), firstWord(els.weather.textContent) || 'Weather');
+  }
+
   function showSeasonLabel() {
     ui.setText(els.season, `${Cozy.season.label()}`);
+    refreshToolShorts();
   }
 
   Cozy.season.onChange((season) => {
@@ -236,6 +259,7 @@
   function showClockLabels() {
     ui.setText(els.time, Cozy.daytime.label());
     ui.setText(els.weather, Cozy.weather.label());
+    refreshToolShorts();
   }
   showClockLabels();  // fill the explore panel straight away, not after the first tick
 
@@ -277,13 +301,136 @@
     }
   }
 
+  // ------------------------------------------------------------------ navigation (mouse, touch and keys)
+
+  const SHORT_NAMES = {
+    fishing: 'Fishing', garden: 'Garden', tea: 'Tea', birds: 'Birds', viewpoint: 'Sunset', village: 'Village', cooking: 'Cooking',
+  };
+  const ICONS = {
+    fishing: '🎣', garden: '🌱', tea: '🍵', birds: '🐦', viewpoint: '🌅', village: '🏡', cooking: '🔥',
+  };
+  // which activities have previous/next (Q/E) and a journal (J), and what they are called there
+  const ACTION_LABELS = {
+    garden: { cycle: 'seed' },
+    village: { cycle: 'seed' },
+    tea: { cycle: 'tea' },
+    cooking: { cycle: 'recipe', journal: 'Cookbook' },
+    fishing: { journal: 'Fish journal' },
+    birds: { journal: 'Bird journal' },
+  };
+
+  /** A button that never keeps keyboard focus, so Space still casts / reels after a click. */
+  function onPress(button, handler) {
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      handler();
+      button.blur();
+    });
+  }
+
+  const railButtons = new Map();
   activities.forEach((activity) => {
-    const row = document.createElement('div');
-    row.className = 'row clickable';
-    row.innerHTML = `<span class="key">${activity.key}</span> ${activity.name}`;
-    row.addEventListener('click', () => switchTo(activity));
+    const icon = ICONS[activity.id] || '•';
+    const row = document.createElement('button');
+    row.className = 'ui-btn row clickable';
+    row.setAttribute('aria-label', activity.name);
+    const short = SHORT_NAMES[activity.id] || activity.name;
+    row.innerHTML = `<span class="key">${activity.key}</span><span class="row-icon" aria-hidden="true">${icon}</span> `
+      + `<span class="name-long">${activity.name}</span><span class="name-short" aria-hidden="true">${short}</span>`;
+    onPress(row, () => switchTo(activity));
     els.list.appendChild(row);
+
+    const railButton = document.createElement('button');
+    railButton.className = 'ui-btn rail-btn';
+    railButton.setAttribute('aria-label', activity.name);
+    railButton.title = `${activity.name} (${activity.key})`;
+    railButton.innerHTML = `<span class="rail-icon" aria-hidden="true">${icon}</span>`
+      + `<span class="rail-label"><span class="name-long">${activity.name}</span>`
+      + `<span class="name-short" aria-hidden="true">${short}</span></span><span class="key">${activity.key}</span>`;
+    onPress(railButton, () => switchTo(activity));
+    els.railList.appendChild(railButton);
+    railButtons.set(activity, railButton);
   });
+  onPress(els.back, () => switchTo(null));
+  onPress(els.actBack, () => switchTo(null));
+
+  /** Fold the island menu away (or back out) so the scene can breathe on small screens. */
+  function setExploreCollapsed(collapsed) {
+    els.explore.classList.toggle('collapsed', collapsed);
+    els.exploreToggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+    els.exploreToggle.setAttribute('aria-label', collapsed ? 'Show menu' : 'Hide menu');
+    els.exploreToggle.querySelector('.toggle-text').textContent = collapsed ? 'menu' : 'hide';
+    els.exploreToggle.querySelector('.toggle-arrow').textContent = collapsed ? '▴' : '▾';
+  }
+  onPress(els.exploreToggle, () => setExploreCollapsed(!els.explore.classList.contains('collapsed')));
+
+  // dragging the island with one finger tucks the menu away; returning to the island brings it back
+  const dragStart = { x: 0, y: 0, active: false };
+  const appEl = ui.el('app');
+  appEl.addEventListener('pointerdown', (event) => {
+    dragStart.active = event.pointerType === 'touch' && !current;
+    dragStart.x = event.clientX;
+    dragStart.y = event.clientY;
+  });
+  appEl.addEventListener('pointermove', (event) => {
+    if (!dragStart.active || current) {
+      return;
+    }
+    if (Math.hypot(event.clientX - dragStart.x, event.clientY - dragStart.y) > 32) {
+      dragStart.active = false;
+      setExploreCollapsed(true);
+    }
+  });
+  appEl.addEventListener('pointerup', () => {
+    dragStart.active = false;
+  });
+
+  // every on-screen tool button with data-key does exactly what that key does
+  document.querySelectorAll('[data-key]').forEach((button) => {
+    onPress(button, () => input.tap(button.dataset.key));
+  });
+  onPress(ui.el('desk-button'), () => enterDesk());
+  els.timer.addEventListener('click', () => toggleFocus());
+  els.timer.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      toggleFocus();
+    }
+  });
+
+  /** Put the previous / next / journal chips inside the current activity's HUD panel. */
+  function placeActionChips(activity) {
+    const labels = activity ? ACTION_LABELS[activity.id] : null;
+    const host = activity && (document.querySelector(`#hud-${activity.id} .hud`) || ui.el('hud-' + activity.id));
+    if (!host) {
+      ui.show(els.actTools, false);
+      return;
+    }
+    host.appendChild(els.actTools);
+    // activities without previous/next or a journal still get the phone back chip
+    els.actTools.classList.toggle('only-back', !labels);
+    if (!labels) {
+      els.actPrev.hidden = true;
+      els.actNext.hidden = true;
+      els.actJournal.hidden = true;
+      ui.show(els.actTools, true);
+      return;
+    }
+    const cycle = labels.cycle;
+    els.actPrev.hidden = !cycle;
+    els.actNext.hidden = !cycle;
+    els.actJournal.hidden = !labels.journal;
+    if (cycle) {
+      els.actPrev.setAttribute('aria-label', `Previous ${cycle}`);
+      els.actNext.setAttribute('aria-label', `Next ${cycle}`);
+      els.actPrev.querySelector('.chip-text').textContent = cycle;
+      els.actNext.querySelector('.chip-text').textContent = cycle;
+    }
+    if (labels.journal) {
+      els.actJournal.setAttribute('aria-label', labels.journal);
+      els.actJournal.querySelector('.chip-text').textContent = labels.journal.toLowerCase();
+    }
+    ui.show(els.actTools, true);
+  }
 
   let current = null;
   let showJournal = false;
@@ -300,13 +447,20 @@
     showJournal = false;
     activities.forEach((activity) => ui.show(ui.el('hud-' + activity.id), activity === current));
     ui.show(els.explore, !current);
-    ui.show(els.esc, !!current);
+    ui.show(els.rail, !!current);
+    document.body.classList.toggle('in-activity', !!current);
     ui.show(els.title, !!current);
+    railButtons.forEach((button, activity) => button.setAttribute('aria-current', activity === current ? 'true' : 'false'));
+    placeActionChips(current);
     if (current) {
       current.enter();
       ui.setText(els.title, current.name);
       ui.toast(current.hint, 5);
       sound.tick(0.05, 1200);
+    } else {
+      // the activity hint ("Tap to cast...") means nothing back on the island
+      ui.clearToast();
+      setExploreCollapsed(false);
     }
     focusRig(current);
   }
@@ -326,7 +480,9 @@
     }
     if (input.pressed('KeyM')) {
       const muted = sound.toggleMute();
-      ui.setText(els.mute, muted ? 'M  sound off' : 'M  sound on');
+      ui.setText(els.mute, muted ? 'sound off' : 'sound on');
+      ui.setText(els.muteIcon, muted ? '🔇' : '🔊');
+      ui.setText(els.muteShort, muted ? 'Muted' : 'Sound');
       ui.toast(muted ? 'Sound off' : 'Sound on', 1.5);
     }
     if (current) {
@@ -711,6 +867,17 @@
     const dt = Math.max(0, Math.min(0.05, (now - last) / 1000));
     last = now;
     time += dt;
+    try {
+      step(dt);
+    } catch (error) {
+      console.error(error);   // one bad frame must never freeze the island
+    } finally {
+      input.endFrame();
+    }
+    schedule();
+  }
+
+  function step(dt) {
     ui.tooltip(null);
 
     if (started && desk.on) {
@@ -719,6 +886,7 @@
       updateSeason(dt);
       updateDesk(dt);
     } else if (started) {
+      input.touchOrbit = !current;
       // Mochi first: clicking her pets her instead of casting / switching activity
       catHovered = cat.isHome() && !!pick([cat.hit]);
       if (catHovered && input.leftPressed) {
@@ -755,8 +923,6 @@
     sound.update(dt);
     ui.update(dt);
     world.renderer.render(world.scene, world.camera);
-    input.endFrame();
-    schedule();
   }
 
   switchTo(null);
@@ -798,5 +964,5 @@
     enterDesk(true);   // test / deep link: ?autostart&desk=1 (opens inline - a floating window needs a click)
   }
   schedule();
-  Cozy.debug = { world, activities, switchTo, rig, cat, enterDesk, exitDesk, desk };
+  Cozy.debug = { world, activities, switchTo, rig, cat, enterDesk, exitDesk, desk, current: () => current };
 })(window.Cozy);

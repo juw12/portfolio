@@ -4,7 +4,12 @@
   <meta name="cozy-static" content="1">
   <link rel="icon" href="data:,">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F0C3AE">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Cozy Island">
   <title>Cozy Island</title>
   <style>
     :root {
@@ -25,7 +30,10 @@
       color: var(--cream);
       user-select: none;
     }
+    html, body { overscroll-behavior: none; -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; }
     #app, #app canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+    #app canvas { touch-action: none; }
+    button, [role=button] { touch-action: manipulation; }
     .panel {
       position: fixed;
       background: var(--panel);
@@ -46,6 +54,15 @@
 
     #explore { top: 16px; left: 16px; width: 300px; }
     #explore h2 { margin: 0 0 8px; font-size: 22px; font-weight: 600; letter-spacing: 0.5px; }
+    .explore-head { display: flex; align-items: flex-start; gap: 8px; }
+    .explore-head h2 { flex: 1; }
+    .head-hint { display: none !important; }
+    .explore-toggle {
+      flex: none; min-height: 30px; padding: 2px 10px; border-radius: 999px; font-size: 13px;
+      background: rgba(255, 245, 225, 0.12); opacity: 0.85;
+    }
+    #explore.collapsed #explore-body { display: none; }
+    #explore.collapsed h2 { margin-bottom: 0; }
     #explore .controls { margin-top: 10px; line-height: 1.6; }
     #activity-title {
       top: 14px; left: 50%; transform: translateX(-50%); font-size: 20px; padding: 6px 18px;
@@ -53,7 +70,6 @@
     #timer { top: 16px; right: 16px; padding: 8px 16px; font-size: 15px; }
     #timer.focus { background: rgba(40, 72, 58, 0.72); }
     #timer.break { background: rgba(110, 66, 44, 0.72); }
-    #esc-hint { bottom: 16px; left: 16px; padding: 6px 14px; font-size: 14px; }
 
     #toast {
       top: 62px; left: 50%; transform: translate(-50%, -10px); max-width: min(640px, 90vw);
@@ -187,6 +203,186 @@
       background: rgba(255, 245, 225, 0.9); color: #3B2A20; text-align: center;
     }
     #start .tips { margin-top: 16px; font-size: 13px; opacity: 0.8; line-height: 1.6; }
+
+    /* ---- navigation: activity rail (back + switch), explore tools, in-HUD action chips ---- */
+    [hidden] { display: none !important; }
+    .ui-btn {
+      font: inherit; color: var(--cream); background: transparent; border: 0; box-shadow: none;
+      text-shadow: inherit; cursor: pointer; filter: none;
+    }
+    .ui-btn:hover { filter: none; background: rgba(255, 245, 225, 0.12); }
+    .ui-btn:focus-visible { outline: 2px solid var(--peach); outline-offset: 2px; }
+    #explore-list .row.clickable { width: 100%; text-align: left; align-items: center; }
+    .tool-list { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+    .tool-list .row.clickable.tool {
+      flex: 1 1 0; min-width: 0; width: auto; margin: 0; padding: 5px 0 4px; border-radius: 12px;
+      flex-direction: column; align-items: center; justify-content: center; gap: 1px;
+      background: rgba(255, 245, 225, 0.12); text-align: center;
+    }
+    .tool-list .tool .key { display: none; }
+    .tool-list .tool .tool-icon { font-size: 17px; line-height: 1.1; }
+    .tool-list .tool .tool-text {
+      position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+    }
+    .tool-list #desk-button { flex-basis: 100%; margin-top: 2px; font-size: 13px; }
+    .tool-short { display: block; font-size: 11px; line-height: 1.15; opacity: 0.92; white-space: nowrap; }
+    .tool-list .row.clickable { width: 100%; text-align: left; font-size: 13px; }
+    #explore-list .row.clickable, .tool-list .row.clickable { justify-content: flex-start; gap: 6px; }
+    #explore-list .row.clickable .key, .tool-list .row.clickable .key { margin-right: 4px; }
+    .hint-line { opacity: 0.85; margin-bottom: 4px; }
+    .only-touch { display: none; }
+    .name-short { display: none; }
+    @media (hover: none) and (pointer: coarse) { .only-mouse-flex { display: none !important; } }
+
+    #mode-rail {
+      top: 14px; left: 14px; padding: 8px; display: flex; flex-direction: column; gap: 2px;
+      max-height: calc(100% - 28px); overflow-y: auto; scrollbar-width: none;
+    }
+    .rail-btn {
+      display: flex; align-items: center; gap: 10px; min-height: 36px; padding: 4px 10px;
+      border-radius: 12px; font-size: 15px; white-space: nowrap; text-align: left;
+    }
+    .rail-btn .rail-icon { width: 22px; text-align: center; font-size: 17px; }
+    .rail-btn .rail-label { flex: 1; }
+    .rail-btn .key { margin: 0 0 0 10px; font-size: 12px; padding: 0 5px; opacity: 0.6; }
+    .rail-btn[aria-current="true"] { background: var(--peach); color: #3B2A20; text-shadow: none; }
+    .rail-btn[aria-current="true"] .key { background: rgba(59, 42, 32, 0.14); }
+    .rail-back { font-weight: 600; }
+    #mode-list {
+      display: flex; flex-direction: column; gap: 2px; margin-top: 4px; padding-top: 4px;
+      border-top: 1px solid rgba(255, 245, 225, 0.18);
+    }
+    #timer[role=button] { cursor: pointer; }
+
+    .act-tools { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 4px 14px;
+      border-radius: 999px; background: rgba(255, 245, 225, 0.16); font-size: 14px;
+    }
+    .chip .key { margin: 0; font-size: 12px; padding: 0 5px; }
+    .act-back { display: none !important; }
+    .act-tools.only-back { display: none !important; }
+
+    /* ---- phones and tablets (touch screens) ---- */
+    @media (hover: none) and (pointer: coarse) {
+      .key, .only-mouse { display: none !important; }
+      .only-touch { display: block; }
+      #tooltip { display: none !important; }
+      button, .ui-btn, .row.clickable, #timer { min-height: 44px; }
+      .chip { min-height: 44px; padding: 6px 16px; font-size: 15px; }
+      .rail-btn { min-height: 44px; }
+    }
+
+    /* ---- small screens (and phones held sideways): bottom sheet on the island, icon rail in activities ---- */
+    @media (max-width: 640px), (max-height: 500px) {
+      .panel { padding: 10px 12px; }
+      #explore {
+        top: auto; left: max(8px, env(safe-area-inset-left)); right: max(8px, env(safe-area-inset-right));
+        bottom: max(8px, env(safe-area-inset-bottom)); width: auto; max-height: 46%; overflow-y: auto;
+      }
+      #explore h2 { display: none; }
+      .explore-head { align-items: center; margin-bottom: 6px; }
+      .head-hint { display: block !important; flex: 1; font-size: 13px; opacity: 0.85; }
+      #explore.collapsed .explore-head { margin-bottom: 0; }
+      #explore .controls .hint-line.only-touch { display: none; }
+      .explore-toggle { min-height: 40px; font-size: 14px; padding: 2px 12px; }
+      .act-back { display: inline-flex !important; font-weight: 600; }
+      .act-tools.only-back { display: flex !important; }
+      .name-long { display: none; }
+      .name-short { display: inline; }
+      #explore-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+      #explore-list .row.clickable {
+        width: auto; margin: 0; padding: 4px 2px; border-radius: 14px; background: rgba(255, 245, 225, 0.14);
+        flex-direction: column; justify-content: center; align-items: center; gap: 0; text-align: center;
+        font-size: 13px; line-height: 1.15; min-height: 44px;
+      }
+      #explore-list .row-icon { font-size: 18px; }
+      .tool-list { display: flex; justify-content: space-between; gap: 6px; }
+      .tool-list .row.clickable {
+        flex: 1 1 0; width: auto; margin: 0; padding: 3px 0 2px; justify-content: center; border-radius: 14px;
+        background: rgba(255, 245, 225, 0.14); min-width: 44px; min-height: 44px;
+        flex-direction: column; align-items: center; gap: 1px;
+      }
+      .tool-list .tool-icon { font-size: 18px; line-height: 1.1; }
+      .tool-list .tool-short { display: block; font-size: 11px; line-height: 1.1; opacity: 0.92; }
+      .tool-list .tool-text {
+        position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+      }
+      #explore .controls { margin-top: 8px; line-height: 1.4; }
+      .tool-list { margin-top: 8px; }
+      #timer { top: max(8px, env(safe-area-inset-top)); right: max(8px, env(safe-area-inset-right)); font-size: 14px; padding: 6px 12px; display: flex; align-items: center; }
+      #toast { top: calc(max(8px, env(safe-area-inset-top)) + 54px); max-width: calc(100% - 24px); font-size: 15px; }
+      body.in-activity #toast { left: calc(50% + 32px); max-width: calc(100% - 88px); }
+      #activity-title { display: none !important; }
+      #mode-rail { top: max(8px, env(safe-area-inset-top)); left: max(8px, env(safe-area-inset-left)); padding: 4px; max-height: calc(100% - 16px); }
+      .rail-btn {
+        flex-direction: column; justify-content: center; gap: 0; padding: 3px 4px; width: 58px; min-height: 48px;
+        text-align: center;
+      }
+      .rail-btn .rail-icon { width: auto; font-size: 18px; line-height: 1.1; }
+      .rail-btn .rail-label { flex: none; font-size: 12px; line-height: 1.2; }
+      .rail-btn .rail-label .name-long { display: none; }
+      .hud {
+        min-width: 0; left: max(8px, env(safe-area-inset-left)); right: max(8px, env(safe-area-inset-right));
+        bottom: max(8px, env(safe-area-inset-bottom)); transform: none;
+      }
+      .hud-title { font-size: 17px; }
+      #journal, #bird-journal, #village-panel, #fish-journal, #cook-book {
+        top: calc(max(8px, env(safe-area-inset-top)) + 52px); left: 64px; right: 8px; width: auto; transform: none;
+        max-height: calc(100% - 300px); overflow-y: auto;
+      }
+      #journal { left: 8px; max-height: calc(100% - 260px); }
+      #village-panel { left: 8px; max-height: calc(100% - 80px); }
+      .fish-info { white-space: normal; }
+      #start .card { width: min(420px, calc(100vw - 24px)); padding: 22px 18px; }
+      #start h1 { font-size: 34px; }
+      #online-list { display: none !important; }
+    }
+    /* phone held upright: activities as a slim strip along the top, the scene stays open */
+    @media (max-width: 640px) and (min-height: 501px) {
+      #mode-rail {
+        left: max(4px, env(safe-area-inset-left)); right: max(4px, env(safe-area-inset-right));
+        flex-direction: row; align-items: stretch; gap: 2px; padding: 3px; overflow-x: auto; overflow-y: hidden;
+        scrollbar-width: none;
+      }
+      #mode-rail::-webkit-scrollbar { display: none; }
+      #mode-list {
+        flex-direction: row; flex: 1; gap: 1px; margin: 0 0 0 3px; padding: 0 0 0 3px;
+        border-top: none; border-left: 1px solid rgba(255, 245, 225, 0.18);
+      }
+      /* every activity keeps an icon and a tiny name, all at least 44 px wide */
+      .rail-btn { width: auto; flex: 1 0 44px; min-width: 44px; min-height: 50px; padding: 4px 0 3px; gap: 1px; }
+      .rail-back { flex: 0 0 48px; width: 48px; }
+      .rail-btn .rail-label { display: block; font-size: 9.5px; letter-spacing: -0.2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; opacity: 0.85; }
+      #mode-list .rail-btn .rail-icon { font-size: 19px; }
+      #mode-list .rail-btn[aria-current="true"] .rail-label { font-weight: 700; opacity: 1; }
+      body.in-activity #toast { left: 50%; top: calc(max(8px, env(safe-area-inset-top)) + 70px); max-width: calc(100% - 24px); }
+      body.in-activity #timer { top: calc(max(8px, env(safe-area-inset-top)) + 66px); }
+      #bird-journal, #fish-journal, #cook-book { top: calc(max(8px, env(safe-area-inset-top)) + 70px); left: 8px; }
+    }
+    /* upright phones that are wide enough: all seven activities on one labelled row, so the island sheet stays short */
+    @media (min-width: 380px) and (max-width: 640px) and (min-height: 501px) {
+      #explore-list { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+      #explore-list .row.clickable { padding: 5px 0 4px; font-size: 10px; letter-spacing: -0.2px; min-height: 50px; }
+      #explore-list .row-icon { font-size: 19px; }
+    }
+    /* phone held sideways: rail on the left, HUD beside it, shorter panels */
+    @media (max-height: 500px) {
+      .rail-btn { min-height: 40px; }
+      .rail-btn .rail-label { display: none; }
+      .rail-btn[aria-current="true"] .rail-label, .rail-back .rail-label { display: block; }
+      #mode-rail { gap: 0; }
+      #mode-list { gap: 0; }
+      .hud { left: calc(max(8px, env(safe-area-inset-left)) + 64px); }
+      #explore { max-height: 52%; padding: 8px 10px; }
+      #explore-list { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; }
+      #explore-list .row.clickable { min-height: 44px; font-size: 12px; }
+      #explore .controls { margin-top: 5px; }
+      .tool-list { margin-top: 5px; }
+      .tool-list .row.clickable { min-height: 44px; flex-direction: row; gap: 5px; }
+      #journal, #bird-journal, #fish-journal, #cook-book { max-height: calc(100% - 170px); }
+      #toast { top: max(8px, env(safe-area-inset-top)); left: 50%; }
+    }
   </style>
 </head>
 <body>
@@ -194,22 +390,43 @@
   <div id="labels"></div>
 
   <div id="explore" class="panel">
-    <h2>Cozy Island</h2>
-    <div id="explore-list"></div>
+    <div class="explore-head">
+      <h2>Cozy Island</h2>
+      <span class="head-hint only-touch">Tap a glowing spot · drag to look</span>
+      <button class="ui-btn explore-toggle" id="explore-toggle" aria-expanded="true" aria-controls="explore-body" aria-label="Hide menu"><span class="toggle-text">hide</span> <span class="toggle-arrow" aria-hidden="true">▾</span></button>
+    </div>
+    <div id="explore-body">
+    <div id="explore-list" role="group" aria-label="Activities"></div>
     <div class="controls small">
-      Click a glowing spot or press a number<br>
-      <span class="key">J</span>journal &nbsp; <span class="key">F</span>focus timer<br>
-      <span class="key">S</span>season: <span id="season-label"></span><br>
-      <span class="key">N</span>time: <span id="time-label"></span><br>
-      <span class="key">R</span>weather: <span id="weather-label"></span><br>
-    <span class="key">D</span>desk mode: a tiny island beside your work<br>
-      <span id="mute-label">M  sound on</span> &nbsp;·&nbsp; right-drag look · wheel zoom
-      <br>Click Mochi the cat on the dock to pet her
+      <div class="hint-line only-mouse">Click a glowing spot or press a number · right-drag look · wheel zoom</div>
+      <div class="hint-line only-touch">Tap a glowing spot · drag to look · pinch to zoom</div>
+      <div class="tool-list" role="group" aria-label="Island tools">
+        <button class="ui-btn row clickable tool" title="Journal (J)" data-key="KeyJ"><span class="key">J</span><span class="tool-icon" aria-hidden="true">📖</span><span class="tool-text">journal</span><span class="tool-short" aria-hidden="true">Journal</span></button>
+        <button class="ui-btn row clickable tool" title="Focus timer (F)" data-key="KeyF"><span class="key">F</span><span class="tool-icon" aria-hidden="true">⏱</span><span class="tool-text">focus timer</span><span class="tool-short" aria-hidden="true">Focus</span></button>
+        <button class="ui-btn row clickable tool" title="Change season (S)" data-key="KeyS"><span class="key">S</span><span class="tool-icon" aria-hidden="true">🍃</span><span class="tool-text">season: <span id="season-label"></span></span><span class="tool-short" id="season-short" aria-hidden="true">Season</span></button>
+        <button class="ui-btn row clickable tool" title="Change time of day (N)" data-key="KeyN"><span class="key">N</span><span class="tool-icon" aria-hidden="true">🌤</span><span class="tool-text">time: <span id="time-label"></span></span><span class="tool-short" id="time-short" aria-hidden="true">Time</span></button>
+        <button class="ui-btn row clickable tool" title="Change weather (R)" data-key="KeyR"><span class="key">R</span><span class="tool-icon" aria-hidden="true">☔</span><span class="tool-text">weather: <span id="weather-label"></span></span><span class="tool-short" id="weather-short" aria-hidden="true">Weather</span></button>
+        <button class="ui-btn row clickable tool" title="Sound on/off (M)" data-key="KeyM"><span class="key">M</span><span class="tool-icon" id="mute-icon" aria-hidden="true">🔊</span><span class="tool-text" id="mute-label">sound on</span><span class="tool-short" id="mute-short" aria-hidden="true">Sound</span></button>
+        <button class="ui-btn row clickable only-mouse-flex" id="desk-button"><span class="key">D</span>🖥 desk mode: a tiny island beside your work</button>
+      </div>
+      <div class="hint-line only-mouse" style="margin-top: 4px">Click Mochi the cat on the dock to pet her</div>
+    </div>
     </div>
   </div>
   <div id="activity-title" class="panel" style="display:none"></div>
-  <div id="timer" class="panel pill">F  start focus</div>
-  <div id="esc-hint" class="panel" style="display:none">Esc · back to the island</div>
+  <div id="timer" class="panel pill" role="button" tabindex="0" aria-label="Focus timer">F  start focus</div>
+  <nav id="mode-rail" class="panel" style="display:none" aria-label="Activities">
+    <button class="ui-btn rail-btn rail-back" id="back-button" aria-label="Back to the island">
+      <span class="rail-icon" aria-hidden="true">←</span><span class="rail-label">Island</span><span class="key">Esc</span>
+    </button>
+    <div id="mode-list" role="group" aria-label="Switch activity"></div>
+  </nav>
+  <div id="act-tools" class="act-tools" style="display:none">
+    <button class="ui-btn chip act-back" id="act-back" aria-label="Back to the island">← <span class="chip-text">Island</span></button>
+    <button class="ui-btn chip" id="act-prev" data-key="KeyQ" aria-label="Previous"><span class="key">Q</span>‹ <span class="chip-text">previous</span></button>
+    <button class="ui-btn chip" id="act-next" data-key="KeyE" aria-label="Next"><span class="chip-text">next</span> ›<span class="key">E</span></button>
+    <button class="ui-btn chip" id="act-journal" data-key="KeyJ" aria-label="Journal">📖 <span class="chip-text">journal</span><span class="key">J</span></button>
+  </div>
   <div id="toast" class="panel"></div>
   <div id="tooltip" class="panel" style="display:none"></div>
 
@@ -311,7 +528,8 @@
       <button id="start-button">Begin (sound on)</button>
       <div class="tips">
         Fishing · garden · tea &amp; breathing · birdwatching · sunset eye-rest · village · campfire cooking<br>
-        Press <b>F</b> for a 25-minute focus timer - plants keep growing while you work.
+        <span class="only-mouse">Press <b>F</b> for a 25-minute focus timer - plants keep growing while you work.</span>
+        <span class="only-touch">Tap the timer for a 25-minute focus session - plants keep growing while you're away.</span>
       </div>
     </div>
   </div>
@@ -655,6 +873,14 @@ window.Cozy = window.Cozy || {};
     dragX: 0,
     dragY: 0,
     wheel: 0,
+    touchOrbit: false,   // set by the game: one-finger drag looks around (only while exploring the island)
+    touches: new Map(),  // active touch pointers: id -> { x, y }
+    pinchDistance: 0,
+
+    /** On-screen buttons call this so a tap does exactly what the matching key does. */
+    tap(code) {
+      this.keysPressed.add(code);
+    },
 
     init(canvas) {
       window.addEventListener('keydown', (event) => {
@@ -680,6 +906,22 @@ window.Cozy = window.Cozy || {};
       canvas.addEventListener('contextmenu', (event) => event.preventDefault());
       canvas.addEventListener('pointerdown', (event) => {
         canvas.setPointerCapture(event.pointerId);
+        // a tap has no pointermove before it: aim where the finger (or pen) lands
+        this.pointer.x = event.clientX;
+        this.pointer.y = event.clientY;
+        if (event.pointerType === 'touch') {
+          this.touches.set(event.pointerId, { x: event.clientX, y: event.clientY });
+          if (this.touches.size === 2) {
+            // a second finger means look / zoom, not a long press on the first spot
+            this.left = false;
+            this.leftPressed = false;
+            this.pinchDistance = this.touchSpread();
+            return;
+          }
+          if (this.touches.size > 2) {
+            return;
+          }
+        }
         if (event.button === 0) {
           this.left = true;
           this.leftPressed = true;
@@ -689,7 +931,21 @@ window.Cozy = window.Cozy || {};
           this.rightDragDistance = 0;
         }
       });
+      const releaseTouch = (event) => {
+        if (event.pointerType !== 'touch') {
+          return;
+        }
+        this.touches.delete(event.pointerId);
+        if (this.touches.size < 2) {
+          this.pinchDistance = 0;
+        }
+      };
+      canvas.addEventListener('pointercancel', (event) => {
+        releaseTouch(event);
+        this.left = false;
+      });
       canvas.addEventListener('pointerup', (event) => {
+        releaseTouch(event);
         if (event.button === 0) {
           this.left = false;
         } else if (event.button === 2) {
@@ -698,6 +954,28 @@ window.Cozy = window.Cozy || {};
         }
       });
       canvas.addEventListener('pointermove', (event) => {
+        if (event.pointerType === 'touch' && this.touches.has(event.pointerId)) {
+          const last = this.touches.get(event.pointerId);
+          const dx = event.clientX - last.x;
+          const dy = event.clientY - last.y;
+          last.x = event.clientX;
+          last.y = event.clientY;
+          if (this.touches.size >= 2) {
+            // two fingers: drag to look around (averaged), pinch to zoom
+            this.dragX += dx / this.touches.size;
+            this.dragY += dy / this.touches.size;
+            const spread = this.touchSpread();
+            if (this.pinchDistance > 0 && spread > 0) {
+              this.wheel += (this.pinchDistance / spread - 1) * 10;
+            }
+            this.pinchDistance = spread;
+            return;
+          }
+          if (this.touchOrbit) {
+            this.dragX += dx;
+            this.dragY += dy;
+          }
+        }
         this.pointer.x = event.clientX;
         this.pointer.y = event.clientY;
         if (this.right) {
@@ -710,6 +988,14 @@ window.Cozy = window.Cozy || {};
         event.preventDefault();
         this.wheel += Math.sign(event.deltaY);
       }, { passive: false });
+    },
+
+    touchSpread() {
+      const points = [...this.touches.values()];
+      if (points.length < 2) {
+        return 0;
+      }
+      return Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
     },
 
     pressed(code) {
@@ -742,11 +1028,30 @@ window.Cozy = window.Cozy || {};
 
   // ------------------------------------------------------------------ UI helpers
 
+  const TOUCH_SCREEN = !!(window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches);
+
+  /** On phones and tablets the hints say "tap" instead of "click". */
+  function forScreen(text) {
+    if (!TOUCH_SCREEN || typeof text !== 'string') {
+      return text;
+    }
+    return text
+      .replace(/\bClick\b/g, 'Tap').replace(/\bclick\b/g, 'tap').replace(/\bclicking\b/g, 'tapping')
+      // keyboard hints become the on-screen buttons' wording
+      .replace(/\bQ\s+‹\s*/g, '‹ ').replace(/\s*›\s+E\b/g, ' ›')
+      .replace(/\bQ\/E (pick|change|choose)\b/g, 'the ‹ › buttons $1')
+      .replace(/\bQ\/E\b/g, '‹ ›').replace(/ or Space\b/g, '')
+      .replace(/\bJ (journal|opens)\b/g, (match, word) => (word === 'journal' ? 'journal' : 'the 📖 button opens'))
+      .replace(/([.!?]\s+)the 📖/g, '$1The 📖');
+  }
+
   const UI = {
+    touchScreen: TOUCH_SCREEN,
     el(id) {
       return document.getElementById(id);
     },
     setText(element, text) {
+      text = forScreen(text);
       if (element && element.textContent !== text) {
         element.textContent = text;
       }
@@ -761,9 +1066,13 @@ window.Cozy = window.Cozy || {};
       }
     },
     toastTimer: 0,
+    clearToast() {
+      this.toastTimer = 0;
+      this.el('toast').classList.remove('visible');
+    },
     toast(text, seconds) {
       const toast = this.el('toast');
-      toast.textContent = text;
+      toast.textContent = forScreen(text);
       toast.classList.add('visible');
       this.toastTimer = seconds || 4;
     },
@@ -822,7 +1131,7 @@ window.Cozy = window.Cozy || {};
       compressor.threshold.value = -18;
       compressor.ratio.value = 3;
       this.master = ctx.createGain();
-      this.master.gain.value = 0.85;
+      this.master.gain.value = this.muted ? 0 : 0.85;
       this.master.connect(compressor);
       compressor.connect(ctx.destination);
       this.buffers.white = this.makeNoise('white');
@@ -832,11 +1141,11 @@ window.Cozy = window.Cozy || {};
     },
 
     toggleMute() {
-      if (!this.ctx) {
-        return false;
-      }
+      // remember the choice even before audio has started (or when it is blocked)
       this.muted = !this.muted;
-      this.master.gain.setTargetAtTime(this.muted ? 0 : 0.85, this.ctx.currentTime, 0.15);
+      if (this.ctx && this.master) {
+        this.master.gain.setTargetAtTime(this.muted ? 0 : 0.85, this.ctx.currentTime, 0.15);
+      }
       return this.muted;
     },
 
@@ -1417,6 +1726,21 @@ window.Cozy = window.Cozy || {};
       delete this.loops.reel;
     },
   };
+
+  // Audio only starts after a tap/click (browser rule). Until then - or if the browser blocks audio,
+  // e.g. a phone on silent - every sound call is a quiet no-op instead of an error that stops the game loop.
+  Object.keys(Sound).forEach((key) => {
+    const method = Sound[key];
+    if (typeof method !== 'function' || key === 'start' || key === 'toggleMute') {
+      return;
+    }
+    Sound[key] = function soundIfReady(...args) {
+      if (!this.ctx) {
+        return undefined;
+      }
+      return method.apply(this, args);
+    };
+  });
 
   Cozy.sound = Sound;
 })(window.Cozy);
@@ -6261,12 +6585,22 @@ window.Cozy = window.Cozy || {};
     explore: ui.el('explore'),
     list: ui.el('explore-list'),
     title: ui.el('activity-title'),
-    esc: ui.el('esc-hint'),
+    rail: ui.el('mode-rail'),
+    railList: ui.el('mode-list'),
+    back: ui.el('back-button'),
+    actTools: ui.el('act-tools'),
+    actPrev: ui.el('act-prev'),
+    actNext: ui.el('act-next'),
+    actJournal: ui.el('act-journal'),
+    actBack: ui.el('act-back'),
+    exploreToggle: ui.el('explore-toggle'),
     journal: ui.el('journal'),
     journalRows: ui.el('journal-rows'),
     timer: ui.el('timer'),
     start: ui.el('start'),
     mute: ui.el('mute-label'),
+    muteIcon: ui.el('mute-icon'),
+    muteShort: ui.el('mute-short'),
     season: ui.el('season-label'),
     time: ui.el('time-label'),
     weather: ui.el('weather-label'),
@@ -6291,8 +6625,21 @@ window.Cozy = window.Cozy || {};
   let timeLabelTimer = 0;
   let wasRaining = Cozy.weather.isRaining();
 
+  /** One-word value under each island tool icon: "Autumn", "12:30", "Clear". */
+  function refreshToolShorts() {
+    const firstWord = (text) => {
+      const word = String(text || '').trim().split(/[\s(]+/)[0] || '';
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    };
+    const clock = String(els.time.textContent || '').match(/\d{1,2}:\d{2}/);
+    ui.setText(ui.el('season-short'), firstWord(els.season.textContent) || 'Season');
+    ui.setText(ui.el('time-short'), clock ? clock[0] : 'Time');
+    ui.setText(ui.el('weather-short'), firstWord(els.weather.textContent) || 'Weather');
+  }
+
   function showSeasonLabel() {
     ui.setText(els.season, `${Cozy.season.label()}`);
+    refreshToolShorts();
   }
 
   Cozy.season.onChange((season) => {
@@ -6307,6 +6654,7 @@ window.Cozy = window.Cozy || {};
   function showClockLabels() {
     ui.setText(els.time, Cozy.daytime.label());
     ui.setText(els.weather, Cozy.weather.label());
+    refreshToolShorts();
   }
   showClockLabels();  // fill the explore panel straight away, not after the first tick
 
@@ -6348,13 +6696,136 @@ window.Cozy = window.Cozy || {};
     }
   }
 
+  // ------------------------------------------------------------------ navigation (mouse, touch and keys)
+
+  const SHORT_NAMES = {
+    fishing: 'Fishing', garden: 'Garden', tea: 'Tea', birds: 'Birds', viewpoint: 'Sunset', village: 'Village', cooking: 'Cooking',
+  };
+  const ICONS = {
+    fishing: '🎣', garden: '🌱', tea: '🍵', birds: '🐦', viewpoint: '🌅', village: '🏡', cooking: '🔥',
+  };
+  // which activities have previous/next (Q/E) and a journal (J), and what they are called there
+  const ACTION_LABELS = {
+    garden: { cycle: 'seed' },
+    village: { cycle: 'seed' },
+    tea: { cycle: 'tea' },
+    cooking: { cycle: 'recipe', journal: 'Cookbook' },
+    fishing: { journal: 'Fish journal' },
+    birds: { journal: 'Bird journal' },
+  };
+
+  /** A button that never keeps keyboard focus, so Space still casts / reels after a click. */
+  function onPress(button, handler) {
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      handler();
+      button.blur();
+    });
+  }
+
+  const railButtons = new Map();
   activities.forEach((activity) => {
-    const row = document.createElement('div');
-    row.className = 'row clickable';
-    row.innerHTML = `<span class="key">${activity.key}</span> ${activity.name}`;
-    row.addEventListener('click', () => switchTo(activity));
+    const icon = ICONS[activity.id] || '•';
+    const row = document.createElement('button');
+    row.className = 'ui-btn row clickable';
+    row.setAttribute('aria-label', activity.name);
+    const short = SHORT_NAMES[activity.id] || activity.name;
+    row.innerHTML = `<span class="key">${activity.key}</span><span class="row-icon" aria-hidden="true">${icon}</span> `
+      + `<span class="name-long">${activity.name}</span><span class="name-short" aria-hidden="true">${short}</span>`;
+    onPress(row, () => switchTo(activity));
     els.list.appendChild(row);
+
+    const railButton = document.createElement('button');
+    railButton.className = 'ui-btn rail-btn';
+    railButton.setAttribute('aria-label', activity.name);
+    railButton.title = `${activity.name} (${activity.key})`;
+    railButton.innerHTML = `<span class="rail-icon" aria-hidden="true">${icon}</span>`
+      + `<span class="rail-label"><span class="name-long">${activity.name}</span>`
+      + `<span class="name-short" aria-hidden="true">${short}</span></span><span class="key">${activity.key}</span>`;
+    onPress(railButton, () => switchTo(activity));
+    els.railList.appendChild(railButton);
+    railButtons.set(activity, railButton);
   });
+  onPress(els.back, () => switchTo(null));
+  onPress(els.actBack, () => switchTo(null));
+
+  /** Fold the island menu away (or back out) so the scene can breathe on small screens. */
+  function setExploreCollapsed(collapsed) {
+    els.explore.classList.toggle('collapsed', collapsed);
+    els.exploreToggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+    els.exploreToggle.setAttribute('aria-label', collapsed ? 'Show menu' : 'Hide menu');
+    els.exploreToggle.querySelector('.toggle-text').textContent = collapsed ? 'menu' : 'hide';
+    els.exploreToggle.querySelector('.toggle-arrow').textContent = collapsed ? '▴' : '▾';
+  }
+  onPress(els.exploreToggle, () => setExploreCollapsed(!els.explore.classList.contains('collapsed')));
+
+  // dragging the island with one finger tucks the menu away; returning to the island brings it back
+  const dragStart = { x: 0, y: 0, active: false };
+  const appEl = ui.el('app');
+  appEl.addEventListener('pointerdown', (event) => {
+    dragStart.active = event.pointerType === 'touch' && !current;
+    dragStart.x = event.clientX;
+    dragStart.y = event.clientY;
+  });
+  appEl.addEventListener('pointermove', (event) => {
+    if (!dragStart.active || current) {
+      return;
+    }
+    if (Math.hypot(event.clientX - dragStart.x, event.clientY - dragStart.y) > 32) {
+      dragStart.active = false;
+      setExploreCollapsed(true);
+    }
+  });
+  appEl.addEventListener('pointerup', () => {
+    dragStart.active = false;
+  });
+
+  // every on-screen tool button with data-key does exactly what that key does
+  document.querySelectorAll('[data-key]').forEach((button) => {
+    onPress(button, () => input.tap(button.dataset.key));
+  });
+  onPress(ui.el('desk-button'), () => enterDesk());
+  els.timer.addEventListener('click', () => toggleFocus());
+  els.timer.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      toggleFocus();
+    }
+  });
+
+  /** Put the previous / next / journal chips inside the current activity's HUD panel. */
+  function placeActionChips(activity) {
+    const labels = activity ? ACTION_LABELS[activity.id] : null;
+    const host = activity && (document.querySelector(`#hud-${activity.id} .hud`) || ui.el('hud-' + activity.id));
+    if (!host) {
+      ui.show(els.actTools, false);
+      return;
+    }
+    host.appendChild(els.actTools);
+    // activities without previous/next or a journal still get the phone back chip
+    els.actTools.classList.toggle('only-back', !labels);
+    if (!labels) {
+      els.actPrev.hidden = true;
+      els.actNext.hidden = true;
+      els.actJournal.hidden = true;
+      ui.show(els.actTools, true);
+      return;
+    }
+    const cycle = labels.cycle;
+    els.actPrev.hidden = !cycle;
+    els.actNext.hidden = !cycle;
+    els.actJournal.hidden = !labels.journal;
+    if (cycle) {
+      els.actPrev.setAttribute('aria-label', `Previous ${cycle}`);
+      els.actNext.setAttribute('aria-label', `Next ${cycle}`);
+      els.actPrev.querySelector('.chip-text').textContent = cycle;
+      els.actNext.querySelector('.chip-text').textContent = cycle;
+    }
+    if (labels.journal) {
+      els.actJournal.setAttribute('aria-label', labels.journal);
+      els.actJournal.querySelector('.chip-text').textContent = labels.journal.toLowerCase();
+    }
+    ui.show(els.actTools, true);
+  }
 
   let current = null;
   let showJournal = false;
@@ -6371,13 +6842,20 @@ window.Cozy = window.Cozy || {};
     showJournal = false;
     activities.forEach((activity) => ui.show(ui.el('hud-' + activity.id), activity === current));
     ui.show(els.explore, !current);
-    ui.show(els.esc, !!current);
+    ui.show(els.rail, !!current);
+    document.body.classList.toggle('in-activity', !!current);
     ui.show(els.title, !!current);
+    railButtons.forEach((button, activity) => button.setAttribute('aria-current', activity === current ? 'true' : 'false'));
+    placeActionChips(current);
     if (current) {
       current.enter();
       ui.setText(els.title, current.name);
       ui.toast(current.hint, 5);
       sound.tick(0.05, 1200);
+    } else {
+      // the activity hint ("Tap to cast...") means nothing back on the island
+      ui.clearToast();
+      setExploreCollapsed(false);
     }
     focusRig(current);
   }
@@ -6397,7 +6875,9 @@ window.Cozy = window.Cozy || {};
     }
     if (input.pressed('KeyM')) {
       const muted = sound.toggleMute();
-      ui.setText(els.mute, muted ? 'M  sound off' : 'M  sound on');
+      ui.setText(els.mute, muted ? 'sound off' : 'sound on');
+      ui.setText(els.muteIcon, muted ? '🔇' : '🔊');
+      ui.setText(els.muteShort, muted ? 'Muted' : 'Sound');
       ui.toast(muted ? 'Sound off' : 'Sound on', 1.5);
     }
     if (current) {
@@ -6782,6 +7262,17 @@ window.Cozy = window.Cozy || {};
     const dt = Math.max(0, Math.min(0.05, (now - last) / 1000));
     last = now;
     time += dt;
+    try {
+      step(dt);
+    } catch (error) {
+      console.error(error);   // one bad frame must never freeze the island
+    } finally {
+      input.endFrame();
+    }
+    schedule();
+  }
+
+  function step(dt) {
     ui.tooltip(null);
 
     if (started && desk.on) {
@@ -6790,6 +7281,7 @@ window.Cozy = window.Cozy || {};
       updateSeason(dt);
       updateDesk(dt);
     } else if (started) {
+      input.touchOrbit = !current;
       // Mochi first: clicking her pets her instead of casting / switching activity
       catHovered = cat.isHome() && !!pick([cat.hit]);
       if (catHovered && input.leftPressed) {
@@ -6826,8 +7318,6 @@ window.Cozy = window.Cozy || {};
     sound.update(dt);
     ui.update(dt);
     world.renderer.render(world.scene, world.camera);
-    input.endFrame();
-    schedule();
   }
 
   switchTo(null);
@@ -6869,7 +7359,7 @@ window.Cozy = window.Cozy || {};
     enterDesk(true);   // test / deep link: ?autostart&desk=1 (opens inline - a floating window needs a click)
   }
   schedule();
-  Cozy.debug = { world, activities, switchTo, rig, cat, enterDesk, exitDesk, desk };
+  Cozy.debug = { world, activities, switchTo, rig, cat, enterDesk, exitDesk, desk, current: () => current };
 })(window.Cozy);
 
 </script>
