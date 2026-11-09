@@ -222,8 +222,8 @@
       <link>https://juwenlie.pages.dev/#projects</link>
       <guid isPermaLink="false">juwenlie-project-cairn</guid>
       <pubDate>Thu, 05 Nov 2026 13:16:15 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/cairn-card.jpg" alt="Cairn home page: A second brain that lives inside your repo, with Try the demo, Open a repo folder and Run it locally" width="600"></p><p>A second brain inside your repo: ideas wall, task board, decision log and an MCP server for AI assistants, all as plain Markdown.</p>]]></description>
-      <jl:summary>A second brain inside your repo: ideas wall, task board, decision log and an MCP server for AI assistants, all as plain Markdown.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/cairn-card.jpg" alt="Cairn home page: A second brain that lives inside your repo, with Try the demo, Open a repo folder and Run it locally" width="600"></p><p>A second brain inside your repo: ideas, tasks, decisions, MCP and an autopilot that carries goals, in plain Markdown.</p>]]></description>
+      <jl:summary>A second brain inside your repo: ideas, tasks, decisions, MCP and an autopilot that carries goals, in plain Markdown.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/cairn-card.jpg" type="image/jpeg" length="0"/>
       <category>Markdown</category><category>local-first</category><category>kanban</category><category>decision log</category><category>MCP</category><category>Python</category>
     </item>
