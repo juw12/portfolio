@@ -3,8 +3,8 @@
 A shared 3D town for phone and desktop browsers: walk around, claim land, grow and make goods,
 trade at the market, build, and watch the town come alive with nine townsfolk who keep their own routines.
 
-**▶ Play in the browser:** [juw12.github.io/portfolio/game/townsquare/](https://juw12.github.io/portfolio/game/townsquare/)
-· [juwenlie.pages.dev/game/townsquare/](https://juwenlie.pages.dev/game/townsquare/)
+**▶ Play in the browser:** [juw12.github.io/portfolio/townsquare-3d/](https://juw12.github.io/portfolio/townsquare-3d/)
+· [juwenlie.pages.dev/townsquare-3d/](https://juwenlie.pages.dev/townsquare-3d/)
 (no install; works on phones; progress is saved in your browser)
 
 ![The plaza with townsfolk](screenshots/plaza.jpg)
