@@ -69,7 +69,7 @@ Emoji, gradient text, neon glow, purple-blue gradients, Inter, drop shadows heav
 - Copy: sentences, not dashes ("Plant something now. It grows while you work.").
 
 ## Behaviour notes (round 6, URL /cozy-island/)
-- The game lives at /cozy-island/; /game/ is a redirect stub that keeps query and hash.
+- The game, its source and screenshots live under /cozy-island/; /game/ is a redirect stub that keeps query and hash.
 - Phones fold the settings row behind one Settings button (Settings / Done) so the scene stays open; the
   activity tiles stay a 4 x 2 grid (a single cramped row lost the pairwise council 0-2).
 - Settings read as name + value: Season [Autumn], Time [Day], Weather [Clear], Sound [On], Focus [Off].
