@@ -344,6 +344,7 @@
     const row = document.createElement('button');
     row.className = 'ui-btn row clickable';
     row.setAttribute('aria-label', activity.name);
+    row.title = `${activity.name} (${activity.key})`;
     const short = SHORT_NAMES[activity.id] || activity.name;
     row.innerHTML = `<span class="key">${activity.key}</span><span class="row-icon" aria-hidden="true">${icon}</span> `
       + `<span class="name-long">${activity.name}</span><span class="name-short" aria-hidden="true">${short}</span>`;
@@ -361,6 +362,17 @@
     els.railList.appendChild(railButton);
     railButtons.set(activity, railButton);
   });
+  // the island journal sits with the places as an eighth tile, so the grid is even on every screen
+  const journalTile = document.querySelector('.tool[data-key="KeyJ"]');
+  if (journalTile) {
+    els.list.appendChild(journalTile);
+  }
+  // the tab strip fades at its right edge while more places are hidden there
+  function markRailEnd() {
+    const rail = els.rail;
+    rail.classList.toggle('at-end', rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 2);
+  }
+  els.rail.addEventListener('scroll', markRailEnd, { passive: true });
   onPress(els.back, () => switchTo(null));
   onPress(els.actBack, () => switchTo(null));
 
@@ -470,6 +482,12 @@
     document.body.classList.toggle('in-activity', !!current);
     ui.show(els.title, !!current);
     railButtons.forEach((button, activity) => button.setAttribute('aria-current', activity === current ? 'true' : 'false'));
+    // on a narrow strip, keep the current place in view
+    const activeTab = current ? railButtons.get(current) : null;
+    if (activeTab && els.rail.scrollWidth > els.rail.clientWidth + 1) {
+      els.rail.scrollLeft = Math.max(0, activeTab.offsetLeft - els.rail.clientWidth / 2 + activeTab.offsetWidth / 2);
+    }
+    markRailEnd();
     placeActionChips(current);
     if (current) {
       current.enter();

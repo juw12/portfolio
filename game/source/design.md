@@ -12,8 +12,9 @@ type, nothing that shouts.
 
 ## Tokens (`:root` in `app/index.html`; a theme only changes tokens)
 
-Current theme: **Paper** - warm light panels `rgba(255, 252, 246, 0.86)` with a 14 px frosted blur,
-ink text `#1F2A2E`, one terracotta accent `#C8643F` on white, radius 16 px.
+Current theme: **Paper** - warm light panels `rgba(255, 251, 245, 0.93)` with a 14 px frosted blur and a soft
+two-layer warm shadow, ink text `#1F2A2E`, one terracotta accent `#C8643F`, radius 16 px. Tiles sit on the panel as
+warm cream cards (`--tile`) with a hairline (`--tile-line`); icons on tiles are a deep clay `#8A4A2E`.
 Chosen from four judged directions (Linen, Slate glass, Dusk teal, Paper).
 | token | role |
 |---|---|
@@ -29,7 +30,9 @@ Alpha steps for tints: 0.08 (rest), 0.12 (chip), 0.16 (hover / bar track), 0.18 
 
 ## Type
 - UI text: system UI (Segoe UI Variable, -apple-system, system-ui). No Inter, no web font download.
-- Display headings: Avenir Next / Segoe UI Variable Display, 700. Sizes 12.5 / 13 / 15 / 21 / 24 px.
+- Display headings: a warm book serif (Iowan Old Style, Palatino Linotype, Georgia), 600. Used only for the
+  panel title and the activity card title, so it reads as the game's voice. Sizes 12.5 / 13 / 15 / 21 / 24 px.
+- The panel title carries a small line island mark in the accent colour.
 - Live state values (season, time, weather) are set in 600 weight so they read as values, not actions.
 
 ## Spacing
@@ -52,3 +55,15 @@ Emoji, gradient text, neon glow, purple-blue gradients, Inter, drop shadows heav
 - Tool chips show values as words ("Autumn", "Day", "Clear"); exact values live in the tooltip.
   Focus looks pressed while a session runs; Sound dims when muted. Desk mode spans two cells.
 - Key badges (1-7, Esc) are outlined and quiet: present for keyboard users, not shouting.
+
+## Behaviour notes (round 5)
+- One tile language everywhere: the seven places plus the island Journal are eight equal tiles (icon above a
+  short name). Desktop and phone portrait lay them out 4 x 2; phone landscape puts all eight on one row with the
+  icon beside the name. Number keys (1-7, J) sit faintly in the tile corner on desktop only.
+- The same short names are used in every list: Fishing, Garden, Tea, Birds, Sunset, Village, Cooking.
+  Full names stay in tooltips and accessible names.
+- Tools are a quieter second tier under a hairline: no fill until hovered. Desktop shows them as a 3 x 2 grid of
+  icon + word (Focus, season, time, weather, Sound, Desk mode); phones show one plain row of five.
+- Activity switcher on phones (portrait): icons only, the current place keeps its name, back is a plain arrow;
+  all eight fit on screen without scrolling. Desktop rail drops the key badges (they live in tooltips).
+- Copy: sentences, not dashes ("Plant something now. It grows while you work.").
