@@ -1,6 +1,7 @@
 // Accounts: log in, create an account (keeps the guest's progress) and log out.
 // The server (accounts.py) links a username + password to the private owner key
 // this browser plays with, so land, builds and coins follow the account.
+import { setLabel } from './icons.js';
 
 const ACCOUNT_STORAGE = 'townsquare-account';
 const USERNAME_PATTERN = /^[A-Za-z0-9_]{3,16}$/;
@@ -57,9 +58,9 @@ export function createAccountUI({ $, toast, getOwnerKey, setOwnerKey, newGuestKe
     $('accountSignedIn').hidden = !signedIn;
     $('accountName').textContent = state.account || '';
     $('accountGuestNote').hidden = signedIn;
-    $('accountButton').textContent = signedIn ? `👤 ${state.account}` : '👤 Guest · save progress';
+    setLabel($('accountButton'), 'user', signedIn ? state.account : 'Guest · save progress');
     $('accountButton').classList.toggle('guest', !signedIn);
-    $('joinAccount').textContent = signedIn ? `👤 Signed in as ${state.account} · switch` : '🔑 Log in or create an account';
+    setLabel($('joinAccount'), signedIn ? 'user' : 'key', signedIn ? `Signed in as ${state.account} · switch` : 'Log in or create an account');
     const nameInput = $('nameInput');
     if (signedIn) {
       nameInput.value = state.account;

@@ -2,7 +2,9 @@
 // The server (economy.py) is the source of truth; this file only displays and sends requests.
 import * as THREE from 'three';
 
-export const GOOD_ICONS = { wheat: '🌾', wood: '🌲', stone: '🧱', bread: '🍞', planks: '🟫' };
+import { GOOD_ICONS, icon, setLabel } from './icons.js';
+
+export { GOOD_ICONS };
 
 // Defaults until the server sends its rules (keep in sync with economy.py).
 export const MARKET = { x: -9.475, z: -9.475, angle: (5 * Math.PI) / 4, reach: 5 };
@@ -28,19 +30,23 @@ export function producerStatus(data, spec, now) {
 const badgeTextures = new Map();
 function badgeTexture(text) {
   if (!badgeTextures.has(text)) {
+    const font = '600 28px system-ui, sans-serif';
     const canvas = document.createElement('canvas');
-    canvas.width = 128;
+    const measure = canvas.getContext('2d');
+    measure.font = font;
+    // Words, not emoji: the pill grows with the text ("3 wheat", "needs wheat").
+    canvas.width = Math.max(128, Math.ceil(measure.measureText(text).width / 16) * 16 + 48);
     canvas.height = 64;
     const ctx = canvas.getContext('2d');
     ctx.fillStyle = 'rgba(20, 24, 32, 0.78)';
     ctx.beginPath();
-    ctx.roundRect(4, 8, 120, 48, 22);
+    ctx.roundRect(4, 8, canvas.width - 8, 48, 22);
     ctx.fill();
-    ctx.font = '600 30px system-ui, sans-serif';
+    ctx.font = font;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillStyle = '#fff';
-    ctx.fillText(text, 64, 34);
+    ctx.fillText(text, canvas.width / 2, 34);
     const texture = new THREE.CanvasTexture(canvas);
     texture.colorSpace = THREE.SRGBColorSpace;
     badgeTextures.set(text, texture);
@@ -93,11 +99,18 @@ export function createEconomy({ $, toast, network, player, placed, rules, getOwn
       return;
     }
     element.hidden = false;
-    const parts = [`💰 ${state.wallet.coins}`];
+    const entry = (iconName, value, title) => {
+      const span = document.createElement('span');
+      span.className = 'wallet-item';
+      span.title = title;
+      span.append(icon(iconName), document.createTextNode(String(value)));
+      return span;
+    };
+    const parts = [entry('coin', state.wallet.coins, 'Coins')];
     for (const [item, count] of Object.entries(state.wallet.goods)) {
-      parts.push(`${GOOD_ICONS[item] || '📦'} ${count}`);
+      parts.push(entry(GOOD_ICONS[item] || 'box', count, item));
     }
-    element.textContent = parts.join('   ');
+    element.replaceChildren(...parts);
     if (state.lastCoins !== undefined && state.wallet.coins > state.lastCoins) {
       element.classList.remove('bump');
       void element.offsetWidth; // restart the animation
@@ -126,7 +139,7 @@ export function createEconomy({ $, toast, network, player, placed, rules, getOwn
     row.className = 'market-row';
     const name = document.createElement('span');
     name.className = 'market-name';
-    name.textContent = `${GOOD_ICONS[item] || ''} ${label}`;
+    setLabel(name, GOOD_ICONS[item] || 'box', label);
     const owned = document.createElement('span');
     owned.className = 'market-have';
     const sellOne = document.createElement('button');
@@ -162,7 +175,7 @@ export function createEconomy({ $, toast, network, player, placed, rules, getOwn
       parts.buyOne.textContent = `Buy ${price.buy.toFixed(1)}`;
       parts.buyOne.disabled = !state.wallet || state.wallet.coins < Math.ceil(price.buy);
     }
-    $('marketCoins').textContent = state.wallet ? `You have 💰 ${state.wallet.coins}` : '';
+    $('marketCoins').textContent = state.wallet ? `You have ${state.wallet.coins} coins` : '';
     renderOrder();
   }
 
@@ -174,10 +187,13 @@ export function createEconomy({ $, toast, network, player, placed, rules, getOwn
       return;
     }
     const have = state.wallet?.goods?.[order.item] || 0;
-    const icon = GOOD_ICONS[order.item] || '📦';
-    $('marketOrderText').textContent = order.filled
-      ? "✅ Rosa's order is done for today. Come back tomorrow!"
-      : `📦 Rosa's order: ${order.qty} ${icon} ${order.label} → ${order.pay} 💰 (you have ${have})`;
+    setLabel(
+      $('marketOrderText'),
+      order.filled ? 'check' : 'box',
+      order.filled
+        ? "Rosa's order is done for today. Come back tomorrow!"
+        : `Rosa's order: ${order.qty} ${order.label.toLowerCase()} for ${order.pay} coins (you have ${have})`,
+    );
     $('marketOrderButton').hidden = order.filled;
     $('marketOrderButton').disabled = have < order.qty;
   }
@@ -216,7 +232,8 @@ export function createEconomy({ $, toast, network, player, placed, rules, getOwn
     }
     if (nearMarket()) {
       return {
-        label: state.marketOpen ? '✖ Close market' : '🛒 Market',
+        icon: state.marketOpen ? 'x' : 'cart',
+        label: state.marketOpen ? 'Close market' : 'Market',
         run: () => setMarketOpen(!state.marketOpen),
       };
     }
@@ -224,9 +241,13 @@ export function createEconomy({ $, toast, network, player, placed, rules, getOwn
     if (entry) {
       const spec = econ().producers[entry.data.type];
       const status = producerStatus(entry.data, spec, serverNow());
-      const icon = GOOD_ICONS[spec.output] || '';
-      const label = status.ready ? `🧺 Collect ${status.ready} ${icon}` : status.starved ? `📥 Load ${entry.def.label}` : `🧺 Check ${entry.def.label}`;
+      const label = status.ready
+        ? `Collect ${status.ready} ${spec.output}`
+        : status.starved
+          ? `Load ${entry.def.label}`
+          : `Check ${entry.def.label}`;
       return {
+        icon: status.starved && !status.ready ? 'load' : 'basket',
         label,
         run: () => network.outgoingBuild.push({ op: 'collect', id: entry.data.id }),
       };
@@ -249,9 +270,9 @@ export function createEconomy({ $, toast, network, player, placed, rules, getOwn
       const status = producerStatus(entry.data, spec, now);
       let text = '';
       if (status.ready > 0) {
-        text = `${GOOD_ICONS[spec.output]} ${status.ready}`;
+        text = `${status.ready} ${spec.output}`;
       } else if (status.starved && entry.data.owner === ownerTag) {
-        text = `needs ${Object.keys(spec.inputs).map((i) => GOOD_ICONS[i]).join('')}`;
+        text = `needs ${Object.keys(spec.inputs).join(', ')}`;
       }
       if (entry.badgeText === text) {
         continue;
@@ -271,6 +292,7 @@ export function createEconomy({ $, toast, network, player, placed, rules, getOwn
         entry.root.add(entry.badge);
       }
       entry.badge.material.map = badgeTexture(text);
+      entry.badge.scale.x = (0.45 * entry.badge.material.map.image.width) / 64;
       entry.badge.material.needsUpdate = true;
       entry.badge.visible = true;
     }

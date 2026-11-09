@@ -2,7 +2,7 @@
 // the level chip with its XP bar and a level-up banner. The server sends `fx` (what just
 // happened to you) and `you.level`; this file only makes those moments feel good.
 import * as THREE from 'three';
-import { GOOD_ICONS } from './economy.js';
+import { setLabel } from './icons.js';
 
 const FLOAT_SECONDS = 1.4;
 const SOUND_KEY = 'townsquare-sound';
@@ -86,8 +86,9 @@ export function createJuice({ $, camera, getPlayerPosition, isTouch }) {
   }
 
   function renderSoundButton() {
-    $('soundToggle').textContent = soundOn ? '🔊' : '🔇';
+    setLabel($('soundToggle'), soundOn ? 'volume' : 'volume-off');
     $('soundToggle').title = soundOn ? 'Sound on' : 'Sound off';
+    $('soundToggle').setAttribute('aria-label', $('soundToggle').title);
   }
   $('soundToggle').addEventListener('click', () => {
     soundOn = !soundOn;
@@ -154,7 +155,7 @@ export function createJuice({ $, camera, getPlayerPosition, isTouch }) {
   function levelBanner(effect) {
     const banner = $('levelBanner');
     $('levelBannerTitle').textContent = `LEVEL ${effect.level}`;
-    $('levelBannerText').textContent = `${effect.title} · +${effect.coins} 💰`;
+    $('levelBannerText').textContent = `${effect.title} · +${effect.coins} coins`;
     banner.hidden = false;
     banner.classList.remove('show');
     void banner.offsetWidth;
@@ -181,13 +182,12 @@ export function createJuice({ $, camera, getPlayerPosition, isTouch }) {
   // ------------------------------------------------------------- server effects
   function applyEffect(effect) {
     if (effect.kind === 'collect') {
-      const icon = GOOD_ICONS[effect.item] || '📦';
-      const text = effect.bumper ? `🍀 +${effect.n} ${icon}` : `+${effect.n} ${icon}`;
+      const text = effect.bumper ? `Bumper +${effect.n} ${effect.item}` : `+${effect.n} ${effect.item}`;
       floatAt(effect.x, 1.4, effect.z, text, effect.bumper ? 'bumper' : '');
       play(effect.bumper ? 'bumper' : 'collect');
       buzz(effect.bumper ? [20, 40, 20] : 15);
     } else if (effect.kind === 'coins') {
-      floatOverPlayer(`+${effect.amount} 💰`, 'coins');
+      floatOverPlayer(`+${effect.amount} coins`, 'coins');
       play('coin');
       buzz(10);
     } else if (effect.kind === 'xp') {
@@ -195,10 +195,10 @@ export function createJuice({ $, camera, getPlayerPosition, isTouch }) {
     } else if (effect.kind === 'level') {
       levelBanner(effect);
     } else if (effect.kind === 'goal') {
-      floatOverPlayer(`🎯 +${effect.coins} 💰`, 'coins');
+      floatOverPlayer(`Goal +${effect.coins} coins`, 'coins');
       play('chime');
     } else if (effect.kind === 'star') {
-      floatOverPlayer(`⭐ ${effect.from}`, 'star');
+      floatOverPlayer(`Star from ${effect.from}`, 'star');
       play('chime');
       buzz(20);
     }

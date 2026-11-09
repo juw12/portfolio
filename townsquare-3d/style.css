@@ -1,6 +1,32 @@
 :root {
-  --ui-font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif,
-    "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji";
+  --ui-font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --coin: #e9c46a;
+}
+
+/* ---------- Icons: one inline-SVG line set (icons.js), no emoji anywhere ---------- */
+.i {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+  vertical-align: -0.2em;
+  margin-inline-end: 0.4em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.i:last-child {
+  margin-inline-end: 0;
+}
+
+.i-coin {
+  color: var(--coin);
+}
+
+.i-star-fill {
+  fill: currentColor;
 }
 
 button,
@@ -260,7 +286,7 @@ body.touch #hint {
 }
 
 body.touch #chat {
-  top: calc(52px + env(safe-area-inset-top));
+  top: calc(var(--stack-bottom, 52px) + 8px);
   bottom: auto;
   width: min(320px, 70vw);
   display: flex;
@@ -332,6 +358,9 @@ body.touch .chat-line {
 }
 
 .build-item .icon {
+  display: grid;
+  place-items: center;
+  height: 24px;
   font-size: 22px;
   line-height: 1;
 }
@@ -400,7 +429,9 @@ body.touch .chat-line {
   padding: 8px 16px;
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.7);
+  max-width: calc(100vw - 24px);
   font-size: 14px;
+  text-align: center;
   pointer-events: none;
 }
 
@@ -492,8 +523,12 @@ body.touch .build-color {
   border-radius: 999px;
   background: rgba(20, 24, 32, 0.72);
   color: #fff;
+  display: flex;
+  gap: 14px;
+  align-items: center;
   font: 600 15px/1.2 var(--ui-font);
-  white-space: pre;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
   pointer-events: none;
   backdrop-filter: blur(6px);
 }
@@ -1130,6 +1165,8 @@ body.building #goalPill {
 }
 
 #soundToggle {
+  display: inline-grid;
+  place-items: center;
   padding: 5px 9px;
   border: 0;
   border-radius: 999px;
@@ -1256,7 +1293,7 @@ body.building #goalPill {
 }
 
 body.touch #levelChip {
-  top: calc(60px + env(safe-area-inset-top));
+  top: calc(var(--hud-bottom, 52px) + 8px);
   min-width: 96px;
   font-size: 11px;
 }

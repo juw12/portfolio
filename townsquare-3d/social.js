@@ -1,5 +1,6 @@
 // Social features on the client: friends list, plot co-builders, /visit and share links.
 // The server (server.py, "social" section) owns the data; this file displays it and sends requests.
+import { setLabel } from './icons.js';
 
 const HELP_LINES = [
   '/visit name: go to someone\'s plot (or to them)',
@@ -77,7 +78,7 @@ export function createSocialUI({
   function goToPlot(key, label) {
     const arrival = plotArrival(key);
     teleport(arrival.x, arrival.z, arrival.faceX, arrival.faceZ);
-    toast(`🧭 Welcome to ${label}`);
+    toast(`Welcome to ${label}`);
   }
 
   function visit(rawName) {
@@ -101,7 +102,7 @@ export function createSocialUI({
     const person = findPlayer(name);
     if (person) {
       teleport(person.x + 1.5, person.z + 1.5, person.x, person.z);
-      toast(`🧭 You joined ${person.name}`);
+      toast(`You joined ${person.name}`);
       return true;
     }
     toast(`Couldn't find ${name}: they have no plot and aren't online`);
@@ -203,7 +204,7 @@ export function createSocialUI({
     const link = shareLinkFor(key);
     state.lastLink = link;
     if (await copyText(link)) {
-      toast('🔗 Link copied: send it to a friend');
+      toast('Link copied: send it to a friend');
     } else {
       prompt('Copy this link:', link);
     }
@@ -215,7 +216,7 @@ export function createSocialUI({
     const argument = rest.join(' ');
     switch (command.toLowerCase()) {
       case '/help':
-        HELP_LINES.forEach((line) => say('ℹ️', ` ${line}`));
+        HELP_LINES.forEach((line) => say('Help', ` ${line}`));
         return true;
       case '/visit':
       case '/tp':
@@ -270,10 +271,10 @@ export function createSocialUI({
   }
 
   // ---------- panel ----------
-  function button(label, className, onClick) {
+  function button(label, className, onClick, iconName = '') {
     const element = document.createElement('button');
     element.type = 'button';
-    element.textContent = label;
+    setLabel(element, iconName, label);
     if (className) {
       element.className = className;
     }
@@ -305,16 +306,19 @@ export function createSocialUI({
       const label = document.createElement('span');
       label.className = 'social-name';
       label.textContent = entry.name;
-      const visitButton = button('🧭 Visit', 'social-visit', () => {
+      const visitButton = button('Visit', 'social-visit', () => {
         if (visit(entry.name)) {
           setOpen(false);
         }
-      });
+      }, 'pin');
       visitButton.disabled = !entry.plot && !entry.online;
-      row.append(dot, label, visitButton, button('✖', 'social-remove', () => friend(entry.name, 'unfriend')));
+      const removeFriend = button('', 'social-remove', () => friend(entry.name, 'unfriend'), 'x');
+      removeFriend.title = `Remove ${entry.name}`;
+      removeFriend.setAttribute('aria-label', removeFriend.title);
+      row.append(dot, label, visitButton, removeFriend);
       list.append(row);
     }
-    $('socialButton').textContent = `👥 ${state.friends.filter((f) => f.online).length}/${state.friends.length}`;
+    setLabel($('socialButton'), 'users', `${state.friends.filter((f) => f.online).length}/${state.friends.length}`);
   }
 
   function renderBuilders() {
@@ -347,8 +351,11 @@ export function createSocialUI({
       row.className = 'social-row';
       const label = document.createElement('span');
       label.className = 'social-name';
-      label.textContent = `🔨 ${builder.name}`;
-      row.append(label, button('✖', 'social-remove', () => invite(builder.name, 'uninvite')));
+      setLabel(label, 'hammer', builder.name);
+      const removeBuilder = button('', 'social-remove', () => invite(builder.name, 'uninvite'), 'x');
+      removeBuilder.title = `Remove ${builder.name}`;
+      removeBuilder.setAttribute('aria-label', removeBuilder.title);
+      row.append(label, removeBuilder);
       list.append(row);
     }
     $('coBuildNote').hidden = !coBuilding;

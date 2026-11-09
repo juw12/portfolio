@@ -16,6 +16,9 @@ import { createTownFeed } from './feed.js';
 import { createJuice } from './juice.js';
 import { propsReady, createProp } from './props.js';
 import { createInstancer } from './instancing.js';
+import { hydrateIcons, icon as svgIcon, setLabel } from './icons.js';
+
+hydrateIcons();
 
 // =====================================================================
 // Tunable parameters
@@ -60,6 +63,32 @@ const isTouch = matchMedia('(pointer: coarse)').matches || 'ontouchstart' in win
 if (isTouch) {
   document.body.classList.add('touch');
 }
+
+// On phones the HUD row wraps to two lines, so the level chip and chat are
+// positioned from the measured HUD height instead of a fixed offset.
+function stackTopLeftPanels() {
+  const hud = document.getElementById('hud');
+  const chip = document.getElementById('levelChip');
+  const hudBottom = hud && !hud.hidden ? hud.getBoundingClientRect().bottom : 0;
+  const root = document.documentElement.style;
+  root.setProperty('--hud-bottom', `${Math.round(hudBottom)}px`);
+  // The goal pill is right-aligned but spans past the chat's right edge on narrow phones.
+  const lowerEdges = [chip, document.getElementById('goalPill')]
+    .filter((element) => element && !element.hidden)
+    .map((element) => element.getBoundingClientRect())
+    .filter((rect) => rect.height)
+    .map((rect) => rect.bottom);
+  root.setProperty('--stack-bottom', `${Math.round(Math.max(hudBottom, ...lowerEdges))}px`);
+}
+const panelObserver = new ResizeObserver(stackTopLeftPanels);
+for (const id of ['hud', 'levelChip', 'goalPill']) {
+  const element = document.getElementById(id);
+  if (element) {
+    panelObserver.observe(element);
+    new MutationObserver(stackTopLeftPanels).observe(element, { attributes: true, attributeFilter: ['hidden'] });
+  }
+}
+addEventListener('resize', stackTopLeftPanels);
 
 const $ = (id) => document.getElementById(id);
 const clamp = THREE.MathUtils.clamp;
@@ -240,7 +269,7 @@ function createAvatar(color, name) {
   return humanoid;
 }
 
-// speed in m/s drives the gait (idle → walk → run); airborne switches to the jump pose
+// speed in m/s drives the gait (idle, walk, run); airborne switches to the jump pose
 function animateAvatar(avatar, speed, airborne, dt, pose = 'stand') {
   animateHumanoid(avatar, speed, airborne, dt, pose);
 }
@@ -443,13 +472,13 @@ function plotBlockReason(key) {
   const b = plotBounds(key);
   const distance = Math.hypot(b.centerX, b.centerZ);
   if (distance <= rules.plazaRadius || distance > rules.buildRadius - rules.plotSize / 2) {
-    return '🏛 Public land';
+    return 'Public land';
   }
   const underHouse = townHouses.some((h) =>
     b.minX < h.x + h.width / 2 && b.maxX > h.x - h.width / 2
     && b.minZ < h.z + h.depth / 2 && b.maxZ > h.z - h.depth / 2
   );
-  return underHouse ? '🏛 Town land (not for claiming)' : null;
+  return underHouse ? 'Town land (not for claiming)' : null;
 }
 
 function plotAtCell(x, z) {
@@ -514,8 +543,12 @@ function upsertPlot(data) {
   const label = createLabel();
   const mine = data.owner === ownerTag;
   const coBuilder = !mine && Boolean(data.builders?.some((b) => b.tag === ownerTag));
-  const title = mine ? '🏠 Your plot' : coBuilder ? `🔨 ${data.ownerName}'s plot` : `🏠 ${data.ownerName}'s plot`;
-  drawLabel(label, title, data.likes ? `⭐ ${data.likes}` : '');
+  const title = mine ? 'Your plot' : `${data.ownerName}'s plot`;
+  const subtitle = [
+    coBuilder ? 'you can build' : '',
+    data.likes ? `${data.likes} ${data.likes === 1 ? 'star' : 'stars'}` : '',
+  ].filter(Boolean).join(' · ');
+  drawLabel(label, title, subtitle);
   label.sprite.position.set(bounds.centerX, 4.5, bounds.centerZ);
   label.sprite.scale.set(5.2, 2.6, 1);
 
@@ -743,7 +776,7 @@ window.addEventListener('blur', () => keys.clear());
 
 const lookPointers = new Map();
 let previousPinchDistance = 0;
-let tapCandidate = null; // a press that hasn't moved yet → treated as a click/tap
+let tapCandidate = null; // a press that hasn't moved yet: treated as a click/tap
 
 function pinchDistance() {
   const [a, b] = [...lookPointers.values()];
@@ -1039,7 +1072,7 @@ function handleBuildTap() {
     return;
   }
   if (economyUI && !economyUI.canAfford(placement.type)) {
-    toast(`Not enough coins: a ${CATALOG[placement.type].label} costs ${economyUI.costOf(placement.type)} 💰. Sell goods at the market.`);
+    toast(`Not enough coins: a ${CATALOG[placement.type].label} costs ${economyUI.costOf(placement.type)} coins. Sell goods at the market.`);
     return;
   }
   const data = {
@@ -1144,27 +1177,35 @@ function updatePlotPanel() {
   const plot = plots.get(key);
   let text;
   let action = null;
+  let plotIcon = '';
 
   if (!network.online) {
     text = 'Offline: builds stay on this device';
   } else if (isPublicCell(x, z) && !plot) {
-    text = '🏛 Public land';
+    text = 'Public land';
+    plotIcon = 'landmark';
   } else if (plot && plot.data.owner === ownerTag) {
-    text = plot.data.likes ? `🏠 Your plot · ⭐ ${plot.data.likes}` : '🏠 Your plot';
+    const likes = plot.data.likes;
+    text = likes ? `Your plot · ${likes} ${likes === 1 ? 'star' : 'stars'}` : 'Your plot';
+    plotIcon = 'home';
     action = 'abandon';
   } else if (plot && canBuildOnPlot(plot)) {
-    text = `🔨 ${plot.data.ownerName}'s plot · you can build`;
+    text = `${plot.data.ownerName}'s plot · you can build`;
+    plotIcon = 'hammer';
   } else if (plot) {
-    text = `🏠 ${plot.data.ownerName}'s plot`;
+    text = `${plot.data.ownerName}'s plot`;
+    plotIcon = 'home';
   } else if (!isClaimablePlot(key)) {
     text = plotBlockReason(key);
+    plotIcon = 'landmark';
   } else {
     const owned = myPlotCount();
     const price = rules.economy?.plotPrices?.[owned] ?? 0;
+    plotIcon = 'sprout';
     if (owned >= rules.maxPlots) {
       text = `Free plot · you own ${owned}/${rules.maxPlots}`;
     } else {
-      text = price ? `🌱 Free plot · ${price} 💰` : '🌱 Free plot · your first is free';
+      text = price ? `Free plot · ${price} coins` : 'Free plot · your first is free';
       action = 'claim';
     }
   }
@@ -1173,21 +1214,21 @@ function updatePlotPanel() {
   const canStar = Boolean(network.online && plot && plot.data.owner !== ownerTag && !canBuildOnPlot(plot));
   const starred = canStar && likedPlots.has(key);
   const likes = plot?.data.likes || 0;
-  const state = `${key}|${text}|${action}|${canStar}|${starred}|${likes}`;
+  const state = `${key}|${plotIcon}|${text}|${action}|${canStar}|${starred}|${likes}`;
   if (state === plotPanelState) {
     return;
   }
   plotPanelState = state;
   plotPanelKey = key;
   plotPanelAction = action;
-  $('plotText').textContent = text;
+  setLabel($('plotText'), plotIcon, text);
   $('plotShare').hidden = !(network.online && plot);
   $('plotAction').hidden = !action;
   const claimPrice = rules.economy?.plotPrices?.[myPlotCount()] ?? 0;
-  $('plotAction').textContent = action === 'claim' ? (claimPrice ? `Buy plot (${claimPrice} 💰)` : 'Claim plot') : 'Abandon';
+  $('plotAction').textContent = action === 'claim' ? (claimPrice ? `Buy plot (${claimPrice} coins)` : 'Claim plot') : 'Abandon';
   $('plotAction').classList.toggle('danger', action === 'abandon');
   $('plotLike').hidden = !canStar;
-  $('plotLike').textContent = starred ? `⭐ Starred · ${likes}` : `☆ Star · ${likes}`;
+  setLabel($('plotLike'), starred ? 'star-fill' : 'star', starred ? `Starred · ${likes}` : `Star · ${likes}`);
   $('plotLike').classList.toggle('starred', starred);
 }
 
@@ -1196,11 +1237,11 @@ $('plotAction').addEventListener('click', withBlur(() => {
     const price = rules.economy?.plotPrices?.[myPlotCount()] ?? 0;
     const coins = economyUI?.coins();
     if (price && coins !== null && coins < price) {
-      toast(`This plot costs ${price} 💰 and you have ${coins}. Produce goods and sell them at the market.`);
+      toast(`This plot costs ${price} coins and you have ${coins}. Produce goods and sell them at the market.`);
       return;
     }
     network.outgoingBuild.push({ op: 'claim', plot: plotPanelKey });
-    toast(price ? `Buying plot for ${price} 💰…` : 'Claiming plot…');
+    toast(price ? `Buying plot for ${price} coins…` : 'Claiming plot…');
   } else if (plotPanelAction === 'abandon') {
     if (confirm('Abandon this plot? Everything built on it will be removed.')) {
       network.outgoingBuild.push({ op: 'abandon', plot: plotPanelKey });
@@ -1248,7 +1289,7 @@ function toggleBuildMode(force) {
 function refreshBuildUI() {
   $('buildBar').hidden = !build.active;
   document.body.classList.toggle('building', build.active);
-  $('buildButton').textContent = build.active ? '✓ Done' : '🔨 Build';
+  setLabel($('buildButton'), build.active ? 'check' : 'hammer', build.active ? 'Done' : 'Build');
   $('buildButton').classList.toggle('active', build.active);
   document.querySelectorAll('.build-item').forEach((button) => {
     button.classList.toggle('selected', button.dataset.type === build.type && !build.deleteMode);
@@ -1260,7 +1301,11 @@ function refreshBuildUI() {
   if (rules.economy) {
     document.querySelectorAll('.build-item').forEach((button) => {
       const cost = rules.economy.buildCosts?.[button.dataset.type] ?? 0;
-      button.querySelector('.cost').textContent = cost ? `${cost} 💰` : 'free';
+      const costLabel = button.querySelector('.cost');
+      if (costLabel.dataset.cost !== String(cost)) {
+        costLabel.dataset.cost = String(cost);
+        setLabel(costLabel, cost ? 'coin' : '', cost ? String(cost) : 'free');
+      }
     });
   }
   $('hint').textContent = build.active
@@ -1284,7 +1329,7 @@ function setupBuildUI() {
     button.title = `${def.label} (${index + 1})`;
     const icon = document.createElement('span');
     icon.className = 'icon';
-    icon.textContent = def.icon;
+    icon.append(svgIcon(def.icon));
     const label = document.createElement('span');
     label.className = 'label';
     label.textContent = def.label;
@@ -1397,7 +1442,7 @@ function standUp() {
 // What E / the action button does right now: stand up > market > collect > sit.
 function contextAction() {
   if (player.sitting) {
-    return { label: '🧍 Stand up', run: standUp };
+    return { icon: 'stand', label: 'Stand up', run: standUp };
   }
   if (build.active) {
     return null;
@@ -1407,7 +1452,7 @@ function contextAction() {
     return economic;
   }
   const seat = nearestFreeSeat();
-  return seat ? { label: '🪑 Sit', run: () => sitDown(seat) } : null;
+  return seat ? { icon: 'chair', label: 'Sit', run: () => sitDown(seat) } : null;
 }
 
 function toggleSit() {
@@ -1428,8 +1473,10 @@ function refreshSitButton(dt) {
   seatCheckTimer = 0.25;
   const action = contextAction();
   sitButton.hidden = !action;
-  if (action && sitButton.textContent !== action.label) {
-    sitButton.textContent = action.label;
+  const actionKey = action ? `${action.icon}|${action.label}` : '';
+  if (action && sitButton.dataset.key !== actionKey) {
+    sitButton.dataset.key = actionKey;
+    setLabel(sitButton, action.icon, action.label);
   }
 }
 
@@ -1726,7 +1773,7 @@ function applyWorldOps(ops) {
       const isNewClaimOfMine = op.plot.owner === ownerTag && !plots.has(op.plot.key);
       upsertPlot(op.plot);
       if (isNewClaimOfMine) {
-        toast('🏠 Plot claimed! Press B to build on it');
+        toast('Plot claimed! Press B to build on it');
       }
     } else if (op.op === 'unplot') {
       removePlot(op.key);
@@ -1767,7 +1814,7 @@ function showBanNotice(ban) {
     document.body.append(notice);
   }
   const until = ban.until ? `until ${new Date(ban.until * 1000).toLocaleString()}` : 'for good';
-  notice.textContent = `🚫 You've been removed from the town ${until}. Reason: ${ban.reason || 'breaking the town rules'}.`;
+  notice.textContent = `You've been removed from the town ${until}. Reason: ${ban.reason || 'breaking the town rules'}.`;
   notice.hidden = false;
 }
 

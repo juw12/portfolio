@@ -1,9 +1,9 @@
-# Townsquare 3D 🏘️
+# Townsquare 3D
 
 A shared 3D town for phone and desktop browsers: walk around, claim land, grow and make goods,
 trade at the market, build, and watch the town come alive with nine townsfolk who keep their own routines.
 
-**▶ Play in the browser:** [juw12.github.io/portfolio/townsquare-3d/](https://juw12.github.io/portfolio/townsquare-3d/)
+**Play in the browser:** [juw12.github.io/portfolio/townsquare-3d/](https://juw12.github.io/portfolio/townsquare-3d/)
 · [juwenlie.pages.dev/townsquare-3d/](https://juwenlie.pages.dev/townsquare-3d/)
 (no install; works on phones; progress is saved in your browser)
 
@@ -13,12 +13,12 @@ trade at the market, build, and watch the town come alive with nine townsfolk wh
 
 | | |
 | --- | --- |
-| 🏡 **Land** | Claim 10 × 10 m plots (the first one is free) and build with blocks, walls, glass, lamps, trees, flowers and benches. |
-| 🌾 **Production** | Wheat fields, woodlots, quarries, ovens and sawmills make goods over time; collect them when they're ready. |
-| 🛒 **Market** | Sell and buy at Rosa's stall. Prices move with supply and demand, and Rosa posts a daily order for a bonus. |
-| 🎯 **Progress** | A goal chain from your first plot to 1,000 coins, plus XP, levels and titles, a town feed and small celebrations. |
-| 🧑‍🤝‍🧑 **Townsfolk** | Nine residents with homes, daily routines and chatter, driven by the town clock and a day/night sky. |
-| 👥 **Social** *(multiplayer server)* | Friends, `/visit`, share links, ⭐ stars on plots, top plots, co-builders, chat with a word filter, mute and report. |
+| **Land** | Claim 10 × 10 m plots (the first one is free) and build with blocks, walls, glass, lamps, trees, flowers and benches. |
+| **Production** | Wheat fields, woodlots, quarries, ovens and sawmills make goods over time; collect them when they're ready. |
+| **Market** | Sell and buy at Rosa's stall. Prices move with supply and demand, and Rosa posts a daily order for a bonus. |
+| **Progress** | A goal chain from your first plot to 1,000 coins, plus XP, levels and titles, a town feed and small celebrations. |
+| **Townsfolk** | Nine residents with homes, daily routines and chatter, driven by the town clock and a day/night sky. |
+| **Social** *(multiplayer server)* | Friends, `/visit`, share links, stars on plots, top plots, co-builders, chat with a word filter, mute and report. |
 
 Designed to be gripping without dark patterns: no paid randomness, no streaks, no fake urgency.
 
