@@ -487,6 +487,230 @@
       .hud-sub, #fish-count { font-size: 12.5px; }
       .hud .hud-hint { display: none; }
     }
+
+    /* ---- round 5: one tile language everywhere, warmer paper surfaces, quieter tools ---- */
+    :root {
+      --panel: rgba(255, 251, 245, 0.93);
+      --panel-strong: rgba(255, 252, 247, 0.98);
+      --panel-border: rgba(74, 52, 36, 0.10);
+      --shadow-panel: 0 1px 2px rgba(64, 40, 24, 0.06), 0 12px 32px rgba(64, 40, 24, 0.14);
+      --tile: rgba(255, 255, 255, 0.72);
+      --tile-line: rgba(74, 52, 36, 0.10);
+      --tile-hover: rgba(200, 100, 63, 0.08);
+      --muted: rgba(31, 42, 46, 0.62);
+    }
+    .panel { background: var(--panel); border-color: var(--panel-border); box-shadow: var(--shadow-panel); }
+
+    /* places: the same tile on every screen - icon above a short name, number key in the corner */
+    #explore #explore-list .row.clickable {
+      position: relative; margin: 0; width: auto; min-height: 58px; padding: 9px 2px 7px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+      border-radius: 12px; background: var(--tile); box-shadow: inset 0 0 0 1px var(--tile-line);
+      font-size: 12px; font-weight: 500; line-height: 1.15; text-align: center; letter-spacing: 0;
+      transition: background 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+    }
+    #explore #explore-list .row.clickable:hover {
+      background: #FFFFFF; box-shadow: inset 0 0 0 1px rgba(200, 100, 63, 0.38); color: var(--accent);
+    }
+    #explore #explore-list .row-icon { font-size: 20px; line-height: 1; opacity: 0.9; }
+    #explore #explore-list .name-long { display: none; }
+    #explore #explore-list .name-short { display: inline; }
+    #explore #explore-list .key {
+      position: absolute; top: 4px; left: 6px; min-width: 0; margin: 0; padding: 0;
+      background: none; box-shadow: none; font-size: 10px; font-weight: 600; line-height: 1; opacity: 0.45;
+    }
+    #explore #explore-list {
+      display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px;
+    }
+    #explore #explore-list .row.clickable { grid-column: span 2; }
+    #explore #explore-list .row.clickable:nth-child(5) { grid-column: 2 / span 2; }
+
+    /* tools: a quiet second tier - plain icons with a small name, no fill until hovered */
+    #explore .tool-list .row.clickable.tool {
+      margin: 0; min-height: 46px; padding: 6px 0 5px; border-radius: 10px; gap: 3px;
+      background: transparent; box-shadow: none; color: var(--cream);
+    }
+    #explore .tool-list .row.clickable.tool:hover { background: var(--tile-hover); }
+    #explore .tool-list .tool-icon { font-size: 17px; line-height: 1; opacity: 0.85; }
+    #explore .tool-list .tool-short { font-size: 11px; font-weight: 500; color: var(--muted); opacity: 1; }
+    #explore .tool-list .row.clickable.tool.is-on { background: rgba(200, 100, 63, 0.12); color: var(--accent); box-shadow: none; }
+    #explore .tool-list .row.clickable.tool.is-on .tool-short { color: var(--accent); }
+    #season-short, #time-short, #weather-short { font-weight: 600; }
+
+    .explore-sub { margin: 2px 0 0; font-size: 12.5px; line-height: 1.45; color: var(--muted); }
+    .section-label { margin: 12px 2px 6px; font-size: 11.5px; font-weight: 600; color: var(--muted); }
+    .explore-toggle { background: transparent; color: var(--muted); opacity: 1; font-weight: 600; }
+    .explore-toggle:hover { background: var(--tile-hover); color: var(--cream); }
+
+    /* activity chips share the tile surface */
+    .chip {
+      background: var(--tile); box-shadow: inset 0 0 0 1px var(--tile-line); font-weight: 500;
+      transition: background 0.15s ease, box-shadow 0.15s ease;
+    }
+    .chip:hover { background: #FFFFFF; box-shadow: inset 0 0 0 1px rgba(200, 100, 63, 0.38); }
+    .hud { padding: 14px 20px 12px; }
+    .hud-title { font-weight: 600; letter-spacing: -0.1px; }
+    .hud-sub { color: var(--muted); opacity: 1; }
+    .rail-btn .key { box-shadow: none; background: none; opacity: 0.45; }
+    .rail-btn[aria-current="true"] .key { background: none; opacity: 0.8; }
+    .rail-btn:not([aria-current="true"]):hover { background: var(--tile-hover); }
+    #mode-list { border-top-color: var(--tile-line); }
+
+    @media (hover: hover) and (pointer: fine) {
+      #explore { width: 300px; padding: 14px 14px 10px; }
+      .explore-head { align-items: center; }
+      #explore h2 { margin: 0; font-size: 20px; text-align: left; }
+      #explore .controls { margin-top: 0; line-height: 1.4; }
+      #explore .tool-list {
+        display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 2px;
+        border-top: 0; padding-top: 0; margin-top: 0;
+      }
+      #explore .tool-list #desk-button { grid-column: auto; }
+      #desk-button .tool-icon { margin-right: 0; }
+      #explore.collapsed { padding-bottom: 14px; }
+    }
+
+    /* phone upright: places in two calm rows (4 + 3) with readable names, tools as one plain row */
+    @media (max-width: 640px) and (min-height: 501px) {
+      #explore { padding: 10px 10px 8px; }
+      #explore #explore-list .row.clickable { min-height: 58px; padding: 8px 2px 7px; font-size: 12.5px; letter-spacing: 0; }
+      #explore #explore-list .row-icon { font-size: 21px; }
+      #explore .tool-list { margin-top: 6px; gap: 2px; }
+      #explore .tool-list .row.clickable.tool { min-height: 48px; }
+      #explore .tool-list .tool-short { font-size: 11.5px; }
+      .rail-btn .rail-label { font-size: 11px; }
+      .chip { min-height: 44px; }
+    }
+
+    /* phone sideways: the same tiles laid out in a single row, icon beside the name */
+    @media (max-height: 500px) {
+      #explore #explore-list { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; }
+      #explore #explore-list .row.clickable,
+      #explore #explore-list .row.clickable:nth-child(5) { grid-column: auto; }
+      #explore #explore-list .row.clickable { flex-direction: row; gap: 6px; min-height: 44px; padding: 0 4px; font-size: 12.5px; }
+      #explore #explore-list .row-icon { font-size: 16px; }
+      #explore .tool-list .row.clickable.tool { flex-direction: row; gap: 5px; min-height: 44px; }
+      #explore .tool-list .tool-short { font-size: 12.5px; }
+      .explore-more { background: transparent; color: var(--muted); font-weight: 600; }
+    }
+
+    /* ---- round 6: one even grid of eight tiles (seven places + the island journal), slimmer phone strip ---- */
+    #explore #explore-list { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 12px; }
+    #explore #explore-list .row.clickable,
+    #explore #explore-list .row.clickable:nth-child(5) { grid-column: auto; }
+    #explore #explore-list .tool .tool-text {
+      position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+    }
+    #explore #explore-list .tool .tool-icon { font-size: 20px; line-height: 1; opacity: 0.9; }
+    #explore #explore-list .tool .tool-short { display: block; font-size: inherit; line-height: inherit; color: inherit; opacity: 1; font-weight: inherit; }
+    #explore .tool-list { border-top: 1px solid var(--tile-line); margin-top: 10px; padding-top: 6px; }
+    @media (hover: hover) and (pointer: fine) {
+      #explore .tool-list {
+        grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 1px solid var(--tile-line);
+        margin-top: 10px; padding-top: 6px;
+      }
+      #explore .tool-list .tool-short { font-size: 11.5px; }
+      #explore .tool-list .tool-icon { font-size: 18px; }
+    }
+    @media (max-width: 640px) and (min-height: 501px) {
+      #explore #explore-list { margin-top: 0; }
+      #explore .tool-list { margin-top: 8px; padding-top: 4px; }
+      /* activity strip: icons only, the current place and the way back keep their names */
+      .rail-btn .rail-label { display: none; }
+      .rail-back .rail-label, .rail-btn[aria-current="true"] .rail-label { display: block; font-size: 11.5px; }
+      #mode-list .rail-btn .rail-icon { font-size: 21px; }
+      .rail-btn[aria-current="true"] { flex: 0 0 auto; padding: 4px 10px 3px; }
+    }
+    @media (max-height: 500px) {
+      #explore #explore-list { grid-template-columns: repeat(8, minmax(0, 1fr)); margin-top: 0; }
+      #explore #explore-list .tool .tool-icon { font-size: 16px; }
+      #explore .tool-list { border-top: 0; padding-top: 0; }
+    }
+
+    /* ---- round 7: warmer tiles, softer number keys, the same short names in every list ---- */
+    :root {
+      --tile: rgba(255, 250, 242, 0.95);
+      --tile-line: rgba(120, 82, 52, 0.13);
+    }
+    #explore #explore-list .row.clickable { box-shadow: inset 0 0 0 1px var(--tile-line), 0 1px 0 rgba(120, 82, 52, 0.06); }
+    #explore #explore-list .key { opacity: 0.32; }
+    #explore #explore-list .row-icon, #explore #explore-list .tool .tool-icon { color: #8A4A2E; opacity: 1; }
+    #explore #explore-list .row.clickable:hover .row-icon,
+    #explore #explore-list .row.clickable:hover .tool-icon { color: var(--accent); }
+    .rail-btn .rail-label .name-long { display: none; }
+    .rail-btn .rail-label .name-short { display: inline; }
+    .rail-btn .rail-icon { color: #8A4A2E; }
+    .rail-btn[aria-current="true"] .rail-icon { color: inherit; }
+    .rail-back .rail-icon { color: inherit; }
+
+    /* ---- round 8: a small island mark and a warm serif for headings, quieter rail, labelled phone tabs ---- */
+    :root { --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif; }
+    #explore h2 { display: flex; align-items: center; gap: 8px; font-weight: 600; letter-spacing: 0; }
+    .brand-mark { width: 22px; height: 22px; color: var(--accent); flex: none; }
+    .hud-title { font-size: 21px; font-weight: 600; }
+    .hud-sub, #fish-count { font-size: 13px; line-height: 1.45; }
+    #mode-rail .rail-btn .key { display: none; }
+    @media (max-width: 640px) and (min-height: 501px) {
+      /* activity tabs: every place keeps its name; the strip scrolls sideways and keeps the current one in view */
+      #mode-list { flex: none; }
+      #mode-list .rail-btn,
+      #mode-list .rail-btn[aria-current="true"] {
+        flex: none; flex-direction: row; gap: 6px; min-height: 44px; padding: 0 12px; border-radius: 12px;
+      }
+      #mode-list .rail-btn .rail-label,
+      #mode-list .rail-btn[aria-current="true"] .rail-label { display: block; font-size: 13.5px; opacity: 1; font-weight: 500; }
+      #mode-list .rail-btn[aria-current="true"] .rail-label { font-weight: 600; }
+      #mode-list .rail-btn .rail-icon { font-size: 18px; }
+      #mode-rail { scroll-padding: 0 12px; }
+    }
+
+    @media (max-width: 640px) and (min-height: 501px) {
+      /* the way back never scrolls away */
+      #mode-rail .rail-back {
+        position: sticky; left: 0; z-index: 1; background: var(--panel-strong);
+        box-shadow: 6px 0 8px -6px rgba(64, 40, 24, 0.18);
+      }
+      #mode-list { border-left: 0; margin-left: 0; padding-left: 2px; }
+    }
+
+    /* ---- round 9: roomier tool buttons on desktop, a quiet edge fade on the phone tab strip ---- */
+    @media (hover: hover) and (pointer: fine) {
+      #explore .tool-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px 4px; }
+      #explore .tool-list .row.clickable.tool {
+        flex-direction: row; justify-content: flex-start; gap: 7px; min-height: 34px; padding: 0 8px;
+      }
+      #explore .tool-list .tool-icon { font-size: 17px; }
+      #explore .tool-list .tool-short { font-size: 12.5px; color: var(--cream); opacity: 0.85; }
+    }
+    @media (max-width: 640px) and (min-height: 501px) {
+      #explore .tool-list .tool-short { font-size: 12px; }
+      #explore .tool-list .tool-icon { font-size: 19px; }
+      #mode-rail {
+        -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+        mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+      }
+      #mode-rail.at-end { -webkit-mask-image: none; mask-image: none; }
+      #mode-rail .rail-back { flex: 0 0 44px; width: 44px; }
+      #mode-rail .rail-back .rail-label { display: none; }
+      #mode-rail .rail-back .rail-icon { font-size: 20px; }
+    }
+
+    @media (max-width: 640px), (max-height: 500px) {
+      #explore h2 { display: none; }
+    }
+
+    /* ---- round 10: phone tab strip fits on one screen again - icons, with the current place named ---- */
+    @media (max-width: 640px) and (min-height: 501px) {
+      #mode-rail { -webkit-mask-image: none; mask-image: none; overflow-x: hidden; }
+      #mode-list { flex: 1; }
+      #mode-list .rail-btn {
+        flex: 1 0 44px; flex-direction: column; gap: 1px; min-width: 44px; min-height: 50px; padding: 4px 0 3px;
+      }
+      #mode-list .rail-btn .rail-label { display: none; }
+      #mode-list .rail-btn[aria-current="true"] { flex: 0 0 auto; flex-direction: column; padding: 4px 10px 3px; min-height: 50px; }
+      #mode-list .rail-btn[aria-current="true"] .rail-label { display: block; font-size: 11.5px; font-weight: 600; }
+      #mode-list .rail-btn .rail-icon { font-size: 21px; }
+    }
   </style>
 </head>
 <body>
@@ -510,21 +734,22 @@
     <symbol id="i-chev-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6l-6 6 6 6"/></symbol>
     <symbol id="i-chev-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 6l6 6-6 6"/></symbol>
     <symbol id="i-chev-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9.5l6 6 6-6"/></symbol>
+    <symbol id="i-island" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16.5a7 7 0 0 1 14 0"/><path d="M2.5 19.5c1.6 0 1.6-1 3.2-1s1.6 1 3.2 1 1.6-1 3.2-1 1.6 1 3.2 1 1.6-1 3.2-1 1.6 1 3 1"/><circle cx="17.5" cy="6" r="2"/></symbol>
   </svg>
   <div id="app"></div>
   <div id="labels"></div>
 
   <div id="explore" class="panel">
     <div class="explore-head">
-      <h2>Cozy Island</h2>
+      <h2><svg class="ico brand-mark" aria-hidden="true"><use href="#i-island"/></svg>Cozy Island</h2>
       <span class="head-hint only-touch">Tap a glowing spot · drag to look</span>
       <button class="ui-btn explore-toggle explore-more" id="explore-more" aria-expanded="false" aria-controls="explore-body" aria-label="Show tools">More</button>
       <button class="ui-btn explore-toggle" id="explore-toggle" aria-expanded="true" aria-controls="explore-body" aria-label="Hide menu"><span class="toggle-text">Hide</span><svg class="ico toggle-arrow" aria-hidden="true"><use href="#i-chev-down"/></svg></button>
     </div>
     <div id="explore-body">
+    <p class="explore-sub only-mouse">Click a glowing spot or press 1-7. Right-drag to look around.</p>
     <div id="explore-list" role="group" aria-label="Activities"></div>
     <div class="controls small">
-      <div class="hint-line only-mouse">Click a glowing spot or press 1-7 · right-drag to look around</div>
       <div class="hint-line only-touch">Tap a glowing spot · drag to look · pinch to zoom</div>
       <div class="tool-list" role="group" aria-label="Island tools">
         <button class="ui-btn row clickable tool" title="Journal (J)" data-key="KeyJ"><span class="key">J</span><span class="tool-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg></span><span class="tool-text">journal</span><span class="tool-short" aria-hidden="true">Journal</span></button>

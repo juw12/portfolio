@@ -187,7 +187,7 @@
         if (stage === 'empty' && input.primaryPressed && canPlant) {
           const seed = this.currentSeed();
           if (seed.cost && !progress.trySpend(seed.cost)) {
-            ui.toast(`No ${seed.name} seeds yet - finish a focus session (F) to earn one.`, 5);
+            ui.toast(`No ${seed.name} seeds yet. Finish a focus session (F) to earn one.`, 5);
           } else {
             bed.model.plant(seed.id, now);
             this.notify(bed, 'plant', seed.id);
@@ -237,7 +237,7 @@
         case 'empty':
           return canPlant ? `Click to plant ${this.currentSeed().name}` : 'Empty bed';
         case 'thirsty':
-          return bed.model.growth(now) < 0.01 ? 'Hold to water the seed' : `${seed.name} is thirsty - hold to water`;
+          return bed.model.growth(now) < 0.01 ? 'Hold to water the seed' : `${seed.name} is thirsty. Hold to water.`;
         case 'growing':
           return `${seed.name} · ${Math.round(bed.model.growth(now) * 100)}% · ~${formatMinutes(bed.model.minutesLeft(now))} left`;
         default:
@@ -645,7 +645,7 @@
               state.tension = 0.2;
               state.seed = Math.random() * 100;
               state.reelStart.copy(state.castPoint);
-              state.message = 'Hold to reel - let go when the line gets tight!';
+              state.message = 'Hold to reel. Let go when the line gets tight!';
             } else if (state.timer <= 0) {
               finish('It got away...');
             }
@@ -821,7 +821,7 @@
     return {
       id: 'garden', name: 'Garden', key: 2,
       station: places.gardenCenter, focus: places.gardenCenter, from: null, distance: 8, pitch: 0.8,
-      hint: 'Plant something now - it grows while you work.',
+      hint: 'Plant something now. It grows while you work.',
       beds,
       enter() {},
       exit() {
@@ -1672,7 +1672,7 @@
         node('div', link, 'small invite-link');
         const row = node('div', '', 'village-row');
         button('Copy invite link', () => {
-          const done = () => ui.toast('Invite link copied - send it to a friend.', 3);
+          const done = () => ui.toast('Invite link copied. Send it to a friend.', 3);
           if (navigator.clipboard && window.isSecureContext) {
             navigator.clipboard.writeText(link).then(done, () => window.prompt('Copy this link:', link));
           } else {
@@ -1808,7 +1808,7 @@
       node('div', `Send ${info.ownerName} a present`, 'small gift-heading');
       const options = giftOptions();
       if (!options.length) {
-        node('div', 'Your pantry is empty - catch a fish, harvest a crop or cook something first.', 'small');
+        node('div', 'Your pantry is empty. Catch a fish, harvest a crop or cook something first.', 'small');
         return;
       }
       const row = node('div', '', 'village-row');
