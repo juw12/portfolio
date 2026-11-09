@@ -712,6 +712,75 @@
       #mode-list .rail-btn[aria-current="true"] .rail-label { display: block; font-size: 11.5px; font-weight: 600; }
       #mode-list .rail-btn .rail-icon { font-size: 21px; }
     }
+
+    /* ---- round 11: phones keep the scene open - tools fold behind one Tools button, activity cards stay short ---- */
+    .explore-more { gap: 5px; align-items: center; }
+    .explore-more .ico { width: 15px; height: 15px; }
+    @media (max-width: 640px) and (min-height: 501px) {
+      .explore-more { display: inline-flex; min-height: 40px; padding: 2px 10px; border-radius: 999px; font-size: 14px; }
+      #explore:not(.tools-open) .tool-list { display: none; }
+      #explore:not(.tools-open) .controls { margin-top: 0; }
+      .explore-head { gap: 4px; }
+      .head-hint { font-size: 12.5px; }
+      .hud { padding: 12px 14px 10px; }
+      .hud .hud-hint { display: none; }
+      .hud-title { font-size: 19px; }
+    }
+
+    /* ---- round 12: settings read as name + value, no shortcut badges, labelled phone strip, calmer cards ---- */
+    .key { display: none !important; }
+    .tool .tool-name { display: none; }
+    #explore .tool-list .tool:has(.tool-name) .tool-name { display: block; }
+    #explore .tool-list .tool .tool-short {
+      font-weight: 600;
+    }
+    #explore .tool-list .tool:has(.tool-name) .tool-short {
+      display: inline-block; padding: 2px 8px; border-radius: 999px;
+      background: rgba(var(--ink-rgb), 0.07); color: var(--cream);
+      font-size: 11.5px; line-height: 1.35;
+    }
+    #explore .tool-list .tool[data-key="KeyM"]:not(.is-muted) .tool-short,
+    #explore .tool-list .tool[data-key="KeyF"].is-on .tool-short {
+      background: var(--accent); color: var(--accent-fg) !important; -webkit-text-fill-color: var(--accent-fg);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      #explore .tool-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 8px; }
+      #explore .tool-list .row.clickable.tool {
+        flex-direction: row; justify-content: flex-start; align-items: center;
+        min-height: 36px; padding: 0 6px 0 8px; gap: 8px; border-radius: 10px;
+      }
+      #explore .tool-list .tool .tool-icon { font-size: 15px; opacity: 0.75; }
+      #explore .tool-list .tool .tool-name { font-size: 13px; }
+      #explore .tool-list .tool:has(.tool-name) .tool-short { margin-left: auto; }
+      #explore .tool-list .tool[data-key="KeyS"] { order: 1; }
+      #explore .tool-list .tool[data-key="KeyN"] { order: 2; }
+      #explore .tool-list .tool[data-key="KeyR"] { order: 3; }
+      #explore .tool-list .tool[data-key="KeyM"] { order: 4; }
+      #explore .tool-list .tool[data-key="KeyF"] { order: 5; }
+      #explore .tool-list #desk-button {
+        order: 6; grid-column: auto; justify-content: center;
+        box-shadow: inset 0 0 0 1px rgba(var(--ink-rgb), 0.14);
+      }
+      #explore .tool-list #desk-button .tool-short { font-size: 13px; font-weight: 600; }
+    }
+    @media (max-width: 640px) and (min-height: 501px) {
+      #explore .tool-list .tool:has(.tool-name) .tool-name { font-size: 12px; line-height: 1.1; }
+      #explore .tool-list .tool:has(.tool-name) .tool-short { font-size: 10.5px; padding: 1px 6px; margin-top: 2px; }
+      #explore .tool-list .row.clickable.tool { flex-direction: column; min-height: 60px; gap: 2px; }
+      #mode-list .rail-btn .rail-label { display: block; font-size: 10px; font-weight: 500; opacity: 0.8; }
+      #mode-list .rail-btn .rail-label .name-long { display: none; }
+      #mode-list .rail-btn .rail-label .name-short { display: inline; }
+      #mode-list .rail-btn[aria-current="true"] .rail-label { font-size: 10px; font-weight: 700; opacity: 1; }
+    }
+
+    /* ---- round 13: the focus pill only exists while a session runs; compact landscape activity cards ---- */
+    #timer[hidden] { display: none !important; }
+    @media (max-height: 500px) {
+      .hud { padding: 10px 14px 9px; max-width: 340px; }
+      .hud-title { font-size: 18px; }
+      .hud .hud-hint { display: none; }
+      .hud .ui-btn.chip { min-height: 38px; }
+    }
   </style>
 </head>
 <body>
@@ -735,6 +804,7 @@
     <symbol id="i-chev-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6l-6 6 6 6"/></symbol>
     <symbol id="i-chev-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 6l6 6-6 6"/></symbol>
     <symbol id="i-chev-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9.5l6 6 6-6"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
     <symbol id="i-island" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16.5a7 7 0 0 1 14 0"/><path d="M2.5 19.5c1.6 0 1.6-1 3.2-1s1.6 1 3.2 1 1.6-1 3.2-1 1.6 1 3.2 1 1.6-1 3.2-1 1.6 1 3 1"/><circle cx="17.5" cy="6" r="2"/></symbol>
   </svg>
   <div id="app"></div>
@@ -744,7 +814,7 @@
     <div class="explore-head">
       <h2><svg class="ico brand-mark" aria-hidden="true"><use href="#i-island"/></svg>Cozy Island</h2>
       <span class="head-hint only-touch">Tap a glowing spot · drag to look</span>
-      <button class="ui-btn explore-toggle explore-more" id="explore-more" aria-expanded="false" aria-controls="explore-body" aria-label="Show tools">More</button>
+      <button class="ui-btn explore-toggle explore-more" id="explore-more" aria-expanded="false" aria-controls="explore-body" aria-label="Show settings">Settings</button>
       <button class="ui-btn explore-toggle" id="explore-toggle" aria-expanded="true" aria-controls="explore-body" aria-label="Hide menu"><span class="toggle-text">Hide</span><svg class="ico toggle-arrow" aria-hidden="true"><use href="#i-chev-down"/></svg></button>
     </div>
     <div id="explore-body">
@@ -754,18 +824,18 @@
       <div class="hint-line only-touch">Tap a glowing spot · drag to look · pinch to zoom</div>
       <div class="tool-list" role="group" aria-label="Island tools">
         <button class="ui-btn row clickable tool" title="Journal (J)" data-key="KeyJ"><span class="key">J</span><span class="tool-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg></span><span class="tool-text">journal</span><span class="tool-short" aria-hidden="true">Journal</span></button>
-        <button class="ui-btn row clickable tool" title="Focus timer (F)" data-key="KeyF"><span class="key">F</span><span class="tool-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-timer"/></svg></span><span class="tool-text">focus timer</span><span class="tool-short" aria-hidden="true">Focus</span></button>
-        <button class="ui-btn row clickable tool" title="Change season (S)" data-key="KeyS"><span class="key">S</span><span class="tool-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-leaf"/></svg></span><span class="tool-text">season: <span id="season-label"></span></span><span class="tool-short" id="season-short" aria-hidden="true">Season</span></button>
-        <button class="ui-btn row clickable tool" title="Change time of day (N)" data-key="KeyN"><span class="key">N</span><span class="tool-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg></span><span class="tool-text">time: <span id="time-label"></span></span><span class="tool-short" id="time-short" aria-hidden="true">Time</span></button>
-        <button class="ui-btn row clickable tool" title="Change weather (R)" data-key="KeyR"><span class="key">R</span><span class="tool-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="tool-text">weather: <span id="weather-label"></span></span><span class="tool-short" id="weather-short" aria-hidden="true">Weather</span></button>
-        <button class="ui-btn row clickable tool" title="Sound on/off (M)" data-key="KeyM"><span class="key">M</span><span class="tool-icon" id="mute-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-sound"/></svg></span><span class="tool-text" id="mute-label">sound on</span><span class="tool-short" id="mute-short" aria-hidden="true">Sound</span></button>
+        <button class="ui-btn row clickable tool" title="Focus timer (F)" data-key="KeyF"><span class="key">F</span><span class="tool-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-timer"/></svg></span><span class="tool-text">focus timer</span><span class="tool-name" aria-hidden="true">Focus</span><span class="tool-short" id="focus-short" aria-hidden="true">Off</span></button>
+        <button class="ui-btn row clickable tool" title="Change season (S)" data-key="KeyS"><span class="key">S</span><span class="tool-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-leaf"/></svg></span><span class="tool-text">season: <span id="season-label"></span></span><span class="tool-name" aria-hidden="true">Season</span><span class="tool-short" id="season-short" aria-hidden="true">Season</span></button>
+        <button class="ui-btn row clickable tool" title="Change time of day (N)" data-key="KeyN"><span class="key">N</span><span class="tool-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg></span><span class="tool-text">time: <span id="time-label"></span></span><span class="tool-name" aria-hidden="true">Time</span><span class="tool-short" id="time-short" aria-hidden="true">Time</span></button>
+        <button class="ui-btn row clickable tool" title="Change weather (R)" data-key="KeyR"><span class="key">R</span><span class="tool-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="tool-text">weather: <span id="weather-label"></span></span><span class="tool-name" aria-hidden="true">Weather</span><span class="tool-short" id="weather-short" aria-hidden="true">Weather</span></button>
+        <button class="ui-btn row clickable tool" title="Sound on/off (M)" data-key="KeyM"><span class="key">M</span><span class="tool-icon" id="mute-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-sound"/></svg></span><span class="tool-text" id="mute-label">sound on</span><span class="tool-name" aria-hidden="true">Sound</span><span class="tool-short" id="mute-short" aria-hidden="true">On</span></button>
         <button class="ui-btn row clickable tool only-mouse-flex" id="desk-button" title="Desk mode: a tiny island beside your work (D)"><span class="key">D</span><span class="tool-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-desk"/></svg></span><span class="tool-text">desk mode</span><span class="tool-short" aria-hidden="true">Desk mode</span></button>
       </div>
     </div>
     </div>
   </div>
   <div id="activity-title" class="panel" style="display:none"></div>
-  <div id="timer" class="panel pill" role="button" tabindex="0" aria-label="Focus timer">F  start focus</div>
+  <div id="timer" class="panel pill" role="button" tabindex="0" aria-label="Focus timer" hidden>F  start focus</div>
   <nav id="mode-rail" class="panel" style="display:none" aria-label="Activities">
     <button class="ui-btn rail-btn rail-back" id="back-button" aria-label="Back to the island">
       <span class="rail-icon" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-back"/></svg></span><span class="rail-label">Island</span><span class="key">Esc</span>
@@ -5023,10 +5093,9 @@ window.Cozy = window.Cozy || {};
           const newHere = biting.filter((fish) => fishBook.caught(fish) === 0).length;
           // two short rows: your progress, then what is biting right now
           ui.setText(els.count,
-            `Caught ${progress.get('fish')} · Journal ${fishBook.speciesCount()}/${FISH.length}\n`
-            + `${Cozy.season.name()}: ${biting.length} kinds biting`
-            + `${newHere ? `, ${newHere} new to you` : ''}`
-            + `${world.rain > 0.5 ? ' · rain brings quicker bites' : ''}`);
+            `Caught ${progress.get('fish')} · Journal ${fishBook.speciesCount()}/${FISH.length}`
+            + ` · ${biting.length} biting${newHere ? ` (${newHere} new)` : ''}`
+            + `${world.rain > 0.5 ? ' · rain: quicker bites' : ''}`);
         }
       },
     };
@@ -7138,10 +7207,11 @@ window.Cozy = window.Cozy || {};
   function setToolsOpen(open) {
     els.explore.classList.toggle('tools-open', open);
     exploreMore.setAttribute('aria-expanded', open ? 'true' : 'false');
-    exploreMore.setAttribute('aria-label', open ? 'Hide tools' : 'Show tools');
-    exploreMore.textContent = open ? 'Less' : 'More';
+    exploreMore.setAttribute('aria-label', open ? 'Hide settings' : 'Show settings');
+    exploreMore.innerHTML = `<svg class="ico" aria-hidden="true"><use href="#i-sliders"/></svg><span>${open ? 'Done' : 'Settings'}</span>`;
   }
   onPress(exploreMore, () => setToolsOpen(!els.explore.classList.contains('tools-open')));
+  setToolsOpen(false);
 
   // dragging the island with one finger tucks the menu away; returning to the island brings it back
   const dragStart = { x: 0, y: 0, active: false };
@@ -7280,7 +7350,7 @@ window.Cozy = window.Cozy || {};
       const muted = sound.toggleMute();
       ui.setText(els.mute, muted ? 'sound off' : 'sound on');
       els.muteIcon.innerHTML = svgIcon(muted ? 'mute' : 'sound');
-      ui.setText(els.muteShort, muted ? 'Muted' : 'Sound');
+      ui.setText(els.muteShort, muted ? 'Off' : 'On');
       const muteButton = document.querySelector('.tool[data-key="KeyM"]');
       if (muteButton) {
         muteButton.classList.toggle('is-muted', muted);
@@ -7389,6 +7459,7 @@ window.Cozy = window.Cozy || {};
       const running = focus.phase !== 'idle';
       focusButton.classList.toggle('is-on', running);
       focusButton.setAttribute('aria-pressed', running ? 'true' : 'false');
+        ui.setText(ui.el('focus-short'), running ? 'On' : 'Off');
     }
     if (focus.phase !== 'idle' && !focus.paused) {
       focus.remaining -= dt;
@@ -7422,18 +7493,23 @@ window.Cozy = window.Cozy || {};
       return `${String(Math.floor(total / 60)).padStart(2, '0')}:${String(total % 60).padStart(2, '0')}`;
     };
     let text = 'F  start focus';
-    els.timer.className = 'pill';
+    els.timer.className = 'panel pill';
     if (focus.phase === 'focus') {
       text = `Focus  ${format(focus.remaining)}${focus.paused ? '  (paused)' : ''}`;
-      els.timer.className = 'pill focus';
+      els.timer.className = 'panel pill focus';
     } else if (focus.phase === 'break') {
       text = `Break  ${format(focus.remaining)}`;
-      els.timer.className = 'pill break';
+      els.timer.className = 'panel pill break';
     }
     if (focus.sessions > 0) {
       text += `  ·  ${focus.sessions} done`;
     }
     ui.setText(els.timer, text);
+    // the pill only shows while a session runs; it is started from the Focus timer setting
+    const timerShown = focus.phase !== 'idle';
+    if (els.timer.hidden === timerShown) {
+      els.timer.hidden = !timerShown;
+    }
     const title = focus.phase === 'idle' ? 'Cozy Island' : `${focus.phase === 'focus' ? 'Focus' : 'Break'} ${format(focus.remaining)} · Cozy Island`;
     if (document.title !== title) {
       document.title = title;

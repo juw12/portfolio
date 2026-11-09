@@ -67,3 +67,15 @@ Emoji, gradient text, neon glow, purple-blue gradients, Inter, drop shadows heav
 - Activity switcher on phones (portrait): icons only, the current place keeps its name, back is a plain arrow;
   all eight fit on screen without scrolling. Desktop rail drops the key badges (they live in tooltips).
 - Copy: sentences, not dashes ("Plant something now. It grows while you work.").
+
+## Behaviour notes (round 6, URL /cozy-island/)
+- The game lives at /cozy-island/; /game/ is a redirect stub that keeps query and hash.
+- Phones fold the settings row behind one Settings button (Settings / Done) so the scene stays open; the
+  activity tiles stay a 4 x 2 grid (a single cramped row lost the pairwise council 0-2).
+- Settings read as name + value: Season [Autumn], Time [Day], Weather [Clear], Sound [On], Focus [Off].
+  Sound On and a running Focus use a filled terracotta pill, so state is never colour-only guesswork.
+- No shortcut badges on tiles or the rail; shortcuts live in tooltips and the intro line ("press 1-7").
+- Phone activity tabs show a short label under every icon, not only the current one.
+- Fishing card: one progress line (Caught, Journal, biting now); the rain cue only appears while it rains.
+- Focus pill: only shown while a session runs (it used to lose its panel class and sit invisible under the
+  scene, intercepting taps). Landscape activity cards are slimmer (no hint line, 38 px chips).
