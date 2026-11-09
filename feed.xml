@@ -112,7 +112,7 @@
       <link>https://juwenlie.pages.dev/#projects</link>
       <guid isPermaLink="false">juwenlie-project-founder-studio</guid>
       <pubDate>Sat, 07 Nov 2026 17:43:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/founder-studio-card.jpg" alt="Founder Studio online demo after a quick sim: 3D buyer bots split into PASS and BUY piles, a buy-rate gauge, the live decisions list and the Results tab" width="600"></p><p>Pre-launch simulator: 3D buyer bots walk up to your stall and decide BUY or PASS.</p>]]></description>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/founder-studio-card.jpg" alt="Founder Studio online demo after a quick sim: warm paper interface, a 3D market square with the stall and BUY and PASS piles, one buyer open in the inspector, the live decisions list and the Results tab" width="600"></p><p>Pre-launch simulator: 3D buyer bots walk up to your stall and decide BUY or PASS.</p>]]></description>
       <jl:summary>Pre-launch simulator: 3D buyer bots walk up to your stall and decide BUY or PASS.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/founder-studio-card.jpg" type="image/jpeg" length="0"/>
       
@@ -222,10 +222,10 @@
       <link>https://juwenlie.pages.dev/#projects</link>
       <guid isPermaLink="false">juwenlie-project-cairn</guid>
       <pubDate>Thu, 05 Nov 2026 13:16:15 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/cairn-card.jpg" alt="Cairn home page: A second brain that lives inside your repo, with Try the demo, Open a repo folder and Run it locally" width="600"></p><p>A second brain inside your repo: ideas wall, task board, decision log and AI context pack, all as plain Markdown.</p>]]></description>
-      <jl:summary>A second brain inside your repo: ideas wall, task board, decision log and AI context pack, all as plain Markdown.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/cairn-card.jpg" alt="Cairn home page: A second brain that lives inside your repo, with Try the demo, Open a repo folder and Run it locally" width="600"></p><p>A second brain inside your repo: ideas wall, task board, decision log and an MCP server for AI assistants, all as plain Markdown.</p>]]></description>
+      <jl:summary>A second brain inside your repo: ideas wall, task board, decision log and an MCP server for AI assistants, all as plain Markdown.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/cairn-card.jpg" type="image/jpeg" length="0"/>
-      <category>Markdown</category><category>local-first</category><category>kanban</category><category>decision log</category><category>Python</category>
+      <category>Markdown</category><category>local-first</category><category>kanban</category><category>decision log</category><category>MCP</category><category>Python</category>
     </item>
     <item>
       <title>Jeda</title>
