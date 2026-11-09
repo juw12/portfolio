@@ -2,7 +2,7 @@
 
 | Game | Play | What it is |
 | --- | --- | --- |
-| **Cozy Island** | [Play](https://juwenlie.pages.dev/game/) | A cozy 3D island for laptop workers: fishing, garden, tea breaks and a Desk mode. [Details below](#cozy-island) |
+| **Cozy Island** | [Play](https://juwenlie.pages.dev/cozy-island/) | A cozy 3D island for laptop workers: fishing, garden, tea breaks and a Desk mode. [Details below](#cozy-island) |
 | **Townsquare 3D** | [Play](https://juw12.github.io/portfolio/game/townsquare/) | A shared 3D town: claim land, run producers, trade at the market, build, and meet the townsfolk. [Details](townsquare/README.md) |
 
 ---
@@ -13,7 +13,7 @@ A small, cozy 3D island for laptop workers: fish off the dock, tend a garden, br
 watch birds, rest your eyes at the sunset viewpoint — and keep a tiny island beside your work in **Desk mode**.
 Soft ASMR-style sounds, seasons, day & night, rain and rainbows, and Mochi the cat.
 
-**▶ Play in the browser:** [juwenlie.pages.dev/game/](https://juwenlie.pages.dev/game/)
+**▶ Play in the browser:** [juwenlie.pages.dev/cozy-island/](https://juwenlie.pages.dev/cozy-island/) · [juw12.github.io/portfolio/cozy-island/](https://juw12.github.io/portfolio/cozy-island/)
 (single HTML file, three.js, no install; progress is saved in your browser)
 
 ![Fishing on the dock](screenshots/fishing.jpg)
