@@ -184,13 +184,13 @@ Press **S** on the island to pick a season yourself (Calendar → Spring → Sum
 
 | Season | Island | Falling | New fish | Seasonal seed |
 |---|---|---|---|---|
-| Spring | blossom trees, fresh grass | petals | Crappie, Cherry Salmon, Northern Pike ★★, Golden Trout ★★ | Strawberry (20 min) |
-| Summer | lush green, fireflies | dandelion fluff | Largemouth Bass, Pufferfish, Catfish ★★, Mahi-mahi ★★ | Watermelon (40 min) |
-| Autumn | orange/red leaves, golden grass | leaves | Common Carp, Brown Trout, Sockeye Salmon, Sturgeon ★★ | Pumpkin (45 min) |
-| Winter | snow, snow-capped pines | snow | Whitefish, Smelt, Arctic Char, Burbot ★★, Aurora Koi ★★★ | Snowdrop (10 min) |
+| Spring | blossom trees, fresh grass | petals | Crappie, Cherry Salmon, Northern Pike (rare), Golden Trout (rare) | Strawberry (20 min) |
+| Summer | lush green, fireflies | dandelion fluff | Largemouth Bass, Pufferfish, Catfish (rare), Mahi-mahi (rare) | Watermelon (40 min) |
+| Autumn | orange/red leaves, golden grass | leaves | Common Carp, Brown Trout, Sockeye Salmon, Sturgeon (rare) | Pumpkin (45 min) |
+| Winter | snow, snow-capped pines | snow | Whitefish, Smelt, Arctic Char, Burbot (rare), Aurora Koi (legendary) | Snowdrop (10 min) |
 
 Bluegill, Perch, Rainbow Trout and the legendary Golden Koi bite all year (21 species in total).
-Rarity sets bite chance and fight: common, ★ uncommon, ★★ rare, ★★★ legendary.
+Rarity sets bite chance and fight: common, uncommon, rare, legendary (shown in brackets after the fish name).
 Press **J** while fishing for the fish journal (caught count, personal-best weight, which fish are biting now).
 Seasonal seeds can only be planted in their season; anything already planted keeps growing when the season changes.
 Season is personal: friends on the village server may be in a different season if they picked one with S.
@@ -204,7 +204,7 @@ Night fish (Catfish, Burbot, Aurora Koi) bite about 3× as often after dark.
 **Campfire cooking (7).** A campfire with a hanging pot sits beside the cabin. Every fish you catch and every crop you harvest
 goes into your pantry (players who already had catches get up to 3 of each to start). Q/E picks a recipe, click to start,
 click 4× to chop, then **hold to fan the fire** and keep the flame in the green zone until the dish is done (no failing,
-just ★ to ★★★). J opens the cookbook.
+each dish is rated 1 to 3). J opens the cookbook.
 
 | Recipe | Needs |
 |---|---|
@@ -218,7 +218,7 @@ just ★ to ★★★). J opens the cookbook.
 | Fish Treat for Mochi | a common fish |
 
 **Mochi, the dock cat.** She sits next to your fishing stool. Click her to pet her (purring + hearts); she gets excited
-when a fish bites, meows at your catches, naps at night, and loves the fish treats you cook. Friendship (up to ♥♥♥♥♥)
+when a fish bites, meows at your catches, naps at night, and loves the fish treats you cook. Friendship (up to level 5)
 grows with pets and treats and shows in the J journal.
 
 ## 9. Soft rainy days + gifts through the mailbox (browser version)
