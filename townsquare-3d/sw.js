@@ -1,6 +1,6 @@
 // Service worker: makes the app installable and lets the world load offline (solo mode).
 // Network-first so updates show immediately; the cache is only a fallback.
-const CACHE_NAME = 'townsquare-v15';
+const CACHE_NAME = 'townsquare-v16';
 const APP_SHELL = [
   './',
   'index.html',
@@ -15,6 +15,7 @@ const APP_SHELL = [
   'social.js',
   'feed.js',
   'juice.js',
+  'icons.js',
   'props.js',
   'instancing.js',
   'solo.js',

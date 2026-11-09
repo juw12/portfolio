@@ -1,6 +1,7 @@
 // "Doom rendering": a live feed of what is happening in town right now. Every entry is a place:
 // tap it and you are there. Plus the goal pill that always shows your next rewarded step.
 // The server (server.py: goals & town feed) owns both; this file only displays them.
+import { setLabel } from './icons.js';
 
 const MAX_SHOWN = 6;
 
@@ -36,14 +37,14 @@ export function createTownFeed({ $, teleport, toast, isTouch }) {
     const x = entry.x - (entry.x / length) * 2.5;
     const z = entry.z - (entry.z / length) * 2.5;
     teleport(x, z, entry.x, entry.z);
-    toast(`🧭 ${entry.text}`);
+    toast(entry.text);
   }
 
   function render() {
     const panel = $('townFeed');
     panel.classList.toggle('open', state.open);
     const badge = state.unread && !state.open ? ` · ${state.unread} new` : '';
-    $('feedToggle').textContent = `📰 Town${badge}`;
+    setLabel($('feedToggle'), 'news', `Town${badge}`);
     const list = $('feedList');
     list.hidden = !state.open;
     if (!state.open) {
@@ -69,7 +70,7 @@ export function createTownFeed({ $, teleport, toast, isTouch }) {
       text.textContent = entry.text;
       const meta = document.createElement('span');
       meta.className = 'feed-meta';
-      meta.textContent = `🧭 ${timeAgo(Math.max(0, now - entry.at))}`;
+      setLabel(meta, 'pin', timeAgo(Math.max(0, now - entry.at)));
       row.append(text, meta);
       row.addEventListener('click', () => jumpTo(entry));
       list.append(row);
@@ -86,12 +87,16 @@ export function createTownFeed({ $, teleport, toast, isTouch }) {
     row.className = `feed-row feed-order${order.filled ? ' done' : ''}`;
     const text = document.createElement('span');
     text.className = 'feed-text';
-    text.textContent = order.filled
-      ? "✅ You filled Rosa's order today"
-      : `📦 Rosa wants ${order.qty} ${order.label.toLowerCase()} · pays ${order.pay} 💰`;
+    setLabel(
+      text,
+      order.filled ? 'check' : 'box',
+      order.filled
+        ? "You filled Rosa's order today"
+        : `Rosa wants ${order.qty} ${order.label.toLowerCase()} · pays ${order.pay} coins`,
+    );
     const meta = document.createElement('span');
     meta.className = 'feed-meta';
-    meta.textContent = order.filled ? 'A new order every day' : '🧭 Market stall · today only';
+    setLabel(meta, order.filled ? '' : 'pin', order.filled ? 'A new order every day' : 'Market stall · today only');
     row.append(text, meta);
     row.addEventListener('click', () => jumpTo({ x: order.x, z: order.z, text: "Rosa's market stall" }));
     return row;
@@ -102,13 +107,13 @@ export function createTownFeed({ $, teleport, toast, isTouch }) {
     box.className = 'feed-top';
     const title = document.createElement('span');
     title.className = 'feed-top-title';
-    title.textContent = '⭐ Top plots';
+    setLabel(title, 'star', 'Top plots');
     box.append(title);
     top.slice(0, 3).forEach((plot, index) => {
       const row = document.createElement('button');
       row.type = 'button';
       row.className = 'feed-top-row';
-      row.textContent = `${index + 1}. ${plot.name}'s plot · ⭐ ${plot.likes}`;
+      row.textContent = `${index + 1}. ${plot.name}'s plot · ${plot.likes} ${plot.likes === 1 ? 'star' : 'stars'}`;
       row.addEventListener('click', () => jumpTo({ x: plot.x, z: plot.z, text: `${plot.name}'s plot` }));
       box.append(row);
     });
@@ -125,10 +130,10 @@ export function createTownFeed({ $, teleport, toast, isTouch }) {
     state.goalKey = key;
     pill.hidden = false;
     if (!goal) {
-      pill.textContent = '🏆 Every goal done. You run this town!';
+      setLabel(pill, 'trophy', 'Every goal done. You run this town!');
       return;
     }
-    pill.textContent = `🎯 ${goal.text} · +${goal.reward} 💰  (${goal.step}/${goal.total})`;
+    setLabel(pill, 'target', `${goal.text} · +${goal.reward} coins (${goal.step}/${goal.total})`);
     if (!first) {
       pill.classList.remove('pop');
       void pill.offsetWidth; // restart the animation

@@ -13,20 +13,20 @@ export const BUILD_COLORS = [
 // size = [x, height, z] of the collision box in metres.
 // solid: blocks movement. standable: you can stand / stack on top of it.
 export const CATALOG = {
-  block:  { label: 'Block',   icon: '🧱', size: [1, 1, 1],       solid: true,  standable: true,  color: '#d9cdb4' },
-  slab:   { label: 'Slab',    icon: '▬',  size: [1, 0.5, 1],     solid: true,  standable: true,  color: '#8d6e63' },
-  wall:   { label: 'Wall',    icon: '▌',  size: [1, 2, 0.2],     solid: true,  standable: true,  color: '#f2e8cf' },
-  glass:  { label: 'Glass',   icon: '🔳', size: [1, 1, 1],       solid: true,  standable: true,  color: '#a8dadc' },
-  lamp:   { label: 'Lamp',    icon: '💡', size: [0.3, 2.7, 0.3], solid: true,  standable: false, color: '#2d3047' },
-  tree:   { label: 'Tree',    icon: '🌳', size: [0.5, 3.2, 0.5], solid: true,  standable: false, color: '#3f8f3a' },
-  flower: { label: 'Flowers', icon: '🌷', size: [0.8, 0.5, 0.8], solid: false, standable: false, color: '#ff6fb5' },
-  bench:  { label: 'Bench',   icon: '🪑', size: [1.6, 0.9, 0.6], solid: true,  standable: true,  color: '#8d6e63' },
+  block:  { label: 'Block',   icon: 'block',   size: [1, 1, 1],       solid: true,  standable: true,  color: '#d9cdb4' },
+  slab:   { label: 'Slab',    icon: 'slab',    size: [1, 0.5, 1],     solid: true,  standable: true,  color: '#8d6e63' },
+  wall:   { label: 'Wall',    icon: 'wall',    size: [1, 2, 0.2],     solid: true,  standable: true,  color: '#f2e8cf' },
+  glass:  { label: 'Glass',   icon: 'glass',   size: [1, 1, 1],       solid: true,  standable: true,  color: '#a8dadc' },
+  lamp:   { label: 'Lamp',    icon: 'lamp',    size: [0.3, 2.7, 0.3], solid: true,  standable: false, color: '#2d3047' },
+  tree:   { label: 'Tree',    icon: 'tree',    size: [0.5, 3.2, 0.5], solid: true,  standable: false, color: '#3f8f3a' },
+  flower: { label: 'Flowers', icon: 'flower',  size: [0.8, 0.5, 0.8], solid: false, standable: false, color: '#ff6fb5' },
+  bench:  { label: 'Bench',   icon: 'chair',   size: [1.6, 0.9, 0.6], solid: true,  standable: true,  color: '#8d6e63' },
   // Producers (see economy.py): they make goods over time on your plot.
-  field:   { label: 'Wheat field', icon: '🌾', size: [1, 0.7, 1],   solid: false, standable: false, color: '#d9b54a', producer: true },
-  woodlot: { label: 'Woodlot',     icon: '🌲', size: [1, 2.2, 1],   solid: true,  standable: false, color: '#2f6b3a', producer: true },
-  quarry:  { label: 'Quarry',      icon: '⛏', size: [1, 0.8, 1],   solid: true,  standable: true,  color: '#9a9a96', producer: true },
-  oven:    { label: 'Oven',        icon: '🍞', size: [1, 1.6, 1],   solid: true,  standable: false, color: '#b5543c', producer: true },
-  sawmill: { label: 'Sawmill',     icon: '🏭', size: [1, 1.1, 1],   solid: true,  standable: false, color: '#8d6e63', producer: true },
+  field:   { label: 'Wheat field', icon: 'wheat',   size: [1, 0.7, 1],   solid: false, standable: false, color: '#d9b54a', producer: true },
+  woodlot: { label: 'Woodlot',     icon: 'pine',    size: [1, 2.2, 1],   solid: true,  standable: false, color: '#2f6b3a', producer: true },
+  quarry:  { label: 'Quarry',      icon: 'pickaxe', size: [1, 0.8, 1],   solid: true,  standable: true,  color: '#9a9a96', producer: true },
+  oven:    { label: 'Oven',        icon: 'oven',    size: [1, 1.6, 1],   solid: true,  standable: false, color: '#b5543c', producer: true },
+  sawmill: { label: 'Sawmill',     icon: 'sawmill', size: [1, 1.1, 1],   solid: true,  standable: false, color: '#8d6e63', producer: true },
 };
 export const CATALOG_KEYS = Object.keys(CATALOG);
 

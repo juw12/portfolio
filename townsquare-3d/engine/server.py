@@ -100,11 +100,11 @@ FEED_SIZE = 40
 FEED_ON_JOIN = 8
 BIG_SALE = 5                    # sales of at least this many units make the feed
 PRODUCER_LABELS = {
-    "field": "🌾 a wheat field",
-    "woodlot": "🌲 a woodlot",
-    "quarry": "🧱 a quarry",
-    "oven": "🍞 an oven",
-    "sawmill": "🏭 a sawmill",
+    "field": "a wheat field",
+    "woodlot": "a woodlot",
+    "quarry": "a quarry",
+    "oven": "an oven",
+    "sawmill": "a sawmill",
 }
 
 # Showcase: one star per account per plot; the most-starred plots are listed in the feed panel
@@ -222,7 +222,7 @@ class WorldState:
     """Thread-safe shared state for players, chat and built objects."""
 
     goals_enabled = True  # tests of exact prices switch the goal rewards off
-    bumper_chance = 0.1   # chance that a harvest gives a 🍀 bumper crop (+50%)
+    bumper_chance = 0.1   # chance that a harvest gives a bumper crop (+50%)
 
     def __init__(
         self,
@@ -614,7 +614,7 @@ class WorldState:
                 self._add_plot(plot)
                 self._log({"op": "plot", "plot": plot})
                 self._feed_post(
-                    f"🏠 {player['name']} claimed a plot",
+                    f"{player['name']} claimed a plot",
                     coords[0] * PLOT_SIZE + PLOT_SIZE / 2,
                     coords[1] * PLOT_SIZE + PLOT_SIZE / 2,
                     now,
@@ -678,7 +678,7 @@ class WorldState:
             tag = next((t for t, n in muted.items() if n.lower() == name.lower()), None)
             display = muted.get(tag, name)
             if tag and self._moderation.unmute(owner, tag):
-                self._event(owner, f"🔈 Unmuted {display}.")
+                self._event(owner, f"Unmuted {display}.")
             else:
                 self._event(owner, f"{name or 'Nobody'} isn't muted.")
             return
@@ -690,7 +690,7 @@ class WorldState:
             self._event(owner, "You can't mute yourself.")
             return
         if self._moderation.mute(owner, tag, display):
-            self._event(owner, f"🔇 Muted {display}: you won't see their chat. /unmute {display} to undo.")
+            self._event(owner, f"Muted {display}: you won't see their chat. /unmute {display} to undo.")
         else:
             self._event(owner, "Your mute list is full.")
 
@@ -717,7 +717,7 @@ class WorldState:
             "x": round(player["x"], 1),
             "z": round(player["z"], 1),
         }, now)
-        self._event(owner, f"🚩 Thanks, your report about {display} went to the moderators. /mute {display} hides them for you.")
+        self._event(owner, f"Thanks, your report about {display} went to the moderators. /mute {display} hides them for you.")
 
     def health(self):
         """Small status for uptime checks and Docker's HEALTHCHECK (no private data)."""
@@ -780,7 +780,7 @@ class WorldState:
                 text = str(message.get("text", "")).strip()[:140]
                 if not text:
                     return {"error": "empty announcement"}
-                self._chat.append({"id": self._next_chat_id, "from": "admin", "owner": "admin", "name": "📢 Town hall", "text": text})
+                self._chat.append({"id": self._next_chat_id, "from": "admin", "owner": "admin", "name": "Town hall", "text": text})
                 self._next_chat_id += 1
                 self._chat = self._chat[-CHAT_HISTORY:]
                 return {"ok": True}
@@ -832,10 +832,10 @@ class WorldState:
             wallet = self._wallet(owner)
             wallet["coins"] = min(economy.MAX_COINS, wallet["coins"] + reward)
             title = progress.title_for(level)
-            self._event(owner, f"🎉 Level {level}: {title}!  +{reward} 💰")
+            self._event(owner, f"Level {level}: {title}! +{reward} coins")
             self._push_fx(owner, {"kind": "level", "level": level, "title": title, "coins": reward})
             if level >= progress.FEED_FROM_LEVEL:
-                self._feed_post(f"🎉 {name} reached level {level}: {title}", x, z, now)
+                self._feed_post(f"{name} reached level {level}: {title}", x, z, now)
 
     def _level_of(self, owner):
         return progress.level_for(self._xp.get(owner, 0))[0]
@@ -880,12 +880,12 @@ class WorldState:
         self._dirty = True
         for goal in completed:
             wallet["coins"] = min(economy.MAX_COINS, wallet["coins"] + goal["reward"])
-            self._event(owner, f"🎯 Goal complete: {goal['text']}  +{goal['reward']} 💰")
+            self._event(owner, f"Goal complete: {goal['text']} +{goal['reward']} coins")
             self._push_fx(owner, {"kind": "goal", "text": goal["text"], "coins": goal["reward"]})
             self._gain_xp(owner, progress.XP["goal"], player["name"], player["x"], player["z"], now)
             step = goals.GOALS.index(goal) + 1
             if step >= goals.FEED_FROM_STEP:
-                self._feed_post(f"🎯 {player['name']} completed: {goal['text']}", player["x"], player["z"], now)
+                self._feed_post(f"{player['name']} completed: {goal['text']}", player["x"], player["z"], now)
 
     # ------------------------------------------------------------------ social
     def _change_builders(self, kind, key, raw_name, owner, player):
@@ -930,7 +930,7 @@ class WorldState:
         self._log({"op": "plot", "plot": plot})
         self._goal_event(owner, "social", "invite")
         self._event(owner, f"{username} can now build on this plot.")
-        self._event(tag, f"🔨 {player['name']} invited you to build on their plot. Type /visit {player['name']}")
+        self._event(tag, f"{player['name']} invited you to build on their plot. Type /visit {player['name']}")
 
     def _change_friends(self, kind, raw_name, owner, player):
         name = str(raw_name or "").strip().lstrip("@")[:16]
@@ -963,8 +963,8 @@ class WorldState:
         self._friends[owner] = friends + [username]
         self._dirty = True
         self._goal_event(owner, "social", "friend")
-        self._event(owner, f"👥 Added {username} to your friends.")
-        self._event(tag, f"👥 {player['name']} added you as a friend.")
+        self._event(owner, f"Added {username} to your friends.")
+        self._event(tag, f"{player['name']} added you as a friend.")
 
     def _friend_states(self, owner, online_owners):
         states = []
@@ -1004,7 +1004,7 @@ class WorldState:
                 bonus = min(max(1, n // 2), room)
                 if bonus > 0:
                     wallet["goods"][item] = wallet["goods"].get(item, 0) + bonus
-                    parts.append(f"🍀 bumper crop +{bonus}")
+                    parts.append(f"bumper crop +{bonus}")
             self._push_fx(owner, {
                 "kind": "collect",
                 "item": item,
@@ -1038,7 +1038,7 @@ class WorldState:
                 self._gain_xp(owner, changed * progress.XP["sell"], player["name"], player["x"], player["z"], now)
             if changed >= BIG_SALE:
                 self._feed_post(
-                    f"💰 {player['name']} sold {changed} {label.lower()} for {coins} coins",
+                    f"{player['name']} sold {changed} {label.lower()} for {coins} coins",
                     economy.MARKET_X,
                     economy.MARKET_Z,
                     now,
@@ -1095,12 +1095,12 @@ class WorldState:
                 return
             self._add_like(key, owner)
             count = len(self._likes[key])
-            self._event(owner, f"⭐ You starred {plot['ownerName']}'s plot.")
-            self._event(plot["owner"], f"⭐ {player['name']} starred your plot ({count}).")
+            self._event(owner, f"You starred {plot['ownerName']}'s plot.")
+            self._event(plot["owner"], f"{player['name']} starred your plot ({count}).")
             if count in LIKE_MILESTONES and count > self._like_peaks.get(key, 0):
                 coords = parse_plot_key(key)
                 self._feed_post(
-                    f"⭐ {plot['ownerName']}'s plot reached {count} stars",
+                    f"{plot['ownerName']}'s plot reached {count} stars",
                     coords[0] * PLOT_SIZE + PLOT_SIZE / 2,
                     coords[1] * PLOT_SIZE + PLOT_SIZE / 2,
                     now,
@@ -1169,12 +1169,12 @@ class WorldState:
         wallet["coins"] = min(economy.MAX_COINS, wallet["coins"] + order["pay"])
         self._order_fills["owners"].add(owner)
         self._dirty = True
-        self._event(owner, f"📦 Order filled: {order['qty']} {order['label']} → +{order['pay']} 💰")
+        self._event(owner, f"Order filled: {order['qty']} {order['label']} for +{order['pay']} coins")
         self._goal_event(owner, "sell", order["item"], order["qty"])
         self._push_fx(owner, {"kind": "coins", "amount": order["pay"]})
         self._gain_xp(owner, progress.XP["order"], player["name"], player["x"], player["z"], now)
         self._feed_post(
-            f"📦 {player['name']} filled Rosa's order: {order['qty']} {order['label'].lower()}",
+            f"{player['name']} filled Rosa's order: {order['qty']} {order['label'].lower()}",
             economy.MARKET_X,
             economy.MARKET_Z,
             now,
