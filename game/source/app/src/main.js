@@ -390,10 +390,11 @@
   function setToolsOpen(open) {
     els.explore.classList.toggle('tools-open', open);
     exploreMore.setAttribute('aria-expanded', open ? 'true' : 'false');
-    exploreMore.setAttribute('aria-label', open ? 'Hide tools' : 'Show tools');
-    exploreMore.textContent = open ? 'Less' : 'More';
+    exploreMore.setAttribute('aria-label', open ? 'Hide settings' : 'Show settings');
+    exploreMore.innerHTML = `<svg class="ico" aria-hidden="true"><use href="#i-sliders"/></svg><span>${open ? 'Done' : 'Settings'}</span>`;
   }
   onPress(exploreMore, () => setToolsOpen(!els.explore.classList.contains('tools-open')));
+  setToolsOpen(false);
 
   // dragging the island with one finger tucks the menu away; returning to the island brings it back
   const dragStart = { x: 0, y: 0, active: false };
@@ -532,7 +533,7 @@
       const muted = sound.toggleMute();
       ui.setText(els.mute, muted ? 'sound off' : 'sound on');
       els.muteIcon.innerHTML = svgIcon(muted ? 'mute' : 'sound');
-      ui.setText(els.muteShort, muted ? 'Muted' : 'Sound');
+      ui.setText(els.muteShort, muted ? 'Off' : 'On');
       const muteButton = document.querySelector('.tool[data-key="KeyM"]');
       if (muteButton) {
         muteButton.classList.toggle('is-muted', muted);
@@ -641,6 +642,7 @@
       const running = focus.phase !== 'idle';
       focusButton.classList.toggle('is-on', running);
       focusButton.setAttribute('aria-pressed', running ? 'true' : 'false');
+        ui.setText(ui.el('focus-short'), running ? 'On' : 'Off');
     }
     if (focus.phase !== 'idle' && !focus.paused) {
       focus.remaining -= dt;
@@ -674,18 +676,23 @@
       return `${String(Math.floor(total / 60)).padStart(2, '0')}:${String(total % 60).padStart(2, '0')}`;
     };
     let text = 'F  start focus';
-    els.timer.className = 'pill';
+    els.timer.className = 'panel pill';
     if (focus.phase === 'focus') {
       text = `Focus  ${format(focus.remaining)}${focus.paused ? '  (paused)' : ''}`;
-      els.timer.className = 'pill focus';
+      els.timer.className = 'panel pill focus';
     } else if (focus.phase === 'break') {
       text = `Break  ${format(focus.remaining)}`;
-      els.timer.className = 'pill break';
+      els.timer.className = 'panel pill break';
     }
     if (focus.sessions > 0) {
       text += `  ·  ${focus.sessions} done`;
     }
     ui.setText(els.timer, text);
+    // the pill only shows while a session runs; it is started from the Focus timer setting
+    const timerShown = focus.phase !== 'idle';
+    if (els.timer.hidden === timerShown) {
+      els.timer.hidden = !timerShown;
+    }
     const title = focus.phase === 'idle' ? 'Cozy Island' : `${focus.phase === 'focus' ? 'Focus' : 'Break'} ${format(focus.remaining)} · Cozy Island`;
     if (document.title !== title) {
       document.title = title;

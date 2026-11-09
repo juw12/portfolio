@@ -779,10 +779,9 @@
           const newHere = biting.filter((fish) => fishBook.caught(fish) === 0).length;
           // two short rows: your progress, then what is biting right now
           ui.setText(els.count,
-            `Caught ${progress.get('fish')} · Journal ${fishBook.speciesCount()}/${FISH.length}\n`
-            + `${Cozy.season.name()}: ${biting.length} kinds biting`
-            + `${newHere ? `, ${newHere} new to you` : ''}`
-            + `${world.rain > 0.5 ? ' · rain brings quicker bites' : ''}`);
+            `Caught ${progress.get('fish')} · Journal ${fishBook.speciesCount()}/${FISH.length}`
+            + ` · ${biting.length} biting${newHere ? ` (${newHere} new)` : ''}`
+            + `${world.rain > 0.5 ? ' · rain: quicker bites' : ''}`);
         }
       },
     };
