@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Nov 2026 08:59:13 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 14:08:47 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Inti</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-inti</guid>
+      <pubDate>Tue, 10 Nov 2026 14:08:47 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/inti-card.jpg" alt="Inti demo page in dark mode: after the crash console command the emulated screen shows the screen driver restarted and answering again, beside the serial log with the supervisor&#x27;s crash and restart lines highlighted" width="600"></p><p>A from-scratch Rust microkernel OS you can break on purpose: crash a driver in the browser and watch it restart.</p>]]></description>
+      <jl:summary>A from-scratch Rust microkernel OS you can break on purpose: crash a driver in the browser and watch it restart.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/inti-card.jpg" type="image/jpeg" length="0"/>
+      <category>operating-system</category><category>microkernel</category><category>rust</category><category>capability-based-security</category><category>x86</category>
+    </item>
     <item>
       <title>Jepret</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -296,16 +306,6 @@
       <jl:summary>Morrow (formerly The Morning Paper), web edition: curated news, a stock desk, and a portfolio with alerts that sync once you sign in. Light, Dark and Neo themes.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/morning-paper-web-card.jpg" type="image/jpeg" length="0"/>
       <category>news</category><category>stocks</category><category>portfolio alerts</category><category>web</category>
-    </item>
-    <item>
-      <title>Nudge</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-nudge</guid>
-      <pubDate>Thu, 05 Nov 2026 13:16:15 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/nudge-card.jpg" alt="Nudge home page: See who&#x27;s waiting on a reply, with a drop zone for chat exports and per-app export guides" width="600"></p><p>See which friends you&#x27;ve been leaving on read: local-only analysis of your chat exports, plus a weekly nudge.</p>]]></description>
-      <jl:summary>See which friends you&#x27;ve been leaving on read: local-only analysis of your chat exports, plus a weekly nudge.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/nudge-card.jpg" type="image/jpeg" length="0"/>
-      <category>digital wellbeing</category><category>local-only</category><category>CLI</category><category>Python</category>
     </item>
   </channel>
 </rss>
