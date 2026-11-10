@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Nov 2026 03:04:04 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 05:35:52 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Reda</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-reda</guid>
+      <pubDate>Tue, 10 Nov 2026 05:35:52 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/reda-card.jpg" alt="Reda Today screen in dark mode: a 3 of 6 hives score for today, a seven-day welt chart and today&#x27;s cetirizine dose ticked" width="600"></p><p>Chronic hives companion: daily UAS7 check-in, trigger finder, photo-guided self-tests and a guideline medicine plan.</p>]]></description>
+      <jl:summary>Chronic hives companion: daily UAS7 check-in, trigger finder, photo-guided self-tests and a guideline medicine plan.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/reda-card.jpg" type="image/jpeg" length="0"/>
+      <category>health</category><category>pwa</category><category>offline</category><category>indonesia</category><category>urticaria</category>
+    </item>
     <item>
       <title>Gardu</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -296,15 +306,6 @@
       <jl:summary>A 3D fairy world: a first-person explorer collecting five Lumenshards to restore a fading realm (Unity 6 + HDRP).</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/vale-card.jpg" type="image/jpeg" length="0"/>
       <category>game</category><category>Unity 6</category><category>HDRP</category><category>first-person</category><category>3D</category>
-    </item>
-    <item>
-      <title>Together</title>
-      <link>https://juw12.github.io/projects/together/index.html</link>
-      <guid isPermaLink="false">juwenlie-project-together</guid>
-      <pubDate>Thu, 05 Nov 2026 06:50:43 +0000</pubDate>
-      <description><![CDATA[<p>Couples&#x27; life plan: roadmap with both ages, goals, money, check-ins. Encrypted partner sync, reminders, offline.</p>]]></description>
-      <jl:summary>Couples&#x27; life plan: roadmap with both ages, goals, money, check-ins. Encrypted partner sync, reminders, offline.</jl:summary>
-      <category>couples</category><category>life planning</category><category>PWA</category><category>end-to-end encrypted</category><category>Cloudflare Workers</category>
     </item>
   </channel>
 </rss>
