@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 09 Nov 2026 11:32:38 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 03:04:04 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Gardu</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-gardu</guid>
+      <pubDate>Tue, 10 Nov 2026 03:04:04 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/gardu-card.jpg" alt="Gardu Scan page in dark mode: three gates (load, call, chat) above a paste box and a drop zone for skill folders and MCP configs" width="600"></p><p>Check AI agent skills and MCP servers before you trust them</p>]]></description>
+      <jl:summary>Check AI agent skills and MCP servers before you trust them</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/gardu-card.jpg" type="image/jpeg" length="0"/>
+      <category>agent-skills</category><category>ai-security</category><category>github-action</category><category>llm-security</category><category>mcp</category>
+    </item>
     <item>
       <title>Mise</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -295,16 +305,6 @@
       <description><![CDATA[<p>Couples&#x27; life plan: roadmap with both ages, goals, money, check-ins. Encrypted partner sync, reminders, offline.</p>]]></description>
       <jl:summary>Couples&#x27; life plan: roadmap with both ages, goals, money, check-ins. Encrypted partner sync, reminders, offline.</jl:summary>
       <category>couples</category><category>life planning</category><category>PWA</category><category>end-to-end encrypted</category><category>Cloudflare Workers</category>
-    </item>
-    <item>
-      <title>Buddy</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-buddy</guid>
-      <pubDate>Wed, 04 Nov 2026 17:21:33 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/buddy-card.jpg" alt="Buddy pointing at File, Save As in Notepad with a speech bubble that says Right here" width="600"></p><p>AI buddy next to your mouse: hold Ctrl+Alt+Space, ask about your screen, and it points at the answer or does it for you.</p>]]></description>
-      <jl:summary>AI buddy next to your mouse: hold Ctrl+Alt+Space, ask about your screen, and it points at the answer or does it for you.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/buddy-card.jpg" type="image/jpeg" length="0"/>
-      <category>Windows + Mac</category><category>AI assistant</category><category>vision model</category><category>on-device voice</category><category>UI automation</category><category>Python</category>
     </item>
   </channel>
 </rss>
