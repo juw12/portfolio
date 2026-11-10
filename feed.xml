@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Nov 2026 05:35:52 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 06:01:28 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Hexbane</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-hexbane</guid>
+      <pubDate>Tue, 10 Nov 2026 06:01:28 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/hexbane-card.jpg" alt="Hexbane Scan page in dark mode: three gates (load, call, chat) above a paste box and a drop zone for skill folders and MCP configs" width="600"></p><p>Break the hex: scan AI agent skills and MCP servers before you trust them</p>]]></description>
+      <jl:summary>Break the hex: scan AI agent skills and MCP servers before you trust them</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/hexbane-card.jpg" type="image/jpeg" length="0"/>
+      <category>agent-skills</category><category>ai-security</category><category>github-action</category><category>llm-security</category><category>mcp</category>
+    </item>
     <item>
       <title>Reda</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -16,16 +26,6 @@
       <jl:summary>Chronic hives companion: daily UAS7 check-in, trigger finder, photo-guided self-tests and a guideline medicine plan.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/reda-card.jpg" type="image/jpeg" length="0"/>
       <category>health</category><category>pwa</category><category>offline</category><category>indonesia</category><category>urticaria</category>
-    </item>
-    <item>
-      <title>Gardu</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-gardu</guid>
-      <pubDate>Tue, 10 Nov 2026 03:04:04 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/gardu-card.jpg" alt="Gardu Scan page in dark mode: three gates (load, call, chat) above a paste box and a drop zone for skill folders and MCP configs" width="600"></p><p>Check AI agent skills and MCP servers before you trust them</p>]]></description>
-      <jl:summary>Check AI agent skills and MCP servers before you trust them</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/gardu-card.jpg" type="image/jpeg" length="0"/>
-      <category>agent-skills</category><category>ai-security</category><category>github-action</category><category>llm-security</category><category>mcp</category>
     </item>
     <item>
       <title>Mise</title>
