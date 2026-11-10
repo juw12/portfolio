@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Nov 2026 06:13:41 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 08:59:13 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Jepret</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-jepret</guid>
+      <pubDate>Tue, 10 Nov 2026 08:59:13 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/jepret-card.jpg" alt="Jepret home page in dark mode: headline &#x27;Camera sitting idle? SD card in, stock upload files out.&#x27;, orange Choose SD card folder button, three numbered steps and an honest note" width="600"></p><p>SD card in, stock upload files out</p>]]></description>
+      <jl:summary>SD card in, stock upload files out</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/jepret-card.jpg" type="image/jpeg" length="0"/>
+      <category>photography</category><category>stock</category><category>offline</category><category>javascript</category>
+    </item>
     <item>
       <title>Ruang</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -296,16 +306,6 @@
       <jl:summary>See which friends you&#x27;ve been leaving on read: local-only analysis of your chat exports, plus a weekly nudge.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/nudge-card.jpg" type="image/jpeg" length="0"/>
       <category>digital wellbeing</category><category>local-only</category><category>CLI</category><category>Python</category>
-    </item>
-    <item>
-      <title>Undanu</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-undanu</guid>
-      <pubDate>Thu, 05 Nov 2026 13:16:15 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/undanu-card.jpg" alt="Undanu home page: a wedding invitation builder beside a phone preview of an invitation for Leo and Maya" width="600"></p><p>Digital wedding invitations for Indonesia with RSVP, guest tracking, donations and QR check-in.</p>]]></description>
-      <jl:summary>Digital wedding invitations for Indonesia with RSVP, guest tracking, donations and QR check-in.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/undanu-card.jpg" type="image/jpeg" length="0"/>
-      <category>invitations</category><category>RSVP</category><category>QR check-in</category><category>Python</category><category>SQLite</category>
     </item>
   </channel>
 </rss>
