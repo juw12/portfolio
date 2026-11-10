@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Nov 2026 06:01:28 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 06:13:41 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Ruang</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-ruang</guid>
+      <pubDate>Tue, 10 Nov 2026 06:13:41 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/ruang-card.jpg" alt="Ruang Look step: 3D sample room with wardrobe, desk and chair, and thumbnails of the realistic, miniature, pixel, cartoon, clay and blueprint styles" width="600"></p><p>Room photo to priced 3D plan, with an architect that fixes what it flags</p>]]></description>
+      <jl:summary>Room photo to priced 3D plan, with an architect that fixes what it flags</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/ruang-card.jpg" type="image/jpeg" length="0"/>
+      <category>3d</category><category>architecture</category><category>cost-estimation</category><category>i18n</category><category>interior-design</category>
+    </item>
     <item>
       <title>Hexbane</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -296,16 +306,6 @@
       <jl:summary>Digital wedding invitations for Indonesia with RSVP, guest tracking, donations and QR check-in.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/undanu-card.jpg" type="image/jpeg" length="0"/>
       <category>invitations</category><category>RSVP</category><category>QR check-in</category><category>Python</category><category>SQLite</category>
-    </item>
-    <item>
-      <title>VALE</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-vale</guid>
-      <pubDate>Thu, 05 Nov 2026 13:16:15 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/vale-card.jpg" alt="VALE concept render: the glowing entrance to a misty, overgrown fairy forest" width="600"></p><p>A 3D fairy world: a first-person explorer collecting five Lumenshards to restore a fading realm (Unity 6 + HDRP).</p>]]></description>
-      <jl:summary>A 3D fairy world: a first-person explorer collecting five Lumenshards to restore a fading realm (Unity 6 + HDRP).</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/vale-card.jpg" type="image/jpeg" length="0"/>
-      <category>game</category><category>Unity 6</category><category>HDRP</category><category>first-person</category><category>3D</category>
     </item>
   </channel>
 </rss>
