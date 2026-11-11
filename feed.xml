@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Nov 2026 14:08:47 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 09:48:17 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Who Threw?</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-mlbb-blame</guid>
+      <pubDate>Wed, 11 Nov 2026 09:48:17 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/mlbb-blame-card.jpg" alt="Who Threw? entry screen: a gold W? crest above Victory/Defeat buttons and five player cards with role, K/D/A, gold and damage fields" width="600"></p><p>Settle who threw your Mobile Legends match.</p>]]></description>
+      <jl:summary>Settle who threw your Mobile Legends match.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/mlbb-blame-card.jpg" type="image/jpeg" length="0"/>
+      <category>mobile-legends</category><category>web-app</category><category>javascript</category>
+    </item>
     <item>
       <title>Inti</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -296,16 +306,6 @@
       <jl:summary>Jeda, ruang hening setiap iman: a quiet space for every faith, offline-first and installable as a PWA.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/jeda-card.jpg" type="image/jpeg" length="0"/>
       <category>PWA</category><category>offline-first</category><category>interfaith</category><category>Indonesia</category>
-    </item>
-    <item>
-      <title>Morrow</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-morning-paper-web</guid>
-      <pubDate>Thu, 05 Nov 2026 13:16:15 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/morning-paper-web-card.jpg" alt="Morrow in its Neo theme: dark glass header, a lead story with a red-to-teal edge beside the numbered Brief" width="600"></p><p>Morrow (formerly The Morning Paper), web edition: curated news, a stock desk, and a portfolio with alerts that sync once you sign in. Light, Dark and Neo themes.</p>]]></description>
-      <jl:summary>Morrow (formerly The Morning Paper), web edition: curated news, a stock desk, and a portfolio with alerts that sync once you sign in. Light, Dark and Neo themes.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/morning-paper-web-card.jpg" type="image/jpeg" length="0"/>
-      <category>news</category><category>stocks</category><category>portfolio alerts</category><category>web</category>
     </item>
   </channel>
 </rss>
