@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 11 Nov 2026 14:40:10 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 08:10:36 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>CPU Eco Toggle</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-cpu-eco-toggle</guid>
+      <pubDate>Thu, 12 Nov 2026 08:10:36 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/cpu-eco-toggle-card.jpg" alt="CPU Eco Toggle landing page: condensed headline &#x27;One click gives a pinned CPU room to breathe&#x27; beside a green on/off toggle with a power symbol" width="600"></p><p>One-click Windows tray switch that moves background jobs to fewer cores at lower priority, without stopping them.</p>]]></description>
+      <jl:summary>One-click Windows tray switch that moves background jobs to fewer cores at lower priority, without stopping them.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/cpu-eco-toggle-card.jpg" type="image/jpeg" length="0"/>
+      <category>cpu</category><category>performance</category><category>powershell</category><category>productivity</category><category>system-tray</category>
+    </item>
     <item>
       <title>Kilat</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -296,16 +306,6 @@
       <jl:summary>Medieval low-poly village prototype (Unity 6 + URP): quests, dialogue, NPC AI and a playable browser preview.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/hearthwood-card.jpg" type="image/jpeg" length="0"/>
       <category>game</category><category>Unity 6</category><category>URP</category><category>C#</category><category>HTML preview</category>
-    </item>
-    <item>
-      <title>Cairn</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-cairn</guid>
-      <pubDate>Thu, 05 Nov 2026 13:16:15 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/cairn-card.jpg" alt="Cairn home page: A second brain that lives inside your repo, with Try the demo, Open a repo folder and Run it locally" width="600"></p><p>A second brain inside your repo: ideas, tasks, decisions, MCP and an autopilot that carries goals, in plain Markdown.</p>]]></description>
-      <jl:summary>A second brain inside your repo: ideas, tasks, decisions, MCP and an autopilot that carries goals, in plain Markdown.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/cairn-card.jpg" type="image/jpeg" length="0"/>
-      <category>Markdown</category><category>local-first</category><category>kanban</category><category>decision log</category><category>MCP</category><category>Python</category>
     </item>
   </channel>
 </rss>
