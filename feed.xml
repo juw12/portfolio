@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 13 Nov 2026 05:49:14 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 08:58:27 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Social Saver</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-social-saver</guid>
+      <pubDate>Fri, 13 Nov 2026 08:58:27 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/social-saver-card.jpg" alt="Social Saver app window: Instagram, Threads, X and TikTok choice, a box for accounts or links, Posts, Reels, Stories and Highlights checkboxes" width="600"></p><p>Save posts, reels, stories and highlights from Instagram, Threads, X and TikTok into one tidy zip per account.</p>]]></description>
+      <jl:summary>Save posts, reels, stories and highlights from Instagram, Threads, X and TikTok into one tidy zip per account.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/social-saver-card.jpg" type="image/jpeg" length="0"/>
+      <category>Windows app</category><category>Instagram</category><category>Threads</category><category>X</category><category>TikTok</category><category>Python</category><category>gallery-dl</category>
+    </item>
     <item>
       <title>agent-lessons</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -296,16 +306,6 @@
       <jl:summary>Find the AI, prompt, model and settings behind an image, text, website or chatbot API.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/retrace-card.jpg" type="image/jpeg" length="0"/>
       <category>Python</category><category>AI</category><category>Forensics</category>
-    </item>
-    <item>
-      <title>Millennium Digest</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-millennium-digest</guid>
-      <pubDate>Fri, 06 Nov 2026 07:53:40 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/millennium-digest-card.jpg" alt="Millennium Digest project page: dark header with the title, a purple View the code on GitHub button, and cards for the weekly digest, outreach guard and honest scope" width="600"></p><p>Weekly arXiv digest on the seven Millennium Prize problems.</p>]]></description>
-      <jl:summary>Weekly arXiv digest on the seven Millennium Prize problems.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/millennium-digest-card.jpg" type="image/jpeg" length="0"/>
-      <category>Python</category><category>arXiv</category><category>Automation</category>
     </item>
   </channel>
 </rss>
