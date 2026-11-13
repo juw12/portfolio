@@ -12,8 +12,8 @@
       <link>https://juwenlie.pages.dev/#projects</link>
       <guid isPermaLink="false">juwenlie-project-tagalong</guid>
       <pubDate>Fri, 13 Nov 2026 09:32:10 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/tagalong-card.jpg" alt="Tagalong trips page in dark mode with sample data: a Coming up card for Tokyo, finally in 12 days with four travellers, and four finished trips under Been there (Johor food run, Bali reset, Seoul long weekend and Bali, the first time), with New trip and Log a past trip buttons" width="600"></p><p>Group trip planner: vote on ideas, build the days and split the bills to the cent.</p>]]></description>
-      <jl:summary>Group trip planner: vote on ideas, build the days and split the bills to the cent.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/tagalong-card.jpg" alt="Tagalong trips page in dark mode with sample data: a Coming up card for Tokyo, finally in 12 days with four travellers, and four finished trips under Been there (Johor food run, Bali reset, Seoul long weekend and Bali, the first time), with New trip and Log a past trip buttons" width="600"></p><p>Group trip planner with live sync: vote on ideas, build the days and split the bills to the cent.</p>]]></description>
+      <jl:summary>Group trip planner with live sync: vote on ideas, build the days and split the bills to the cent.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/tagalong-card.jpg" type="image/jpeg" length="0"/>
       <category>expense-splitter</category><category>offline-first</category><category>pwa</category><category>travel</category><category>trip-planner</category>
     </item>
