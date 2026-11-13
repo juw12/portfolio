@@ -302,8 +302,8 @@
       <link>https://juwenlie.pages.dev/#projects</link>
       <guid isPermaLink="false">juwenlie-project-reachpilot</guid>
       <pubDate>Sat, 07 Nov 2026 03:57:05 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/reachpilot-card.jpg" alt="ReachPilot demo dashboard with made-up data: a to-do list of items that need a human, such as a stopped job application, above cards for LinkedIn posts, job search and e-mail applications" width="600"></p><p>Local hub for outreach bots: LinkedIn posts from real repo facts, job search and e-mail applications.</p>]]></description>
-      <jl:summary>Local hub for outreach bots: LinkedIn posts from real repo facts, job search and e-mail applications.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/reachpilot-card.jpg" alt="ReachPilot demo dashboard with made-up data: a to-do list of items that need a human, such as a stopped job application, above cards for LinkedIn posts, job search and e-mail applications" width="600"></p><p>Local hub for outreach bots: posts projects from real repo facts to LinkedIn, Bluesky, Mastodon, Dev.to, X, Threads and Substack, plus job search and e-mail applications.</p>]]></description>
+      <jl:summary>Local hub for outreach bots: posts projects from real repo facts to LinkedIn, Bluesky, Mastodon, Dev.to, X, Threads and Substack, plus job search and e-mail applications.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/reachpilot-card.jpg" type="image/jpeg" length="0"/>
       <category>automation</category><category>python</category><category>linkedin</category><category>dashboard</category>
     </item>
