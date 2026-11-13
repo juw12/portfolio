@@ -11,6 +11,10 @@
     "announced_at": "2026-11-08T03:28:25+00:00",
     "issue": "https://github.com/juw12/portfolio/issues/38"
   },
+  "bits-and-tickers": {
+    "announced_at": "2026-11-13T04:20:52+00:00",
+    "issue": "https://github.com/juw12/portfolio/issues/68"
+  },
   "buddy": {
     "announced_at": "2026-11-04T17:21:34+00:00",
     "issue": "https://github.com/juw12/portfolio/issues/11"
@@ -167,6 +171,10 @@
     "announced_at": "2026-11-10T06:13:42+00:00",
     "issue": "https://github.com/juw12/portfolio/issues/59"
   },
+  "scentvec": {
+    "announced_at": "2026-11-13T04:20:52+00:00",
+    "issue": "https://github.com/juw12/portfolio/issues/68"
+  },
   "scopeguard": {
     "announced_at": "2026-11-02T15:57:46+00:00",
     "issue": "https://github.com/juw12/portfolio/issues/9"
@@ -178,6 +186,10 @@
   "sortie": {
     "announced_at": "2026-11-02T06:08:28+00:00",
     "issue": "https://github.com/juw12/portfolio/issues/8"
+  },
+  "state-of-mcp-servers": {
+    "announced_at": "2026-11-13T04:20:52+00:00",
+    "issue": "https://github.com/juw12/portfolio/issues/68"
   },
   "tally": {
     "announced_at": "2026-11-07T03:54:45+00:00",

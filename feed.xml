@@ -5,8 +5,38 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 12 Nov 2026 08:10:36 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 04:20:52 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>scentvec</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-scentvec</guid>
+      <pubDate>Fri, 13 Nov 2026 04:20:52 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/scentvec-card.jpg" alt="A perfume, as 128 numbers: the scentvec page with catalog stats (44,658 perfumes, 1,888 brands) and a try-in-browser button" width="600"></p><p>Perfume embedding model: note pyramids become 128-d vectors to find similar perfumes or blend two.</p>]]></description>
+      <jl:summary>Perfume embedding model: note pyramids become 128-d vectors to find similar perfumes or blend two.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/scentvec-card.jpg" type="image/jpeg" length="0"/>
+      <category>PyTorch</category><category>Embeddings</category><category>Search</category><category>Python</category><category>JavaScript</category>
+    </item>
+    <item>
+      <title>The State of MCP Servers</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-state-of-mcp-servers</guid>
+      <pubDate>Fri, 13 Nov 2026 04:20:52 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/state-of-mcp-servers-card.jpg" alt="The State of MCP Servers report: a Gardu security scan header with Open the live scanner and Scan data buttons" width="600"></p><p>A Gardu security scan of the top public MCP servers and skills. Open data, reproducible.</p>]]></description>
+      <jl:summary>A Gardu security scan of the top public MCP servers and skills. Open data, reproducible.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/state-of-mcp-servers-card.jpg" type="image/jpeg" length="0"/>
+      <category>MCP</category><category>Security</category><category>AI agents</category><category>Open data</category><category>Python</category>
+    </item>
+    <item>
+      <title>Bits &amp; Tickers</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-bits-and-tickers</guid>
+      <pubDate>Fri, 13 Nov 2026 04:20:52 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/bits-and-tickers-card.jpg" alt="Bits &amp; Tickers podcast page: the three formats (The Brief, The Breakdown, The Long Drive) above the latest episode" width="600"></p><p>A tech, AI and markets podcast in three formats, every story linked in the show notes.</p>]]></description>
+      <jl:summary>A tech, AI and markets podcast in three formats, every story linked in the show notes.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/bits-and-tickers-card.jpg" type="image/jpeg" length="0"/>
+      <category>Podcast</category><category>RSS</category><category>Newsletter</category><category>Markets</category><category>AI</category>
+    </item>
     <item>
       <title>CPU Eco Toggle</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -276,36 +306,6 @@
       <jl:summary>Neutral 60-second check: does a battery pay back for a Taiwan factory? Real tariff, subsidy and a quote checker.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/peakwise-card.jpg" type="image/jpeg" length="0"/>
       <category>Energy storage</category><category>Taiwan</category><category>Calculator</category><category>Python model</category><category>static site</category><category>bilingual</category>
-    </item>
-    <item>
-      <title>Hearthwood</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-hearthwood</guid>
-      <pubDate>Fri, 06 Nov 2026 04:06:18 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/hearthwood-card.jpg" alt="Hearthwood title screen: a hearth-fire emblem, a name field set to Wanderer and a Begin Adventure button" width="600"></p><p>Medieval low-poly village prototype (Unity 6 + URP): quests, dialogue, NPC AI and a playable browser preview.</p>]]></description>
-      <jl:summary>Medieval low-poly village prototype (Unity 6 + URP): quests, dialogue, NPC AI and a playable browser preview.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/hearthwood-card.jpg" type="image/jpeg" length="0"/>
-      <category>game</category><category>Unity 6</category><category>URP</category><category>C#</category><category>HTML preview</category>
-    </item>
-    <item>
-      <title>Cairn</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-cairn</guid>
-      <pubDate>Thu, 05 Nov 2026 13:16:15 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/cairn-card.jpg" alt="Cairn home page: A second brain that lives inside your repo, with Try the demo, Open a repo folder and Run it locally" width="600"></p><p>A second brain inside your repo: ideas, tasks, decisions, MCP and an autopilot that carries goals, in plain Markdown.</p>]]></description>
-      <jl:summary>A second brain inside your repo: ideas, tasks, decisions, MCP and an autopilot that carries goals, in plain Markdown.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/cairn-card.jpg" type="image/jpeg" length="0"/>
-      <category>Markdown</category><category>local-first</category><category>kanban</category><category>decision log</category><category>MCP</category><category>Python</category>
-    </item>
-    <item>
-      <title>Jeda</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-jeda</guid>
-      <pubDate>Thu, 05 Nov 2026 13:16:15 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/jeda-card.jpg" alt="Jeda start screen: Ruang hening untuk setiap iman, with a Mulai button and a Ruang Live join link" width="600"></p><p>Jeda, ruang hening setiap iman: a quiet space for every faith, offline-first and installable as a PWA.</p>]]></description>
-      <jl:summary>Jeda, ruang hening setiap iman: a quiet space for every faith, offline-first and installable as a PWA.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/jeda-card.jpg" type="image/jpeg" length="0"/>
-      <category>PWA</category><category>offline-first</category><category>interfaith</category><category>Indonesia</category>
     </item>
   </channel>
 </rss>
