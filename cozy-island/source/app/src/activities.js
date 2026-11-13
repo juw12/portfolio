@@ -24,6 +24,12 @@
     return SEEDS.find((seed) => seed.id === id) || null;
   }
 
+  /** Minutes a seed takes to bloom (0 for an unknown id): the iPhone widget feed turns beds into bloom times. */
+  Cozy.seedMinutes = function (id) {
+    const seed = seedById(id);
+    return seed ? seed.minutes : 0;
+  };
+
   function availableSeeds() {
     const season = Cozy.season.current();
     // this season's special seed first, so it's what you plant by default

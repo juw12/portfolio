@@ -1071,6 +1071,9 @@ window.Cozy = window.Cozy || {};
       } catch (error) {
         /* private mode etc. - progress just won't persist */
       }
+      if (Cozy.widget) {
+        Cozy.widget.queue();
+      }
     },
   };
 
@@ -1239,6 +1242,135 @@ window.Cozy = window.Cozy || {};
       Cozy.store.set('weatherMode', this.mode);
     },
   };
+
+  // ------------------------------------------------------------------ iPhone widget feed (optional)
+
+  /** Shares a small snapshot (season, garden timers, focus timer, a few counts) with the iPhone
+   *  home-screen widget that PocketDex, Haru and Cozy Island have in common. Nothing is fetched or
+   *  sent until this browser is paired: a code saved by the setup page, or ?widget=<code> in the address. */
+  const WIDGET_SYNC_URL = 'https://juw12.github.io/pocketdex/widget/sync.js';
+  const WIDGET_CODE_KEY = 'juw12.widget.code';
+  const WIDGET_BEDS = 16;          // garden beds are saved as garden.0, garden.1, ... (gaps are possible)
+  const WIDGET_SETTLE_MS = 2000;   // many saves in a row become one snapshot
+  let widgetLoading = null;
+  let widgetTimer = 0;
+  let widgetUrgent = false;
+
+  Cozy.widget = {
+    /** The focus timer as the widget should show it (set by main.js); null while no session runs. */
+    focus: null,
+
+    wanted() {
+      try {
+        return Boolean(localStorage.getItem(WIDGET_CODE_KEY)) || new URLSearchParams(window.location.search).has('widget');
+      } catch (error) {
+        return false;
+      }
+    },
+
+    /** Fetch the shared relay script once. Resolves to null when it cannot be reached. */
+    load() {
+      if (window.Juw12Widget) {
+        return Promise.resolve(window.Juw12Widget);
+      }
+      if (!widgetLoading) {
+        widgetLoading = new Promise((resolve) => {
+          const script = document.createElement('script');
+          script.src = WIDGET_SYNC_URL;
+          script.async = true;
+          script.onload = () => resolve(window.Juw12Widget || null);
+          script.onerror = () => {
+            widgetLoading = null;
+            script.remove();
+            resolve(null);
+          };
+          document.head.appendChild(script);
+        });
+      }
+      return widgetLoading;
+    },
+
+    /** Your own garden beds: { s: seed, b: bloom time } once watered enough to finish, else { s, t: thirsty from }. */
+    garden() {
+      const beds = [];
+      if (typeof Cozy.seedMinutes !== 'function') {
+        return beds;
+      }
+      for (let i = 0; i < WIDGET_BEDS; i++) {
+        const bed = Cozy.store.get('garden.' + i, null);
+        const minutes = bed && bed.seedId ? Cozy.seedMinutes(bed.seedId) : 0;
+        if (!minutes) {
+          continue;
+        }
+        const totalMs = minutes * 60000;
+        const grownMs = Number(bed.grownMs) || 0;
+        const lastTick = Number(bed.lastTick) || 0;
+        const waterEnds = Number(bed.waterEnds) || 0;
+        if (grownMs + Math.max(0, waterEnds - lastTick) >= totalMs) {
+          beds.push({ s: bed.seedId, b: Math.round(lastTick + totalMs - grownMs) });
+        } else {
+          beds.push({ s: bed.seedId, t: Math.round(waterEnds) });
+        }
+      }
+      return beds;
+    },
+
+    snapshot() {
+      return {
+        name: String(Cozy.store.get('name', '') || '').slice(0, 24),
+        season: Cozy.season.current(),
+        rain: Cozy.weather.isRaining(),
+        fish: Cozy.progress.get('fish'),
+        harvest: Cozy.progress.get('harvest'),
+        sessions: Cozy.progress.get('focus_sessions'),
+        mindfulMin: Math.floor(Cozy.progress.get('mindful_seconds') / 60),
+        garden: this.garden(),
+        focus: this.focus,
+      };
+    },
+
+    send() {
+      const urgent = widgetUrgent;
+      window.clearTimeout(widgetTimer);
+      widgetTimer = 0;
+      widgetUrgent = false;
+      try {
+        if (window.Juw12Widget) {
+          window.Juw12Widget.publish('cozy', this.snapshot(), { urgent });
+        }
+      } catch (error) {
+        /* the widget is optional: the island never depends on it */
+      }
+    },
+
+    /** Ask for a fresh snapshot soon. Cheap, and does nothing while this browser is not paired. */
+    queue(urgent) {
+      if (!window.Juw12Widget) {
+        return;
+      }
+      widgetUrgent = widgetUrgent || Boolean(urgent);
+      if (document.hidden) {
+        this.send();   // a hidden page may not get another timer tick
+      } else if (!widgetTimer) {
+        widgetTimer = window.setTimeout(() => this.send(), WIDGET_SETTLE_MS);
+      }
+    },
+
+    setFocus(state) {
+      this.focus = state;
+      this.queue(true);
+    },
+  };
+
+  if (Cozy.widget.wanted()) {
+    Cozy.widget.load().then(() => Cozy.widget.queue());
+  }
+  window.addEventListener('juw12-widget-code', () => Cozy.widget.queue(true));
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      Cozy.widget.queue();   // season, rain and garden timers may have moved on while away
+    }
+  });
 
   const eventHandlers = {};
   /** Tiny event bus: 'bite', 'catch' (fish), 'cooked' (recipe), 'harvest' (seed). */
@@ -4338,6 +4470,12 @@ window.Cozy = window.Cozy || {};
     return SEEDS.find((seed) => seed.id === id) || null;
   }
 
+  /** Minutes a seed takes to bloom (0 for an unknown id): the iPhone widget feed turns beds into bloom times. */
+  Cozy.seedMinutes = function (id) {
+    const seed = seedById(id);
+    return seed ? seed.minutes : 0;
+  };
+
   function availableSeeds() {
     const season = Cozy.season.current();
     // this season's special seed first, so it's what you plant by default
@@ -7417,6 +7555,35 @@ window.Cozy = window.Cozy || {};
   ];
   const focus = { phase: 'idle', remaining: 0, paused: false, sessions: 0, elapsed: 0, nextEyeRest: 20 * 60 };
 
+  const WIDGET_DRIFT_MS = 60000;   // how far the widget's end time may be off before it is told again
+  let sharedEndsAt = 0;            // the end time the widget was last given (0: not counting down)
+
+  /** Tell the iPhone widget feed where the timer stands (does nothing while the widget is not paired).
+   *  `stalled`: the countdown only moves while the island is being drawn, so a hidden tab counts as paused. */
+  function shareFocus(stalled) {
+    if (!Cozy.widget) {
+      return;
+    }
+    sharedEndsAt = 0;
+    if (focus.phase === 'idle') {
+      Cozy.widget.setFocus(null);
+      return;
+    }
+    const remainMs = Math.max(0, Math.round(focus.remaining * 1000));
+    if (focus.paused || stalled) {
+      Cozy.widget.setFocus({ phase: focus.phase, paused: true, remainMs });
+      return;
+    }
+    sharedEndsAt = Date.now() + remainMs;
+    Cozy.widget.setFocus({ phase: focus.phase, paused: false, endsAt: sharedEndsAt });
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (focus.phase !== 'idle') {
+      shareFocus(document.hidden && !desk.on);
+    }
+  });
+
   function notify(text) {
     ui.toast(text, 10);
     try {
@@ -7432,6 +7599,7 @@ window.Cozy = window.Cozy || {};
     if (focus.phase === 'focus') {
       focus.paused = !focus.paused;
       ui.toast(focus.paused ? 'Focus paused' : 'Focus resumed', 2);
+      shareFocus();
       return;
     }
     focus.phase = 'focus';
@@ -7439,6 +7607,7 @@ window.Cozy = window.Cozy || {};
     focus.paused = false;
     focus.elapsed = 0;
     focus.nextEyeRest = 20 * 60;
+    shareFocus();
     ui.toast('Focus time. The island will wait for you.', 3);
     try {
       if ('Notification' in window && Notification.permission === 'default') {
@@ -7463,6 +7632,10 @@ window.Cozy = window.Cozy || {};
     }
     if (focus.phase !== 'idle' && !focus.paused) {
       focus.remaining -= dt;
+      // the countdown follows drawn frames, so on a slow device it falls behind the clock
+      if (sharedEndsAt && Math.abs(Date.now() + focus.remaining * 1000 - sharedEndsAt) > WIDGET_DRIFT_MS) {
+        shareFocus();
+      }
       if (focus.phase === 'focus') {
         focus.elapsed += dt;
         if (focus.elapsed >= focus.nextEyeRest) {
@@ -7486,6 +7659,7 @@ window.Cozy = window.Cozy || {};
           sound.softChime();
           notify("Break's over. Press F when you're ready to focus again.");
         }
+        shareFocus();
       }
     }
     const format = (seconds) => {

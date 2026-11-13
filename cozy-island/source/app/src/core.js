@@ -103,6 +103,9 @@ window.Cozy = window.Cozy || {};
       } catch (error) {
         /* private mode etc. - progress just won't persist */
       }
+      if (Cozy.widget) {
+        Cozy.widget.queue();
+      }
     },
   };
 
@@ -271,6 +274,135 @@ window.Cozy = window.Cozy || {};
       Cozy.store.set('weatherMode', this.mode);
     },
   };
+
+  // ------------------------------------------------------------------ iPhone widget feed (optional)
+
+  /** Shares a small snapshot (season, garden timers, focus timer, a few counts) with the iPhone
+   *  home-screen widget that PocketDex, Haru and Cozy Island have in common. Nothing is fetched or
+   *  sent until this browser is paired: a code saved by the setup page, or ?widget=<code> in the address. */
+  const WIDGET_SYNC_URL = 'https://juw12.github.io/pocketdex/widget/sync.js';
+  const WIDGET_CODE_KEY = 'juw12.widget.code';
+  const WIDGET_BEDS = 16;          // garden beds are saved as garden.0, garden.1, ... (gaps are possible)
+  const WIDGET_SETTLE_MS = 2000;   // many saves in a row become one snapshot
+  let widgetLoading = null;
+  let widgetTimer = 0;
+  let widgetUrgent = false;
+
+  Cozy.widget = {
+    /** The focus timer as the widget should show it (set by main.js); null while no session runs. */
+    focus: null,
+
+    wanted() {
+      try {
+        return Boolean(localStorage.getItem(WIDGET_CODE_KEY)) || new URLSearchParams(window.location.search).has('widget');
+      } catch (error) {
+        return false;
+      }
+    },
+
+    /** Fetch the shared relay script once. Resolves to null when it cannot be reached. */
+    load() {
+      if (window.Juw12Widget) {
+        return Promise.resolve(window.Juw12Widget);
+      }
+      if (!widgetLoading) {
+        widgetLoading = new Promise((resolve) => {
+          const script = document.createElement('script');
+          script.src = WIDGET_SYNC_URL;
+          script.async = true;
+          script.onload = () => resolve(window.Juw12Widget || null);
+          script.onerror = () => {
+            widgetLoading = null;
+            script.remove();
+            resolve(null);
+          };
+          document.head.appendChild(script);
+        });
+      }
+      return widgetLoading;
+    },
+
+    /** Your own garden beds: { s: seed, b: bloom time } once watered enough to finish, else { s, t: thirsty from }. */
+    garden() {
+      const beds = [];
+      if (typeof Cozy.seedMinutes !== 'function') {
+        return beds;
+      }
+      for (let i = 0; i < WIDGET_BEDS; i++) {
+        const bed = Cozy.store.get('garden.' + i, null);
+        const minutes = bed && bed.seedId ? Cozy.seedMinutes(bed.seedId) : 0;
+        if (!minutes) {
+          continue;
+        }
+        const totalMs = minutes * 60000;
+        const grownMs = Number(bed.grownMs) || 0;
+        const lastTick = Number(bed.lastTick) || 0;
+        const waterEnds = Number(bed.waterEnds) || 0;
+        if (grownMs + Math.max(0, waterEnds - lastTick) >= totalMs) {
+          beds.push({ s: bed.seedId, b: Math.round(lastTick + totalMs - grownMs) });
+        } else {
+          beds.push({ s: bed.seedId, t: Math.round(waterEnds) });
+        }
+      }
+      return beds;
+    },
+
+    snapshot() {
+      return {
+        name: String(Cozy.store.get('name', '') || '').slice(0, 24),
+        season: Cozy.season.current(),
+        rain: Cozy.weather.isRaining(),
+        fish: Cozy.progress.get('fish'),
+        harvest: Cozy.progress.get('harvest'),
+        sessions: Cozy.progress.get('focus_sessions'),
+        mindfulMin: Math.floor(Cozy.progress.get('mindful_seconds') / 60),
+        garden: this.garden(),
+        focus: this.focus,
+      };
+    },
+
+    send() {
+      const urgent = widgetUrgent;
+      window.clearTimeout(widgetTimer);
+      widgetTimer = 0;
+      widgetUrgent = false;
+      try {
+        if (window.Juw12Widget) {
+          window.Juw12Widget.publish('cozy', this.snapshot(), { urgent });
+        }
+      } catch (error) {
+        /* the widget is optional: the island never depends on it */
+      }
+    },
+
+    /** Ask for a fresh snapshot soon. Cheap, and does nothing while this browser is not paired. */
+    queue(urgent) {
+      if (!window.Juw12Widget) {
+        return;
+      }
+      widgetUrgent = widgetUrgent || Boolean(urgent);
+      if (document.hidden) {
+        this.send();   // a hidden page may not get another timer tick
+      } else if (!widgetTimer) {
+        widgetTimer = window.setTimeout(() => this.send(), WIDGET_SETTLE_MS);
+      }
+    },
+
+    setFocus(state) {
+      this.focus = state;
+      this.queue(true);
+    },
+  };
+
+  if (Cozy.widget.wanted()) {
+    Cozy.widget.load().then(() => Cozy.widget.queue());
+  }
+  window.addEventListener('juw12-widget-code', () => Cozy.widget.queue(true));
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      Cozy.widget.queue();   // season, rain and garden timers may have moved on while away
+    }
+  });
 
   const eventHandlers = {};
   /** Tiny event bus: 'bite', 'catch' (fish), 'cooked' (recipe), 'harvest' (seed). */

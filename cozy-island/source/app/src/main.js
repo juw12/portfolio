@@ -600,6 +600,35 @@
   ];
   const focus = { phase: 'idle', remaining: 0, paused: false, sessions: 0, elapsed: 0, nextEyeRest: 20 * 60 };
 
+  const WIDGET_DRIFT_MS = 60000;   // how far the widget's end time may be off before it is told again
+  let sharedEndsAt = 0;            // the end time the widget was last given (0: not counting down)
+
+  /** Tell the iPhone widget feed where the timer stands (does nothing while the widget is not paired).
+   *  `stalled`: the countdown only moves while the island is being drawn, so a hidden tab counts as paused. */
+  function shareFocus(stalled) {
+    if (!Cozy.widget) {
+      return;
+    }
+    sharedEndsAt = 0;
+    if (focus.phase === 'idle') {
+      Cozy.widget.setFocus(null);
+      return;
+    }
+    const remainMs = Math.max(0, Math.round(focus.remaining * 1000));
+    if (focus.paused || stalled) {
+      Cozy.widget.setFocus({ phase: focus.phase, paused: true, remainMs });
+      return;
+    }
+    sharedEndsAt = Date.now() + remainMs;
+    Cozy.widget.setFocus({ phase: focus.phase, paused: false, endsAt: sharedEndsAt });
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (focus.phase !== 'idle') {
+      shareFocus(document.hidden && !desk.on);
+    }
+  });
+
   function notify(text) {
     ui.toast(text, 10);
     try {
@@ -615,6 +644,7 @@
     if (focus.phase === 'focus') {
       focus.paused = !focus.paused;
       ui.toast(focus.paused ? 'Focus paused' : 'Focus resumed', 2);
+      shareFocus();
       return;
     }
     focus.phase = 'focus';
@@ -622,6 +652,7 @@
     focus.paused = false;
     focus.elapsed = 0;
     focus.nextEyeRest = 20 * 60;
+    shareFocus();
     ui.toast('Focus time. The island will wait for you.', 3);
     try {
       if ('Notification' in window && Notification.permission === 'default') {
@@ -646,6 +677,10 @@
     }
     if (focus.phase !== 'idle' && !focus.paused) {
       focus.remaining -= dt;
+      // the countdown follows drawn frames, so on a slow device it falls behind the clock
+      if (sharedEndsAt && Math.abs(Date.now() + focus.remaining * 1000 - sharedEndsAt) > WIDGET_DRIFT_MS) {
+        shareFocus();
+      }
       if (focus.phase === 'focus') {
         focus.elapsed += dt;
         if (focus.elapsed >= focus.nextEyeRest) {
@@ -669,6 +704,7 @@
           sound.softChime();
           notify("Break's over. Press F when you're ready to focus again.");
         }
+        shareFocus();
       }
     }
     const format = (seconds) => {
