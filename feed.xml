@@ -32,8 +32,8 @@
       <link>https://juwenlie.pages.dev/#projects</link>
       <guid isPermaLink="false">juwenlie-project-sumber</guid>
       <pubDate>Sat, 14 Nov 2026 03:18:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/sumber-card.jpg" alt="Sumber home page: a search box under the name Sumber, lens tabs, a Before AI switch and five example searches" width="600"></p><p>Search eight public libraries at once; every result is quoted word for word and shows why it ranks.</p>]]></description>
-      <jl:summary>Search eight public libraries at once; every result is quoted word for word and shows why it ranks.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/sumber-card.jpg" alt="Sumber home page: a search box under the name Sumber, lens tabs, a Before AI switch and five example searches" width="600"></p><p>Search up to 20 public libraries at once; every result is quoted word for word and shows why it ranks.</p>]]></description>
+      <jl:summary>Search up to 20 public libraries at once; every result is quoted word for word and shows why it ranks.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/sumber-card.jpg" type="image/jpeg" length="0"/>
       <category>federated-search</category><category>no-ai</category><category>privacy</category><category>pwa</category><category>search-engine</category>
     </item>
