@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Nov 2026 04:04:04 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 06:22:11 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Not Real Vera</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-not-real-vera</guid>
+      <pubDate>Sat, 14 Nov 2026 06:22:11 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/not-real-vera-card.jpg" alt="Not Real Vera channel page: the AI host portrait, the line I&#x27;m not real. The scams are., and three episode slots marked not published yet" width="600"></p><p>A short-video channel kit about scam and deepfake defence, hosted by a presenter who says up front that she is an AI.</p>]]></description>
+      <jl:summary>A short-video channel kit about scam and deepfake defence, hosted by a presenter who says up front that she is an AI.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/not-real-vera-card.jpg" type="image/jpeg" length="0"/>
+      <category>ai-avatar</category><category>buffer</category><category>python</category><category>scam-awareness</category><category>short-video</category>
+    </item>
     <item>
       <title>Lelet</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -296,16 +306,6 @@
       <jl:summary>Offline HSK 1-6 Mandarin app for Indonesian speakers, with native audio and a tone mirror.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/nadaku-card.jpg" type="image/jpeg" length="0"/>
       <category>mandarin</category><category>hsk</category><category>pwa</category><category>indonesia</category><category>fsrs</category>
-    </item>
-    <item>
-      <title>gate</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-gate</guid>
-      <pubDate>Sat, 07 Nov 2026 06:56:20 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/gate-card.jpg" alt="gate site: serif headline &#x27;A merge gate for AI-agent code&#x27; beside a ledger card of the recorded run (26 sessions, 19 merged, 3 rejected by tests) with one coloured block per session" width="600"></p><p>A merge gate for AI-agent code: parallel sessions in, tested and provenance-tagged commits out.</p>]]></description>
-      <jl:summary>A merge gate for AI-agent code: parallel sessions in, tested and provenance-tagged commits out.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/gate-card.jpg" type="image/jpeg" length="0"/>
-      <category>python</category><category>git</category><category>ci</category><category>ai-agents</category><category>cli</category>
     </item>
   </channel>
 </rss>
