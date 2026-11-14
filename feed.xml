@@ -5,15 +5,25 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Nov 2026 06:22:11 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 10:46:44 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title>Not Real Vera</title>
+      <title>Telisik</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-telisik</guid>
+      <pubDate>Sat, 14 Nov 2026 10:46:44 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/telisik-card.jpg" alt="Telisik home page: a search box under the name Telisik, lens tabs, a Before AI switch and seven example searches" width="600"></p><p>Search up to 23 public libraries at once; every result is quoted word for word and shows why it ranks.</p>]]></description>
+      <jl:summary>Search up to 23 public libraries at once; every result is quoted word for word and shows why it ranks.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/telisik-card.jpg" type="image/jpeg" length="0"/>
+      <category>federated-search</category><category>no-ai</category><category>privacy</category><category>pwa</category><category>search-engine</category>
+    </item>
+    <item>
+      <title>Vera Checks</title>
       <link>https://juwenlie.pages.dev/#projects</link>
       <guid isPermaLink="false">juwenlie-project-not-real-vera</guid>
       <pubDate>Sat, 14 Nov 2026 06:22:11 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/not-real-vera-card.jpg" alt="Not Real Vera channel page: the AI host portrait, the line I&#x27;m not real. The scams are., and three episode slots marked not published yet" width="600"></p><p>A short-video channel kit about scam and deepfake defence, hosted by a presenter who says up front that she is an AI.</p>]]></description>
-      <jl:summary>A short-video channel kit about scam and deepfake defence, hosted by a presenter who says up front that she is an AI.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/not-real-vera-card.jpg" alt="Vera Checks channel page: the presenter portrait and three episode slots marked not published yet" width="600"></p><p>A short-video channel kit about scam and deepfake defence with one on-camera presenter, Vera.</p>]]></description>
+      <jl:summary>A short-video channel kit about scam and deepfake defence with one on-camera presenter, Vera.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/not-real-vera-card.jpg" type="image/jpeg" length="0"/>
       <category>ai-avatar</category><category>buffer</category><category>python</category><category>scam-awareness</category><category>short-video</category>
     </item>
@@ -26,16 +36,6 @@
       <jl:summary>Measure your internet speed against the plan you pay for and get a ready-to-send complaint letter with the numbers.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/lelet-card.jpg" type="image/jpeg" length="0"/>
       <category>complaint-letter</category><category>consumer-rights</category><category>indonesia</category><category>internet</category><category>offline-first</category>
-    </item>
-    <item>
-      <title>Sumber</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-sumber</guid>
-      <pubDate>Sat, 14 Nov 2026 03:18:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/sumber-card.jpg" alt="Sumber home page: a search box under the name Sumber, lens tabs, a Before AI switch and five example searches" width="600"></p><p>Search up to 20 public libraries at once; every result is quoted word for word and shows why it ranks.</p>]]></description>
-      <jl:summary>Search up to 20 public libraries at once; every result is quoted word for word and shows why it ranks.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/sumber-card.jpg" type="image/jpeg" length="0"/>
-      <category>federated-search</category><category>no-ai</category><category>privacy</category><category>pwa</category><category>search-engine</category>
     </item>
     <item>
       <title>Tagalong</title>
@@ -92,8 +92,8 @@
       <link>https://juwenlie.pages.dev/#projects</link>
       <guid isPermaLink="false">juwenlie-project-bits-and-tickers</guid>
       <pubDate>Fri, 13 Nov 2026 04:20:52 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/bits-and-tickers-card.jpg" alt="Bits &amp; Tickers podcast page: the three formats (The Brief, The Breakdown, The Long Drive) above the latest episode" width="600"></p><p>A tech, AI and markets podcast in three formats, every story linked in the show notes.</p>]]></description>
-      <jl:summary>A tech, AI and markets podcast in three formats, every story linked in the show notes.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/bits-and-tickers-card.jpg" alt="Bits &amp; Tickers podcast page: the three formats (The Brief, The Breakdown, The Long Drive) above the latest episode" width="600"></p><p>Tech and markets podcast with a daily half-hour news show and a weekly founder story.</p>]]></description>
+      <jl:summary>Tech and markets podcast with a daily half-hour news show and a weekly founder story.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/bits-and-tickers-card.jpg" type="image/jpeg" length="0"/>
       <category>Podcast</category><category>RSS</category><category>Newsletter</category><category>Markets</category><category>AI</category>
     </item>
