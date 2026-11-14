@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Nov 2026 03:18:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 04:04:04 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Lelet</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-lelet</guid>
+      <pubDate>Sat, 14 Nov 2026 04:04:04 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/lelet-card.jpg" alt="Lelet home page in Indonesian: the heading Internet lelet? Buktikan., an empty download reading in Mbps, a red Mulai tes button and fields for plan speed and monthly price" width="600"></p><p>Measure your internet speed against the plan you pay for and get a ready-to-send complaint letter with the numbers.</p>]]></description>
+      <jl:summary>Measure your internet speed against the plan you pay for and get a ready-to-send complaint letter with the numbers.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/lelet-card.jpg" type="image/jpeg" length="0"/>
+      <category>complaint-letter</category><category>consumer-rights</category><category>indonesia</category><category>internet</category><category>offline-first</category>
+    </item>
     <item>
       <title>Sumber</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -296,16 +306,6 @@
       <jl:summary>A merge gate for AI-agent code: parallel sessions in, tested and provenance-tagged commits out.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/gate-card.jpg" type="image/jpeg" length="0"/>
       <category>python</category><category>git</category><category>ci</category><category>ai-agents</category><category>cli</category>
-    </item>
-    <item>
-      <title>Batam Uncle Says</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-batam-uncle-says</guid>
-      <pubDate>Sat, 07 Nov 2026 06:01:00 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/batam-uncle-says-card.jpg" alt="Batam Uncle Says home page: Barelang Bridge hero with the headline Batam, without the guesswork, a live Batam clock with a leave-for-terminal countdown, and key facts on ferry fare, exchange rate, time difference and visa-free stay" width="600"></p><p>Batam day trips for Singaporeans, planned around your ferry and usable offline.</p>]]></description>
-      <jl:summary>Batam day trips for Singaporeans, planned around your ferry and usable offline.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/batam-uncle-says-card.jpg" type="image/jpeg" length="0"/>
-      <category>pwa</category><category>travel</category><category>batam</category><category>offline</category><category>javascript</category>
     </item>
   </channel>
 </rss>
