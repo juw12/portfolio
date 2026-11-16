@@ -102,8 +102,8 @@
       <link>https://juwenlie.pages.dev/#projects</link>
       <guid isPermaLink="false">juwenlie-project-cpu-eco-toggle</guid>
       <pubDate>Thu, 12 Nov 2026 08:10:36 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/cpu-eco-toggle-card.jpg" alt="CPU Eco Toggle landing page: condensed headline &#x27;One click gives a pinned CPU room to breathe&#x27; beside a green on/off toggle with a power symbol" width="600"></p><p>One-click Windows tray switch that moves background jobs to fewer cores at lower priority, without stopping them.</p>]]></description>
-      <jl:summary>One-click Windows tray switch that moves background jobs to fewer cores at lower priority, without stopping them.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/cpu-eco-toggle-card.jpg" alt="CPU Eco Toggle landing page: condensed headline &#x27;One click gives a pinned CPU room to breathe&#x27; beside a green on/off toggle with a power symbol" width="600"></p><p>Windows tray guard that keeps background jobs at lower priority, moves them to fewer cores with one click, and restarts Vector after a crash or freeze.</p>]]></description>
+      <jl:summary>Windows tray guard that keeps background jobs at lower priority, moves them to fewer cores with one click, and restarts Vector after a crash or freeze.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/cpu-eco-toggle-card.jpg" type="image/jpeg" length="0"/>
       <category>cpu</category><category>performance</category><category>powershell</category><category>productivity</category><category>system-tray</category>
     </item>
