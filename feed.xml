@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 17 Nov 2026 08:36:17 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2026 09:55:04 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Kemudi</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-kemudi</guid>
+      <pubDate>Tue, 17 Nov 2026 09:55:04 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/kemudi-card.jpg" alt="Kemudi landing page: the headline &#x27;Steering knobs for a local language model&#x27; beside a screenshot of the app with four sliders and their measured curves" width="600"></p><p>Steering knobs for a local language model, each shipped with a measurement of what it does.</p>]]></description>
+      <jl:summary>Steering knobs for a local language model, each shipped with a measurement of what it does.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/kemudi-card.jpg" type="image/jpeg" length="0"/>
+      <category>activation-steering</category><category>interpretability</category><category>llm</category><category>local-llm</category><category>python</category>
+    </item>
     <item>
       <title>Titip</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -296,16 +306,6 @@
       <jl:summary>Stops false &quot;I can&#x27;t&quot;s and unchecked &quot;done&quot;s in AI coding agents.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/precedent-card.jpg" type="image/jpeg" length="0"/>
       <category>ai-agents</category><category>claude-code</category><category>codex</category><category>llm-guardrails</category><category>mcp</category>
-    </item>
-    <item>
-      <title>Vow</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-vow</guid>
-      <pubDate>Sat, 07 Nov 2026 11:49:49 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/vow-card.jpg" alt="Vow home on desktop: two active vows with stake, proof type, witness and a send-invite pill, countdowns and Check in buttons" width="600"></p><p>Free, private commitment app: stake a promise, name a witness who signs your check-ins, pay your cause if you miss.</p>]]></description>
-      <jl:summary>Free, private commitment app: stake a promise, name a witness who signs your check-ins, pay your cause if you miss.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/vow-card.jpg" type="image/jpeg" length="0"/>
-      <category>PWA</category><category>offline-first</category><category>Web Crypto</category><category>commitment</category>
     </item>
   </channel>
 </rss>
