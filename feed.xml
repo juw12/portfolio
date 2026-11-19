@@ -22,7 +22,7 @@
       <link>https://juwenlie.pages.dev/#projects</link>
       <guid isPermaLink="false">juwenlie-project-lineup</guid>
       <pubDate>Thu, 19 Nov 2026 04:55:29 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/lineup-card.jpg" alt="Lineup score page from the example run: six role cards and a table of nine free models, with the briefing row measured and the other rows marked not measured" width="600"></p><p>Six role agents for OpenCode that pick their own models.</p>]]></description>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/lineup-card.jpg" alt="Lineup score page from the example run: six role cards that all name the same picked model, and a table of two free models with a score and a time for every role" width="600"></p><p>Six role agents for OpenCode that pick their own models.</p>]]></description>
       <jl:summary>Six role agents for OpenCode that pick their own models.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/lineup-card.jpg" type="image/jpeg" length="0"/>
       <category>OpenCode</category><category>AI agents</category><category>Model selection</category><category>Python</category><category>Windows</category>
