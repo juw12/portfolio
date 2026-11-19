@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Nov 2026 04:55:29 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 06:12:54 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Spry</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-spry</guid>
+      <pubDate>Thu, 19 Nov 2026 06:12:54 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/spry-card.jpg" alt="Spry landing page in a browser frame: the headline Keeps an old computer quick, a line saying it works on Windows, macOS and Linux, and a green Download button" width="600"></p><p>Keeps an old computer quick by holding back busy background apps.</p>]]></description>
+      <jl:summary>Keeps an old computer quick by holding back busy background apps.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/spry-card.jpg" type="image/jpeg" length="0"/>
+      <category>Rust</category><category>Windows</category><category>macOS</category><category>Linux</category><category>Performance</category>
+    </item>
     <item>
       <title>Lineup</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -296,16 +306,6 @@
       <jl:summary>A 3D warung and cafe for your city. Sit at a table; only your table can read or hear you.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/nongkrong-card.jpg" type="image/jpeg" length="0"/>
       <category>webrtc</category><category>p2p</category><category>voice-chat</category><category>pwa</category><category>indonesia</category>
-    </item>
-    <item>
-      <title>Meetline</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-meetline</guid>
-      <pubDate>Sat, 07 Nov 2026 19:16:53 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/meetline-card.jpg" alt="Meetline dark map console: three people in Batam with coloured road routes converging on a cafe, the result card showing 27 min longest trip and a ranked list of nearby cafes." width="600"></p><p>Find the fairest place for 2-8 people to meet.</p>]]></description>
-      <jl:summary>Find the fairest place for 2-8 people to meet.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/meetline-card.jpg" type="image/jpeg" length="0"/>
-      <category>geolocation</category><category>javascript</category><category>leaflet</category><category>meeting-point</category><category>openstreetmap</category>
     </item>
   </channel>
 </rss>
