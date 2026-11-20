@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Nov 2026 17:38:16 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 02:42:27 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Themes</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-themes</guid>
+      <pubDate>Fri, 20 Nov 2026 02:42:27 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/themes-card.jpg" alt="Themes gallery: a cream page with the serif headline &#x27;56 looks I already shipped, kept for the next app&#x27;, four counts and the pull commands" width="600"></p><p>56 named themes read out of my own shipped projects, ready to pull into the next app.</p>]]></description>
+      <jl:summary>56 named themes read out of my own shipped projects, ready to pull into the next app.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/themes-card.jpg" type="image/jpeg" length="0"/>
+      <category>color-palette</category><category>css-variables</category><category>design-system</category><category>design-tokens</category><category>template</category>
+    </item>
     <item>
       <title>Vector Relay</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -22,8 +32,8 @@
       <link>https://juwenlie.pages.dev/#projects</link>
       <guid isPermaLink="false">juwenlie-project-spry</guid>
       <pubDate>Thu, 19 Nov 2026 06:12:54 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/spry-card.jpg" alt="Spry landing page in a browser frame: the headline Keeps an old computer quick, a line saying it works on Windows, macOS and Linux, and a green Download button" width="600"></p><p>Keeps an old computer quick by holding back busy background apps.</p>]]></description>
-      <jl:summary>Keeps an old computer quick by holding back busy background apps.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/spry-card.jpg" alt="Spry landing page in a browser frame: the headline Keeps an old computer quick, a line saying it works on Windows, macOS and Linux, and a green Download button" width="600"></p><p>Makes an old computer use less, and keeps it quick, by holding back busy background apps.</p>]]></description>
+      <jl:summary>Makes an old computer use less, and keeps it quick, by holding back busy background apps.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/spry-card.jpg" type="image/jpeg" length="0"/>
       <category>Rust</category><category>Windows</category><category>macOS</category><category>Linux</category><category>Performance</category>
     </item>
@@ -296,16 +306,6 @@
       <jl:summary>A quiet first-person 3D coin laundry with synthesized ASMR.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/bilas-card.jpg" type="image/jpeg" length="0"/>
       <category>three.js</category><category>Web Audio</category><category>PWA</category><category>Android</category><category>iOS</category>
-    </item>
-    <item>
-      <title>Teduh</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-teduh</guid>
-      <pubDate>Sat, 07 Nov 2026 20:40:50 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/teduh-card.jpg" alt="Teduh start screen: name, colour and language picker over a low-poly sky village of floating islands" width="600"></p><p>Free, cozy solarpunk life sim on floating islands, offline in any browser.</p>]]></description>
-      <jl:summary>Free, cozy solarpunk life sim on floating islands, offline in any browser.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/teduh-card.jpg" type="image/jpeg" length="0"/>
-      <category>browser-game</category><category>cozy-game</category><category>game</category><category>indonesia</category><category>life-sim</category>
     </item>
   </channel>
 </rss>

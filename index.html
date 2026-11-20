@@ -1924,8 +1924,8 @@
             <div class="project-content">
               <span class="project-category">Software</span>
               <h3 class="project-title">Spry</h3>
-              <p class="project-description">Keeps an old computer quick by holding back busy background apps.</p>
-              <div class="project-details" hidden>One small program for Windows, macOS and Linux. It notices which app you are using, lowers the priority of busy apps behind it, keeps part of the processor free for the front app on Windows and Linux when the machine is under pressure, gives the held apps everything back while the app in front rests, and puts everything back when it stops. On GitHub's test machines over 5 runs the front app got 1.32x the work done on Windows and 2.2x to 2.5x on macOS and Linux while twice as many background jobs as processor threads ran, and held apps ran at 99% to 100% of their free speed while the app in front rested. Not yet tried on a real old laptop.</div>
+              <p class="project-description">Makes an old computer use less, and keeps it quick, by holding back busy background apps.</p>
+              <div class="project-details" hidden>One small program for Windows, macOS and Linux with a window of its own. It notices which app you are using and holds back the busy apps behind it. Saver mode, the default, keeps them held for as long as they are in the background, so the computer does less work; Performance mode holds them only while the app in front works and gives them everything back while it rests. It keeps itself up to date and puts everything back when it stops. On a MacBook Pro 2019 in Saver mode, four busy background processes each got 29% of a processor core instead of 94% and the computer was 39% busy instead of 72%; they get that much less done. In Performance mode on GitHub's test machines over 5 runs the front app got 1.32x the work done on Windows and 2.2x to 2.5x on macOS and Linux while twice as many background jobs as processor threads ran; those speed-up numbers are not from a real old laptop.</div>
               <div class="project-tags">
                 <span class="tag">Rust</span>
                 <span class="tag">Windows</span>
@@ -1958,6 +1958,27 @@
               <div class="project-links">
                 <a class="project-link" href="https://juw12.github.io/p/vector-relay/" target="_blank" rel="noopener noreferrer">Open site</a>
                 <a class="project-link" href="https://github.com/juw12/vector-relay" target="_blank" rel="noopener noreferrer">Source</a>
+              </div>
+            </div>
+          </article>
+          
+          <article class="project-card" data-category="Software">
+            <img src="./assets/projects/themes-card.jpg" alt="Themes gallery: a cream page with the serif headline '56 looks I already shipped, kept for the next app', four counts and the pull commands" class="project-card-image" loading="lazy" decoding="async">
+            <div class="project-content">
+              <span class="project-category">Software</span>
+              <h3 class="project-title">Themes</h3>
+              <p class="project-description">56 named themes read out of my own shipped projects, ready to pull into the next app.</p>
+              <div class="project-details" hidden>A theme library built by scanning my own repos: 56 named themes, each one CSS file and one JSON file that records where every colour came from. Press Wear it on a card and the whole page changes into that theme. Comes with a one-file pull tool, a starter app that uses only the tokens, and a list of 40 template repos checked against the GitHub API.</div>
+              <div class="project-tags">
+                <span class="tag">color-palette</span>
+                <span class="tag">css-variables</span>
+                <span class="tag">design-system</span>
+                <span class="tag">design-tokens</span>
+                <span class="tag">template</span>
+              </div>
+              <div class="project-links">
+                <a class="project-link" href="https://juw12.github.io/themes/" target="_blank" rel="noopener noreferrer">Open site</a>
+                <a class="project-link" href="https://github.com/juw12/themes" target="_blank" rel="noopener noreferrer">Source</a>
               </div>
             </div>
           </article>
