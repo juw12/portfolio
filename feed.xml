@@ -32,7 +32,7 @@
       <link>https://juwenlie.pages.dev/#projects</link>
       <guid isPermaLink="false">juwenlie-project-spry</guid>
       <pubDate>Thu, 19 Nov 2026 06:12:54 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/spry-card.jpg" alt="Spry landing page in a browser frame: the headline Keeps an old computer quick, a line saying it works on Windows, macOS and Linux, and a green Download button" width="600"></p><p>Makes an old computer use less, and keeps it quick, by holding back busy background apps.</p>]]></description>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/spry-card.jpg" alt="Spry landing page in a browser frame: the headline Makes an old computer use less, and keeps it quick, a line saying it works on Windows, macOS and Linux, and a green Download button" width="600"></p><p>Makes an old computer use less, and keeps it quick, by holding back busy background apps.</p>]]></description>
       <jl:summary>Makes an old computer use less, and keeps it quick, by holding back busy background apps.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/spry-card.jpg" type="image/jpeg" length="0"/>
       <category>Rust</category><category>Windows</category><category>macOS</category><category>Linux</category><category>Performance</category>
