@@ -22,10 +22,10 @@
       <link>https://juwenlie.pages.dev/#projects</link>
       <guid isPermaLink="false">juwenlie-project-neon-coast</guid>
       <pubDate>Fri, 20 Nov 2026 08:35:29 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/neon-coast-card.jpg" alt="Amber courier van on a palm-lined Neon Coast street with the Electric Works stop on the HUD." width="600"></p><p>Steal a car, run six story jobs and five kinds of odd job, drive a cab, buy property, ride the Sol Wheel, and outrun the police helicopter.</p>]]></description>
-      <jl:summary>Steal a car, run six story jobs and five kinds of odd job, drive a cab, buy property, ride the Sol Wheel, and outrun the police helicopter.</jl:summary>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/neon-coast-card.jpg" alt="Amber courier van on a palm-lined Neon Coast street with the Electric Works stop on the HUD." width="600"></p><p>Steal a car, run story jobs and odd jobs, drive a cab, buy property and outrun the police helicopter, on a desktop or a phone.</p>]]></description>
+      <jl:summary>Steal a car, run story jobs and odd jobs, drive a cab, buy property and outrun the police helicopter, on a desktop or a phone.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/neon-coast-card.jpg" type="image/jpeg" length="0"/>
-      <category>Game</category><category>Three.js</category><category>JavaScript</category><category>Offline</category>
+      <category>Game</category><category>Three.js</category><category>JavaScript</category><category>Offline</category><category>PWA</category>
     </item>
     <item>
       <title>Open Problems Lab</title>
