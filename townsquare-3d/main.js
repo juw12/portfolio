@@ -103,7 +103,9 @@ const preset = QUALITY_PRESETS[quality];
 const LITE_SYNC = urlParams.has('lite') ? urlParams.get('lite') !== '0' : (isTouch || quality === 'low');
 
 const canvas = $('scene');
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: quality !== 'low', powerPreference: 'high-performance' });
+// Antialiasing stays on at every quality: ?quality=low saves its work with no shadows, less grass and 1x pixels,
+// and without antialiasing on top of 1x the town looked blocky.
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, preset.pixelRatio));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
