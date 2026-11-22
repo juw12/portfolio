@@ -1,5 +1,13 @@
 [
  {
+  "date": "2026-11-22",
+  "label": "Sunday, November 22, 2026",
+  "headline": "Hours after Anthropic claims a Claude proof of the Riemann hypothesis, Stanford releases an all-human competing draft",
+  "lede": "Anthropic's AI proof and Bytedance's open model challenge traditional AI development, while market volatility impacts tech stocks.",
+  "url": "./2026-11-22.html",
+  "stories": 17
+ },
+ {
   "date": "2026-11-21",
   "label": "Saturday, November 21, 2026",
   "headline": "Signal blocks screenshots on iOS 27 and Android to stop AI agents from reading private chats",
