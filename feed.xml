@@ -5,8 +5,18 @@
     <link>https://juwenlie.pages.dev/hi/</link>
     <description>New engineering tools, CAD models and side projects from Juwen Lie.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 20 Nov 2026 08:37:40 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2026 14:56:29 +0000</lastBuildDate>
     <atom:link href="https://juwenlie.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Talos</title>
+      <link>https://juwenlie.pages.dev/#projects</link>
+      <guid isPermaLink="false">juwenlie-project-talos</guid>
+      <pubDate>Sun, 22 Nov 2026 14:56:29 +0000</pubDate>
+      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/talos-card.jpg" alt="Talos site: the logo and the line &#x27;One AI agent for your computer that does what OpenCode and Hermes Agent do, in one place, and tells you how it checked its own work&#x27;, the button Get it on GitHub and the three commands to try it" width="600"></p><p>One AI agent with OpenCode&#x27;s and Hermes Agent&#x27;s features that says how it checked its own work.</p>]]></description>
+      <jl:summary>One AI agent with OpenCode&#x27;s and Hermes Agent&#x27;s features that says how it checked its own work.</jl:summary>
+      <enclosure url="https://juwenlie.pages.dev/assets/projects/talos-card.jpg" type="image/jpeg" length="0"/>
+      <category>ai-agents</category><category>coding-agent</category><category>opencode</category><category>hermes-agent</category><category>ollama</category><category>mcp</category><category>python</category>
+    </item>
     <item>
       <title>Pocket Meter</title>
       <link>https://juwenlie.pages.dev/#projects</link>
@@ -296,16 +306,6 @@
       <jl:summary>A calm, waving Chinese lucky cat for your phone home screen and Windows desktop. Tap it for a luck boost.</jl:summary>
       <enclosure url="https://juwenlie.pages.dev/assets/projects/hoki-card.jpg" type="image/jpeg" length="0"/>
       <category>pwa</category><category>lucky-cat</category><category>desktop-widget</category><category>svg</category>
-    </item>
-    <item>
-      <title>Lahap</title>
-      <link>https://juwenlie.pages.dev/#projects</link>
-      <guid isPermaLink="false">juwenlie-project-lahap</guid>
-      <pubDate>Sun, 08 Nov 2026 04:38:12 +0000</pubDate>
-      <description><![CDATA[<p><img src="https://juwenlie.pages.dev/assets/projects/lahap-card.jpg" alt="Lahap diary with sample data: What did I eat? search, taste filters, a 76% taste-bud match, meal tickets with price and plate score, and a week panel with meals, variety, health and spend" width="600"></p><p>Snap a meal, keep just the food, see protein and calories against your goal, and cook from what is in the fridge.</p>]]></description>
-      <jl:summary>Snap a meal, keep just the food, see protein and calories against your goal, and cook from what is in the fridge.</jl:summary>
-      <enclosure url="https://juwenlie.pages.dev/assets/projects/lahap-card.jpg" type="image/jpeg" length="0"/>
-      <category>PWA</category><category>offline-first</category><category>food diary</category><category>share cards</category><category>Indonesia</category>
     </item>
   </channel>
 </rss>
