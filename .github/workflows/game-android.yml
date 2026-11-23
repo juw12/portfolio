@@ -1,0 +1,137 @@
+name: CozyIsland Android app
+
+# Builds CozyIsland-android.apk (game/android/: a full-screen window around the web app), signs it with the key in the
+# repository's secrets, opens it on an emulator and puts it on the game-android release.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "game/android/**"
+      - ".github/workflows/game-android.yml"
+  pull_request:
+    paths:
+      - "game/android/**"
+      - ".github/workflows/game-android.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: "Build and sign the .apk (no Gradle: aapt2, javac, d8, zipalign, apksigner)"
+        env:
+          KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: |
+          tools=$(ls -d "$ANDROID_HOME"/build-tools/34.* 2>/dev/null | sort -V | tail -n 1)
+          if [ -z "$tools" ]; then tools=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -n 1); fi
+          platform="$ANDROID_HOME/platforms/android-34"
+          if [ ! -f "$platform/android.jar" ]; then platform=$(ls -d "$ANDROID_HOME"/platforms/android-* | sort -V | tail -n 1); fi
+          export ANDROID_BUILD_TOOLS="$tools" ANDROID_JAR="$platform/android.jar"
+          echo "build-tools: $tools, platform: $platform"
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/release.p12"
+            printf '%s' "$KEYSTORE_PASSWORD" > "$RUNNER_TEMP/release-password.txt"
+            python3 game/android/build.py --keystore "$RUNNER_TEMP/release.p12" --password-file "$RUNNER_TEMP/release-password.txt" --alias shells
+            echo "SIGNED=release" >> "$GITHUB_ENV"
+          else
+            echo "::warning::No signing key secret here (a pull request from a fork): signed with a throwaway key."
+            python3 game/android/build.py
+            echo "SIGNED=throwaway" >> "$GITHUB_ENV"
+          fi
+          echo "APKSIGNER=$tools/apksigner" >> "$GITHUB_ENV"
+
+      - name: The certificate is the one app.json names
+        if: env.SIGNED == 'release'
+        run: |
+          expected=$(python3 -c "import json; print(json.load(open('game/android/app.json'))['certSha256'])")
+          found=$("$APKSIGNER" verify --print-certs game/android/dist/CozyIsland-android.apk | sed -n 's/^Signer #1 certificate SHA-256 digest: //p')
+          echo "expected $expected"
+          echo "found    $found"
+          [ "$expected" = "$found" ]
+          (cd game/android/dist && sha256sum CozyIsland-android.apk > CozyIsland-android.apk.sha256 && cat CozyIsland-android.apk.sha256)
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: game-android
+          path: game/android/dist/
+          if-no-files-found: error
+
+  emulator:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: game-android
+          path: game/android/dist
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Open the app on an emulator and check it stays up
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none
+          script: python3 game/android/smoke.py game/android/dist/CozyIsland-android.apk
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: game-android-emulator-check
+          path: |
+            game/android/dist/*.png
+            game/android/dist/android-logcat.txt
+          retention-days: 7
+
+  publish:
+    needs: [build, emulator]
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: game-android
+          path: dist
+      # The game-android release keeps one address for the download. The file there is replaced only when
+      # game/android/app.json names a new versionName, never by a rebuild of the same version.
+      - name: Put the .apk on the game-android release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version=$(python3 -c "import json; print(json.load(open('game/android/app.json'))['versionName'])")
+          echo "$version" > dist/CozyIsland-android.version.txt
+          if ! gh release view game-android --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            printf '%s\n' "Cozy Island for Android: a full-screen window around the web app (https://juw12.github.io/portfolio/cozy-island/)." "" \
+              "Download [CozyIsland-android.apk](https://github.com/$GITHUB_REPOSITORY/releases/download/game-android/CozyIsland-android.apk), open the file on the phone and allow \"install unknown apps\" for your browser once." \
+              "It is not from a store: Android asks before it installs." > notes.md
+            gh release create game-android dist/CozyIsland-android.apk dist/CozyIsland-android.apk.sha256 dist/CozyIsland-android.version.txt \
+              --title "Cozy Island for Android" --notes-file notes.md --latest=false --repo "$GITHUB_REPOSITORY"
+            echo "Made the game-android release with CozyIsland-android.apk $version"
+            exit 0
+          fi
+          published=$(gh release download game-android --repo "$GITHUB_REPOSITORY" --pattern CozyIsland-android.version.txt --output - 2>/dev/null || true)
+          if [ "$published" = "$version" ]; then
+            echo "the game-android release already has CozyIsland-android.apk $version"
+            exit 0
+          fi
+          gh release upload game-android dist/CozyIsland-android.apk dist/CozyIsland-android.apk.sha256 dist/CozyIsland-android.version.txt --clobber --repo "$GITHUB_REPOSITORY"
+          echo "CozyIsland-android.apk on the game-android release is now $version (was: ${published:-none})"

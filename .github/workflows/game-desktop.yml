@@ -1,0 +1,177 @@
+name: CozyIsland apps
+
+# Builds the downloadable CozyIsland apps and publishes them to the "game-desktop" release from main:
+#   Windows  CozyIsland-Windows-Setup.exe (per-user installer) + CozyIsland-Windows-Portable.zip
+#   macOS    CozyIsland-macOS-AppleSilicon.dmg + CozyIsland-macOS-Intel.dmg
+# The apps are thin native windows around the live site, so every push to the site reaches them through GitHub
+# Pages without a rebuild. This workflow only runs when the shell in desktop/ changes. Every build is opened and
+# checked on its own system first; only builds that passed are published, and the download links never change.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'game/desktop/**'
+      - '.github/workflows/game-desktop.yml'
+  pull_request:
+    paths:
+      - 'game/desktop/**'
+      - '.github/workflows/game-desktop.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: game-desktop-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  desktop:
+    name: Desktop (${{ matrix.name }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Windows
+            os: windows-latest
+          - name: macOS Apple silicon
+            os: macos-15
+          - name: macOS Intel
+            os: macos-15-intel
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PyInstaller, Pillow and pywebview
+        run: python -m pip install --disable-pip-version-check pyinstaller pillow pywebview
+      - name: Install Inno Setup
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $iscc = Join-Path ${env:ProgramFiles(x86)} 'Inno Setup 6\ISCC.exe'
+          if (-not (Test-Path $iscc) -and -not (Get-Command iscc -ErrorAction SilentlyContinue)) {
+            choco install innosetup --no-progress -y
+          }
+      - name: Make sure the WebView2 runtime is there (the Windows window uses it)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $client = '{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}'
+          $keys = "HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\$client",
+                  "HKCU:\Software\Microsoft\EdgeUpdate\Clients\$client"
+          $version = $keys | Where-Object { Test-Path $_ } | ForEach-Object { (Get-ItemProperty $_).pv } |
+            Where-Object { $_ -and $_ -ne '0.0.0.0' } | Select-Object -First 1
+          if ($version) { Write-Host "WebView2 runtime $version"; exit 0 }
+          $setup = Join-Path $env:RUNNER_TEMP 'MicrosoftEdgeWebview2Setup.exe'
+          Invoke-WebRequest 'https://go.microsoft.com/fwlink/p/?LinkId=2124703' -OutFile $setup
+          Start-Process -FilePath $setup -ArgumentList '/silent', '/install' -Wait
+      - name: Stop XProtect scans (they make hdiutil fail with "Resource busy")
+        if: runner.os == 'macOS'
+        run: |
+          sudo pkill -9 XProtect > /dev/null 2>&1 || true
+          for attempt in $(seq 1 20); do pgrep -x XProtect > /dev/null || break; sleep 3; done
+      - name: Build and package
+        run: python game/desktop/build.py --require-installer
+      - name: Open the built app and check its window shows this commit's CozyIsland
+        run: python game/desktop/smoke_test.py --built --local-site
+      - name: Install with CozyIsland-Windows-Setup.exe, run it, uninstall it
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $setup = Resolve-Path 'game/desktop/dist/CozyIsland-Windows-Setup.exe'
+          $log = Join-Path $env:RUNNER_TEMP 'game-setup.log'
+          $process = Start-Process -FilePath $setup -Wait -PassThru -ArgumentList @(
+            '/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART', '/TASKS=desktopicon', "/LOG=$log")
+          if ($process.ExitCode -ne 0) { Get-Content $log -Tail 40; throw "Setup failed with exit code $($process.ExitCode)" }
+          $app = Join-Path $env:LOCALAPPDATA 'Programs\CozyIsland\CozyIsland.exe'
+          if (-not (Test-Path $app)) { throw "CozyIsland.exe was not installed to $app" }
+          $shortcuts = @(
+            (Join-Path ([Environment]::GetFolderPath('Programs')) 'CozyIsland.lnk'),
+            (Join-Path ([Environment]::GetFolderPath('Desktop')) 'CozyIsland.lnk'))
+          foreach ($link in $shortcuts) { if (-not (Test-Path $link)) { throw "Missing shortcut: $link" } }
+          $entry = Get-ChildItem 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall' |
+            Get-ItemProperty | Where-Object DisplayName -eq 'CozyIsland'
+          if (-not $entry) { throw 'CozyIsland is missing from Settings > Apps' }
+          python game/desktop/smoke_test.py --local-site $app
+          if ($LASTEXITCODE -ne 0) { throw 'The installed app failed its checks' }
+          Start-Process -FilePath $entry.UninstallString.Trim('"') -Wait -ArgumentList '/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART'
+          for ($i = 0; $i -lt 60 -and (Test-Path $app); $i++) { Start-Sleep -Seconds 1 }
+          if (Test-Path $app) { throw 'Uninstalling left CozyIsland.exe behind' }
+          foreach ($link in $shortcuts) { if (Test-Path $link) { throw "Uninstalling left a shortcut: $link" } }
+          Write-Host 'Installed, ran and uninstalled cleanly'
+      - name: Check the Mac app and disk image
+        if: runner.os == 'macOS'
+        run: |
+          APP=game/desktop/dist/CozyIsland.app
+          test "$(plutil -extract CFBundleIdentifier raw "$APP/Contents/Info.plist")" = "io.github.juw12.game.desktop"
+          test "$(plutil -extract CFBundleShortVersionString raw "$APP/Contents/Info.plist")" = "$(python3 -c 'import json; print(json.load(open("game/desktop/shell.json"))["version"])')"
+          echo "Architecture: $(lipo -archs "$APP/Contents/MacOS/CozyIsland")"
+          codesign --verify --deep --verbose=2 "$APP"
+          for image in game/desktop/dist/*.dmg; do hdiutil verify "$image"; done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CozyIsland-${{ runner.os }}-${{ runner.arch }}
+          path: game/desktop/dist/CozyIsland-*
+          if-no-files-found: error
+          retention-days: 14
+
+  publish:
+    needs: [desktop]
+    if: ${{ !cancelled() && github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: CozyIsland-*
+          path: dist
+          merge-multiple: true
+      - name: Publish the apps to the apps release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          cd dist
+          FILES=""
+          for name in CozyIsland-Windows-Setup.exe CozyIsland-Windows-Portable.zip \
+                      CozyIsland-macOS-AppleSilicon.dmg CozyIsland-macOS-Intel.dmg; do
+            if [ -f "$name" ]; then
+              FILES="$FILES $name"
+            else
+              echo "::warning::$name was not built in this run; the release keeps its previous copy (if any)."
+            fi
+          done
+          if [ -z "$FILES" ]; then
+            echo "::error::No app passed its checks."
+            exit 1
+          fi
+          sha256sum $FILES > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+          cat > notes.md <<'EOF'
+          **Cozy Island**: a cozy 3D island for laptop workers: fish, garden. The apps open the same Cozy Island as https://juw12.github.io/portfolio/cozy-island/ in their own window.
+
+          | Your device | Download | How to install |
+          | --- | --- | --- |
+          | **Windows 10/11** | [CozyIsland-Windows-Setup.exe](https://github.com/juw12/portfolio/releases/download/game-desktop/CozyIsland-Windows-Setup.exe) | Open it and press Install (no admin needed). If Windows says it protected your PC, choose **More info → Run anyway** (the app is not code-signed yet). Without installing: [CozyIsland-Windows-Portable.zip](https://github.com/juw12/portfolio/releases/download/game-desktop/CozyIsland-Windows-Portable.zip). |
+          | **Mac with Apple chip (M1 and newer)** | [CozyIsland-macOS-AppleSilicon.dmg](https://github.com/juw12/portfolio/releases/download/game-desktop/CozyIsland-macOS-AppleSilicon.dmg) | Open it and drag CozyIsland to Applications. The first time, macOS blocks it because it is not notarized: **System Settings → Privacy & Security → Open Anyway**. |
+          | **Mac with Intel chip** | [CozyIsland-macOS-Intel.dmg](https://github.com/juw12/portfolio/releases/download/game-desktop/CozyIsland-macOS-Intel.dmg) | Same as above. Not sure which Mac? Apple menu → About This Mac shows **Chip** (Apple) or **Processor** (Intel). |
+          | **iPhone / iPad** | [Open in Safari](https://juw12.github.io/portfolio/cozy-island/) | Share → **Add to Home Screen** (free, full screen, updates itself). |
+          | **Android** | [CozyIsland-android.apk](https://github.com/juw12/portfolio/releases/download/game-android/CozyIsland-android.apk) | Open the file on the phone and allow your browser to install apps once. |
+
+          The apps load CozyIsland from the web, so new versions arrive the moment they are published, with no reinstall. Checksums for this build: `SHA256SUMS.txt`.
+          EOF
+          {
+            echo
+            echo "Built from ${GITHUB_SHA::7}."
+          } >> notes.md
+          if gh release view game-desktop --repo "$REPO" > /dev/null 2>&1; then
+            gh release upload game-desktop $FILES SHA256SUMS.txt --clobber --repo "$REPO"
+            gh release edit game-desktop --notes-file notes.md --repo "$REPO"
+          else
+            gh release create game-desktop $FILES SHA256SUMS.txt --title "Cozy Island for Windows and Mac" \
+              --notes-file notes.md --latest=false --repo "$REPO"
+          fi
