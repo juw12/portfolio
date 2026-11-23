@@ -2,7 +2,7 @@ name: CozyIsland apps
 
 # Builds the downloadable CozyIsland apps and publishes them to the "cozy-island-desktop" release from main:
 #   Windows  CozyIsland-Windows-Setup.exe (per-user installer) + CozyIsland-Windows-Portable.zip
-#   macOS    CozyIsland-macOS-AppleSilicon.dmg + CozyIsland-macOS-Intel.dmg
+#   macOS    CozyIsland-macOS-AppleSilicon.dmg (no Intel build: the island did not draw on GitHub's Intel Mac)
 # The apps are thin native windows around the live site, so every push to the site reaches them through GitHub
 # Pages without a rebuild. This workflow only runs when the shell in desktop/ changes. Every build is opened and
 # checked on its own system first; only builds that passed are published, and the download links never change.
@@ -36,8 +36,6 @@ jobs:
             os: windows-latest
           - name: macOS Apple silicon
             os: macos-15
-          - name: macOS Intel
-            os: macos-15-intel
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     steps:
@@ -138,7 +136,7 @@ jobs:
           cd dist
           FILES=""
           for name in CozyIsland-Windows-Setup.exe CozyIsland-Windows-Portable.zip \
-                      CozyIsland-macOS-AppleSilicon.dmg CozyIsland-macOS-Intel.dmg; do
+                      CozyIsland-macOS-AppleSilicon.dmg; do
             if [ -f "$name" ]; then
               FILES="$FILES $name"
             else
@@ -158,7 +156,6 @@ jobs:
           | --- | --- | --- |
           | **Windows 10/11** | [CozyIsland-Windows-Setup.exe](https://github.com/juw12/portfolio/releases/download/cozy-island-desktop/CozyIsland-Windows-Setup.exe) | Open it and press Install (no admin needed). If Windows says it protected your PC, choose **More info → Run anyway** (the app is not code-signed yet). Without installing: [CozyIsland-Windows-Portable.zip](https://github.com/juw12/portfolio/releases/download/cozy-island-desktop/CozyIsland-Windows-Portable.zip). |
           | **Mac with Apple chip (M1 and newer)** | [CozyIsland-macOS-AppleSilicon.dmg](https://github.com/juw12/portfolio/releases/download/cozy-island-desktop/CozyIsland-macOS-AppleSilicon.dmg) | Open it and drag CozyIsland to Applications. The first time, macOS blocks it because it is not notarized: **System Settings → Privacy & Security → Open Anyway**. |
-          | **Mac with Intel chip** | [CozyIsland-macOS-Intel.dmg](https://github.com/juw12/portfolio/releases/download/cozy-island-desktop/CozyIsland-macOS-Intel.dmg) | Same as above. Not sure which Mac? Apple menu → About This Mac shows **Chip** (Apple) or **Processor** (Intel). |
           | **iPhone / iPad** | [Open in Safari](https://juw12.github.io/portfolio/cozy-island/) | Share → **Add to Home Screen** (free, full screen, updates itself). |
           | **Android** | [CozyIsland-android.apk](https://github.com/juw12/portfolio/releases/download/cozy-island-android/CozyIsland-android.apk) | Open the file on the phone and allow your browser to install apps once. |
 

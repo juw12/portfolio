@@ -20,6 +20,6 @@ python desktop/build.py
 python desktop/smoke_test.py --built --local-site
 ```
 
-`.github/workflows/cozy-island-desktop.yml` does the same on Windows, an Apple-chip Mac and an Intel Mac, installs and uninstalls
+`.github/workflows/cozy-island-desktop.yml` does the same on Windows and an Apple-chip Mac (not on an Intel Mac: the island did not draw on GitHub's Intel machine), installs and uninstalls
 the Windows setup, and publishes the files that passed to the
 [cozy-island-desktop release](https://github.com/juw12/portfolio/releases/tag/cozy-island-desktop). The download links never change.
