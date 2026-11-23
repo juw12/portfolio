@@ -1,0 +1,137 @@
+name: Townsquare3D Android app
+
+# Builds Townsquare3D-android.apk (game/townsquare/android/: a full-screen window around the web app), signs it with the key in the
+# repository's secrets, opens it on an emulator and puts it on the townsquare-android release.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "game/townsquare/android/**"
+      - ".github/workflows/townsquare-android.yml"
+  pull_request:
+    paths:
+      - "game/townsquare/android/**"
+      - ".github/workflows/townsquare-android.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: "Build and sign the .apk (no Gradle: aapt2, javac, d8, zipalign, apksigner)"
+        env:
+          KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: |
+          tools=$(ls -d "$ANDROID_HOME"/build-tools/34.* 2>/dev/null | sort -V | tail -n 1)
+          if [ -z "$tools" ]; then tools=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -n 1); fi
+          platform="$ANDROID_HOME/platforms/android-34"
+          if [ ! -f "$platform/android.jar" ]; then platform=$(ls -d "$ANDROID_HOME"/platforms/android-* | sort -V | tail -n 1); fi
+          export ANDROID_BUILD_TOOLS="$tools" ANDROID_JAR="$platform/android.jar"
+          echo "build-tools: $tools, platform: $platform"
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/release.p12"
+            printf '%s' "$KEYSTORE_PASSWORD" > "$RUNNER_TEMP/release-password.txt"
+            python3 game/townsquare/android/build.py --keystore "$RUNNER_TEMP/release.p12" --password-file "$RUNNER_TEMP/release-password.txt" --alias shells
+            echo "SIGNED=release" >> "$GITHUB_ENV"
+          else
+            echo "::warning::No signing key secret here (a pull request from a fork): signed with a throwaway key."
+            python3 game/townsquare/android/build.py
+            echo "SIGNED=throwaway" >> "$GITHUB_ENV"
+          fi
+          echo "APKSIGNER=$tools/apksigner" >> "$GITHUB_ENV"
+
+      - name: The certificate is the one app.json names
+        if: env.SIGNED == 'release'
+        run: |
+          expected=$(python3 -c "import json; print(json.load(open('game/townsquare/android/app.json'))['certSha256'])")
+          found=$("$APKSIGNER" verify --print-certs game/townsquare/android/dist/Townsquare3D-android.apk | sed -n 's/^Signer #1 certificate SHA-256 digest: //p')
+          echo "expected $expected"
+          echo "found    $found"
+          [ "$expected" = "$found" ]
+          (cd game/townsquare/android/dist && sha256sum Townsquare3D-android.apk > Townsquare3D-android.apk.sha256 && cat Townsquare3D-android.apk.sha256)
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: townsquare-android
+          path: game/townsquare/android/dist/
+          if-no-files-found: error
+
+  emulator:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: townsquare-android
+          path: game/townsquare/android/dist
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Open the app on an emulator and check it stays up
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none
+          script: python3 game/townsquare/android/smoke.py game/townsquare/android/dist/Townsquare3D-android.apk
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: townsquare-android-emulator-check
+          path: |
+            game/townsquare/android/dist/*.png
+            game/townsquare/android/dist/android-logcat.txt
+          retention-days: 7
+
+  publish:
+    needs: [build, emulator]
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: townsquare-android
+          path: dist
+      # The townsquare-android release keeps one address for the download. The file there is replaced only when
+      # game/townsquare/android/app.json names a new versionName, never by a rebuild of the same version.
+      - name: Put the .apk on the townsquare-android release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version=$(python3 -c "import json; print(json.load(open('game/townsquare/android/app.json'))['versionName'])")
+          echo "$version" > dist/Townsquare3D-android.version.txt
+          if ! gh release view townsquare-android --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            printf '%s\n' "Townsquare 3D for Android: a full-screen window around the web app (https://juw12.github.io/portfolio/townsquare-3d/)." "" \
+              "Download [Townsquare3D-android.apk](https://github.com/$GITHUB_REPOSITORY/releases/download/townsquare-android/Townsquare3D-android.apk), open the file on the phone and allow \"install unknown apps\" for your browser once." \
+              "It is not from a store: Android asks before it installs." > notes.md
+            gh release create townsquare-android dist/Townsquare3D-android.apk dist/Townsquare3D-android.apk.sha256 dist/Townsquare3D-android.version.txt \
+              --title "Townsquare 3D for Android" --notes-file notes.md --latest=false --repo "$GITHUB_REPOSITORY"
+            echo "Made the townsquare-android release with Townsquare3D-android.apk $version"
+            exit 0
+          fi
+          published=$(gh release download townsquare-android --repo "$GITHUB_REPOSITORY" --pattern Townsquare3D-android.version.txt --output - 2>/dev/null || true)
+          if [ "$published" = "$version" ]; then
+            echo "the townsquare-android release already has Townsquare3D-android.apk $version"
+            exit 0
+          fi
+          gh release upload townsquare-android dist/Townsquare3D-android.apk dist/Townsquare3D-android.apk.sha256 dist/Townsquare3D-android.version.txt --clobber --repo "$GITHUB_REPOSITORY"
+          echo "Townsquare3D-android.apk on the townsquare-android release is now $version (was: ${published:-none})"

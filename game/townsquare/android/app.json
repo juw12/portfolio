@@ -1,0 +1,10 @@
+{
+  "name": "Townsquare3D",
+  "id": "io.github.juw12.townsquare",
+  "url": "https://juw12.github.io/portfolio/townsquare-3d/",
+  "versionName": "1.0.0",
+  "versionCode": 1,
+  "minSdk": 24,
+  "targetSdk": 34,
+  "certSha256": "1a1af114c92c3247d47843b42ee14440e9bed7ad87112648bef0264e4d06ba36"
+}
