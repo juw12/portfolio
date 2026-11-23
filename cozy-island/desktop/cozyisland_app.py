@@ -35,7 +35,7 @@ LIGHT_BACKGROUND = "#F0C3AE"
 DARK_BACKGROUND = "#F0C3AE"
 CONTROL_FILE = "window.json"
 SIZE_FILE = "window-size.json"
-TEST_TIMEOUT = 60
+TEST_TIMEOUT = 150  # a slow machine (GitHub's Intel Mac) needs more than a minute to draw the island
 PAGE_SCRIPT = (
     "JSON.stringify({title: document.title, url: location.href, userAgent: navigator.userAgent,"
     " app: !!(document.getElementById('app') && document.getElementById('app').children.length),"
