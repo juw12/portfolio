@@ -1,0 +1,22 @@
+{
+  "name": "Cozy Island",
+  "short_name": "Cozy Island",
+  "description": "A cozy 3D island for laptop workers: fish, garden, take tea-breathing breaks and rest your eyes, with Mochi the cat.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F0C3AE",
+  "theme_color": "#F0C3AE",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

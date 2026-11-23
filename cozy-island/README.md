@@ -11,6 +11,15 @@ Soft ASMR-style sounds, seasons, day & night, rain and rainbows, and Mochi the c
 
 **Look and feel:** a calm, professional interface on warm paper-light panels with one terracotta accent, one set of line icons and no emoji. On phones the island stays visible: a slim activity strip on top and a short bottom sheet (one row each for places and tools in landscape). Spec: [source/design.md](source/design.md).
 
+## Get it on your device
+
+- **Windows:** [`CozyIsland-Windows-Setup.exe`](https://github.com/juw12/portfolio/releases/download/cozy-island-desktop/CozyIsland-Windows-Setup.exe) (no admin needed; if Windows says it protected your PC, choose *More info → Run anyway*), or without installing [`CozyIsland-Windows-Portable.zip`](https://github.com/juw12/portfolio/releases/download/cozy-island-desktop/CozyIsland-Windows-Portable.zip).
+- **Mac:** [`CozyIsland-macOS-AppleSilicon.dmg`](https://github.com/juw12/portfolio/releases/download/cozy-island-desktop/CozyIsland-macOS-AppleSilicon.dmg) (M1 and newer). There is no build for Intel Macs: on GitHub's Intel Mac the island did not draw, so that build is not published; use the browser there. The first time, macOS blocks it because it is not notarized: **System Settings → Privacy & Security → Open Anyway**.
+- **Android:** [`CozyIsland-android.apk`](https://github.com/juw12/portfolio/releases/download/cozy-island-android/CozyIsland-android.apk): open the file on the phone and allow your browser to install apps once.
+- **iPhone:** open https://juw12.github.io/portfolio/cozy-island/ in Safari, tap Share, then **Add to Home Screen**.
+
+The Windows, Mac and Android apps are the web app in its own window ([`desktop/`](desktop/README.md), [`android/`](android/README.md)) and change with it. Each build is opened on GitHub's machines before it is published: on Windows and on a Mac the page loads, the app starts and can store data; on an Android emulator it installs, opens and stays up. They are not code-signed or notarised, and no real phone or PC has run them yet.
+
 ## What you can do
 
 | Activity | What it is |
