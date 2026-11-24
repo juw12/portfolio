@@ -1,5 +1,13 @@
 [
  {
+  "date": "2026-11-24",
+  "label": "Tuesday, November 24, 2026",
+  "headline": "Anthropic launches Claude Ship, letting AI agents review, fix, and approve code changes",
+  "lede": "AI tools and political decisions dominate today's news, with major implications for tech and national security.",
+  "url": "./2026-11-24.html",
+  "stories": 20
+ },
+ {
   "date": "2026-11-23",
   "label": "Monday, November 23, 2026",
   "headline": "GPT-6.2 Astra and Sol get to the point faster but score lower on transparency than Claude",
