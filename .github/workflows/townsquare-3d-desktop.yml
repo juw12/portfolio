@@ -41,8 +41,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
       - name: Install PyInstaller, Pillow and pywebview
@@ -111,7 +111,7 @@ jobs:
           echo "Architecture: $(lipo -archs "$APP/Contents/MacOS/Townsquare3D")"
           codesign --verify --deep --verbose=2 "$APP"
           for image in townsquare-3d/desktop/dist/*.dmg; do hdiutil verify "$image"; done
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: Townsquare3D-${{ runner.os }}-${{ runner.arch }}
           path: townsquare-3d/desktop/dist/Townsquare3D-*
@@ -125,7 +125,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           pattern: Townsquare3D-*
           path: dist

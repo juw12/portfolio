@@ -39,8 +39,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
       - name: Install PyInstaller, Pillow and pywebview
@@ -109,7 +109,7 @@ jobs:
           echo "Architecture: $(lipo -archs "$APP/Contents/MacOS/CozyIsland")"
           codesign --verify --deep --verbose=2 "$APP"
           for image in cozy-island/desktop/dist/*.dmg; do hdiutil verify "$image"; done
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: CozyIsland-${{ runner.os }}-${{ runner.arch }}
           path: cozy-island/desktop/dist/CozyIsland-*
@@ -123,7 +123,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           pattern: CozyIsland-*
           path: dist
