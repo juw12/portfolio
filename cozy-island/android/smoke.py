@@ -20,7 +20,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 def adb(*args, check=True):
     try:
-        result = subprocess.run(["adb", *args], capture_output=True, text=True, timeout=180)
+        # logcat can hold a byte that is not UTF-8; one such byte must not fail the whole check.
+        result = subprocess.run(
+            ["adb", *args], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=180
+        )
     except subprocess.TimeoutExpired:
         # A busy emulator can take minutes over the whole log. Where the answer is only read (check=False)
         # an empty one is enough: the checks above decide, not the dump.
